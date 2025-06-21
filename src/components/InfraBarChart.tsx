@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { DATA_FOLDER } from '../constants/data';
 import * as echarts from 'echarts';
 
 const infraMetrics = [
@@ -16,7 +17,7 @@ const InfraBarChart: React.FC = () => {
   useEffect(() => {
     if (!chartRef.current) return;
     const chart = echarts.init(chartRef.current);
-    fetch('/data/rbi_bankwise_04_2025.json')
+    fetch(DATA_FOLDER + 'rbi_bankwise_04_2025.json')
       .then(res => res.json())
       .then((data) => {
         // Top 10 banks by PoS (or any metric)

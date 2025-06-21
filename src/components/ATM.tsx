@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { DATA_FOLDER } from '../constants/data';
 import * as echarts from 'echarts';
 
 
@@ -10,7 +11,7 @@ const ATMChart: React.FC = () => {
     let chartOnsite: echarts.ECharts | null = null;
     let chartOffsite: echarts.ECharts | null = null;
     let disposed = false;
-    fetch('/data/rbi_bankwise_04_2025.json')
+    fetch(DATA_FOLDER + 'rbi_bankwise_04_2025.json')
       .then(res => res.json())
       .then(data => {
         if (disposed) return;

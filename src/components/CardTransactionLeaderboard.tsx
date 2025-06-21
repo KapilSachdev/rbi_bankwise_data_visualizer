@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { DATA_FOLDER } from '../constants/data';
 import * as echarts from 'echarts';
 
 const CardTransactionLeaderboard: React.FC = () => {
@@ -7,7 +8,7 @@ const CardTransactionLeaderboard: React.FC = () => {
   useEffect(() => {
     if (!chartRef.current) return;
     const chart = echarts.init(chartRef.current);
-    fetch('/data/rbi_bankwise_04_2025.json')
+    fetch(DATA_FOLDER + 'rbi_bankwise_04_2025.json')
       .then(res => res.json())
       .then((data) => {
         // Calculate total card transaction value (credit + debit, all channels)

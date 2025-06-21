@@ -1,8 +1,10 @@
 
 import './App.css';
+
 import ATM from './components/ATM';
 import CardTransactionLeaderboard from './components/CardTransactionLeaderboard';
 import InfraBarChart from './components/InfraBarChart';
+
 
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
             <ATM />
           </div>
         </div>
+
       </section>
     </main>
   );
