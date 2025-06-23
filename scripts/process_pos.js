@@ -55,7 +55,7 @@ const excelDir = path.resolve(__dirname, '../data/excel');
 const jsonDir = path.resolve(__dirname, '../public/assets/data');
 
 fs.readdirSync(excelDir)
-  .filter(file => file.endsWith('.xlsx'))
+  .filter(file => file.startsWith('bankwise_pos_stats_') && file.endsWith('.xlsx'))
   .forEach(excelFile => {
     const baseName = path.basename(excelFile, '.xlsx');
     const jsonFile = `${baseName}.json`;
@@ -98,7 +98,10 @@ fs.readdirSync(excelDir)
         });
         // Add short name/acronym for the bank
         const bankName = bankData.Bank_Name;
-        bankData.Bank_Short_Name = BANK_ACRONYMS[bankName] || bankName;
+        // Try to match bank name robustly for acronym
+        const bankAcronymEntry = Object.entries(BANK_ACRONYMS).find(([fullName]) =>
+          bankName.trim().toLowerCase().startsWith(fullName.trim().toLowerCase()));
+        bankData.Bank_Short_Name = bankAcronymEntry ? bankAcronymEntry[1] : bankName;
 
         jsonResult.push(bankData);
       }

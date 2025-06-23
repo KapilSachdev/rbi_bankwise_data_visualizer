@@ -25,6 +25,13 @@ const getTargetDate = (arg) => {
   return { year, month };
 };
 
+const mapBankShortName = (bankName) => {
+  if (!bankName || typeof bankName !== 'string') return '';
+  const bankAcronymEntry = Object.entries(BANK_ACRONYMS).find(([fullName]) =>
+    bankName.trim().toLowerCase().startsWith(fullName.trim().toLowerCase()));
+  return bankAcronymEntry ? bankAcronymEntry[1] : bankName.trim();
+};
+
 const main = () => {
   const { year, month } = getTargetDate(process.argv[2]);
   const paddedMonth = String(month).padStart(2, '0');
@@ -62,7 +69,7 @@ const main = () => {
         return {
           Sr_No: row[0],
           Bank_Name: bankName,
-          Bank_Short_Name: BANK_ACRONYMS[bankName] || bankName,
+          Bank_Short_Name: mapBankShortName(bankName),
           Received_Inward_Credits: {
             No: row[2],
             Amount: row[3],
@@ -81,7 +88,7 @@ const main = () => {
         return {
           Sr_No: row[0],
           Bank_Name: bankName,
-          Bank_Short_Name: BANK_ACRONYMS[bankName] || bankName,
+          Bank_Short_Name: mapBankShortName(bankName),
           Outward_Transactions: {
             No: row[2],
             Amount: row[3],
@@ -100,7 +107,7 @@ const main = () => {
         return {
           Sr_No: row[0],
           Bank_Name: bankName,
-          Bank_Short_Name: BANK_ACRONYMS[bankName] || bankName,
+          Bank_Short_Name: mapBankShortName(bankName),
           Volume: row[2],
           Value: row[3],
           Active_Customers: row[4],
@@ -114,7 +121,7 @@ const main = () => {
         return {
           Sr_No: row[0],
           Bank_Name: bankName,
-          Bank_Short_Name: BANK_ACRONYMS[bankName] || bankName,
+          Bank_Short_Name: mapBankShortName(bankName),
           Volume: row[2],
           Value: row[3],
           Active_Customers: row[4],
