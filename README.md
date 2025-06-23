@@ -1,6 +1,6 @@
 
-# rbi_bankwise_data_visualizer
-Banking monthly transaction data visualizer
+# Indian Banking Data Visualizer
+Visualization exploring and analyzing Indian banking sector data.
 
 ## License
 

@@ -1,31 +1,71 @@
 
+import { DATA_FOLDER } from './constants/data';
 import './App.css';
+import ATMBarChart from './components/infra/ATMBarChart';
+import CardInfraBarChart from './components/infra/CardsBarChart';
+import DataFilter from './components/DataFilter';
+import { useEffect, useState, useMemo } from 'react';
 
-import ATM from './components/ATM';
-import CardTransactionLeaderboard from './components/CardTransactionLeaderboard';
-import InfraBarChart from './components/InfraBarChart';
+const FILES = [
+  {
+    file: `${DATA_FOLDER}/bankwise_pos_stats_04_2025.json`,
+    month: 'April',
+    year: '2025',
+  },
+];
 
-
+function getUniqueBankTypes(data: any[]): string[] {
+  return Array.from(new Set(data.map((d) => d.Bank_Type)));
+}
 
 function App() {
-  return (
-    <main className=''>
-      <section className="container mx-auto p-2">
-        <h2 className="text-2xl font-bold mb-8 text-center">
-          Indian Banking Data Visualizer
-        </h2>
-        <div className="flex flex-row flex-wrap gap-2 items-stretch w-full">
-          <div className="flex-1 min-w-[560px] max-w-[600px] p-4">
-            <InfraBarChart />
-          </div>
-          <div className="flex-1 min-w-[560px] max-w-[600px] p-4">
-            <CardTransactionLeaderboard />
-          </div>
-          <div className="flex-1 min-w-[560px] max-w-[640px] p-4">
-            <ATM />
-          </div>
-        </div>
+  const [parsedData, setParsedData] = useState<any[]>([]);
+  const [selectedMonth, setSelectedMonth] = useState('April');
+  const [selectedYear, setSelectedYear] = useState('2025');
+  const [selectedBankType, setSelectedBankType] = useState('');
 
+  // For demo, only one file/month/year. Extend for more files as needed.
+  useEffect(() => {
+    const fileObj = FILES.find(f => f.month === selectedMonth && f.year === selectedYear);
+    if (!fileObj) return;
+    fetch(fileObj.file)
+      .then((res) => res.json())
+      .then((data) => setParsedData(data))
+      .catch((err) => {
+        console.error('Failed to fetch data:', err);
+        setParsedData([]);
+      });
+  }, [selectedMonth, selectedYear]);
+
+  const months = useMemo(() => FILES.map(f => f.month), []);
+  const years = useMemo(() => FILES.map(f => f.year), []);
+  const bankTypes = useMemo(() => parsedData.length ? getUniqueBankTypes(parsedData) : [], [parsedData]);
+
+  const filteredData = useMemo(() => {
+    if (!selectedBankType) return parsedData;
+    return parsedData.filter((d) => d.Bank_Type === selectedBankType);
+  }, [parsedData, selectedBankType]);
+
+  return (
+    <main className="min-h-screen bg-gray-950 text-gray-100 p-2 md:p-6">
+      <DataFilter
+        months={months}
+        years={years}
+        bankTypes={bankTypes}
+        selectedMonth={selectedMonth}
+        selectedYear={selectedYear}
+        selectedBankType={selectedBankType}
+        onMonthChange={setSelectedMonth}
+        onYearChange={setSelectedYear}
+        onBankTypeChange={setSelectedBankType}
+      />
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <section>
+          {filteredData.length > 0 && <ATMBarChart data={filteredData} />}
+        </section>
+        <section>
+          {filteredData.length > 0 && <CardInfraBarChart data={filteredData} />}
+        </section>
       </section>
     </main>
   );
