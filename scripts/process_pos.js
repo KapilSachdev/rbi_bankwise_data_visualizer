@@ -3,7 +3,7 @@ import * as XLSX from 'xlsx';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { BANK_ACRONYMS } from '../data/bank_acronyms.js';
+import { mapBankShortName } from './utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -93,15 +93,12 @@ fs.readdirSync(excelDir)
 
         const bankData = { Bank_Type: currentBankType };
         columnMapping.forEach(({ col, path }) => {
-          const value = row[col+1] ?? 1; // Adjusted to match the column index in the row
+          const value = row[col + 1] ?? 1; // Adjusted to match the column index in the row
           setNestedObject(bankData, path, value);
         });
         // Add short name/acronym for the bank
         const bankName = bankData.Bank_Name;
-        // Try to match bank name robustly for acronym
-        const bankAcronymEntry = Object.entries(BANK_ACRONYMS).find(([fullName]) =>
-          bankName.trim().toLowerCase().startsWith(fullName.trim().toLowerCase()) || fullName.trim().toLowerCase().startsWith(bankName.trim().toLowerCase()));
-        bankData.Bank_Short_Name = bankAcronymEntry ? bankAcronymEntry[1] : bankName;
+        bankData.Bank_Short_Name = mapBankShortName(bankName);
 
         jsonResult.push(bankData);
       }
@@ -116,3 +113,4 @@ fs.readdirSync(excelDir)
       console.error(`Error processing ${excelFile}:`, error.message);
     }
   });
+

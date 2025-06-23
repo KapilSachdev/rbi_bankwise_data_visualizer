@@ -6,7 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import xlsx from 'xlsx';
-import { BANK_ACRONYMS } from '../data/bank_acronyms.js';
+import { mapBankShortName } from './utils.js';
 
 const getModuleDir = () => path.dirname(new URL(import.meta.url).pathname);
 
@@ -25,12 +25,6 @@ const getTargetDate = (arg) => {
   return { year, month };
 };
 
-const mapBankShortName = (bankName) => {
-  if (!bankName || typeof bankName !== 'string') return '';
-  const bankAcronymEntry = Object.entries(BANK_ACRONYMS).find(([fullName]) =>
-    bankName.trim().toLowerCase().startsWith(fullName.trim().toLowerCase()) || fullName.trim().toLowerCase().startsWith(bankName.trim().toLowerCase()));
-  return bankAcronymEntry ? bankAcronymEntry[1] : bankName.trim();
-};
 
 const main = () => {
   const { year, month } = getTargetDate(process.argv[2]);
