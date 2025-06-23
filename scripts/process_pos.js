@@ -49,54 +49,67 @@ const columnMapping = [
   { col: 27, path: 'Card_Payments_Transactions.Debit_Card.Cash_Withdrawal.At_PoS.Value' },
 ];
 
-try {
-  const excelFilePath = path.resolve(__dirname, '../data/excel/bankwise_pos_stats_04_2025.xlsx');
-  const fileBuffer = fs.readFileSync(excelFilePath);
-  const workbook = XLSX.read(fileBuffer, { type: 'buffer' });
-  const sheetName = workbook.SheetNames[0];
-  const worksheet = workbook.Sheets[sheetName];
-  const data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
+// Process all Excel files in data/excel, only if corresponding JSON does not exist
+const excelDir = path.resolve(__dirname, '../data/excel');
+const jsonDir = path.resolve(__dirname, '../public/assets/data');
 
-  const jsonResult = [];
-  let currentBankType = '';
-
-  // Find start of data
-  const startIndex = data.findIndex(row => row[1] === 'Scheduled Commercial Banks') + 1;
-  currentBankType = data[startIndex - 1]?.[1] || 'Unknown';
-
-  for (let i = startIndex; i < data.length; i++) {
-    const row = data[i];
-
-    // Update bank type for section headers
-    if (row.length < 3) {
-      currentBankType = row[1];
-      continue;
+fs.readdirSync(excelDir)
+  .filter(file => file.endsWith('.xlsx'))
+  .forEach(excelFile => {
+    const baseName = path.basename(excelFile, '.xlsx');
+    const jsonFile = `${baseName}.json`;
+    const jsonFilePath = path.join(jsonDir, jsonFile);
+    if (fs.existsSync(jsonFilePath)) {
+      console.log(`Skipping ${excelFile} (JSON already exists)`);
+      return;
     }
+    try {
+      const excelFilePath = path.join(excelDir, excelFile);
+      const fileBuffer = fs.readFileSync(excelFilePath);
+      const workbook = XLSX.read(fileBuffer, { type: 'buffer' });
+      const sheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheetName];
+      const data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
-    // Skip non-data rows
-    if (!row[1] || typeof row[1] !== 'number' || row[1] === 'Total' || !row[1]) continue;
+      const jsonResult = [];
+      let currentBankType = '';
 
-    const bankData = { Bank_Type: currentBankType };
-    columnMapping.forEach(({ col, path }) => {
-      const value = row[col+1] ?? 1; // Adjusted to match the column index in the row
-      setNestedObject(bankData, path, value);
-    });
-    // Add short name/acronym for the bank
-    const bankName = bankData.Bank_Name;
-    bankData.Bank_Short_Name = BANK_ACRONYMS[bankName] || bankName;
+      // Find start of data
+      const startIndex = data.findIndex(row => row[1] === 'Scheduled Commercial Banks') + 1;
+      currentBankType = data[startIndex - 1]?.[1] || 'Unknown';
 
-    jsonResult.push(bankData);
-  }
+      for (let i = startIndex; i < data.length; i++) {
+        const row = data[i];
 
-  console.log(`Processed ${jsonResult.length} banks`);
+        // Update bank type for section headers
+        if (row.length < 3) {
+          currentBankType = row[1];
+          continue;
+        }
 
-  fs.writeFileSync(
-    path.resolve(__dirname, '../public/assets/data/bankwise_pos_stats_04_2025.json'),
-    JSON.stringify(jsonResult, null, 2),
-    'utf-8',
-  );
-  console.log('JSON file generated.');
-} catch (error) {
-  console.error('Error:', error.message);
-}
+        // Skip non-data rows
+        if (!row[1] || typeof row[1] !== 'number' || row[1] === 'Total' || !row[1]) continue;
+
+        const bankData = { Bank_Type: currentBankType };
+        columnMapping.forEach(({ col, path }) => {
+          const value = row[col+1] ?? 1; // Adjusted to match the column index in the row
+          setNestedObject(bankData, path, value);
+        });
+        // Add short name/acronym for the bank
+        const bankName = bankData.Bank_Name;
+        bankData.Bank_Short_Name = BANK_ACRONYMS[bankName] || bankName;
+
+        jsonResult.push(bankData);
+      }
+
+      fs.writeFileSync(
+        jsonFilePath,
+        JSON.stringify(jsonResult, null, 2),
+        'utf-8',
+      );
+      console.log(`Generated ${jsonFile} (${jsonResult.length} banks)`);
+    } catch (error) {
+      console.error(`Error processing ${excelFile}:`, error.message);
+    }
+  });
