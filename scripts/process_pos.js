@@ -100,7 +100,7 @@ fs.readdirSync(excelDir)
         const bankName = bankData.Bank_Name;
         // Try to match bank name robustly for acronym
         const bankAcronymEntry = Object.entries(BANK_ACRONYMS).find(([fullName]) =>
-          bankName.trim().toLowerCase().startsWith(fullName.trim().toLowerCase()));
+          bankName.trim().toLowerCase().startsWith(fullName.trim().toLowerCase()) || fullName.trim().toLowerCase().startsWith(bankName.trim().toLowerCase()));
         bankData.Bank_Short_Name = bankAcronymEntry ? bankAcronymEntry[1] : bankName;
 
         jsonResult.push(bankData);

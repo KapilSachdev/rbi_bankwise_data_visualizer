@@ -28,7 +28,7 @@ const getTargetDate = (arg) => {
 const mapBankShortName = (bankName) => {
   if (!bankName || typeof bankName !== 'string') return '';
   const bankAcronymEntry = Object.entries(BANK_ACRONYMS).find(([fullName]) =>
-    bankName.trim().toLowerCase().startsWith(fullName.trim().toLowerCase()));
+    bankName.trim().toLowerCase().startsWith(fullName.trim().toLowerCase()) || fullName.trim().toLowerCase().startsWith(bankName.trim().toLowerCase()));
   return bankAcronymEntry ? bankAcronymEntry[1] : bankName.trim();
 };
 
