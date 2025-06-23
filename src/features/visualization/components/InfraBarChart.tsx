@@ -1,4 +1,7 @@
-import React from 'react';
+
+import { useEffect, useMemo, useRef, useState } from 'react';
+import DataFilter from '../../../components/common/DataFilter';
+import type { BankData } from '../../../types/global.types';
 import * as echarts from 'echarts/core';
 import {
   TooltipComponent,
@@ -10,45 +13,62 @@ import {
 import { BarChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 
-interface ATMData {
-  Bank_Type: string;
-  Bank_Name: string;
-  Bank_Short_Name: string;
-  Infrastructure: {
-    ATMs_CRMs: {
-      On_site: number;
-      Off_site: number;
-    };
-    PoS: number;
-    Micro_ATMs: number;
-    Bharat_QR_Codes: number;
-    UPI_QR_Codes: number;
-    Credit_Cards: number;
-    Debit_Cards: number;
-  };
-}
+// Register ECharts components once at the module level
+echarts.use([
+  TooltipComponent,
+  GridComponent,
+  LegendComponent,
+  ToolboxComponent,
+  MarkLineComponent,
+  BarChart,
+  CanvasRenderer,
+]);
+
 
 interface BankInfraBarChartProps {
-  data: ATMData[];
+  allData: { [key: string]: BankData[] };
+  months: string[];
 }
 
 const INFRA_METRICS = [
-  { label: 'On-site ATMs', value: 'ATMs_CRMs.On_site' },
-  { label: 'Off-site ATMs', value: 'ATMs_CRMs.Off_site' },
-  { label: 'PoS Terminals', value: 'PoS' },
-  { label: 'Micro ATMs', value: 'Micro_ATMs' },
-  { label: 'Bharat QR Codes', value: 'Bharat_QR_Codes' },
-  { label: 'UPI QR Codes', value: 'UPI_QR_Codes' },
   { label: 'Credit Cards', value: 'Credit_Cards' },
   { label: 'Debit Cards', value: 'Debit_Cards' },
+  { label: 'Micro ATMs', value: 'Micro_ATMs' },
+  { label: 'Off-site ATMs', value: 'ATMs_CRMs.Off_site' },
+  { label: 'On-site ATMs', value: 'ATMs_CRMs.On_site' },
+  { label: 'PoS Terminals', value: 'PoS' },
+  { label: 'Bharat QR Codes', value: 'Bharat_QR_Codes' },
+  { label: 'UPI QR Codes', value: 'UPI_QR_Codes' },
 ];
 
-const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ data }) => {
-  const chartRef = React.useRef<HTMLDivElement>(null);
-  const [topN, setTopN] = React.useState(10);
-  const [metric, setMetric] = React.useState(INFRA_METRICS[0].value);
 
-  const getMetricValue = (infra: ATMData['Infrastructure'], metricPath: string): number => {
+const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }) => {
+  const chartRef = useRef<HTMLDivElement>(null);
+  const [topN, setTopN] = useState(10);
+  const [metric, setMetric] = useState(INFRA_METRICS[0].value);
+ const [selectedMonth, setSelectedMonth] = useState(() => months[months.length - 1]);
+
+  useEffect(() => {
+    setSelectedMonth(months[months.length - 1]);
+  }, [months]);
+  const [selectedBankType, setSelectedBankType] = useState('');
+
+
+  // Get all unique bank types
+  const bankTypes = useMemo(() => {
+    const all = months.flatMap(m => allData[m] || []);
+    return Array.from(new Set(all.map(d => d.Bank_Type)));
+  }, [allData, months]);
+
+  // Filtered data for chart
+  const data = useMemo(() => {
+    if (!selectedMonth || !allData[selectedMonth]) return [];
+    let d = allData[selectedMonth] || [];
+    if (selectedBankType) d = d.filter(b => b.Bank_Type === selectedBankType);
+    return d;
+  }, [allData, selectedMonth, selectedBankType]);
+
+  const getMetricValue = (infra: BankData['Infrastructure'], metricPath: string): number => {
     const [main, sub] = metricPath.split('.');
     if (sub) {
       if (main === 'ATMs_CRMs' && (sub === 'On_site' || sub === 'Off_site')) {
@@ -74,7 +94,8 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ data }) => {
     }
   };
 
-  const sortedData = React.useMemo(() => {
+  const sortedData = useMemo(() => {
+    if (!data || data.length === 0) return [];
     return [...data]
       .sort((a, b) => {
         const aVal = getMetricValue(a.Infrastructure, metric);
@@ -85,17 +106,8 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ data }) => {
   }, [data, topN, metric]);
 
 
-  React.useEffect(() => {
-    if (!chartRef.current) return;
-    echarts.use([
-      TooltipComponent,
-      GridComponent,
-      LegendComponent,
-      ToolboxComponent,
-      MarkLineComponent,
-      BarChart,
-      CanvasRenderer,
-    ]);
+  useEffect(() => {
+    if (!chartRef.current || !sortedData.length) return;
     const chart = echarts.init(chartRef.current, 'dark');
     const option = {
       tooltip: {
@@ -163,6 +175,12 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ data }) => {
 
   return (
     <div className="min-w-100">
+      <DataFilter
+        bankTypes={bankTypes}
+        selectedBankType={selectedBankType}
+        onBankTypeChange={setSelectedBankType}
+        filters={{ bankType: true }}
+      />
       <div className="flex items-center gap-2 mb-2">
         <label htmlFor="infra-metric" className="text-sm">Metric</label>
         <select

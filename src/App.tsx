@@ -1,76 +1,69 @@
-import { useEffect, useState, useMemo } from 'react';
-import { DATA_FOLDER } from './constants/data';
-import DataFilter from './components/common/DataFilter';
-import BankInfraBarChart from './features/visualization/components/InfraBarChart';
+import { useEffect, useState } from 'react';
 
-
-// Dynamically list all available months (add more as needed)
-const FILES = [
-  {
-    file: `${DATA_FOLDER}/bankwise_pos_stats_03_2025.json`,
-    label: 'March 2025',
-    key: '2025-03',
-  },
-  {
-    file: `${DATA_FOLDER}/bankwise_pos_stats_04_2025.json`,
-    label: 'April 2025',
-    key: '2025-04',
-  },
-];
-
-function getUniqueBankTypes(data: any[]): string[] {
-  return Array.from(new Set(data.map((d) => d.Bank_Type)));
+interface DataFileMeta {
+  file: string;
+  label: string;
+  key: string;
+  type?: string;
 }
+import CreditCardTimeSeriesChart from './features/visualization/components/CreditCardTimeSeriesChart';
+import { DATA_FOLDER } from './constants/data';
+import BankInfraBarChart from './features/visualization/components/InfraBarChart';
 
 
 
 function App() {
-  // State for all months' data
-  const [allData, setAllData] = useState<{ [key: string]: any[] }>({});
-  const [selectedBankType, setSelectedBankType] = useState('');
-  // For MoM/YoY or time series, allow user to select any two months
-  const [selectedMonths, setSelectedMonths] = useState<string[]>(['2025-03', '2025-04']);
-  // For legacy charts, allow user to select month (default to latest)
-  const [selectedMonthKey, setSelectedMonthKey] = useState(FILES[FILES.length - 1].key);
+  // Manifest and bifurcated data
+  const [files, setFiles] = useState<DataFileMeta[]>([]);
+  const [posData, setPosData] = useState<{ [key: string]: any[] }>({});
+  const [neftData, setNeftData] = useState<{ [key: string]: any[] }>({});
 
-  // Load all months' data on mount
+  // Load manifest and then all months' data on mount
   useEffect(() => {
-    Promise.all(
-      FILES.map(f => fetch(f.file).then(res => res.json()).then(data => [f.key, data]))
-    ).then(entries => {
-      setAllData(Object.fromEntries(entries));
-    }).catch(err => {
-      console.error('Failed to load month data:', err);
-    });
+    fetch(`${DATA_FOLDER}/index.json`)
+      .then(res => res.json())
+      .then((manifest: DataFileMeta[]) => {
+        setFiles(manifest);
+        return Promise.all(
+          manifest.map(f =>
+            fetch(`${DATA_FOLDER}/${f.file}`)
+              .then(res => res.json())
+              .then(data => ({ key: f.key, type: f.type, data }))
+          )
+        );
+      })
+      .then(results => {
+        const pos: { [key: string]: any[] } = {};
+        const neft: { [key: string]: any[] } = {};
+        results.forEach(({ key, type, data }) => {
+          if (type === 'pos') pos[key] = data;
+          else if (type === 'neft') neft[key] = data;
+        });
+        setPosData(pos);
+        setNeftData(neft);
+      })
+      .catch(err => {
+        console.error('Failed to load month data:', err);
+      });
   }, []);
 
-  // For filter dropdowns (now using { label, value })
-  const monthOptions = useMemo(() => FILES.map(f => ({ label: f.label, value: f.key })), []);
-  const bankTypes = useMemo(() => {
-    const current = allData[selectedMonthKey] || [];
-    return current.length ? getUniqueBankTypes(current) : [];
-  }, [allData, selectedMonthKey]);
-
-  // For legacy charts, use selected month and filter by bank type
-  const filteredData = useMemo(() => {
-    const data = allData[selectedMonthKey] || [];
-    if (!selectedBankType) return data;
-    return data.filter((d) => d.Bank_Type === selectedBankType);
-  }, [allData, selectedMonthKey, selectedBankType]);
+  // Only POS files for POS-based charts
+  const posFiles = files.filter(f => f.type === 'pos');
+  // Only NEFT files for NEFT-based charts (future use)
+  // const neftFiles = files.filter(f => f.type === 'neft');
 
   return (
     <main className="min-h-screen">
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <section>
-          {/* BankInfraBarChart: unified infra chart with metric dropdown */}
-          <DataFilter
-            bankTypes={bankTypes}
-            selectedBankType={selectedBankType}
-            onBankTypeChange={setSelectedBankType}
-            filters={{ bankType: true }}
-          />
-          {filteredData.length > 0 && <BankInfraBarChart data={filteredData} />}
+          <BankInfraBarChart allData={posData} months={posFiles.map(f => f.key)} />
         </section>
+      </section>
+      <section className="max-w-5xl mx-auto w-full">
+        <div className="mt-8">
+          <h2 className="text-xl font-semibold text-center mb-4 tracking-tight">Credit Card Time Series Analysis</h2>
+          <CreditCardTimeSeriesChart allData={posData} months={posFiles.map(f => f.key)} />
+        </div>
       </section>
     </main>
   );
