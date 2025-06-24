@@ -8,7 +8,7 @@
 import fs from 'fs';
 import path from 'path';
 import xlsx from 'xlsx';
-import { mapBankShortName } from './utils.js';
+import { mapBankShortName, getBankTypeByName } from './utils.js';
 
 const getModuleDir = () => path.dirname(new URL(import.meta.url).pathname);
 
@@ -66,6 +66,7 @@ const main = () => {
           Sr_No: row[0],
           Bank_Name: bankName,
           Bank_Short_Name: mapBankShortName(bankName),
+          Bank_Type: getBankTypeByName(bankName),
           Received_Inward_Credits: {
             No: row[2],
             Amount: row[3],
@@ -85,6 +86,7 @@ const main = () => {
           Sr_No: row[0],
           Bank_Name: bankName,
           Bank_Short_Name: mapBankShortName(bankName),
+          Bank_Type: getBankTypeByName(bankName),
           Outward_Transactions: {
             No: row[2],
             Amount: row[3],
@@ -104,6 +106,7 @@ const main = () => {
           Sr_No: row[0],
           Bank_Name: bankName,
           Bank_Short_Name: mapBankShortName(bankName),
+          Bank_Type: getBankTypeByName(bankName),
           Volume: row[2],
           Value: row[3],
           Active_Customers: row[4],
@@ -118,6 +121,7 @@ const main = () => {
           Sr_No: row[0],
           Bank_Name: bankName,
           Bank_Short_Name: mapBankShortName(bankName),
+          Bank_Type: getBankTypeByName(bankName),
           Volume: row[2],
           Value: row[3],
           Active_Customers: row[4],

@@ -3,7 +3,7 @@ import * as XLSX from 'xlsx';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { mapBankShortName } from './utils.js';
+import { mapBankShortName, getBankTypeByName } from './utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -90,11 +90,11 @@ fs.readdirSync(excelDir)
       const data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
       const jsonResult = [];
-      let currentBankType = '';
 
       // Find start of data
-      const startIndex = data.findIndex(row => row[1] === 'Scheduled Commercial Banks') + 1;
-      currentBankType = data[startIndex - 1]?.[1] || 'Unknown';
+      let startIndex = data.findIndex(row => row[1] === 'Scheduled Commercial Banks') + 1;
+      // If not found, assume that excel has numbered headers before data
+      if (startIndex === 0) startIndex = data.findIndex(row => row[0] === 1) + 1;
 
 
       // Per-file year/month and format detection
@@ -117,20 +117,15 @@ fs.readdirSync(excelDir)
       for (let i = startIndex; i < data.length; i++) {
         const row = data[i];
 
-        // Update bank type for section headers
-        if (row.length < 3) {
-          currentBankType = row[1];
-          continue;
-        }
-
         // Skip non-data rows
-        if (!row[1] || row[1] === 'Total' || !row[1]) continue;
+        if (!row[1] || row[1] === ('Total' || 'Grand Total') || !row[1]) continue;
 
-        const bankData = { Bank_Type: currentBankType || 'Unknown' };
+        const bankData = {};
         columnMapping.forEach(({ col, path, pre_2022_03_Col, pre_2020_04_Col }) => {
           let value;
           if (pre_2020_04_Format) {
             if (typeof pre_2020_04_Col === 'undefined') value = 0;
+            if (typeof row[1] === 'number') pre_2020_04_Col = pre_2020_04_Col + 1; // Adjust for Sr.No.-based index
             value = row[pre_2020_04_Col];
           } else if (pre_2022_03_Format) {
             if (typeof pre_2022_03_Col === 'undefined') value = 0;
@@ -139,18 +134,14 @@ fs.readdirSync(excelDir)
             value = row[col + 1];
           }
           // If value is undefined or null, set to 0 for numbers, '' for strings
-          if (typeof value === 'undefined' || value === null) {
-            if (path === 'Bank_Name') {
-              value = '';
-            } else {
-              value = 0;
-            }
-          }
+          if (typeof value === 'undefined' || value === null)  value = 0;
           setNestedObject(bankData, path, value);
         });
         // Add short name/acronym for the bank
         const bankName = bankData.Bank_Name;
         bankData.Bank_Short_Name = mapBankShortName(bankName);
+        // Assign robust Bank_Type using utility
+        bankData.Bank_Type = getBankTypeByName(bankName);
 
         jsonResult.push(bankData);
       }

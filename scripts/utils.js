@@ -16,13 +16,30 @@ const normalize = (s) =>
 
 const isBankNameSimilar = (a, b) => normalize(a) === normalize(b);
 
+
+/**
+ * Returns the short acronym for a given bank name, or the trimmed name if not found.
+ */
 export const mapBankShortName = (bankName) => {
   if (!bankName || typeof bankName !== "string") return "";
-  for (const [shortName, names] of Object.entries(BANK_ACRONYMS)) {
-    if (names.some(fullName => isBankNameSimilar(bankName, fullName))) {
+  for (const [shortName, obj] of Object.entries(BANK_ACRONYMS)) {
+    if (Array.isArray(obj.names) && obj.names.some(fullName => isBankNameSimilar(bankName, fullName))) {
       return shortName;
     }
   }
   return bankName.trim();
+};
+
+/**
+ * Returns the bank type for a given bank name, or 'Unknown' if not found.
+ */
+export const getBankTypeByName = (bankName) => {
+  if (!bankName || typeof bankName !== "string") return "Unknown";
+  for (const obj of Object.values(BANK_ACRONYMS)) {
+    if (Array.isArray(obj.names) && obj.names.some(fullName => isBankNameSimilar(bankName, fullName))) {
+      return obj.Bank_Type || "Unknown";
+    }
+  }
+  return "Unknown";
 };
 
