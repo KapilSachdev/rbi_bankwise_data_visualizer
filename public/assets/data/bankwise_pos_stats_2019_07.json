@@ -1,14 +1,14 @@
 [
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 1,
-    "Bank_Name": "ALLAHABAD BANK",
+    "Sr_No": 0,
+    "Bank_Name": "Sr. No.",
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 700,
-        "Off_site": 100
+        "On_site": "Bank Name",
+        "Off_site": "ATMs"
       },
-      "PoS": 3139,
+      "PoS": 0,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -19,252 +19,316 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 6161098
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": "Credit Cards",
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": "Debit Cards",
+            "Value": 0
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": "Sr. No."
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 1,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "ALLAHABAD BANK",
+        "Off_site": 700
+      },
+      "PoS": 100,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 0
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 9091909,
-          "Value": 3588152
+          "Value": 219900
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 219900,
-          "Value": 35901.4184742
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 6161098,
+            "Value": 3588152
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 2,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "ANDHRA BANK",
+        "Off_site": 3026
+      },
+      "PoS": 772,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 14841.863261400002
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 12343,
+          "Value": 580.9740390999999
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 305535,
+            "Value": 619899
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "ALLAHABAD BANK"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 2,
-    "Bank_Name": "ANDHRA BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 3026,
-        "Off_site": 772
-      },
-      "PoS": 14003,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 305535,
-      "UPI_QR_Codes": 12343,
-      "Credit_Cards": 619899,
-      "Debit_Cards": 580.9740390999999
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 14841.863261400002,
-          "Value": 29025221
-        },
-        "Online_ecom": {
           "Volume": 14644044,
-          "Value": 7121718
+          "Value": 458411.53365
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 458411.53365,
-          "Value": 95171.0000041
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 29025221,
+            "Value": 7121718
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 3,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "BANK OF BARODA",
+        "Off_site": 9388
+      },
+      "PoS": 3846,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 18930.8968647
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 20238,
+          "Value": 864.8662558
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 353114,
+            "Value": 886837
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "ANDHRA BANK"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 3,
-    "Bank_Name": "BANK OF BARODA",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 9388,
-        "Off_site": 3846
-      },
-      "PoS": 66494,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 353114,
-      "UPI_QR_Codes": 20238,
-      "Credit_Cards": 886837,
-      "Debit_Cards": 864.8662558
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 18930.8968647,
-          "Value": 49955695
-        },
-        "Online_ecom": {
           "Volume": 32145143,
-          "Value": 18132895
+          "Value": 1212531.80967
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1212531.80967,
-          "Value": 226563.03797
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 49955695,
+            "Value": 18132895
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 4,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "BANK OF INDIA",
+        "Off_site": 2619
+      },
+      "PoS": 3442,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 8746.2853325
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 22430,
+          "Value": 1255.7674097
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 186086,
+            "Value": 363325
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "BOB"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 4,
-    "Bank_Name": "BANK OF INDIA",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 2619,
-        "Off_site": 3442
-      },
-      "PoS": 62255,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 186086,
-      "UPI_QR_Codes": 22430,
-      "Credit_Cards": 363325,
-      "Debit_Cards": 1255.7674097
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 8746.2853325,
-          "Value": 37593318
-        },
-        "Online_ecom": {
           "Volume": 19581996,
-          "Value": 10720310
-        },
-        "Others": {
-          "Volume": 682394.3038851001,
-          "Value": 110859.31786269999
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 682394.3038851001
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 37593318,
+            "Value": 10720310
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "BOI"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 5,
-    "Bank_Name": "BANK OF MAHARASHTRA",
+    "Sr_No": 0,
+    "Bank_Name": 5,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 1303,
-        "Off_site": 557
+        "On_site": "BANK OF MAHARASHTRA",
+        "Off_site": 1303
       },
-      "PoS": 2276,
+      "PoS": 557,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -275,380 +339,380 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 6041831
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 7784604,
-          "Value": 5161557
+          "Value": 273074.4790481
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 273074.4790481,
-          "Value": 56293.0117918
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 6041831,
+            "Value": 5161557
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 6,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "CANARA BANK",
+        "Off_site": 4751
+      },
+      "PoS": 4063,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 16039.2517023
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 62605,
+          "Value": 3296.3048915
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 408733,
+            "Value": 800588
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "BOM"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 6,
-    "Bank_Name": "CANARA BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 4751,
-        "Off_site": 4063
-      },
-      "PoS": 22448,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 408733,
-      "UPI_QR_Codes": 62605,
-      "Credit_Cards": 800588,
-      "Debit_Cards": 3296.3048915
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 16039.2517023,
-          "Value": 19709760
-        },
-        "Online_ecom": {
           "Volume": 24293097,
-          "Value": 13381398
+          "Value": 1020607.6392049
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1020607.6392049,
-          "Value": 175290.193147
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 19709760,
+            "Value": 13381398
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 7,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "CENTRAL BANK OF INDIA",
+        "Off_site": 2543
+      },
+      "PoS": 814,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 3565.4409907
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 2215,
+          "Value": 96.5650052
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 91840,
+            "Value": 166482
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "CANARA"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 7,
-    "Bank_Name": "CENTRAL BANK OF INDIA",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 2543,
-        "Off_site": 814
-      },
-      "PoS": 3210,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 91840,
-      "UPI_QR_Codes": 2215,
-      "Credit_Cards": 166482,
-      "Debit_Cards": 96.5650052
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 3565.4409907,
-          "Value": 22252800
-        },
-        "Online_ecom": {
           "Volume": 11933852,
-          "Value": 6151455
+          "Value": 471845.02685
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 471845.02685,
-          "Value": 82918.3261055
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 22252800,
+            "Value": 6151455
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 8,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "CORPORATION BANK",
+        "Off_site": 2382
+      },
+      "PoS": 597,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 4044.421688
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 2029,
+          "Value": 100.3949523
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 111876,
+            "Value": 171516
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "CBI"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 8,
-    "Bank_Name": "CORPORATION BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 2382,
-        "Off_site": 597
-      },
-      "PoS": 258513,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 111876,
-      "UPI_QR_Codes": 2029,
-      "Credit_Cards": 171516,
-      "Debit_Cards": 100.3949523
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 4044.421688,
-          "Value": 7043939
-        },
-        "Online_ecom": {
           "Volume": 6895910,
-          "Value": 4087544
+          "Value": 272790.5726417
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 272790.5726417,
-          "Value": 50354.7025502
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 7043939,
+            "Value": 4087544
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 9,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "INDIAN BANK",
+        "Off_site": 3186
+      },
+      "PoS": 683,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 3470
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 3312,
+          "Value": 184
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 90095,
+            "Value": 155045
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "CORPORATION BANK"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 9,
-    "Bank_Name": "INDIAN BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 3186,
-        "Off_site": 683
-      },
-      "PoS": 11071,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 90095,
-      "UPI_QR_Codes": 3312,
-      "Credit_Cards": 155045,
-      "Debit_Cards": 184
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 3470,
-          "Value": 14768947
-        },
-        "Online_ecom": {
           "Volume": 29938402,
-          "Value": 8056725
+          "Value": 674986
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 674986,
-          "Value": 88671
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 14768947,
+            "Value": 8056725
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 10,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "INDIAN OVERSEAS BANK",
+        "Off_site": 2534
+      },
+      "PoS": 441,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 1820.86745
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 885,
+          "Value": 33.81237
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 58784,
+            "Value": 97335
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "INDIAN"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 10,
-    "Bank_Name": "INDIAN OVERSEAS BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 2534,
-        "Off_site": 441
-      },
-      "PoS": 19750,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 58784,
-      "UPI_QR_Codes": 885,
-      "Credit_Cards": 97335,
-      "Debit_Cards": 33.81237
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 1820.86745,
-          "Value": 16958904
-        },
-        "Online_ecom": {
           "Volume": 13988221,
-          "Value": 5252243
-        },
-        "Others": {
-          "Volume": 579169.537,
-          "Value": 70643.77578
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 579169.537
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 16958904,
+            "Value": 5252243
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "IOB"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 11,
-    "Bank_Name": "ORIENTAL BANK OF COMMERCE",
+    "Sr_No": 0,
+    "Bank_Name": 11,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 2337,
-        "Off_site": 282
+        "On_site": "ORIENTAL BANK OF COMMERCE",
+        "Off_site": 2337
       },
-      "PoS": 9485,
+      "PoS": 282,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -659,60 +723,60 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 11351113
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 5725787,
-          "Value": 4035068
-        },
-        "Others": {
-          "Volume": 242719,
-          "Value": 47590
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 242719
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 11351113,
+            "Value": 4035068
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "ORIENTAL BANK OF COMMERCE"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 12,
-    "Bank_Name": "PUNJAB AND SIND BANK",
+    "Sr_No": 0,
+    "Bank_Name": 12,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 1097,
-        "Off_site": 46
+        "On_site": "PUNJAB AND SIND BANK",
+        "Off_site": 1097
       },
-      "PoS": 1066,
+      "PoS": 46,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -723,188 +787,188 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 2333999
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 1519159,
-          "Value": 578753
+          "Value": 61180.316354899995
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 61180.316354899995,
-          "Value": 8683.9826472
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 2333999,
+            "Value": 578753
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 13,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "PUNJAB NATIONAL BANK",
+        "Off_site": 5224
+      },
+      "PoS": 3721,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 14546.077129700001
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 5452,
+          "Value": 140.9287383
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 80844,
+            "Value": 683436
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "PSB"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 13,
-    "Bank_Name": "PUNJAB NATIONAL BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 5224,
-        "Off_site": 3721
-      },
-      "PoS": 69593,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 80844,
-      "UPI_QR_Codes": 5452,
-      "Credit_Cards": 683436,
-      "Debit_Cards": 140.9287383
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 14546.077129700001,
-          "Value": 21725342
-        },
-        "Online_ecom": {
           "Volume": 24103599,
-          "Value": 14591827
+          "Value": 1052450.8210018
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1052450.8210018,
-          "Value": 202561.14788119998
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 21725342,
+            "Value": 14591827
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 14,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "SYNDICATE BANK",
+        "Off_site": 4137
+      },
+      "PoS": 410,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 4317.99561
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 2745,
+          "Value": 116.54033
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 46012,
+            "Value": 199359
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "PNB"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 14,
-    "Bank_Name": "SYNDICATE BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 4137,
-        "Off_site": 410
-      },
-      "PoS": 10292,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 46012,
-      "UPI_QR_Codes": 2745,
-      "Credit_Cards": 199359,
-      "Debit_Cards": 116.54033
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 4317.99561,
-          "Value": 8897972
-        },
-        "Online_ecom": {
           "Volume": 9644666,
-          "Value": 5647264
-        },
-        "Others": {
-          "Volume": 370904.53816,
-          "Value": 63929.26468
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 370904.53816
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 8897972,
+            "Value": 5647264
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "SYNDICATE BANK"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 15,
-    "Bank_Name": "UCO BANK",
+    "Sr_No": 0,
+    "Bank_Name": 15,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 2056,
-        "Off_site": 309
+        "On_site": "UCO BANK",
+        "Off_site": 2056
       },
-      "PoS": 4633,
+      "PoS": 309,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -915,380 +979,380 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 7349417
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 6241323,
-          "Value": 3570769
+          "Value": 237380.13716
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 237380.13716,
-          "Value": 44448.38641
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 7349417,
+            "Value": 3570769
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 16,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "UNION BANK OF INDIA",
+        "Off_site": 3926
+      },
+      "PoS": 2691,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 5655.8226714
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 3950,
+          "Value": 199.7933514
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 47661,
+            "Value": 232667
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "UCO"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 16,
-    "Bank_Name": "UNION BANK OF INDIA",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 3926,
-        "Off_site": 2691
-      },
-      "PoS": 53866,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 47661,
-      "UPI_QR_Codes": 3950,
-      "Credit_Cards": 232667,
-      "Debit_Cards": 199.7933514
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 5655.8226714,
-          "Value": 17793021
-        },
-        "Online_ecom": {
           "Volume": 28293284,
-          "Value": 9838540
+          "Value": 828881.74741
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 828881.74741,
-          "Value": 110258.3889159
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 17793021,
+            "Value": 9838540
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 17,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "UNITED BANK OF INDIA",
+        "Off_site": 1003
+      },
+      "PoS": 1014,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 183.4507932
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 178,
+          "Value": 8.136
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 7618,
+            "Value": 8680
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "UBI"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 17,
-    "Bank_Name": "UNITED BANK OF INDIA",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 1003,
-        "Off_site": 1014
-      },
-      "PoS": 5998,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 7618,
-      "UPI_QR_Codes": 178,
-      "Credit_Cards": 8680,
-      "Debit_Cards": 8.136
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 183.4507932,
-          "Value": 8582681
-        },
-        "Online_ecom": {
           "Volume": 7946142,
-          "Value": 2434658
+          "Value": 276554.30198
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 276554.30198,
-          "Value": 31947.22769
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 8582681,
+            "Value": 2434658
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 18,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "IDBI LTD",
+        "Off_site": 2206
+      },
+      "PoS": 1493,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 3434.565981
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 976,
+          "Value": 54.08281349999999
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 33751,
+            "Value": 144533
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "UNITED BANK OF INDIA"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 18,
-    "Bank_Name": "IDBI LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 2206,
-        "Off_site": 1493
-      },
-      "PoS": 34863,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 33751,
-      "UPI_QR_Codes": 976,
-      "Credit_Cards": 144533,
-      "Debit_Cards": 54.08281349999999
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 3434.565981,
-          "Value": 12300353
-        },
-        "Online_ecom": {
           "Volume": 9449057,
-          "Value": 6359887
+          "Value": 404993.99484
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 404993.99484,
-          "Value": 85028.0892788
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 12300353,
+            "Value": 6359887
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 19,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "STATE BANK OF INDIA",
+        "Off_site": 25793
+      },
+      "PoS": 32841,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 1120285.3861353
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 139672,
+          "Value": 5391.58512
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 9096320,
+            "Value": 30868693
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "IDBI LTD"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 19,
-    "Bank_Name": "STATE BANK OF INDIA",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 25793,
-        "Off_site": 32841
-      },
-      "PoS": 608542,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 9096320,
-      "UPI_QR_Codes": 139672,
-      "Credit_Cards": 30868693,
-      "Debit_Cards": 5391.58512
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 1120285.3861353,
-          "Value": 297610598
-        },
-        "Online_ecom": {
           "Volume": 379148480,
-          "Value": 120758113
+          "Value": 10778635.825825699
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 10778635.825825699,
-          "Value": 1719644.3234233
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 297610598,
+            "Value": 120758113
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 20,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "AXIS BANK LTD",
+        "Off_site": 5262
+      },
+      "PoS": 11910,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 631102.0671
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 101812,
+          "Value": 4370.46142
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 6365636,
+            "Value": 17773898
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "SBI"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 20,
-    "Bank_Name": "AXIS BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 5262,
-        "Off_site": 11910
-      },
-      "PoS": 497917,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 6365636,
-      "UPI_QR_Codes": 101812,
-      "Credit_Cards": 17773898,
-      "Debit_Cards": 4370.46142
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 631102.0671,
-          "Value": 22754410
-        },
-        "Online_ecom": {
           "Volume": 27801324,
-          "Value": 28505609
-        },
-        "Others": {
-          "Volume": 1348949.1444496,
-          "Value": 421479.1221607999
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 1348949.1444496
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 22754410,
+            "Value": 28505609
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "AXIS"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 21,
-    "Bank_Name": "BANDHAN BANK LTD",
+    "Sr_No": 0,
+    "Bank_Name": 21,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 484,
-        "Off_site": 0
+        "On_site": "BANDHAN BANK LTD",
+        "Off_site": 484
       },
-      "PoS": 27971,
+      "PoS": 0,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -1299,60 +1363,60 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 3118702
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 2244069,
-          "Value": 1009700
-        },
-        "Others": {
-          "Volume": 79918.76337,
-          "Value": 14966.644540899999
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 79918.76337
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 3118702,
+            "Value": 1009700
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "BANDHAN"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 22,
-    "Bank_Name": "CATHOLIC SYRIAN BANK LTD",
+    "Sr_No": 0,
+    "Bank_Name": 22,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 240,
-        "Off_site": 49
+        "On_site": "CATHOLIC SYRIAN BANK LTD",
+        "Off_site": 240
       },
-      "PoS": 0,
+      "PoS": 49,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -1363,252 +1427,252 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 592201
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 718749,
-          "Value": 229186
+          "Value": 22897.149
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 22897.149,
-          "Value": 3197.81081
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 592201,
+            "Value": 229186
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 23,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "CITY UNION BANK",
+        "Off_site": 1030
+      },
+      "PoS": 690,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 609.1194077
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 600,
+          "Value": 24.656
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 6802,
+            "Value": 23402
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "CSB"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 23,
-    "Bank_Name": "CITY UNION BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 1030,
-        "Off_site": 690
-      },
-      "PoS": 9818,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 6802,
-      "UPI_QR_Codes": 600,
-      "Credit_Cards": 23402,
-      "Debit_Cards": 24.656
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 609.1194077,
-          "Value": 1877201
-        },
-        "Online_ecom": {
           "Volume": 2561942,
-          "Value": 919424
+          "Value": 115017.3214744
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 115017.3214744,
-          "Value": 11571.855064599999
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 1877201,
+            "Value": 919424
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 24,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "DCB BANK LTD",
+        "Off_site": 291
+      },
+      "PoS": 217,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 4183.79579
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 12082,
+          "Value": 903.70178
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 116404,
+            "Value": 223693
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "CITY UNION BANK"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 24,
-    "Bank_Name": "DCB BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 291,
-        "Off_site": 217
-      },
-      "PoS": 4912,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 116404,
-      "UPI_QR_Codes": 12082,
-      "Credit_Cards": 223693,
-      "Debit_Cards": 903.70178
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 4183.79579,
-          "Value": 560666
-        },
-        "Online_ecom": {
           "Volume": 538091,
-          "Value": 407131
+          "Value": 25841.83334
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 25841.83334,
-          "Value": 7719.39692
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 560666,
+            "Value": 407131
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 25,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "DHANALAKSHMI BANK LTD",
+        "Off_site": 222
+      },
+      "PoS": 124,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 306.03098
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 73,
+          "Value": 2.89577
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 6606,
+            "Value": 16155
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "DCB"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 25,
-    "Bank_Name": "DHANALAKSHMI BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 222,
-        "Off_site": 124
-      },
-      "PoS": 1197,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 6606,
-      "UPI_QR_Codes": 73,
-      "Credit_Cards": 16155,
-      "Debit_Cards": 2.89577
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 306.03098,
-          "Value": 438529
-        },
-        "Online_ecom": {
           "Volume": 566022,
-          "Value": 276328
-        },
-        "Others": {
-          "Volume": 18435.909,
-          "Value": 3826.72599
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 18435.909
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 438529,
+            "Value": 276328
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "DHANALAKSHMI BANK LTD"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 26,
-    "Bank_Name": "FEDERAL BANK LTD",
+    "Sr_No": 0,
+    "Bank_Name": 26,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 1114,
-        "Off_site": 492
+        "On_site": "FEDERAL BANK LTD",
+        "Off_site": 1114
       },
-      "PoS": 13041,
+      "PoS": 492,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -1619,188 +1683,188 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 6005266
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 8723088,
-          "Value": 5446253
+          "Value": 438668.3964796
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 438668.3964796,
-          "Value": 77484.94827010001
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 6005266,
+            "Value": 5446253
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 27,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "HDFC BANK LTD",
+        "Off_site": 6075
+      },
+      "PoS": 7325,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 1674048.72448
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 183937,
+          "Value": 10832.84767
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 12976251,
+            "Value": 48011222
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "FEDERAL BANK LTD"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 27,
-    "Bank_Name": "HDFC BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 6075,
-        "Off_site": 7325
-      },
-      "PoS": 656103,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 12976251,
-      "UPI_QR_Codes": 183937,
-      "Credit_Cards": 48011222,
-      "Debit_Cards": 10832.84767
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 1674048.72448,
-          "Value": 28943050
-        },
-        "Online_ecom": {
           "Volume": 37984244,
-          "Value": 51944501
+          "Value": 1913117.19753
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1913117.19753,
-          "Value": 772081.42803
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 28943050,
+            "Value": 51944501
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 28,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "ICICI BANK LTD",
+        "Off_site": 5200
+      },
+      "PoS": 9881,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 686522.17575
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 51910,
+          "Value": 1843.36955
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 7480120,
+            "Value": 26568869
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "HDFC BANK LTD"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 28,
-    "Bank_Name": "ICICI BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 5200,
-        "Off_site": 9881
-      },
-      "PoS": 421639,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 7480120,
-      "UPI_QR_Codes": 51910,
-      "Credit_Cards": 26568869,
-      "Debit_Cards": 1843.36955
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 686522.17575,
-          "Value": 44903820
-        },
-        "Online_ecom": {
           "Volume": 33098252,
-          "Value": 42056582
-        },
-        "Others": {
-          "Volume": 1648220.57797,
-          "Value": 623647.39738
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 1648220.57797
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 44903820,
+            "Value": 42056582
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "ICICI"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 29,
-    "Bank_Name": "IDFC Bank Limited",
+    "Sr_No": 0,
+    "Bank_Name": 29,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 182,
-        "Off_site": 9
+        "On_site": "IDFC Bank Limited",
+        "Off_site": 182
       },
-      "PoS": 1837,
+      "PoS": 9,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -1811,188 +1875,188 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 1633045
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 2443526,
-          "Value": 1696571
+          "Value": 84871.9948312
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 84871.9948312,
-          "Value": 15909.3768322
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 1633045,
+            "Value": 1696571
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 30,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "INDUSIND BANK LTD",
+        "Off_site": 1136
+      },
+      "PoS": 1491,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 238598.6321889
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 19977,
+          "Value": 1015.5387899
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 1183234,
+            "Value": 3807224
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "IDFC"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 30,
-    "Bank_Name": "INDUSIND BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 1136,
-        "Off_site": 1491
-      },
-      "PoS": 100277,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 1183234,
-      "UPI_QR_Codes": 19977,
-      "Credit_Cards": 3807224,
-      "Debit_Cards": 1015.5387899
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 238598.6321889,
-          "Value": 5137616
-        },
-        "Online_ecom": {
           "Volume": 3832519,
-          "Value": 3100156
+          "Value": 172527.3538081
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 172527.3538081,
-          "Value": 48058.66
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 5137616,
+            "Value": 3100156
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 31,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "JAMMU AND KASHMIR BANK",
+        "Off_site": 741
+      },
+      "PoS": 580,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 10731.6899566
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 7570,
+          "Value": 250.5218515
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 143003,
+            "Value": 263659
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "INDUSIND BANK LTD"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 31,
-    "Bank_Name": "JAMMU AND KASHMIR BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 741,
-        "Off_site": 580
-      },
-      "PoS": 16907,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 143003,
-      "UPI_QR_Codes": 7570,
-      "Credit_Cards": 263659,
-      "Debit_Cards": 250.5218515
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 10731.6899566,
-          "Value": 4010603
-        },
-        "Online_ecom": {
           "Volume": 6783367,
-          "Value": 1292525
-        },
-        "Others": {
-          "Volume": 308900.7942534,
-          "Value": 29080.625712200002
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 308900.7942534
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 4010603,
+            "Value": 1292525
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "JAMMU AND KASHMIR BANK"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 32,
-    "Bank_Name": "KARNATAKA BANK LTD",
+    "Sr_No": 0,
+    "Bank_Name": 32,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 741,
-        "Off_site": 804
+        "On_site": "KARNATAKA BANK LTD",
+        "Off_site": 741
       },
-      "PoS": 12100,
+      "PoS": 804,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -2003,252 +2067,252 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 4163816
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 4852886,
-          "Value": 3078984
+          "Value": 181111.17782
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 181111.17782,
-          "Value": 36306.67994
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 4163816,
+            "Value": 3078984
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 33,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "KARUR VYSYA BANK LTD",
+        "Off_site": 732
+      },
+      "PoS": 908,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 785.5769085
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 231,
+          "Value": 16.573
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 2476,
+            "Value": 7257
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "KARNATAKA"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 33,
-    "Bank_Name": "KARUR VYSYA BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 732,
-        "Off_site": 908
-      },
-      "PoS": 21647,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 2476,
-      "UPI_QR_Codes": 231,
-      "Credit_Cards": 7257,
-      "Debit_Cards": 16.573
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 785.5769085,
-          "Value": 3627198
-        },
-        "Online_ecom": {
           "Volume": 5944080,
-          "Value": 1954904
+          "Value": 254904.00245590002
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 254904.00245590002,
-          "Value": 25953.3549801
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 3627198,
+            "Value": 1954904
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 34,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "KOTAK MAHINDRA BANK LTD",
+        "Off_site": 1207
+      },
+      "PoS": 1196,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 164128.08125490003
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 46501,
+          "Value": 1878.0768936
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 2072862,
+            "Value": 6170436
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "KARUR VYSYA BANK LTD"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 34,
-    "Bank_Name": "KOTAK MAHINDRA BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 1207,
-        "Off_site": 1196
-      },
-      "PoS": 28264,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 2072862,
-      "UPI_QR_Codes": 46501,
-      "Credit_Cards": 6170436,
-      "Debit_Cards": 1878.0768936
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 164128.08125490003,
-          "Value": 13647656
-        },
-        "Online_ecom": {
           "Volume": 9073964,
-          "Value": 11155048
+          "Value": 345780.77481959993
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 345780.77481959993,
-          "Value": 141783.7661927998
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 13647656,
+            "Value": 11155048
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 35,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "RATNAKAR BANK LIMITED",
+        "Off_site": 244
+      },
+      "PoS": 133,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 229132.39743110002
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 102305,
+          "Value": 3990.4128769999998
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 1972661,
+            "Value": 6519793
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "KOTAK"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 35,
-    "Bank_Name": "RATNAKAR BANK LIMITED",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 244,
-        "Off_site": 133
-      },
-      "PoS": 882994,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 1972661,
-      "UPI_QR_Codes": 102305,
-      "Credit_Cards": 6519793,
-      "Debit_Cards": 3990.4128769999998
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 229132.39743110002,
-          "Value": 778037
-        },
-        "Online_ecom": {
           "Volume": 807593,
-          "Value": 631692
-        },
-        "Others": {
-          "Volume": 27297.1118654,
-          "Value": 7785.821943900001
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 27297.1118654
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 778037,
+            "Value": 631692
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "RATNAKAR BANK LIMITED"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 36,
-    "Bank_Name": "SOUTH INDIAN BANK",
+    "Sr_No": 0,
+    "Bank_Name": 36,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 796,
-        "Off_site": 600
+        "On_site": "SOUTH INDIAN BANK",
+        "Off_site": 796
       },
-      "PoS": 11782,
+      "PoS": 600,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -2259,124 +2323,124 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 2957350
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 3168169,
-          "Value": 2148605
+          "Value": 126925.66371
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 126925.66371,
-          "Value": 30625.542191999997
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 2957350,
+            "Value": 2148605
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 37,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "TAMILNAD MERCANTILE BANK LTD",
+        "Off_site": 473
+      },
+      "PoS": 681,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 2016.06681
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 2543,
+          "Value": 114.15985
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 21547,
+            "Value": 55129
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "SIB"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 37,
-    "Bank_Name": "TAMILNAD MERCANTILE BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 473,
-        "Off_site": 681
-      },
-      "PoS": 4633,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 21547,
-      "UPI_QR_Codes": 2543,
-      "Credit_Cards": 55129,
-      "Debit_Cards": 114.15985
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 2016.06681,
-          "Value": 1512472
-        },
-        "Online_ecom": {
           "Volume": 5404285,
-          "Value": 711841
-        },
-        "Others": {
-          "Volume": 216957.588,
-          "Value": 10190.370995
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 216957.588
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 1512472,
+            "Value": 711841
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "TAMILNAD MERCANTILE BANK LTD"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 38,
-    "Bank_Name": "THE LAXMI VILAS BANK LTD",
+    "Sr_No": 0,
+    "Bank_Name": 38,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 453,
-        "Off_site": 592
+        "On_site": "THE LAXMI VILAS BANK LTD",
+        "Off_site": 453
       },
-      "PoS": 4452,
+      "PoS": 592,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -2387,135 +2451,91 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 1377774
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 944998,
-          "Value": 314768
+          "Value": 42708
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 42708,
-          "Value": 5016
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 1377774,
+            "Value": 314768
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 39,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "YES BANK LTD",
+        "Off_site": 947
+      },
+      "PoS": 330,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 56828.12879060001
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 9471,
+          "Value": 387.87243620000004
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 605890,
+            "Value": 1966358
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "THE LAXMI VILAS BANK LTD"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 39,
-    "Bank_Name": "YES BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 947,
-        "Off_site": 330
-      },
-      "PoS": 124691,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 605890,
-      "UPI_QR_Codes": 9471,
-      "Credit_Cards": 1966358,
-      "Debit_Cards": 387.87243620000004
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 56828.12879060001,
-          "Value": 2615631
-        },
-        "Online_ecom": {
           "Volume": 3225233,
-          "Value": 3546694
-        },
-        "Others": {
-          "Volume": 137564.18851,
-          "Value": 52500.1192864
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "YES BANK LTD"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 40,
-    "Bank_Name": "AMERICAN EXPRESS",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 0,
-        "Off_site": 0
-      },
-      "PoS": 45995,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 1564236,
-      "UPI_QR_Codes": 2817,
-      "Credit_Cards": 7618628,
-      "Debit_Cards": 202.342
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 486401.89089599997,
-          "Value": 0
+          "Value": 137564.18851
         },
         "Online_ecom": {
           "Volume": 0,
@@ -2527,59 +2547,39 @@
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 2615631,
+            "Value": 3546694
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "AMERICAN EXPRESS"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 41,
-    "Bank_Name": "BANK OF AMERICA",
+    "Sr_No": 0,
+    "Bank_Name": 40,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 0,
+        "On_site": "AMERICAN EXPRESS",
         "Off_site": 0
       },
       "PoS": 0,
       "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 24816,
-      "UPI_QR_Codes": 239,
-      "Credit_Cards": 70912,
-      "Debit_Cards": 19.6737224
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 486401.89089599997
     },
     "Card_Payments_Transactions": {
       "Credit_Card": {
         "at_PoS": {
-          "Volume": 4862.2765624,
-          "Value": 0
+          "Volume": 2817,
+          "Value": 202.342
         },
         "Online_ecom": {
           "Volume": 0,
@@ -2591,45 +2591,109 @@
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 1564236,
+            "Value": 7618628
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "BOA"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 42,
-    "Bank_Name": "BARCLAYS BANK PLC",
+    "Sr_No": 0,
+    "Bank_Name": 41,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 0,
+        "On_site": "BANK OF AMERICA",
+        "Off_site": 0
+      },
+      "PoS": 0,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 4862.2765624
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 239,
+          "Value": 19.6737224
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 24816,
+            "Value": 70912
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 42,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "BARCLAYS BANK PLC",
         "Off_site": 0
       },
       "PoS": 0,
@@ -2643,124 +2707,124 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 2577
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 113,
-          "Value": 237
+          "Value": 8.452
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 8.452,
-          "Value": 12.159
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 2577,
+            "Value": 237
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 43,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "CITI BANK",
+        "Off_site": 47
+      },
+      "PoS": 475,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 484056.22408
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 34342,
+          "Value": 2081.48351
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 2727186,
+            "Value": 21754780
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "BARCLAYS BANK PLC"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 43,
-    "Bank_Name": "CITI BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 47,
-        "Off_site": 475
-      },
-      "PoS": 35223,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 2727186,
-      "UPI_QR_Codes": 34342,
-      "Credit_Cards": 21754780,
-      "Debit_Cards": 2081.48351
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 484056.22408,
-          "Value": 1654138
-        },
-        "Online_ecom": {
           "Volume": 1891144,
-          "Value": 5633135
-        },
-        "Others": {
-          "Volume": 74668.95884,
-          "Value": 101384.01035
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 74668.95884
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 1654138,
+            "Value": 5633135
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "CITI"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 44,
-    "Bank_Name": "DBS BANK",
+    "Sr_No": 0,
+    "Bank_Name": 44,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 16,
-        "Off_site": 33
+        "On_site": "DBS BANK",
+        "Off_site": 16
       },
-      "PoS": 0,
+      "PoS": 33,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -2771,60 +2835,60 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 2758160
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 969994,
-          "Value": 1526623
-        },
-        "Others": {
-          "Volume": 21409.51858,
-          "Value": 12236.75448
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 21409.51858
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 2758160,
+            "Value": 1526623
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "DBS"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 45,
-    "Bank_Name": "DEUTSCHE BANK LTD",
+    "Sr_No": 0,
+    "Bank_Name": 45,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 13,
-        "Off_site": 19
+        "On_site": "DEUTSCHE BANK LTD",
+        "Off_site": 13
       },
-      "PoS": 0,
+      "PoS": 19,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -2835,185 +2899,185 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 126692
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 105556,
-          "Value": 217328
+          "Value": 4914.46866
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 4914.46866,
-          "Value": 3334.14889
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 126692,
+            "Value": 217328
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 46,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "HONGKONG AND SHANGHAI BKG CORPN",
+        "Off_site": 45
+      },
+      "PoS": 38,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 67443.41883
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 4188,
+          "Value": 292.77422
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 789955,
+            "Value": 2165895
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "DEUTSCHE"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 46,
-    "Bank_Name": "HONGKONG AND SHANGHAI BKG CORPN",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 45,
-        "Off_site": 38
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 789955,
-      "UPI_QR_Codes": 4188,
-      "Credit_Cards": 2165895,
-      "Debit_Cards": 292.77422
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 67443.41883,
-          "Value": 466977
-        },
-        "Online_ecom": {
           "Volume": 333166,
-          "Value": 463263
+          "Value": 111859.34262
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 111859.34262,
-          "Value": 16191.88211
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 466977,
+            "Value": 463263
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 47,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "STANDARD CHARTERED BANK LTD",
+        "Off_site": 101
+      },
+      "PoS": 109,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 0
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 5657,
+          "Value": 365.73543
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 1285957,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "HONGKONG AND SHANGHAI BKG CORPN"
-  },
-  {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 47,
-    "Bank_Name": "STANDARD CHARTERED BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 101,
-        "Off_site": 109
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 1285957,
-      "UPI_QR_Codes": 5657,
-      "Credit_Cards": 0,
-      "Debit_Cards": 365.73543
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 1010345
-        },
-        "Online_ecom": {
           "Volume": 1754791,
-          "Value": 3239416
-        },
-        "Others": {
-          "Volume": 59001.3207,
-          "Value": 37091.51837
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 59001.3207
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 1010345,
+            "Value": 3239416
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "SCB"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 48,
-    "Bank_Name": "ADITYA BIRLA IDEA PAYMENTS BANK",
+    "Sr_No": 0,
+    "Bank_Name": 48,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 0,
+        "On_site": "ADITYA BIRLA IDEA PAYMENTS BANK",
         "Off_site": 0
       },
       "PoS": 0,
@@ -3027,7 +3091,7 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 4808
+          "Value": 0
         },
         "Online_ecom": {
           "Volume": 0,
@@ -3039,45 +3103,45 @@
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 4808,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "ADITYA BIRLA IDEA PAYMENTS BANK"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 49,
-    "Bank_Name": "AIRTEL PAYMENTS BANK",
+    "Sr_No": 0,
+    "Bank_Name": 49,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 0,
+        "On_site": "AIRTEL PAYMENTS BANK",
         "Off_site": 0
       },
       "PoS": 0,
@@ -3091,60 +3155,60 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 952654
+          "Value": 0
         },
         "Online_ecom": {
           "Volume": 0,
-          "Value": 669851
+          "Value": 0
         },
         "Others": {
           "Volume": 0,
-          "Value": 3893.0890683999996
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 952654,
+            "Value": 669851
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "AIRTEL PAYMENTS BANK"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 50,
-    "Bank_Name": "FINO PAYMENTS BANK",
+    "Sr_No": 0,
+    "Bank_Name": 50,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 0,
+        "On_site": "FINO PAYMENTS BANK",
         "Off_site": 0
       },
-      "PoS": 270,
+      "PoS": 0,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -3155,57 +3219,57 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 592399
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 271236,
-          "Value": 111594
-        },
-        "Others": {
-          "Volume": 9113.46468,
-          "Value": 860.7252526000001
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 9113.46468
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 592399,
+            "Value": 111594
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "FINO PAYMENTS BANK"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 51,
-    "Bank_Name": "INDIA POST PAYMENTS BANK",
+    "Sr_No": 0,
+    "Bank_Name": 51,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 0,
+        "On_site": "INDIA POST PAYMENTS BANK",
         "Off_site": 0
       },
       "PoS": 0,
@@ -3231,45 +3295,45 @@
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "INDIA POST PAYMENTS BANK"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 52,
-    "Bank_Name": "JIO PAYMENTS BANK ",
+    "Sr_No": 0,
+    "Bank_Name": 52,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 0,
+        "On_site": "JIO PAYMENTS BANK ",
         "Off_site": 0
       },
       "PoS": 0,
@@ -3295,45 +3359,45 @@
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "JIO PAYMENTS BANK"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 53,
-    "Bank_Name": "NSDL PAYMENTS BANK",
+    "Sr_No": 0,
+    "Bank_Name": 53,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 0,
+        "On_site": "NSDL PAYMENTS BANK",
         "Off_site": 0
       },
       "PoS": 0,
@@ -3347,60 +3411,60 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 84
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 4,
-          "Value": 22
-        },
-        "Others": {
-          "Volume": 0.1,
-          "Value": 0.1492685
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 0.1
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 84,
+            "Value": 22
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "NSDL PAYMENTS BANK"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 54,
-    "Bank_Name": "PAYTM PAYMENTS BANK",
+    "Sr_No": 0,
+    "Bank_Name": 54,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 6,
-        "Off_site": 0
+        "On_site": "PAYTM PAYMENTS BANK",
+        "Off_site": 6
       },
-      "PoS": 67683,
+      "PoS": 0,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -3411,60 +3475,60 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 49030138
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 1691756,
-          "Value": 2761644
-        },
-        "Others": {
-          "Volume": 47550.00703,
-          "Value": 19229.7728092
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 47550.00703
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 49030138,
+            "Value": 2761644
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "PAYTM PAYMENTS BANK"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 55,
-    "Bank_Name": "AU SMALL FINANCE BANK LIMITED",
+    "Sr_No": 0,
+    "Bank_Name": 55,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 294,
-        "Off_site": 264
+        "On_site": "AU SMALL FINANCE BANK LIMITED",
+        "Off_site": 294
       },
-      "PoS": 0,
+      "PoS": 264,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -3475,60 +3539,60 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 1016182
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 614652,
-          "Value": 336630
-        },
-        "Others": {
-          "Volume": 32124.2775398,
-          "Value": 5193.4813157
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 32124.2775398
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 1016182,
+            "Value": 336630
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "AUSFB"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 56,
-    "Bank_Name": "CAPITAL SMALL FINANCE BANK LIMITED",
+    "Sr_No": 0,
+    "Bank_Name": 56,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 134,
-        "Off_site": 1
+        "On_site": "CAPITAL SMALL FINANCE BANK LIMITED",
+        "Off_site": 134
       },
-      "PoS": 0,
+      "PoS": 1,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -3539,58 +3603,58 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 105874
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 85490,
-          "Value": 52728
-        },
-        "Others": {
-          "Volume": 3814.53361,
-          "Value": 827.7412076999999
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 3814.53361
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 105874,
+            "Value": 52728
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "CAPITAL"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 57,
-    "Bank_Name": "FINCARE SMALL FINANCE BANK LIMITED",
+    "Sr_No": 0,
+    "Bank_Name": 57,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 88,
-        "Off_site": 0
+        "On_site": "FINCARE SMALL FINANCE BANK LIMITED",
+        "Off_site": 88
       },
       "PoS": 0,
       "Micro_ATMs": 0,
@@ -3603,60 +3667,60 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 1375304
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 690075,
-          "Value": 22108
-        },
-        "Others": {
-          "Volume": 36051.8,
-          "Value": 180.7
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 36051.8
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 1375304,
+            "Value": 22108
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "FINCARE SMALL FINANCE BANK LIMITED"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 58,
-    "Bank_Name": "EQUITAS SMALL FINANCE BANK LIMITED",
+    "Sr_No": 0,
+    "Bank_Name": 58,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 320,
-        "Off_site": 2
+        "On_site": "EQUITAS SMALL FINANCE BANK LIMITED",
+        "Off_site": 320
       },
-      "PoS": 0,
+      "PoS": 2,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -3667,60 +3731,60 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 568956
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 960885,
-          "Value": 150990
-        },
-        "Others": {
-          "Volume": 24187.138,
-          "Value": 3106.6387632
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 24187.138
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 568956,
+            "Value": 150990
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "EQUITAS"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 59,
-    "Bank_Name": "ESAF SMALL FINANCE BANK LIMITED",
+    "Sr_No": 0,
+    "Bank_Name": 59,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 159,
-        "Off_site": 2
+        "On_site": "ESAF SMALL FINANCE BANK LIMITED",
+        "Off_site": 159
       },
-      "PoS": 0,
+      "PoS": 2,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -3731,60 +3795,60 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 3309927
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 810689,
-          "Value": 89197
-        },
-        "Others": {
-          "Volume": 47713,
-          "Value": 779
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 47713
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 3309927,
+            "Value": 89197
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "ESAF"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 60,
-    "Bank_Name": "JANA SMALL FINANCE BANK LIMITED",
+    "Sr_No": 0,
+    "Bank_Name": 60,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 122,
-        "Off_site": 3
+        "On_site": "JANA SMALL FINANCE BANK LIMITED",
+        "Off_site": 122
       },
-      "PoS": 0,
+      "PoS": 3,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -3795,57 +3859,57 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 408595
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 312559,
-          "Value": 64692
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 15154.0725,
-          "Value": 699.5563344
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 312559,
+          "Value": 15154.0725
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 408595,
+            "Value": 64692
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "JANA"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 61,
-    "Bank_Name": "NORTH EAST SMALL FINANCE BANK LIMITED",
+    "Sr_No": 0,
+    "Bank_Name": 61,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 0,
+        "On_site": "NORTH EAST SMALL FINANCE BANK LIMITED",
         "Off_site": 0
       },
       "PoS": 0,
@@ -3859,60 +3923,60 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 71088
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 9651,
-          "Value": 2671
-        },
-        "Others": {
-          "Volume": 333.56085,
-          "Value": 78.72027059999999
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 333.56085
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 71088,
+            "Value": 2671
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "NORTH EAST"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 62,
-    "Bank_Name": "SURYODAY SMALL FINANCE BANK LIMITED",
+    "Sr_No": 0,
+    "Bank_Name": 62,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 25,
-        "Off_site": 1
+        "On_site": "SURYODAY SMALL FINANCE BANK LIMITED",
+        "Off_site": 25
       },
-      "PoS": 0,
+      "PoS": 1,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -3923,60 +3987,60 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 23531
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 34020,
-          "Value": 11173
-        },
-        "Others": {
-          "Volume": 608.322,
-          "Value": 118.4135383
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Value": 608.322
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 23531,
+            "Value": 11173
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "SURYODAY"
+    "Bank_Short_Name": ""
   },
   {
     "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 63,
-    "Bank_Name": "UJJIVAN SMALL FINANCE BANK LIMITED",
+    "Sr_No": 0,
+    "Bank_Name": 63,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 413,
-        "Off_site": 3
+        "On_site": "UJJIVAN SMALL FINANCE BANK LIMITED",
+        "Off_site": 413
       },
-      "PoS": 0,
+      "PoS": 3,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
@@ -3987,58 +4051,122 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 3566455
+          "Value": 0
         },
         "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      },
+      "Debit_Card": {
+        "at_PoS": {
           "Volume": 2298604,
-          "Value": 354882
+          "Value": 90607.546
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 90607.546,
-          "Value": 2957.2146192
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 3566455,
+            "Value": 354882
+          },
+          "At_PoS": {
+            "Volume": 0,
+            "Value": 0
+          }
+        }
+      }
+    },
+    "Bank_Short_Name": ""
+  },
+  {
+    "Bank_Type": "ATM & Card Statistics for July-2019",
+    "Sr_No": 0,
+    "Bank_Name": 64,
+    "Infrastructure": {
+      "ATMs_CRMs": {
+        "On_site": "UTKARSH SMALL FINANCE BANK LIMITED",
+        "Off_site": 96
+      },
+      "PoS": 36,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 0
+    },
+    "Card_Payments_Transactions": {
+      "Credit_Card": {
+        "at_PoS": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Online_ecom": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Others": {
+          "Volume": 0,
+          "Value": 0
+        },
+        "Cash_Withdrawal": {
+          "At_ATM": {
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 95309,
+          "Value": 4128.7127385
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 229788,
+            "Value": 37050
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "UJJIVAN"
+    "Bank_Short_Name": ""
   },
   {
-    "Bank_Type": "ATM & Card Statistics for July-2019",
-    "Sr_No": 64,
-    "Bank_Name": "UTKARSH SMALL FINANCE BANK LIMITED",
+    "Bank_Type": "Unknown",
+    "Sr_No": 0,
+    "Bank_Name": 1,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 96,
-        "Off_site": 36
+        "On_site": "Number of ATM deployed on site by the bank.",
+        "Off_site": 0
       },
       "PoS": 0,
       "Micro_ATMs": 0,
@@ -4051,930 +4179,880 @@
       "Credit_Card": {
         "at_PoS": {
           "Volume": 0,
-          "Value": 229788
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 95309,
-          "Value": 37050
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 4128.7127385,
-          "Value": 389.10402
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "UTKARSH"
+    "Bank_Short_Name": ""
   },
   {
-    "Sr_No": 1,
-    "Bank_Name": "Number of ATM deployed on site by the bank.",
+    "Bank_Type": "Unknown",
+    "Sr_No": 0,
+    "Bank_Name": 2,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 1,
-        "Off_site": 1
+        "On_site": "Number of ATM deployed off site by the bank.",
+        "Off_site": 0
       },
-      "PoS": 1,
-      "Micro_ATMs": 1,
-      "Bharat_QR_Codes": 1,
-      "UPI_QR_Codes": 1,
-      "Credit_Cards": 1,
-      "Debit_Cards": 1
+      "PoS": 0,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 0
     },
     "Card_Payments_Transactions": {
       "Credit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "Number of ATM deployed on site by the bank."
+    "Bank_Short_Name": ""
   },
   {
-    "Sr_No": 2,
-    "Bank_Name": "Number of ATM deployed off site by the bank.",
+    "Bank_Type": "Unknown",
+    "Sr_No": 0,
+    "Bank_Name": 3,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 1,
-        "Off_site": 1
+        "On_site": "Number of POS deployed online by the bank",
+        "Off_site": 0
       },
-      "PoS": 1,
-      "Micro_ATMs": 1,
-      "Bharat_QR_Codes": 1,
-      "UPI_QR_Codes": 1,
-      "Credit_Cards": 1,
-      "Debit_Cards": 1
+      "PoS": 0,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 0
     },
     "Card_Payments_Transactions": {
       "Credit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "Number of ATM deployed off site by the bank."
+    "Bank_Short_Name": ""
   },
   {
-    "Sr_No": 3,
-    "Bank_Name": "Number of POS deployed online by the bank",
+    "Bank_Type": "Unknown",
+    "Sr_No": 0,
+    "Bank_Name": 4,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 1,
-        "Off_site": 1
+        "On_site": "Number of POS deployed offline by the bank",
+        "Off_site": 0
       },
-      "PoS": 1,
-      "Micro_ATMs": 1,
-      "Bharat_QR_Codes": 1,
-      "UPI_QR_Codes": 1,
-      "Credit_Cards": 1,
-      "Debit_Cards": 1
+      "PoS": 0,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 0
     },
     "Card_Payments_Transactions": {
       "Credit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "Number of POS deployed online by the bank"
+    "Bank_Short_Name": ""
   },
   {
-    "Sr_No": 4,
-    "Bank_Name": "Number of POS deployed offline by the bank",
+    "Bank_Type": "Unknown",
+    "Sr_No": 0,
+    "Bank_Name": 5,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 1,
-        "Off_site": 1
+        "On_site": "Total number of credit cards issued outstanding (after adjusting the number of cards withdrawan/cancelled).",
+        "Off_site": 0
       },
-      "PoS": 1,
-      "Micro_ATMs": 1,
-      "Bharat_QR_Codes": 1,
-      "UPI_QR_Codes": 1,
-      "Credit_Cards": 1,
-      "Debit_Cards": 1
+      "PoS": 0,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 0
     },
     "Card_Payments_Transactions": {
       "Credit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "Number of POS deployed offline by the bank"
+    "Bank_Short_Name": ""
   },
   {
-    "Sr_No": 5,
-    "Bank_Name": "Total number of credit cards issued outstanding (after adjusting the number of cards withdrawan/cancelled).",
+    "Bank_Type": "Unknown",
+    "Sr_No": 0,
+    "Bank_Name": 6,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 1,
-        "Off_site": 1
+        "On_site": "Total number of financial transactions done by the credit card issued by the bank at ATMs",
+        "Off_site": 0
       },
-      "PoS": 1,
-      "Micro_ATMs": 1,
-      "Bharat_QR_Codes": 1,
-      "UPI_QR_Codes": 1,
-      "Credit_Cards": 1,
-      "Debit_Cards": 1
+      "PoS": 0,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 0
     },
     "Card_Payments_Transactions": {
       "Credit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "Total number of credit cards issued outstanding (after adjusting the number of cards withdrawan/cancelled)."
+    "Bank_Short_Name": ""
   },
   {
-    "Sr_No": 6,
-    "Bank_Name": "Total number of financial transactions done by the credit card issued by the bank at ATMs",
+    "Bank_Type": "Unknown",
+    "Sr_No": 0,
+    "Bank_Name": 7,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 1,
-        "Off_site": 1
+        "On_site": "Total number of financial transactions done by the credit card issued by the bank at POS terminals",
+        "Off_site": 0
       },
-      "PoS": 1,
-      "Micro_ATMs": 1,
-      "Bharat_QR_Codes": 1,
-      "UPI_QR_Codes": 1,
-      "Credit_Cards": 1,
-      "Debit_Cards": 1
+      "PoS": 0,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 0
     },
     "Card_Payments_Transactions": {
       "Credit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "Total number of financial transactions done by the credit card issued by the bank at ATMs"
+    "Bank_Short_Name": ""
   },
   {
-    "Sr_No": 7,
-    "Bank_Name": "Total number of financial transactions done by the credit card issued by the bank at POS terminals",
+    "Bank_Type": "Unknown",
+    "Sr_No": 0,
+    "Bank_Name": 8,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 1,
-        "Off_site": 1
+        "On_site": "Total value of financial transactions done by the credit card issued by the bank at ATMs",
+        "Off_site": 0
       },
-      "PoS": 1,
-      "Micro_ATMs": 1,
-      "Bharat_QR_Codes": 1,
-      "UPI_QR_Codes": 1,
-      "Credit_Cards": 1,
-      "Debit_Cards": 1
+      "PoS": 0,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 0
     },
     "Card_Payments_Transactions": {
       "Credit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "Total number of financial transactions done by the credit card issued by the bank at POS terminals"
+    "Bank_Short_Name": ""
   },
   {
-    "Sr_No": 8,
-    "Bank_Name": "Total value of financial transactions done by the credit card issued by the bank at ATMs",
+    "Bank_Type": "Unknown",
+    "Sr_No": 0,
+    "Bank_Name": 9,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 1,
-        "Off_site": 1
+        "On_site": "Total value of financial transactions done by the credit card issued by the bank at POS terminals.",
+        "Off_site": 0
       },
-      "PoS": 1,
-      "Micro_ATMs": 1,
-      "Bharat_QR_Codes": 1,
-      "UPI_QR_Codes": 1,
-      "Credit_Cards": 1,
-      "Debit_Cards": 1
+      "PoS": 0,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 0
     },
     "Card_Payments_Transactions": {
       "Credit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "Total value of financial transactions done by the credit card issued by the bank at ATMs"
+    "Bank_Short_Name": ""
   },
   {
-    "Sr_No": 9,
-    "Bank_Name": "Total value of financial transactions done by the credit card issued by the bank at POS terminals.",
+    "Bank_Type": "Unknown",
+    "Sr_No": 0,
+    "Bank_Name": 10,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 1,
-        "Off_site": 1
+        "On_site": "Total number of debit cards issued outstanding (after adjusting the number of cards withdrawan/cancelled).",
+        "Off_site": 0
       },
-      "PoS": 1,
-      "Micro_ATMs": 1,
-      "Bharat_QR_Codes": 1,
-      "UPI_QR_Codes": 1,
-      "Credit_Cards": 1,
-      "Debit_Cards": 1
+      "PoS": 0,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 0
     },
     "Card_Payments_Transactions": {
       "Credit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "Total value of financial transactions done by the credit card issued by the bank at POS terminals."
+    "Bank_Short_Name": ""
   },
   {
-    "Sr_No": 10,
-    "Bank_Name": "Total number of debit cards issued outstanding (after adjusting the number of cards withdrawan/cancelled).",
+    "Bank_Type": "Unknown",
+    "Sr_No": 0,
+    "Bank_Name": 11,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 1,
-        "Off_site": 1
+        "On_site": "Total number of financial transactions done by the debit card issued by the bank at ATMs",
+        "Off_site": 0
       },
-      "PoS": 1,
-      "Micro_ATMs": 1,
-      "Bharat_QR_Codes": 1,
-      "UPI_QR_Codes": 1,
-      "Credit_Cards": 1,
-      "Debit_Cards": 1
+      "PoS": 0,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 0
     },
     "Card_Payments_Transactions": {
       "Credit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "Total number of debit cards issued outstanding (after adjusting the number of cards withdrawan/cancelled)."
+    "Bank_Short_Name": ""
   },
   {
-    "Sr_No": 11,
-    "Bank_Name": "Total number of financial transactions done by the debit card issued by the bank at ATMs",
+    "Bank_Type": "Unknown",
+    "Sr_No": 0,
+    "Bank_Name": 12,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 1,
-        "Off_site": 1
+        "On_site": "Total number of financial transactions done by the debit card issued by the bank at POS terminals",
+        "Off_site": 0
       },
-      "PoS": 1,
-      "Micro_ATMs": 1,
-      "Bharat_QR_Codes": 1,
-      "UPI_QR_Codes": 1,
-      "Credit_Cards": 1,
-      "Debit_Cards": 1
+      "PoS": 0,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 0
     },
     "Card_Payments_Transactions": {
       "Credit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "Total number of financial transactions done by the debit card issued by the bank at ATMs"
+    "Bank_Short_Name": ""
   },
   {
-    "Sr_No": 12,
-    "Bank_Name": "Total number of financial transactions done by the debit card issued by the bank at POS terminals",
+    "Bank_Type": "Unknown",
+    "Sr_No": 0,
+    "Bank_Name": 13,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 1,
-        "Off_site": 1
+        "On_site": "Total value of financial transactions done by the debit card issued by the bank at ATMs",
+        "Off_site": 0
       },
-      "PoS": 1,
-      "Micro_ATMs": 1,
-      "Bharat_QR_Codes": 1,
-      "UPI_QR_Codes": 1,
-      "Credit_Cards": 1,
-      "Debit_Cards": 1
+      "PoS": 0,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 0
     },
     "Card_Payments_Transactions": {
       "Credit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "Total number of financial transactions done by the debit card issued by the bank at POS terminals"
+    "Bank_Short_Name": ""
   },
   {
-    "Sr_No": 13,
-    "Bank_Name": "Total value of financial transactions done by the debit card issued by the bank at ATMs",
+    "Bank_Type": "Unknown",
+    "Sr_No": 0,
+    "Bank_Name": 14,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 1,
-        "Off_site": 1
+        "On_site": "Total value of financial transactions done by the debit card issued by the bank at POS terminals.",
+        "Off_site": 0
       },
-      "PoS": 1,
-      "Micro_ATMs": 1,
-      "Bharat_QR_Codes": 1,
-      "UPI_QR_Codes": 1,
-      "Credit_Cards": 1,
-      "Debit_Cards": 1
+      "PoS": 0,
+      "Micro_ATMs": 0,
+      "Bharat_QR_Codes": 0,
+      "UPI_QR_Codes": 0,
+      "Credit_Cards": 0,
+      "Debit_Cards": 0
     },
     "Card_Payments_Transactions": {
       "Credit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Others": {
-          "Volume": 1,
-          "Value": 1
+          "Volume": 0,
+          "Value": 0
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           },
           "At_PoS": {
-            "Volume": 1,
-            "Value": 1
+            "Volume": 0,
+            "Value": 0
           }
         }
       }
     },
-    "Bank_Short_Name": "Total value of financial transactions done by the debit card issued by the bank at ATMs"
-  },
-  {
-    "Sr_No": 14,
-    "Bank_Name": "Total value of financial transactions done by the debit card issued by the bank at POS terminals.",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 1,
-        "Off_site": 1
-      },
-      "PoS": 1,
-      "Micro_ATMs": 1,
-      "Bharat_QR_Codes": 1,
-      "UPI_QR_Codes": 1,
-      "Credit_Cards": 1,
-      "Debit_Cards": 1
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Online_ecom": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Others": {
-          "Volume": 1,
-          "Value": 1
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1,
-            "Value": 1
-          },
-          "At_PoS": {
-            "Volume": 1,
-            "Value": 1
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "Total value of financial transactions done by the debit card issued by the bank at POS terminals."
+    "Bank_Short_Name": ""
   }
 ]
