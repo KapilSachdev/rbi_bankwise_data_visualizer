@@ -22,10 +22,17 @@ function App() {
   useEffect(() => {
     fetch(`${DATA_FOLDER}/index.json`)
       .then(res => res.json())
-      .then((manifest: DataFileMeta[]) => {
-        setFiles(manifest);
+      .then((manifest: { neft: DataFileMeta[]; pos: DataFileMeta[] }) => {
+        // Flatten files for legacy use (if needed elsewhere)
+        const allFiles = [...(manifest.neft || []), ...(manifest.pos || [])];
+        setFiles(allFiles);
+        // Fetch all data files for both NEFT and POS
+        const allMeta = [
+          ...(manifest.neft || []).map(f => ({ ...f, type: 'neft' })),
+          ...(manifest.pos || []).map(f => ({ ...f, type: 'pos' })),
+        ];
         return Promise.all(
-          manifest.map(f =>
+          allMeta.map(f =>
             fetch(`${DATA_FOLDER}/${f.file}`)
               .then(res => res.json())
               .then(data => ({ key: f.key, type: f.type, data }))

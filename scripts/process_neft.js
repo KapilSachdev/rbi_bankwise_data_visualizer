@@ -1,5 +1,7 @@
 // process_neft_json.js
-// Reads NEFT Excel file, extracts all 4 sheets, and outputs a single nested JSON file.
+// Reads Transactions Excel file
+// extracts all 4 sheets, NEFT, RTGS, Mobile Banking, Internet Banking,
+// and outputs a single nested JSON file.
 // Usage: node scripts/process_neft_json.js <month-year> (e.g., 05-2025)
 
 
@@ -129,7 +131,7 @@ const main = () => {
 
   if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
   fs.writeFileSync(outputPath, JSON.stringify(result, null, 2));
-  console.log('Processed and saved:', outputPath);
+  console.log('Processed and saved:', fileBase);
 };
 
 main();

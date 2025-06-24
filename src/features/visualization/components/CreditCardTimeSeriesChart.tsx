@@ -34,6 +34,10 @@ interface CreditCardTimeSeriesChartProps {
 }
 
 const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ allData, months }) => {
+  // Ensure months are sorted in ascending order (earliest to latest)
+  const sortedMonths = useMemo(() => {
+    return [...months].sort();
+  }, [months]);
   const chartRef = useRef<HTMLDivElement | null>(null);
   const chartInstance = useRef<echarts.EChartsType | null>(null);
 
@@ -43,13 +47,13 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
 
   // Get all unique bank types
   const bankTypes = useMemo(() => {
-    const all = months.flatMap(m => allData[m] || []);
+    const all = sortedMonths.flatMap(m => allData[m] || []);
     return Array.from(new Set(all.map(d => d.Bank_Type)));
-  }, [allData, months]);
+  }, [allData, sortedMonths]);
 
   // Get all unique banks (filtered by type), only those with credit cards > 0 in at least one month
   const banks = useMemo(() => {
-    const all = months.flatMap(m => allData[m] || []);
+    const all = sortedMonths.flatMap(m => allData[m] || []);
     const filtered = selectedBankType ? all.filter(d => d.Bank_Type === selectedBankType) : all;
     // Group by bank name
     const bankMap = new Map<string, BankData[]>();
@@ -61,12 +65,12 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
     return Array.from(bankMap.entries())
       .filter(([_, arr]) => arr.some(b => b.Infrastructure?.Credit_Cards > 0))
       .map(([name]) => name);
-  }, [allData, months, selectedBankType]);
+  }, [allData, sortedMonths, selectedBankType]);
 
   // Whenever selectedBankType changes, reset selectedBanks to top 5 for that type (with >0 credit cards)
   useEffect(() => {
     if (banks.length > 0) {
-      const latestMonth = months[months.length - 1];
+      const latestMonth = sortedMonths[sortedMonths.length - 1];
       const data = (allData[latestMonth] || [])
         .filter(d => (!selectedBankType || d.Bank_Type === selectedBankType) && d.Infrastructure?.Credit_Cards > 0);
       const sorted = [...data].sort((a, b) => (b.Infrastructure?.Credit_Cards ?? 0) - (a.Infrastructure?.Credit_Cards ?? 0));
@@ -74,12 +78,12 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
     } else {
       setSelectedBanks([]);
     }
-  }, [selectedBankType, banks.length, allData, months]);
+  }, [selectedBankType, banks.length, allData, sortedMonths]);
 
   // Build time series data for selected banks (only if they have >0 credit cards in at least one month)
   const chartData = useMemo(() => {
     return selectedBanks.map(bankName => {
-      const values = months.map(month => {
+      const values = sortedMonths.map(month => {
         const bank = (allData[month] || []).find(d => d.Bank_Name === bankName);
         return { month, creditCards: bank?.Infrastructure?.Credit_Cards ?? 0 };
       });
@@ -89,17 +93,17 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
       }
       return null;
     }).filter(Boolean) as { bank: string; values: { month: string; creditCards: number }[] }[];
-  }, [selectedBanks, allData, months]);
+  }, [selectedBanks, allData, sortedMonths]);
 
   // Sort by latest credit card count
   const sortedData = useMemo(() => {
-    const latestMonth = months[months.length - 1];
+    const latestMonth = sortedMonths[sortedMonths.length - 1];
     return [...chartData].sort((a, b) => {
       const aVal = a.values.find(v => v.month === latestMonth)?.creditCards ?? 0;
       const bVal = b.values.find(v => v.month === latestMonth)?.creditCards ?? 0;
       return bVal - aVal;
     });
-  }, [chartData, months]);
+  }, [chartData, sortedMonths]);
 
   const option = useMemo(() => ({
     title: {
@@ -111,7 +115,7 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
     grid: { left: '3%', right: '4%', top: '30%', bottom: '0%', containLabel: true },
     xAxis: {
       type: 'category',
-      data: months,
+      data: sortedMonths,
       axisLabel: { rotate: 45 },
     },
     yAxis: {
@@ -122,7 +126,7 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
     series: sortedData.map(bank => ({
       name: bank.bank,
       type: 'line',
-      data: months.map(m => bank.values.find(v => v.month === m)?.creditCards ?? 0),
+      data: sortedMonths.map(m => bank.values.find(v => v.month === m)?.creditCards ?? 0),
       smooth: true,
       symbol: 'circle',
       symbolSize: 6,
@@ -130,7 +134,7 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
       emphasis: { focus: 'series' },
     })),
     animationDuration: 800,
-  }), [sortedData, months]);
+  }), [sortedData, sortedMonths]);
 
   // Initialize and update chart
   useEffect(() => {
