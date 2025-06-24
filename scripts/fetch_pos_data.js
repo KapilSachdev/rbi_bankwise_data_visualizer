@@ -73,7 +73,7 @@ const downloadFile = (url, dest) =>
 
 // HTML processing
 const extractXlsxLink = (html) => {
-  const match = html.match(/href\s*=\s*['"]([^'"]+\.xlsx)['"]/i);
+  const match = html.match(/href\s*=\s*['"]([^'"]+\.(xlsx|xls))['"]/i);
   if (!match) throw new Error('No .xlsx link found on page');
   const href = match[1];
   return href.startsWith('http') ? href : `https://www.rbi.org.in${href}`;
@@ -84,9 +84,19 @@ const main = async () => {
   try {
     const { year, month } = getTargetDate(process.argv[2]);
     const paddedMonth = String(month).padStart(2, '0');
-    const fileBase = `bankwise_pos_stats_${paddedMonth}_${year}`;
+    const fileBase = `bankwise_pos_stats_${year}_${paddedMonth}`;
+
+    // Check if the file already exists, and if it does return early
+    const excelDir = path.resolve(getModuleDir(), '../data/excel');
+    ensureDir(excelDir);
+    const xlsxPath = path.join(excelDir, `${fileBase}.xlsx`);
+    if (fs.existsSync(xlsxPath)) {
+      console.log(`File already exists: ${xlsxPath}`);
+      return;
+    }
+
     const atmid = getAtmidForMonth(year, month);
-    console.log(`Processing data for ${paddedMonth}/${year} (atmid=${atmid})`);
+    console.log(`Processing data for ${year}/${paddedMonth} (atmid=${atmid})`);
 
     const pageUrl = `${BASE_URL}${atmid}`;
     console.log('Fetching page:', pageUrl);
@@ -96,9 +106,6 @@ const main = async () => {
     const xlsxUrl = extractXlsxLink(html);
     console.log('Found xlsx:', xlsxUrl);
 
-    const excelDir = path.resolve(getModuleDir(), '../data/excel');
-    ensureDir(excelDir);
-    const xlsxPath = path.join(excelDir, `${fileBase}.xlsx`);
 
     console.log('Downloading Excel file...');
     await downloadFile(xlsxUrl, xlsxPath);

@@ -1,7 +1,5 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import DataFilter from '../../../components/common/DataFilter';
-import type { BankData } from '../../../types/global.types';
 import * as echarts from 'echarts/core';
 import {
   TooltipComponent,
@@ -12,6 +10,9 @@ import {
 } from 'echarts/components';
 import { BarChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
+import DataFilter from '../../../components/common/DataFilter';
+import type { BankData } from '../../../types/global.types';
+import { formatMonthYear } from '../../../utils/time'
 
 // Register ECharts components once at the module level
 echarts.use([
@@ -44,12 +45,12 @@ const INFRA_METRICS = [
 
 const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }) => {
   const chartRef = useRef<HTMLDivElement>(null);
-  const [topN, setTopN] = useState(10);
+  const [topN, setTopN] = useState(5);
   const [metric, setMetric] = useState(INFRA_METRICS[0].value);
- const [selectedMonth, setSelectedMonth] = useState(() => months[months.length - 1]);
+  const [selectedMonth, setSelectedMonth] = useState(() => months[0]);
 
   useEffect(() => {
-    setSelectedMonth(months[months.length - 1]);
+    setSelectedMonth(months[0]);
   }, [months]);
   const [selectedBankType, setSelectedBankType] = useState('');
 
@@ -174,45 +175,48 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
   }, [sortedData, metric]);
 
   return (
-    <div className="min-w-100">
-      <DataFilter
-        bankTypes={bankTypes}
-        selectedBankType={selectedBankType}
-        onBankTypeChange={setSelectedBankType}
-        filters={{ bankType: true }}
-      />
-      <div className="flex items-center gap-2 mb-2">
-        <label htmlFor="infra-metric" className="text-sm">Metric</label>
-        <select
-          id="infra-metric"
-          className="px-2 py-1 rounded bg-gray-800 text-gray-100 focus:ring-2 focus:ring-sky-400"
-          value={metric}
-          onChange={e => setMetric(e.target.value)}
-        >
-          {INFRA_METRICS.map(opt => (
-            <option key={opt.value} value={opt.value}>{opt.label}</option>
-          ))}
-        </select>
-        <label htmlFor="topN" className="text-sm ml-4">Show top</label>
-        <input
-          id="topN"
-          type="number"
-          min={1}
-          max={data.length}
-          value={topN}
-          onChange={e => setTopN(Math.max(1, Math.min(data.length, Number(e.target.value))))}
-          className="w-16 px-1 py-1 rounded bg-gray-800 text-gray-100 border border-gray-700 ml-1"
+    <div className="p-2">
+      <h2 className='p-2'>Bank {selectedMonth && formatMonthYear(selectedMonth)} POS Assets</h2>
+      <div className="min-w-100">
+        <DataFilter
+          bankTypes={bankTypes}
+          selectedBankType={selectedBankType}
+          onBankTypeChange={setSelectedBankType}
+          filters={{ bankType: true }}
         />
-        <span className="text-sm text-gray-400">banks</span>
+        <div className="flex items-center gap-2 mb-2">
+          <label htmlFor="infra-metric" className="text-sm">Metric</label>
+          <select
+            id="infra-metric"
+            className="px-2 py-1 rounded bg-gray-800 text-gray-100 focus:ring-2 focus:ring-sky-400"
+            value={metric}
+            onChange={e => setMetric(e.target.value)}
+          >
+            {INFRA_METRICS.map(opt => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
+          <label htmlFor="topN" className="text-sm ml-4">Show top</label>
+          <input
+            id="topN"
+            type="number"
+            min={1}
+            max={data.length}
+            value={topN}
+            onChange={e => setTopN(Math.max(1, Math.min(data.length, Number(e.target.value))))}
+            className="w-16 px-1 py-1 rounded bg-gray-800 text-gray-100 border border-gray-700 ml-1"
+          />
+          <span className="text-sm text-gray-400">banks</span>
+        </div>
+        <div
+          ref={chartRef}
+          style={{ width: '100%', height: '400px' }}
+          aria-label="Bank Infrastructure Bar Chart"
+          role="img"
+          tabIndex={0}
+          className="outline-none focus:ring-2 focus:ring-sky-400 rounded"
+        />
       </div>
-      <div
-        ref={chartRef}
-        style={{ width: '100%', height: '400px' }}
-        aria-label="Bank Infrastructure Bar Chart"
-        role="img"
-        tabIndex={0}
-        className="outline-none focus:ring-2 focus:ring-sky-400 rounded"
-      />
     </div>
   );
 };

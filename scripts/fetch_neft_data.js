@@ -74,7 +74,7 @@ const downloadFile = (url, dest) =>
 
 // HTML processing
 const extractXlsxLink = (html) => {
-  const match = html.match(/href\s*=\s*['"]([^'"]+\.xlsx)['"]/i);
+  const match = html.match(/href\s*=\s*['"]([^'"]+\.(xlsx|xls))['"]/i);
   if (!match) return null;
   const href = match[1];
   return href.startsWith('http') ? href : `https://www.rbi.org.in${href}`;
@@ -109,9 +109,9 @@ const main = async () => {
   try {
     const { year, month } = getTargetDate(process.argv[2]);
     const paddedMonth = String(month).padStart(2, '0');
-    const fileBase = `bankwise_neft_stats_${paddedMonth}_${year}`;
+    const fileBase = `bankwise_neft_stats_${year}_${paddedMonth}`;
     const id = getIdForMonth(year, month);
-    console.log(`Processing NEFT data for ${paddedMonth}/${year} (Id=${id})`);
+    console.log(`Processing NEFT data for ${year}/${paddedMonth} (Id=${id})`);
 
 
     const pageUrl = `${BASE_URL}${id}`;

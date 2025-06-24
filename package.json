@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "process_data": "node scripts/process_neft.js && node scripts/process_pos.js"
+    "process_data": "node scripts/process_neft.js && node scripts/process_pos.js && node scripts/generate_index_manifest.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.10",
