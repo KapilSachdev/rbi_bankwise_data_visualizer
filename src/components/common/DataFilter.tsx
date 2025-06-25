@@ -27,35 +27,86 @@ const DataFilter: React.FC<DataFilterProps> = ({
   filters = { month: true, bankType: true },
 }) => {
   return (
-    <div className="flex flex-wrap gap-4 mb-4 items-center justify-center">
+    <div className="flex items-center justify-center">
       {filters.month && months.length > 0 && onMonthChange && (
-        <label className="flex flex-col text-xs font-medium text-gray-400">
-          Month
-          <select
-            className="mt-1 px-2 py-1 rounded bg-gray-800 text-gray-100 focus:ring-2 focus:ring-sky-400"
-            value={selectedMonth}
-            onChange={e => onMonthChange(e.target.value)}
-          >
-            {months.map(month => (
-              <option key={month} value={month}>{month}</option>
-            ))}
-          </select>
-        </label>
+        <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem]">
+          <span>Month</span>
+          <div className="dropdown mt-1">
+            <button
+              popoverTarget="month-dropdown"
+              className="btn btn-sm btn-outline w-full justify-between"
+              type="button"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+            >
+              {selectedMonth || 'Select Month'}
+            </button>
+            <ul
+              className="dropdown-content menu menu-sm p-0 shadow bg-base-100 rounded-box w-full z-10"
+              popover="auto"
+              id="month-dropdown"
+              role="listbox"
+            >
+              {months.map(month => (
+                <li key={month}>
+                  <button
+                    className={`w-full text-left px-4 py-2 ${selectedMonth === month ? 'bg-primary text-primary-content' : ''}`}
+                    onClick={() => onMonthChange(month)}
+                    role="option"
+                    aria-selected={selectedMonth === month}
+                  >
+                    {month}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       )}
       {filters.bankType && bankTypes.length > 0 && onBankTypeChange && (
-        <label className="flex flex-col text-xs font-medium text-gray-400">
-          Bank Type
-          <select
-            className="mt-1 px-2 py-1 rounded bg-gray-800 text-gray-100 focus:ring-2 focus:ring-sky-400"
-            value={selectedBankType}
-            onChange={e => onBankTypeChange(e.target.value)}
-          >
-            <option value="">All</option>
-            {bankTypes.map(type => (
-              <option key={type} value={type}>{type}</option>
-            ))}
-          </select>
-        </label>
+        <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem]">
+          <span>Bank Type</span>
+          <div className="dropdown mt-1">
+            <button
+              popoverTarget="banktype-dropdown"
+              className="btn btn-sm btn-outline w-full justify-between"
+              type="button"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+            >
+              {selectedBankType || 'All'}
+            </button>
+            <ul
+              className="dropdown-content menu menu-sm p-0 shadow bg-base-100 rounded-box w-full z-10"
+              popover="auto"
+              id="banktype-dropdown"
+              role="listbox"
+            >
+              <li>
+                <button
+                  className={`w-full text-left px-4 py-2 ${!selectedBankType ? 'bg-primary text-primary-content' : ''}`}
+                  onClick={() => onBankTypeChange('')}
+                  role="option"
+                  aria-selected={!selectedBankType}
+                >
+                  All
+                </button>
+              </li>
+              {bankTypes.map(type => (
+                <li key={type}>
+                  <button
+                    className={`w-full text-left px-4 py-2 ${selectedBankType === type ? 'bg-primary text-primary-content' : ''}`}
+                    onClick={() => onBankTypeChange(type)}
+                    role="option"
+                    aria-selected={selectedBankType === type}
+                  >
+                    {type}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       )}
     </div>
   );

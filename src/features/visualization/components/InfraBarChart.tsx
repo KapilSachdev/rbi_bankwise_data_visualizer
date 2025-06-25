@@ -1,5 +1,5 @@
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts/core';
 import {
   TooltipComponent,
@@ -111,12 +111,13 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
     if (!chartRef.current || !sortedData.length) return;
     const chart = echarts.init(chartRef.current, 'dark');
     const option = {
+      backgroundColor: 'transparent',
       tooltip: {
         trigger: 'axis',
         axisPointer: { type: 'shadow' },
-        formatter: (params: any) => {
+        formatter: (params: unknown) => {
           if (!Array.isArray(params) || params.length === 0) return '';
-          const idx = params[0].dataIndex;
+          const idx = (params[0] as { dataIndex: number }).dataIndex;
           const bank = sortedData[idx];
           const val = getMetricValue(bank.Infrastructure, metric);
           return `
@@ -178,43 +179,68 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
     <div className="p-2">
       <h2 className='p-2'>Bank {selectedMonth && formatMonthYear(selectedMonth)} POS Assets</h2>
       <div className="min-w-100">
-        <DataFilter
-          bankTypes={bankTypes}
-          selectedBankType={selectedBankType}
-          onBankTypeChange={setSelectedBankType}
-          filters={{ bankType: true }}
-        />
-        <div className="flex items-center gap-2 mb-2">
-          <label htmlFor="infra-metric" className="text-sm">Metric</label>
-          <select
-            id="infra-metric"
-            className="px-2 py-1 rounded bg-gray-800 text-gray-100 focus:ring-2 focus:ring-sky-400"
-            value={metric}
-            onChange={e => setMetric(e.target.value)}
-          >
-            {INFRA_METRICS.map(opt => (
-              <option key={opt.value} value={opt.value}>{opt.label}</option>
-            ))}
-          </select>
-          <label htmlFor="topN" className="text-sm ml-4">Show top</label>
-          <input
-            id="topN"
-            type="number"
-            min={1}
-            max={data.length}
-            value={topN}
-            onChange={e => setTopN(Math.max(1, Math.min(data.length, Number(e.target.value))))}
-            className="w-16 px-1 py-1 rounded bg-gray-800 text-gray-100 border border-gray-700 ml-1"
+        <div className="flex justify-stretch justify-items-stretch gap-4 mb-2 w-full">
+          <DataFilter
+            bankTypes={bankTypes}
+            selectedBankType={selectedBankType}
+            onBankTypeChange={setSelectedBankType}
+            filters={{ bankType: true }}
           />
-          <span className="text-sm text-gray-400">banks</span>
+          <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem]">
+            <span>Metric</span>
+            <div className="dropdown mt-1">
+              <button
+                popoverTarget="metric-dropdown"
+                className="btn btn-sm btn-outline w-full justify-between"
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+              >
+                {INFRA_METRICS.find(opt => opt.value === metric)?.label || 'Select Metric'}
+              </button>
+              <ul
+                className="dropdown-content menu menu-sm p-0 shadow bg-base-100 rounded-box w-full z-10"
+                popover="auto"
+                id="metric-dropdown"
+                role="listbox"
+              >
+                {INFRA_METRICS.map(opt => (
+                  <li key={opt.value}>
+                    <button
+                      className={`w-full text-left px-4 py-2 ${metric === opt.value ? 'bg-primary text-primary-content' : ''}`}
+                      onClick={() => setMetric(opt.value)}
+                      role="option"
+                      aria-selected={metric === opt.value}
+                    >
+                      {opt.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem] self-end ml-auto">
+            <div className="join mt-1">
+              <input
+                id="topN"
+                type="number"
+                min={1}
+                max={data.length}
+                value={topN}
+                onChange={e => setTopN(Math.max(1, Math.min(data.length, Number(e.target.value))))}
+                className="input input-sm input-bordered w-16 join-item"
+                aria-label="Show top N banks"
+              />
+              <span className="join-item flex items-center px-2 text-sm text-gray-400 bg-base-200">banks</span>
+            </div>
+          </div>
         </div>
         <div
           ref={chartRef}
-          style={{ width: '100%', height: '400px' }}
           aria-label="Bank Infrastructure Bar Chart"
           role="img"
           tabIndex={0}
-          className="outline-none focus:ring-2 focus:ring-sky-400 rounded"
+          className="w-full h-[400px]"
         />
       </div>
     </div>

@@ -4,6 +4,7 @@ import { LineChart } from 'echarts/charts';
 import { GridComponent, TooltipComponent, LegendComponent, TitleComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import DataFilter from '../../../components/common/DataFilter';
+// Removed custom YearRangeSlider, using DaisyUI slider instead
 import type { BankData } from '../../../types/global.types';
 
 // Register ECharts components (safe to call multiple times)
@@ -16,17 +17,6 @@ echarts.use([
   CanvasRenderer,
 ]);
 
-/**
- * Line chart for credit card time series per bank.
- * @param data - Array of time series per bank
- * @param months - Array of months (x-axis)
- */
-
-/**
- * Line chart for credit card time series per bank, rendered directly with ECharts API (no extra dependencies).
- */
-
-
 
 interface CreditCardTimeSeriesChartProps {
   allData: { [key: string]: BankData[] };
@@ -38,6 +28,39 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
   const sortedMonths = useMemo(() => {
     return [...months].sort();
   }, [months]);
+
+  // Extract unique years from months (format: YYYY_MM or YYYY-MM)
+  const years = useMemo(() => {
+    const yearSet = new Set<number>();
+    sortedMonths.forEach(m => {
+      const y = Number(m.slice(0, 4));
+      if (!isNaN(y)) yearSet.add(y);
+    });
+    return Array.from(yearSet).sort((a, b) => a - b);
+  }, [sortedMonths]);
+
+  // Default year range: last 5 years (or all if <5)
+  const defaultYearRange = useMemo(() => {
+    if (years.length === 0) return [0, 0] as [number, number];
+    const end = years[years.length - 1];
+    const start = years.length > 5 ? years[years.length - 5] : years[0];
+    return [start, end] as [number, number];
+  }, [years]);
+
+  const [yearRange, setYearRange] = React.useState<[number, number]>(defaultYearRange);
+
+  // Set default year range to last 5 years on mount or when years change
+  React.useEffect(() => {
+    setYearRange(defaultYearRange);
+  }, [defaultYearRange[0], defaultYearRange[1]]);
+
+  // Filter months by selected year range
+  const filteredMonths = useMemo(() => {
+    return sortedMonths.filter(m => {
+      const y = Number(m.slice(0, 4));
+      return y >= yearRange[0] && y <= yearRange[1];
+    });
+  }, [sortedMonths, yearRange]);
   const chartRef = useRef<HTMLDivElement | null>(null);
   const chartInstance = useRef<echarts.EChartsType | null>(null);
 
@@ -47,13 +70,13 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
 
   // Get all unique bank types
   const bankTypes = useMemo(() => {
-    const all = sortedMonths.flatMap(m => allData[m] || []);
+    const all = filteredMonths.flatMap(m => allData[m] || []);
     return Array.from(new Set(all.map(d => d.Bank_Type)));
-  }, [allData, sortedMonths]);
+  }, [allData, filteredMonths]);
 
   // Get all unique banks (filtered by type), only those with credit cards > 0 in at least one month
   const banks = useMemo(() => {
-    const all = sortedMonths.flatMap(m => allData[m] || []);
+    const all = filteredMonths.flatMap(m => allData[m] || []);
     const filtered = selectedBankType ? all.filter(d => d.Bank_Type === selectedBankType) : all;
     // Group by bank name
     const bankMap = new Map<string, BankData[]>();
@@ -63,14 +86,14 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
     });
     // Only include banks with credit cards > 0 in at least one month
     return Array.from(bankMap.entries())
-      .filter(([_, arr]) => arr.some(b => b.Infrastructure?.Credit_Cards > 0))
+      .filter(([, arr]) => arr.some(b => b.Infrastructure?.Credit_Cards > 0))
       .map(([name]) => name);
-  }, [allData, sortedMonths, selectedBankType]);
+  }, [allData, filteredMonths, selectedBankType]);
 
   // Whenever selectedBankType changes, reset selectedBanks to top 5 for that type (with >0 credit cards)
   useEffect(() => {
     if (banks.length > 0) {
-      const latestMonth = sortedMonths[sortedMonths.length - 1];
+      const latestMonth = filteredMonths[filteredMonths.length - 1];
       const data = (allData[latestMonth] || [])
         .filter(d => (!selectedBankType || d.Bank_Type === selectedBankType) && d.Infrastructure?.Credit_Cards > 0);
       const sorted = [...data].sort((a, b) => (b.Infrastructure?.Credit_Cards ?? 0) - (a.Infrastructure?.Credit_Cards ?? 0));
@@ -78,12 +101,12 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
     } else {
       setSelectedBanks([]);
     }
-  }, [selectedBankType, banks.length, allData, sortedMonths]);
+  }, [selectedBankType, banks.length, allData, filteredMonths]);
 
   // Build time series data for selected banks (only if they have >0 credit cards in at least one month)
   const chartData = useMemo(() => {
     return selectedBanks.map(bankName => {
-      const values = sortedMonths.map(month => {
+      const values = filteredMonths.map(month => {
         const bank = (allData[month] || []).find(d => d.Bank_Name === bankName);
         return { month, creditCards: bank?.Infrastructure?.Credit_Cards ?? 0 };
       });
@@ -93,19 +116,20 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
       }
       return null;
     }).filter(Boolean) as { bank: string; values: { month: string; creditCards: number }[] }[];
-  }, [selectedBanks, allData, sortedMonths]);
+  }, [selectedBanks, allData, filteredMonths]);
 
   // Sort by latest credit card count
   const sortedData = useMemo(() => {
-    const latestMonth = sortedMonths[sortedMonths.length - 1];
+    const latestMonth = filteredMonths[filteredMonths.length - 1];
     return [...chartData].sort((a, b) => {
       const aVal = a.values.find(v => v.month === latestMonth)?.creditCards ?? 0;
       const bVal = b.values.find(v => v.month === latestMonth)?.creditCards ?? 0;
       return bVal - aVal;
     });
-  }, [chartData, sortedMonths]);
+  }, [chartData, filteredMonths]);
 
   const option = useMemo(() => ({
+    backgroundColor: 'transparent',
     title: {
       text: 'Credit Card Count Over Time by Bank',
       left: 'center',
@@ -115,7 +139,7 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
     grid: { left: '3%', right: '4%', top: '30%', bottom: '0%', containLabel: true },
     xAxis: {
       type: 'category',
-      data: sortedMonths,
+      data: filteredMonths,
       axisLabel: { rotate: 45 },
     },
     yAxis: {
@@ -126,7 +150,7 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
     series: sortedData.map(bank => ({
       name: bank.bank,
       type: 'line',
-      data: sortedMonths.map(m => bank.values.find(v => v.month === m)?.creditCards ?? 0),
+      data: filteredMonths.map(m => bank.values.find(v => v.month === m)?.creditCards ?? 0),
       smooth: true,
       symbol: 'circle',
       symbolSize: 6,
@@ -134,7 +158,7 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
       emphasis: { focus: 'series' },
     })),
     animationDuration: 800,
-  }), [sortedData, sortedMonths]);
+  }), [sortedData, filteredMonths]);
 
   // Initialize and update chart
   useEffect(() => {
@@ -145,18 +169,59 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
     chartInstance.current.setOption(option);
     // Responsive resize
     const handleResize = () => {
-      chartInstance.current && chartInstance.current.resize();
+      if (chartInstance.current) {
+        chartInstance.current.resize();
+      }
     };
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
-      chartInstance.current && chartInstance.current.dispose();
-      chartInstance.current = null;
+      if (chartInstance.current) {
+        chartInstance.current.dispose();
+        chartInstance.current = null;
+      }
     };
   }, [option]);
 
   return (
     <div>
+      {/* DaisyUI Range Slider for Year Range Selection */}
+      <div className="flex flex-col gap-2 mb-4">
+        <label className="text-sm font-medium text-gray-700 dark:text-gray-200" htmlFor="year-range-slider">
+          Year Range: {yearRange[0]} - {yearRange[1]}
+        </label>
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-gray-500 dark:text-gray-400">{years[0]}</span>
+          <input
+            id="year-range-slider"
+            type="range"
+            min={years[0]}
+            max={years[years.length - 1]}
+            value={yearRange[0]}
+            className="range range-primary flex-1"
+            step={1}
+            onChange={e => {
+              const newStart = Number(e.target.value);
+              setYearRange(([_, end]) => [Math.min(newStart, end), Math.max(newStart, end)]);
+            }}
+            aria-label="Select start year"
+          />
+          <input
+            type="range"
+            min={years[0]}
+            max={years[years.length - 1]}
+            value={yearRange[1]}
+            className="range range-secondary flex-1"
+            step={1}
+            onChange={e => {
+              const newEnd = Number(e.target.value);
+              setYearRange(([start, _]) => [Math.min(start, newEnd), Math.max(start, newEnd)]);
+            }}
+            aria-label="Select end year"
+          />
+          <span className="text-xs text-gray-500 dark:text-gray-400">{years[years.length - 1]}</span>
+        </div>
+      </div>
       <DataFilter
         bankTypes={bankTypes}
         selectedBankType={selectedBankType}
@@ -165,7 +230,7 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
       />
       <div
         ref={chartRef}
-        className="w-full h-[400px] bg-white dark:bg-gray-900 rounded-lg shadow"
+        className="w-full h-[400px]"
         aria-label="Credit Card Time Series Chart"
         role="img"
         tabIndex={0}
