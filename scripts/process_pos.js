@@ -19,32 +19,32 @@ function setNestedObject(obj, path, value) {
 }
 
 const columnMapping = [
-  { col: 0, path: 'Sr_No', pre_2022_03_Col: 0, pre_2020_04_Col: 0 },
-  { col: 1, path: 'Bank_Name', pre_2022_03_Col: 1, pre_2020_04_Col: 1 },
-  { col: 2, path: 'Infrastructure.ATMs_CRMs.On_site', pre_2022_03_Col: 2, pre_2020_04_Col: 2 },
-  { col: 3, path: 'Infrastructure.ATMs_CRMs.Off_site', pre_2022_03_Col: 3, pre_2020_04_Col: 3 },
-  { col: 4, path: 'Infrastructure.PoS', pre_2022_03_Col: 4, pre_2020_04_Col: 4 },
+  { col: 0, path: 'Sr_No', pre_2022_03_Col: 0, pre_2020_05_Col: 0 },
+  { col: 1, path: 'Bank_Name', pre_2022_03_Col: 1, pre_2020_05_Col: 1 },
+  { col: 2, path: 'Infrastructure.ATMs_CRMs.On_site', pre_2022_03_Col: 2, pre_2020_05_Col: 2 },
+  { col: 3, path: 'Infrastructure.ATMs_CRMs.Off_site', pre_2022_03_Col: 3, pre_2020_05_Col: 3 },
+  { col: 4, path: 'Infrastructure.PoS', pre_2022_03_Col: 4, pre_2020_05_Col: 4 },
   { col: 5, path: 'Infrastructure.Micro_ATMs', pre_2022_03_Col: 6 },
   { col: 6, path: 'Infrastructure.Bharat_QR_Codes', pre_2022_03_Col: 7 },
   { col: 7, path: 'Infrastructure.UPI_QR_Codes' },
-  { col: 8, path: 'Infrastructure.Credit_Cards', pre_2022_03_Col: 8, pre_2020_04_Col: 6 },
-  { col: 9, path: 'Infrastructure.Debit_Cards', pre_2022_03_Col: 13, pre_2020_04_Col: 11 },
-  { col: 10, path: 'Card_Payments_Transactions.Credit_Card.at_PoS.Volume', pre_2022_03_Col: 10, pre_2020_04_Col: 8 },
-  { col: 11, path: 'Card_Payments_Transactions.Credit_Card.at_PoS.Value', pre_2022_03_Col: 12, pre_2020_04_Col: 10 },
+  { col: 8, path: 'Infrastructure.Credit_Cards', pre_2022_03_Col: 8, pre_2020_05_Col: 6 },
+  { col: 9, path: 'Infrastructure.Debit_Cards', pre_2022_03_Col: 13, pre_2020_05_Col: 11 },
+  { col: 10, path: 'Card_Payments_Transactions.Credit_Card.at_PoS.Volume', pre_2022_03_Col: 10, pre_2020_05_Col: 8 },
+  { col: 11, path: 'Card_Payments_Transactions.Credit_Card.at_PoS.Value', pre_2022_03_Col: 12, pre_2020_05_Col: 10 },
   { col: 12, path: 'Card_Payments_Transactions.Credit_Card.Online_ecom.Volume' },
   { col: 13, path: 'Card_Payments_Transactions.Credit_Card.Online_ecom.Value' },
   { col: 14, path: 'Card_Payments_Transactions.Credit_Card.Others.Volume' },
   { col: 15, path: 'Card_Payments_Transactions.Credit_Card.Others.Value' },
-  { col: 16, path: 'Card_Payments_Transactions.Credit_Card.Cash_Withdrawal.At_ATM.Volume', pre_2022_03_Col: 9, pre_2020_04_Col: 7 },
-  { col: 17, path: 'Card_Payments_Transactions.Credit_Card.Cash_Withdrawal.At_ATM.Value', pre_2022_03_Col: 11, pre_2020_04_Col: 9 },
-  { col: 18, path: 'Card_Payments_Transactions.Debit_Card.at_PoS.Volume', pre_2022_03_Col: 15, pre_2020_04_Col: 13 },
-  { col: 19, path: 'Card_Payments_Transactions.Debit_Card.at_PoS.Value', pre_2022_03_Col: 17, pre_2020_04_Col: 15 },
+  { col: 16, path: 'Card_Payments_Transactions.Credit_Card.Cash_Withdrawal.At_ATM.Volume', pre_2022_03_Col: 9, pre_2020_05_Col: 7 },
+  { col: 17, path: 'Card_Payments_Transactions.Credit_Card.Cash_Withdrawal.At_ATM.Value', pre_2022_03_Col: 11, pre_2020_05_Col: 9 },
+  { col: 18, path: 'Card_Payments_Transactions.Debit_Card.at_PoS.Volume', pre_2022_03_Col: 15, pre_2020_05_Col: 13 },
+  { col: 19, path: 'Card_Payments_Transactions.Debit_Card.at_PoS.Value', pre_2022_03_Col: 17, pre_2020_05_Col: 15 },
   { col: 20, path: 'Card_Payments_Transactions.Debit_Card.Online_ecom.Volume' },
   { col: 21, path: 'Card_Payments_Transactions.Debit_Card.Online_ecom.Value' },
   { col: 22, path: 'Card_Payments_Transactions.Debit_Card.Others.Volume' },
   { col: 23, path: 'Card_Payments_Transactions.Debit_Card.Others.Value' },
-  { col: 24, path: 'Card_Payments_Transactions.Debit_Card.Cash_Withdrawal.At_ATM.Volume', pre_2022_03_Col: 14, pre_2020_04_Col: 12 },
-  { col: 25, path: 'Card_Payments_Transactions.Debit_Card.Cash_Withdrawal.At_ATM.Value', pre_2022_03_Col: 16, pre_2020_04_Col: 14 },
+  { col: 24, path: 'Card_Payments_Transactions.Debit_Card.Cash_Withdrawal.At_ATM.Volume', pre_2022_03_Col: 14, pre_2020_05_Col: 12 },
+  { col: 25, path: 'Card_Payments_Transactions.Debit_Card.Cash_Withdrawal.At_ATM.Value', pre_2022_03_Col: 16, pre_2020_05_Col: 14 },
   { col: 26, path: 'Card_Payments_Transactions.Debit_Card.Cash_Withdrawal.At_PoS.Volume' },
   { col: 27, path: 'Card_Payments_Transactions.Debit_Card.Cash_Withdrawal.At_PoS.Value' },
 ];
@@ -99,14 +99,14 @@ fs.readdirSync(excelDir)
 
       // Per-file year/month and format detection
       let year = 0, month = 0;
-      let pre_2020_04_Format = false;
+      let pre_2020_05_Format = false;
       let pre_2022_03_Format = false;
       const ym = extractYearMonthFromFilename(baseName);
       if (ym) {
         year = ym.year;
         month = ym.month;
-        if (year < 2020 || (year === 2020 && month < 4)) {
-          pre_2020_04_Format = true;
+        if (year < 2020 || (year === 2020 && month < 5)) {
+          pre_2020_05_Format = true;
         } else if (year < 2022 || (year === 2022 && month < 3)) {
           pre_2022_03_Format = true;
         }
@@ -121,12 +121,12 @@ fs.readdirSync(excelDir)
         if (!row[1] || row[1] === ('Total' || 'Grand Total') || !row[1]) continue;
 
         const bankData = {};
-        columnMapping.forEach(({ col, path, pre_2022_03_Col, pre_2020_04_Col }) => {
+        columnMapping.forEach(({ col, path, pre_2022_03_Col, pre_2020_05_Col }) => {
           let value;
-          if (pre_2020_04_Format) {
-            if (typeof pre_2020_04_Col === 'undefined') value = 0;
-            if (typeof row[1] === 'number') pre_2020_04_Col = pre_2020_04_Col + 1; // Adjust for Sr.No.-based index
-            value = row[pre_2020_04_Col];
+          if (pre_2020_05_Format) {
+            if (typeof pre_2020_05_Col === 'undefined') value = 0;
+            if (typeof row[1] === 'number') pre_2020_05_Col = pre_2020_05_Col + 1; // Adjust for Sr.No.-based index
+            value = row[pre_2020_05_Col];
           } else if (pre_2022_03_Format) {
             if (typeof pre_2022_03_Col === 'undefined') value = 0;
             value = row[pre_2022_03_Col];
