@@ -34,7 +34,7 @@ export const BANK_ACRONYMS = {
   },
   'BBK': {
     Bank_Type: "Foreign Banks",
-    names: ['BANK OF BAHRAIN AND KUWAIT']
+    names: ['BANK OF BAHRAIN AND KUWAIT', "BANK OF BAHRAIN & KUWAIT B.S.C."]
   },
   'BOB': {
     Bank_Type: "Public Sector Banks",
@@ -104,7 +104,7 @@ export const BANK_ACRONYMS = {
   },
   'DOHA': {
     Bank_Type: "Foreign Banks",
-    names: ['DOHA BANK QSC']
+    names: ['DOHA BANK QSC', "DOHA BANK Q.P.S.C."]
   },
   'EQUITAS': {
     Bank_Type: "Small Finance Banks",
@@ -189,6 +189,10 @@ export const BANK_ACRONYMS = {
   'KARNATAKA': {
     Bank_Type: "Private Sector Banks",
     names: ['KARNATAKA BANK LTD']
+  },
+  "KHB": {
+    Bank_Type: "Foreign Banks",
+    names: ['KEB Hana Bank']
   },
   'KVB': {
     Bank_Type: "Private Sector Banks",

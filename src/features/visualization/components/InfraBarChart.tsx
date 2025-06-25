@@ -13,6 +13,7 @@ import { CanvasRenderer } from 'echarts/renderers';
 import DataFilter from '../../../components/common/DataFilter';
 import type { BankData } from '../../../types/global.types';
 import { formatMonthYear } from '../../../utils/time'
+import { title } from 'process';
 
 // Register ECharts components once at the module level
 echarts.use([
@@ -112,6 +113,10 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
     const chart = echarts.init(chartRef.current, 'dark');
     const option = {
       backgroundColor: 'transparent',
+      title: {
+        text: `Bank ${selectedMonth && formatMonthYear(selectedMonth)} POS Assets`,
+        left: 'center',
+      },
       tooltip: {
         trigger: 'axis',
         axisPointer: { type: 'shadow' },
@@ -176,73 +181,70 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
   }, [sortedData, metric]);
 
   return (
-    <div className="p-2">
-      <h2 className='p-2'>Bank {selectedMonth && formatMonthYear(selectedMonth)} POS Assets</h2>
-      <div className="min-w-100">
-        <div className="flex justify-stretch justify-items-stretch gap-4 mb-2 w-full">
-          <DataFilter
-            bankTypes={bankTypes}
-            selectedBankType={selectedBankType}
-            onBankTypeChange={setSelectedBankType}
-            filters={{ bankType: true }}
-          />
-          <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem]">
-            <span>Metric</span>
-            <div className="dropdown mt-1">
-              <button
-                popoverTarget="metric-dropdown"
-                className="btn btn-sm btn-outline w-full justify-between"
-                type="button"
-                aria-haspopup="listbox"
-                aria-expanded="false"
-              >
-                {INFRA_METRICS.find(opt => opt.value === metric)?.label || 'Select Metric'}
-              </button>
-              <ul
-                className="dropdown-content menu menu-sm p-0 shadow bg-base-100 rounded-box w-full z-10"
-                popover="auto"
-                id="metric-dropdown"
-                role="listbox"
-              >
-                {INFRA_METRICS.map(opt => (
-                  <li key={opt.value}>
-                    <button
-                      className={`w-full text-left px-4 py-2 ${metric === opt.value ? 'bg-primary text-primary-content' : ''}`}
-                      onClick={() => setMetric(opt.value)}
-                      role="option"
-                      aria-selected={metric === opt.value}
-                    >
-                      {opt.label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem] self-end ml-auto">
-            <div className="join mt-1">
-              <input
-                id="topN"
-                type="number"
-                min={1}
-                max={data.length}
-                value={topN}
-                onChange={e => setTopN(Math.max(1, Math.min(data.length, Number(e.target.value))))}
-                className="input input-sm input-bordered w-16 join-item"
-                aria-label="Show top N banks"
-              />
-              <span className="join-item flex items-center px-2 text-sm text-gray-400 bg-base-200">banks</span>
-            </div>
+    <div className="flex flex-col justify-between h-full">
+      <div className="flex justify-stretch justify-items-stretch gap-4 mb-2 w-full">
+        <DataFilter
+          bankTypes={bankTypes}
+          selectedBankType={selectedBankType}
+          onBankTypeChange={setSelectedBankType}
+          filters={{ bankType: true }}
+        />
+        <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem]">
+          <span>Metric</span>
+          <div className="dropdown mt-1">
+            <button
+              popoverTarget="metric-dropdown"
+              className="btn btn-sm btn-outline w-full justify-between text-base-content"
+              type="button"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+            >
+              {INFRA_METRICS.find(opt => opt.value === metric)?.label || 'Select Metric'}
+            </button>
+            <ul
+              className="dropdown-content menu menu-sm p-0 shadow bg-base-100 rounded-box w-full z-10"
+              popover="auto"
+              id="metric-dropdown"
+              role="listbox"
+            >
+              {INFRA_METRICS.map(opt => (
+                <li key={opt.value}>
+                  <button
+                    className={`w-full text-left px-4 py-2 ${metric === opt.value ? 'bg-primary text-primary-content' : 'text-base-content'}`}
+                    onClick={() => setMetric(opt.value)}
+                    role="option"
+                    aria-selected={metric === opt.value}
+                  >
+                    {opt.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <div
-          ref={chartRef}
-          aria-label="Bank Infrastructure Bar Chart"
-          role="img"
-          tabIndex={0}
-          className="w-full h-[400px]"
-        />
+        <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem] self-end ml-auto">
+          <div className="join mt-1">
+            <input
+              id="topN"
+              type="number"
+              min={1}
+              max={data.length}
+              value={topN}
+              onChange={e => setTopN(Math.max(1, Math.min(data.length, Number(e.target.value))))}
+              className="input input-sm input-bordered w-16 join-item text-base-content"
+              aria-label="Show top N banks"
+            />
+            <span className="join-item flex items-center px-2 text-sm bg-base-200 text-base-content">banks</span>
+          </div>
+        </div>
       </div>
+      <div
+        ref={chartRef}
+        aria-label="Bank Infrastructure Bar Chart"
+        role="img"
+        tabIndex={0}
+        className="w-full h-[400px]"
+      />
     </div>
   );
 };

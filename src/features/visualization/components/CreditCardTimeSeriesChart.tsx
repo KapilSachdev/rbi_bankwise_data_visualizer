@@ -184,50 +184,52 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
   }, [option]);
 
   return (
-    <div>
-      {/* DaisyUI Range Slider for Year Range Selection */}
-      <div className="flex flex-col gap-2 mb-4">
-        <label className="text-sm font-medium text-gray-700 dark:text-gray-200" htmlFor="year-range-slider">
-          Year Range: {yearRange[0]} - {yearRange[1]}
-        </label>
-        <div className="flex items-center gap-2">
-          <span className="text-xs text-gray-500 dark:text-gray-400">{years[0]}</span>
-          <input
-            id="year-range-slider"
-            type="range"
-            min={years[0]}
-            max={years[years.length - 1]}
-            value={yearRange[0]}
-            className="range range-primary flex-1"
-            step={1}
-            onChange={e => {
-              const newStart = Number(e.target.value);
-              setYearRange(([_, end]) => [Math.min(newStart, end), Math.max(newStart, end)]);
-            }}
-            aria-label="Select start year"
-          />
-          <input
-            type="range"
-            min={years[0]}
-            max={years[years.length - 1]}
-            value={yearRange[1]}
-            className="range range-secondary flex-1"
-            step={1}
-            onChange={e => {
-              const newEnd = Number(e.target.value);
-              setYearRange(([start, _]) => [Math.min(start, newEnd), Math.max(start, newEnd)]);
-            }}
-            aria-label="Select end year"
-          />
-          <span className="text-xs text-gray-500 dark:text-gray-400">{years[years.length - 1]}</span>
+    <div className='flex flex-col gap-4 justify-between h-full'>
+      <div className='flex gap-4 justify-between mb-4'>
+        <DataFilter
+          bankTypes={bankTypes}
+          selectedBankType={selectedBankType}
+          onBankTypeChange={setSelectedBankType}
+          filters={{ bankType: true }}
+        />
+
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-medium" htmlFor="year-range-slider">
+            Year Range: {yearRange[0]} - {yearRange[1]}
+          </label>
+          <div className="flex items-center gap-2">
+            <span className="text-xs">{years[0]}</span>
+            <input
+              id="year-range-slider"
+              type="range"
+              min={years[0]}
+              max={years[years.length - 1]}
+              value={yearRange[0]}
+              className="range range-primary flex-1"
+              step={1}
+              onChange={e => {
+                const newStart = Number(e.target.value);
+                setYearRange(([_, end]) => [Math.min(newStart, end), Math.max(newStart, end)]);
+              }}
+              aria-label="Select start year"
+            />
+            <input
+              type="range"
+              min={years[0]}
+              max={years[years.length - 1]}
+              value={yearRange[1]}
+              className="range range-secondary flex-1"
+              step={1}
+              onChange={e => {
+                const newEnd = Number(e.target.value);
+                setYearRange(([start, _]) => [Math.min(start, newEnd), Math.max(start, newEnd)]);
+              }}
+              aria-label="Select end year"
+            />
+            <span className="text-xs">{years[years.length - 1]}</span>
+          </div>
         </div>
       </div>
-      <DataFilter
-        bankTypes={bankTypes}
-        selectedBankType={selectedBankType}
-        onBankTypeChange={setSelectedBankType}
-        filters={{ bankType: true }}
-      />
       <div
         ref={chartRef}
         className="w-full h-[400px]"
