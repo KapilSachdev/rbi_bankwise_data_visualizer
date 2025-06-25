@@ -1,6 +1,6 @@
 export const BANK_ACRONYMS = {
   'AIRTEL': {
-    Bank_Type: "Payment Banks",
+    Bank_Type: "Payments Banks",
     names: ['AIRTEL PAYMENTS BANK LIMITED']
   },
   'AMEX': {
