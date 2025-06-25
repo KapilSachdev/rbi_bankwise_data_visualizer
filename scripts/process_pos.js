@@ -3,7 +3,7 @@ import * as XLSX from 'xlsx';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { mapBankShortName, getBankTypeByName } from './utils.js';
+import { mapBankShortName, getBankTypeByName, mapFullNameFromShortName } from './utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -94,7 +94,7 @@ fs.readdirSync(excelDir)
       // Find start of data
       let startIndex = data.findIndex(row => row[1] === 'Scheduled Commercial Banks') + 1;
       // If not found, assume that excel has numbered headers before data
-      if (startIndex === 0) startIndex = data.findIndex(row => row[0] === 1) + 1;
+      if (startIndex === 0) startIndex = data.findIndex(row => row[0] === 1);
 
 
       // Per-file year/month and format detection
@@ -114,11 +114,14 @@ fs.readdirSync(excelDir)
 
 
 
+
       for (let i = startIndex; i < data.length; i++) {
         const row = data[i];
+        // Ensure row is defined and has at least two columns
+        if (!row || !Array.isArray(row) || typeof row[1] === 'undefined') continue;
 
         // Skip non-data rows
-        if (!row[1] || row[1] === ('Total' || 'Grand Total') || !row[1]) continue;
+        if (!row[1] || row[1] === 'Total' || row[1] === 'Grand Total') continue;
 
         const bankData = {};
         columnMapping.forEach(({ col, path, pre_2022_03_Col, pre_2020_05_Col }) => {
@@ -129,7 +132,7 @@ fs.readdirSync(excelDir)
             value = row[pre_2020_05_Col];
           } else if (pre_2022_03_Format) {
             if (typeof pre_2022_03_Col === 'undefined') value = 0;
-            value = row[pre_2022_03_Col];
+            else value = row[pre_2022_03_Col];
           } else {
             value = row[col + 1];
           }
@@ -140,6 +143,10 @@ fs.readdirSync(excelDir)
         // Add short name/acronym for the bank
         const bankName = bankData.Bank_Name;
         bankData.Bank_Short_Name = mapBankShortName(bankName);
+        // As bank names can be different, pick the first name from the acronym mapping
+        if (bankData.Bank_Short_Name != 'Unknown  Bank') {
+          bankData.Bank_Name = mapFullNameFromShortName(bankData.Bank_Short_Name);
+        }
         // Assign robust Bank_Type using utility
         bankData.Bank_Type = getBankTypeByName(bankName);
 

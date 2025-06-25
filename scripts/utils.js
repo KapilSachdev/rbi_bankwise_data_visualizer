@@ -30,6 +30,14 @@ export const mapBankShortName = (bankName) => {
   return bankName.trim();
 };
 
+export const mapFullNameFromShortName = (shortName) => {
+  if (!shortName || typeof shortName !== "string") return "";
+  const obj = BANK_ACRONYMS[shortName];
+  if (obj && Array.isArray(obj.names) && obj.names.length > 0)
+    return obj.names[0]; // Return the first full name
+  return "";
+};
+
 /**
  * Returns the bank type for a given bank name, or 'Unknown' if not found.
  */
