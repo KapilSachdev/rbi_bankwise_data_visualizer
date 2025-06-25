@@ -1,6 +1,6 @@
 export const BANK_ACRONYMS = {
   'AIRTEL': {
-    Bank_Type: "Payments Banks",
+    Bank_Type: "Payment Banks",
     names: ['AIRTEL PAYMENTS BANK LIMITED']
   },
   'AMEX': {
@@ -119,7 +119,7 @@ export const BANK_ACRONYMS = {
     names: ['FEDERAL BANK LTD']
   },
   'FINO': {
-    Bank_Type: "Payments Banks",
+    Bank_Type: "Payment Banks",
     names: ['FINO PAYMENTS BANK LIMITED']
   },
   'HDFC': {
@@ -151,7 +151,7 @@ export const BANK_ACRONYMS = {
     names: ['ING VYSYA BANK LTD', 'ING VYSYA BANK']
   },
   'IPPB': {
-    Bank_Type: "Payments Banks",
+    Bank_Type: "Payment Banks",
     names: ['INDIA POST PAYMENTS BANK LIMITED']
   },
   'INDIAN': {
@@ -183,7 +183,7 @@ export const BANK_ACRONYMS = {
     names: ['SLICE SMALL FINANCE BANK LIMITED']
   },
   'Jio': {
-    Bank_Type: "Payments Banks",
+    Bank_Type: "Payment Banks",
     names: ['JIO PAYMENTS BANK LIMITED']
   },
   'KARNATAKA': {
@@ -219,7 +219,7 @@ export const BANK_ACRONYMS = {
     names: ['NORTH EAST SMALL FINANCE BANK LTD']
   },
   'NSDL': {
-    Bank_Type: "Payments Banks",
+    Bank_Type: "Payment Banks",
     names: ['NSDL PAYMENTS BANK LIMITED']
   },
   "OBC": {
@@ -231,7 +231,7 @@ export const BANK_ACRONYMS = {
     names: ['OMAN INTERNATIONAL BANK SAO']
   },
   'PAYTM': {
-    Bank_Type: "Payments Banks",
+    Bank_Type: "Payment Banks",
     names: ['PAYTM PAYMENTS BANK LIMITED']
   },
   'PSB': {
