@@ -1,24 +1,3417 @@
-[
-  {
-    "Sr_No": 1,
-    "Bank_Name": "ALLAHABAD BANK",
+{
+  "banks": [
+    {
+      "Sr_No": 1,
+      "Bank_Name": "ALLAHABAD BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 419,
+          "Off_site": 309
+        },
+        "PoS": 185,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 2417270
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 122142,
+            "Value": 234.2011109
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 3304139,
+              "Value": 8361.699999999999
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "Allahabad",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 2,
+      "Bank_Name": "ANDHRA BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 709,
+          "Off_site": 610
+        },
+        "PoS": 2272,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 129043,
+        "Debit_Cards": 8873412
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 154228,
+            "Value": 318.4
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 8374,
+              "Value": 35.9
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 623331,
+            "Value": 699.9
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 9709405,
+              "Value": 19910.3
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "ANDHRA",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 3,
+      "Bank_Name": "BANK OF BARODA",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 2776,
+          "Off_site": 1325
+        },
+        "PoS": 6807,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 70926,
+        "Debit_Cards": 11604384
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 97505,
+            "Value": 229.60000000000002
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 1290,
+              "Value": 4.2
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 1323830,
+            "Value": 1472.81521645
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 9868349,
+              "Value": 38895.02953531
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "BOB",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 4,
+      "Bank_Name": "BANK OF INDIA",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 1545,
+          "Off_site": 1360
+        },
+        "PoS": 2276,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 115868,
+        "Debit_Cards": 15286558
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 98550,
+            "Value": 259.9
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 7529,
+              "Value": 49.2
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 1295243,
+            "Value": 1307.1000000000001
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 13735811,
+              "Value": 31534.8
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "BOI",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 5,
+      "Bank_Name": "BANK OF MAHARASHTRA",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 583,
+          "Off_site": 317
+        },
+        "PoS": 23,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 21556,
+        "Debit_Cards": 3911378
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 31984,
+            "Value": 68.18146191
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 245,
+              "Value": 0.93353097
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 423305,
+            "Value": 449.67274062999996
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 3392976,
+              "Value": 8374.31055
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "BOM",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 6,
+      "Bank_Name": "CANARA BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 2028,
+          "Off_site": 1977
+        },
+        "PoS": 1002,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 63669,
+        "Debit_Cards": 11603957
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 61246,
+            "Value": 156.7
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 10679,
+              "Value": 51.5
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 999566,
+            "Value": 1443.1
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 12634070,
+              "Value": 34581.9
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "CANARA",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 7,
+      "Bank_Name": "CENTRAL BANK OF INDIA",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 1742,
+          "Off_site": 1391
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 58465,
+        "Debit_Cards": 5651581
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 52560,
+            "Value": 210.2
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 272,
+              "Value": 1.7999999999999998
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 265357,
+            "Value": 493.40000000000003
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 13763958,
+              "Value": 36107.1
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "CBI",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 8,
+      "Bank_Name": "CORPORATION BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 1052,
+          "Off_site": 701
+        },
+        "PoS": 14111,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 78435,
+        "Debit_Cards": 5537235
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 63372,
+            "Value": 144.9
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 905,
+              "Value": 4.8
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 624235,
+            "Value": 842.51762156
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 3367855,
+              "Value": 11823.3
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "CORPORATION",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 9,
+      "Bank_Name": "DENA BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 645,
+          "Off_site": 125
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 2228546
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 172604,
+            "Value": 201.89396
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 2347159,
+              "Value": 7735.170556000001
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "DENA",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 10,
+      "Bank_Name": "INDIAN BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 1205,
+          "Off_site": 402
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 56843,
+        "Debit_Cards": 7408049
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 76703,
+            "Value": 173.19
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 2921,
+              "Value": 10.695676
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 746615,
+            "Value": 763.5
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 11002067,
+              "Value": 25318.4
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "INDIAN",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 11,
+      "Bank_Name": "INDIAN OVERSEAS BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 1358,
+          "Off_site": 791
+        },
+        "PoS": 490,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 45729,
+        "Debit_Cards": 4739524
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 26411,
+            "Value": 64.5
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 2868,
+              "Value": 4.9
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 418753,
+            "Value": 742.8
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 4001699,
+              "Value": 13157.8
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "IOB",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 12,
+      "Bank_Name": "ORIENTAL BANK OF COMMERCE",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 1320,
+          "Off_site": 377
+        },
+        "PoS": 1472,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 4558999
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 386283,
+            "Value": 435.10699999999997
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 4192821,
+              "Value": 15590.488000000001
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "OBC",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 13,
+      "Bank_Name": "PUNJAB AND SIND BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 322,
+          "Off_site": 66
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 367072
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 832,
+            "Value": 2.2
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 236404,
+              "Value": 909.8000000000001
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "PSB",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 14,
+      "Bank_Name": "PUNJAB NATIONAL BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 3160,
+          "Off_site": 3417
+        },
+        "PoS": 10157,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 121195,
+        "Debit_Cards": 22998562
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 160141,
+            "Value": 318.50600973
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 2178,
+              "Value": 9.312830400000001
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 1744353,
+            "Value": 3230.8779871799998
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 19279083,
+              "Value": 74054.87337041
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "PNB",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 15,
+      "Bank_Name": "Syndicate Bank",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 1158,
+          "Off_site": 205
+        },
+        "PoS": 857,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 67896,
+        "Debit_Cards": 5875537
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 52863,
+            "Value": 108.019246
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 1661,
+              "Value": 7.110612
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 323509,
+            "Value": 500.63651100000004
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 7404520,
+              "Value": 18588.53039
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "Syndicate",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 16,
+      "Bank_Name": "UCO BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 1191,
+          "Off_site": 577
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 3579518
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 371636,
+            "Value": 427.59999999999997
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 3169599,
+              "Value": 11979.400000000001
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "UCO",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 17,
+      "Bank_Name": "UNION BANK OF INDIA",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 2820,
+          "Off_site": 2517
+        },
+        "PoS": 4349,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 49729,
+        "Debit_Cards": 10779383
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 54401,
+            "Value": 144.5
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 823,
+              "Value": 3.5
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 678946,
+            "Value": 951.5999999999999
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 9816138,
+              "Value": 29922.9
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "UBI",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 18,
+      "Bank_Name": "UNITED BANK OF INDIA",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 490,
+          "Off_site": 596
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 2620577
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 223867,
+            "Value": 339.20000000000005
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 2480341,
+              "Value": 9508.099999999999
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "UNITED",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 19,
+      "Bank_Name": "Vijaya Bank",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 797,
+          "Off_site": 204
+        },
+        "PoS": 1457,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 53963,
+        "Debit_Cards": 3086330
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 166171,
+            "Value": 343.742364
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 4389,
+              "Value": 24.565043000000003
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 200931,
+            "Value": 469.397937
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 2702524,
+              "Value": 8180.083427
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "Vijaya",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 20,
+      "Bank_Name": "STATE BANK OF INDIA",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 18355,
+          "Off_site": 14422
+        },
+        "PoS": 104615,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 2720066,
+        "Debit_Cards": 123901000
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 5271901,
+            "Value": 12350.08485691
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 36709,
+              "Value": 176.95991606
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 12598000,
+            "Value": 14999.6
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 193398000,
+              "Value": 528522.9
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "SBI",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 21,
+      "Bank_Name": "State Bank of Bikaner & Jaipur",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 691,
+          "Off_site": 493
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 5690723
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 300412,
+            "Value": 234.89999999999998
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 7506904,
+              "Value": 20179.9
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "SBBJ",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 22,
+      "Bank_Name": "STATE BANK OF HYDERABAD",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 1178,
+          "Off_site": 528
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 8482630
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 455069,
+            "Value": 614.9
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 13572193,
+              "Value": 34011.799999999996
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "SBH",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 23,
+      "Bank_Name": "STATE BANK OF MYSORE",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 615,
+          "Off_site": 263
+        },
+        "PoS": 627,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 3380166
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 208313,
+            "Value": 387.40000000000003
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 5392399,
+              "Value": 13017.8
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "SBMysore",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 24,
+      "Bank_Name": "State Bank of Patiala",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 731,
+          "Off_site": 276
+        },
+        "PoS": 617,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 4210777
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 158766,
+            "Value": 213.566388
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 4369294,
+              "Value": 12839.136682
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "SBP",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 25,
+      "Bank_Name": "State Bank of Travancore",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 702,
+          "Off_site": 332
+        },
+        "PoS": 940,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 7597047
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 392165,
+            "Value": 776.7785564000001
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 8108072,
+              "Value": 25473.698141999997
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "SBT",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 26,
+      "Bank_Name": "IDBI BANK LTD",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 988,
+          "Off_site": 942
+        },
+        "PoS": 14130,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 5893716
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 1070290,
+            "Value": 1390.280071021
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 6826857,
+              "Value": 26216.520365319997
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "IDBI",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 27,
+      "Bank_Name": "CSB BANK LIMITED",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 158,
+          "Off_site": 56
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 515921
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 14989,
+            "Value": 40.80801927
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 265227,
+              "Value": 729.3470574
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "CSB",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 28,
+      "Bank_Name": "CITY UNION BANK LTD",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 348,
+          "Off_site": 509
+        },
+        "PoS": 2537,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 1095566
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 181329,
+            "Value": 212.02
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 1478013,
+              "Value": 4881.3
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "CUB",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 29,
+      "Bank_Name": "DHANALAXMI BANK LTD",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 175,
+          "Off_site": 221
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 2799,
+        "Debit_Cards": 780171
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 5462,
+            "Value": 12.5
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 10,
+              "Value": 0.0025
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 50729,
+            "Value": 83.6
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 432081,
+              "Value": 1588.6000000000001
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "DHAN",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 30,
+      "Bank_Name": "FEDERAL BANK LTD",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 863,
+          "Off_site": 407
+        },
+        "PoS": 8245,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 3422126
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 396395,
+            "Value": 688.8
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 3249120,
+              "Value": 14267.9
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "FEDERAL",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 31,
+      "Bank_Name": "ING VYSYA BANK LTD",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 269,
+          "Off_site": 349
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 1226012
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 190723,
+            "Value": 330.5
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 2140879,
+              "Value": 6061.900000000001
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "ING",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 32,
+      "Bank_Name": "JAMMU AND KASHMIR BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 460,
+          "Off_site": 266
+        },
+        "PoS": 3532,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 35611,
+        "Debit_Cards": 1457596
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 44460,
+            "Value": 159.60166600000002
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 2374,
+              "Value": 8.079053
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 37181,
+            "Value": 116.71207600000001
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 2686471,
+              "Value": 11933.352882
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "J&K",
+      "Bank_Type": "Public Sector Banks"
+    },
+    {
+      "Sr_No": 33,
+      "Bank_Name": "KARNATAKA BANK LTD",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 315,
+          "Off_site": 253
+        },
+        "PoS": 1986,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 1986375
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 227677,
+            "Value": 306
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 2001977,
+              "Value": 6110.599999999999
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "KARNATAKA",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 34,
+      "Bank_Name": "KARUR VYSYA BANK LTD",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 609,
+          "Off_site": 859
+        },
+        "PoS": 7151,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 2556215
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 299916,
+            "Value": 398.96594559
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 3085486,
+              "Value": 12565.57184573
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "KVB",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 35,
+      "Bank_Name": "Lakshmi Vilas Bank Ltd.",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 190,
+          "Off_site": 498
+        },
+        "PoS": 3119,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 445726
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 101215,
+            "Value": 272.6
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 1332731,
+              "Value": 4098.5
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "LVB",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 36,
+      "Bank_Name": "RBL BANK LTD",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 80,
+          "Off_site": 163
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 67648
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 10801,
+            "Value": 14.8
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 139577,
+              "Value": 378
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "RBL",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 37,
+      "Bank_Name": "SOUTH INDIAN BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 656,
+          "Off_site": 222
+        },
+        "PoS": 283,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 2903994
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 160783,
+            "Value": 312.8
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 1951486,
+              "Value": 6624.6
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "SIB",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 38,
+      "Bank_Name": "TAMILNAD MERCANTILE BANK LTD",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 244,
+          "Off_site": 298
+        },
+        "PoS": 1065,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 6136,
+        "Debit_Cards": 606239
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 5601,
+            "Value": 11.583215
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 33565,
+            "Value": 80.9
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 1921499,
+              "Value": 7400.900000000001
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "TMB",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 39,
+      "Bank_Name": "DCB BANK LIMITED",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 98,
+          "Off_site": 153
+        },
+        "PoS": 597,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 2954,
+        "Debit_Cards": 164784
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 5541,
+            "Value": 10.8
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 379,
+              "Value": 2.1
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 50649,
+            "Value": 83
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 335686,
+              "Value": 1395.9
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "DCB",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 40,
+      "Bank_Name": "HDFC BANK LTD",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 4607,
+          "Off_site": 6570
+        },
+        "PoS": 233740,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 5042297,
+        "Debit_Cards": 16839269
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 13254814,
+            "Value": 34870.11498209
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 74207,
+              "Value": 499.07136545000003
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 8112916,
+            "Value": 11416.771297719999
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 29634445,
+              "Value": 124484.67532942
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "HDFC",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 41,
+      "Bank_Name": "ICICI BANK LTD",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 3618,
+          "Off_site": 7480
+        },
+        "PoS": 261359,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 3026665,
+        "Debit_Cards": 20402458
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 5976375,
+            "Value": 13217.7
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 7179,
+              "Value": 35.15
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 8578230,
+            "Value": 12920
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 30502832,
+              "Value": 132020
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "ICICI",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 42,
+      "Bank_Name": "INDUSIND BANK LTD",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 467,
+          "Off_site": 558
+        },
+        "PoS": 161,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 254402,
+        "Debit_Cards": 1372450
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 439050,
+            "Value": 1585.2
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 729,
+              "Value": 4.2
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 220964,
+            "Value": 338.40000000000003
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 1339748,
+              "Value": 5482.4
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "INDUSIND",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 43,
+      "Bank_Name": "KOTAK MAHINDRA BANK LTD",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 381,
+          "Off_site": 623
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 385347,
+        "Debit_Cards": 1040814
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 642610,
+            "Value": 1952.127672
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 3720,
+              "Value": 24.8813
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 595909,
+            "Value": 848.68530444014
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 2368840,
+              "Value": 8373.06055232997
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "KOTAK",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 44,
+      "Bank_Name": "AXIS BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 2407,
+          "Off_site": 9389
+        },
+        "PoS": 236283,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 1173992,
+        "Debit_Cards": 14691684
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 2229233,
+            "Value": 6671.4
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 9777,
+              "Value": 35.699999999999996
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 4602778,
+            "Value": 6784.34550471
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 26590395,
+              "Value": 109578.09999999999
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "AXIS",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 45,
+      "Bank_Name": "YES BANK LTD",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 363,
+          "Off_site": 759
+        },
+        "PoS": 5893,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 505379
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 230323,
+            "Value": 334.3
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 1023739,
+              "Value": 3535.6
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "YES",
+      "Bank_Type": "Private Sector Banks"
+    },
+    {
+      "Sr_No": 46,
+      "Bank_Name": "RBS (ABN AMRO)",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 29,
+          "Off_site": 81
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 85164,
+        "Debit_Cards": 169042
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 139120,
+            "Value": 394.51118899999994
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 595,
+              "Value": 4.2510999599999995
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 91160,
+            "Value": 163.57812612
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 290688,
+              "Value": 1185.90471545
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "RBS (ABN AMRO)",
+      "Bank_Type": "Foreign Banks"
+    },
+    {
+      "Sr_No": 47,
+      "Bank_Name": "AMERICAN EXPRESS",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 0,
+          "Off_site": 0
+        },
+        "PoS": 20841,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 635231,
+        "Debit_Cards": 0
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 1777266,
+            "Value": 15062.4
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 4609,
+              "Value": 31.549526
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "AMEX",
+      "Bank_Type": "Foreign Banks"
+    },
+    {
+      "Sr_No": 48,
+      "Bank_Name": "BARCLAYS BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 0,
+          "Off_site": 0
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 4651
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 288,
+            "Value": 1.02345153
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 635,
+              "Value": 3.31512915
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "BARCLAYS",
+      "Bank_Type": "Foreign Banks"
+    },
+    {
+      "Sr_No": 49,
+      "Bank_Name": "CITI BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 56,
+          "Off_site": 569
+        },
+        "PoS": 16051,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 2401465,
+        "Debit_Cards": 1796208
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 7537658,
+            "Value": 20295.378487
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 38460,
+              "Value": 260.17879700000003
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 1821332,
+            "Value": 3839.6049190000003
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 3469492,
+              "Value": 11607.091645
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "CITI",
+      "Bank_Type": "Foreign Banks"
+    },
+    {
+      "Sr_No": 50,
+      "Bank_Name": "DEUTSCHE BANK LTD",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 13,
+          "Off_site": 40
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 81176
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 88644,
+            "Value": 174.97624014
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 185699,
+              "Value": 723.805461
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "DEUTSCHE",
+      "Bank_Type": "Foreign Banks"
+    },
+    {
+      "Sr_No": 51,
+      "Bank_Name": "DBS BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 6,
+          "Off_site": 29
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 0,
+        "Debit_Cards": 13853
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 6822,
+            "Value": 13.899999999999999
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 60313,
+              "Value": 152.3
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "DBS",
+      "Bank_Type": "Foreign Banks"
+    },
+    {
+      "Sr_No": 52,
+      "Bank_Name": "HSBC",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 70,
+          "Off_site": 74
+        },
+        "PoS": 11353,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 502446,
+        "Debit_Cards": 584629
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 1040737,
+            "Value": 2974.25673781993
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 3428,
+              "Value": 24.73455809
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 297660,
+            "Value": 664.68337738
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 458703,
+              "Value": 2042.90146711
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "HSBC",
+      "Bank_Type": "Foreign Banks"
+    },
+    {
+      "Sr_No": 53,
+      "Bank_Name": "STANDARD CHARTERED BANK",
+      "Infrastructure": {
+        "ATMs_CRMs": {
+          "On_site": 103,
+          "Off_site": 176
+        },
+        "PoS": 0,
+        "Micro_ATMs": 0,
+        "Bharat_QR_Codes": 0,
+        "UPI_QR_Codes": 0,
+        "Credit_Cards": 1367044,
+        "Debit_Cards": 781044
+      },
+      "Card_Payments_Transactions": {
+        "Credit_Card": {
+          "at_PoS": {
+            "Volume": 2346462,
+            "Value": 7125.599999999999
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 2806,
+              "Value": 12.4
+            }
+          }
+        },
+        "Debit_Card": {
+          "at_PoS": {
+            "Volume": 615938,
+            "Value": 1008.3
+          },
+          "Online_ecom": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Others": {
+            "Volume": 0,
+            "Value": 0
+          },
+          "Cash_Withdrawal": {
+            "At_ATM": {
+              "Volume": 1330397,
+              "Value": 4649.1
+            },
+            "At_PoS": {
+              "Volume": 0,
+              "Value": 0
+            }
+          }
+        }
+      },
+      "Bank_Short_Name": "SCB",
+      "Bank_Type": "Foreign Banks"
+    }
+  ],
+  "total": {
+    "Sr_No": 0,
     "Infrastructure": {
       "ATMs_CRMs": {
-        "On_site": 419,
-        "Off_site": 309
+        "On_site": 65165,
+        "Off_site": 65125
       },
-      "PoS": 185,
+      "PoS": 980583,
       "Micro_ATMs": 0,
       "Bharat_QR_Codes": 0,
       "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 2417270
+      "Credit_Cards": 18574936,
+      "Debit_Cards": 367794961
     },
     "Card_Payments_Transactions": {
       "Credit_Card": {
         "at_PoS": {
-          "Volume": 0,
-          "Value": 0
+          "Volume": 41812425,
+          "Value": 119233.59788745994
         },
         "Online_ecom": {
           "Volume": 0,
@@ -30,15 +3423,15 @@
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 0,
-            "Value": 0
+            "Volume": 229116,
+            "Value": 1327.6758079300002
           }
         }
       },
       "Debit_Card": {
         "at_PoS": {
-          "Volume": 122142,
-          "Value": 234.2011109
+          "Volume": 53147269,
+          "Value": 75075.01936204114
         },
         "Online_ecom": {
           "Volume": 0,
@@ -50,8 +3443,8 @@
         },
         "Cash_Withdrawal": {
           "At_ATM": {
-            "Volume": 3304139,
-            "Value": 8361.699999999999
+            "Volume": 493858796,
+            "Value": 1546670.4671026303
           },
           "At_PoS": {
             "Volume": 0,
@@ -59,3336 +3452,6 @@
           }
         }
       }
-    },
-    "Bank_Short_Name": "Allahabad",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 2,
-    "Bank_Name": "ANDHRA BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 709,
-        "Off_site": 610
-      },
-      "PoS": 2272,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 129043,
-      "Debit_Cards": 8873412
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 154228,
-          "Value": 318.4
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 8374,
-            "Value": 35.9
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 623331,
-          "Value": 699.9
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 9709405,
-            "Value": 19910.3
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "ANDHRA",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 3,
-    "Bank_Name": "BANK OF BARODA",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 2776,
-        "Off_site": 1325
-      },
-      "PoS": 6807,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 70926,
-      "Debit_Cards": 11604384
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 97505,
-          "Value": 229.60000000000002
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1290,
-            "Value": 4.2
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1323830,
-          "Value": 1472.81521645
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 9868349,
-            "Value": 38895.02953531
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "BOB",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 4,
-    "Bank_Name": "BANK OF INDIA",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 1545,
-        "Off_site": 1360
-      },
-      "PoS": 2276,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 115868,
-      "Debit_Cards": 15286558
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 98550,
-          "Value": 259.9
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 7529,
-            "Value": 49.2
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1295243,
-          "Value": 1307.1000000000001
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 13735811,
-            "Value": 31534.8
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "BOI",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 5,
-    "Bank_Name": "BANK OF MAHARASHTRA",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 583,
-        "Off_site": 317
-      },
-      "PoS": 23,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 21556,
-      "Debit_Cards": 3911378
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 31984,
-          "Value": 68.18146191
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 245,
-            "Value": 0.93353097
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 423305,
-          "Value": 449.67274062999996
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 3392976,
-            "Value": 8374.31055
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "BOM",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 6,
-    "Bank_Name": "CANARA BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 2028,
-        "Off_site": 1977
-      },
-      "PoS": 1002,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 63669,
-      "Debit_Cards": 11603957
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 61246,
-          "Value": 156.7
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 10679,
-            "Value": 51.5
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 999566,
-          "Value": 1443.1
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 12634070,
-            "Value": 34581.9
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "CANARA",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 7,
-    "Bank_Name": "CENTRAL BANK OF INDIA",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 1742,
-        "Off_site": 1391
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 58465,
-      "Debit_Cards": 5651581
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 52560,
-          "Value": 210.2
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 272,
-            "Value": 1.7999999999999998
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 265357,
-          "Value": 493.40000000000003
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 13763958,
-            "Value": 36107.1
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "CBI",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 8,
-    "Bank_Name": "CORPORATION BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 1052,
-        "Off_site": 701
-      },
-      "PoS": 14111,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 78435,
-      "Debit_Cards": 5537235
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 63372,
-          "Value": 144.9
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 905,
-            "Value": 4.8
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 624235,
-          "Value": 842.51762156
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 3367855,
-            "Value": 11823.3
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "CORPORATION",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 9,
-    "Bank_Name": "DENA BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 645,
-        "Off_site": 125
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 2228546
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 172604,
-          "Value": 201.89396
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 2347159,
-            "Value": 7735.170556000001
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "DENA",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 10,
-    "Bank_Name": "INDIAN BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 1205,
-        "Off_site": 402
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 56843,
-      "Debit_Cards": 7408049
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 76703,
-          "Value": 173.19
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 2921,
-            "Value": 10.695676
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 746615,
-          "Value": 763.5
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 11002067,
-            "Value": 25318.4
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "INDIAN",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 11,
-    "Bank_Name": "INDIAN OVERSEAS BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 1358,
-        "Off_site": 791
-      },
-      "PoS": 490,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 45729,
-      "Debit_Cards": 4739524
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 26411,
-          "Value": 64.5
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 2868,
-            "Value": 4.9
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 418753,
-          "Value": 742.8
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 4001699,
-            "Value": 13157.8
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "IOB",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 12,
-    "Bank_Name": "ORIENTAL BANK OF COMMERCE",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 1320,
-        "Off_site": 377
-      },
-      "PoS": 1472,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 4558999
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 386283,
-          "Value": 435.10699999999997
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 4192821,
-            "Value": 15590.488000000001
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "OBC",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 13,
-    "Bank_Name": "PUNJAB AND SIND BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 322,
-        "Off_site": 66
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 367072
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 832,
-          "Value": 2.2
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 236404,
-            "Value": 909.8000000000001
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "PSB",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 14,
-    "Bank_Name": "PUNJAB NATIONAL BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 3160,
-        "Off_site": 3417
-      },
-      "PoS": 10157,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 121195,
-      "Debit_Cards": 22998562
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 160141,
-          "Value": 318.50600973
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 2178,
-            "Value": 9.312830400000001
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1744353,
-          "Value": 3230.8779871799998
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 19279083,
-            "Value": 74054.87337041
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "PNB",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 15,
-    "Bank_Name": "Syndicate Bank",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 1158,
-        "Off_site": 205
-      },
-      "PoS": 857,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 67896,
-      "Debit_Cards": 5875537
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 52863,
-          "Value": 108.019246
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1661,
-            "Value": 7.110612
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 323509,
-          "Value": 500.63651100000004
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 7404520,
-            "Value": 18588.53039
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "Syndicate",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 16,
-    "Bank_Name": "UCO BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 1191,
-        "Off_site": 577
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 3579518
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 371636,
-          "Value": 427.59999999999997
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 3169599,
-            "Value": 11979.400000000001
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "UCO",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 17,
-    "Bank_Name": "UNION BANK OF INDIA",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 2820,
-        "Off_site": 2517
-      },
-      "PoS": 4349,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 49729,
-      "Debit_Cards": 10779383
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 54401,
-          "Value": 144.5
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 823,
-            "Value": 3.5
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 678946,
-          "Value": 951.5999999999999
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 9816138,
-            "Value": 29922.9
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "UBI",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 18,
-    "Bank_Name": "UNITED BANK OF INDIA",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 490,
-        "Off_site": 596
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 2620577
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 223867,
-          "Value": 339.20000000000005
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 2480341,
-            "Value": 9508.099999999999
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "UNITED",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 19,
-    "Bank_Name": "Vijaya Bank",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 797,
-        "Off_site": 204
-      },
-      "PoS": 1457,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 53963,
-      "Debit_Cards": 3086330
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 166171,
-          "Value": 343.742364
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 4389,
-            "Value": 24.565043000000003
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 200931,
-          "Value": 469.397937
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 2702524,
-            "Value": 8180.083427
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "Vijaya",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 20,
-    "Bank_Name": "STATE BANK OF INDIA",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 18355,
-        "Off_site": 14422
-      },
-      "PoS": 104615,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 2720066,
-      "Debit_Cards": 123901000
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 5271901,
-          "Value": 12350.08485691
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 36709,
-            "Value": 176.95991606
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 12598000,
-          "Value": 14999.6
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 193398000,
-            "Value": 528522.9
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "SBI",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 21,
-    "Bank_Name": "State Bank of Bikaner & Jaipur",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 691,
-        "Off_site": 493
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 5690723
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 300412,
-          "Value": 234.89999999999998
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 7506904,
-            "Value": 20179.9
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "SBBJ",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 22,
-    "Bank_Name": "STATE BANK OF HYDERABAD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 1178,
-        "Off_site": 528
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 8482630
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 455069,
-          "Value": 614.9
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 13572193,
-            "Value": 34011.799999999996
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "SBH",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 23,
-    "Bank_Name": "STATE BANK OF MYSORE",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 615,
-        "Off_site": 263
-      },
-      "PoS": 627,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 3380166
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 208313,
-          "Value": 387.40000000000003
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 5392399,
-            "Value": 13017.8
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "SBMysore",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 24,
-    "Bank_Name": "State Bank of Patiala",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 731,
-        "Off_site": 276
-      },
-      "PoS": 617,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 4210777
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 158766,
-          "Value": 213.566388
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 4369294,
-            "Value": 12839.136682
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "SBP",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 25,
-    "Bank_Name": "State Bank of Travancore",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 702,
-        "Off_site": 332
-      },
-      "PoS": 940,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 7597047
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 392165,
-          "Value": 776.7785564000001
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 8108072,
-            "Value": 25473.698141999997
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "SBT",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 26,
-    "Bank_Name": "IDBI BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 988,
-        "Off_site": 942
-      },
-      "PoS": 14130,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 5893716
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1070290,
-          "Value": 1390.280071021
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 6826857,
-            "Value": 26216.520365319997
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "IDBI",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 27,
-    "Bank_Name": "CSB BANK LIMITED",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 158,
-        "Off_site": 56
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 515921
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 14989,
-          "Value": 40.80801927
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 265227,
-            "Value": 729.3470574
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "CSB",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 28,
-    "Bank_Name": "CITY UNION BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 348,
-        "Off_site": 509
-      },
-      "PoS": 2537,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 1095566
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 181329,
-          "Value": 212.02
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1478013,
-            "Value": 4881.3
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "CUB",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 29,
-    "Bank_Name": "DHANALAXMI BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 175,
-        "Off_site": 221
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 2799,
-      "Debit_Cards": 780171
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 5462,
-          "Value": 12.5
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 10,
-            "Value": 0.0025
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 50729,
-          "Value": 83.6
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 432081,
-            "Value": 1588.6000000000001
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "DHAN",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 30,
-    "Bank_Name": "FEDERAL BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 863,
-        "Off_site": 407
-      },
-      "PoS": 8245,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 3422126
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 396395,
-          "Value": 688.8
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 3249120,
-            "Value": 14267.9
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "FEDERAL",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 31,
-    "Bank_Name": "ING VYSYA BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 269,
-        "Off_site": 349
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 1226012
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 190723,
-          "Value": 330.5
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 2140879,
-            "Value": 6061.900000000001
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "ING",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 32,
-    "Bank_Name": "JAMMU AND KASHMIR BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 460,
-        "Off_site": 266
-      },
-      "PoS": 3532,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 35611,
-      "Debit_Cards": 1457596
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 44460,
-          "Value": 159.60166600000002
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 2374,
-            "Value": 8.079053
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 37181,
-          "Value": 116.71207600000001
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 2686471,
-            "Value": 11933.352882
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "J&K",
-    "Bank_Type": "Public Sector Banks"
-  },
-  {
-    "Sr_No": 33,
-    "Bank_Name": "KARNATAKA BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 315,
-        "Off_site": 253
-      },
-      "PoS": 1986,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 1986375
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 227677,
-          "Value": 306
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 2001977,
-            "Value": 6110.599999999999
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "KARNATAKA",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 34,
-    "Bank_Name": "KARUR VYSYA BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 609,
-        "Off_site": 859
-      },
-      "PoS": 7151,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 2556215
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 299916,
-          "Value": 398.96594559
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 3085486,
-            "Value": 12565.57184573
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "KVB",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 35,
-    "Bank_Name": "Lakshmi Vilas Bank Ltd.",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 190,
-        "Off_site": 498
-      },
-      "PoS": 3119,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 445726
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 101215,
-          "Value": 272.6
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1332731,
-            "Value": 4098.5
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "LVB",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 36,
-    "Bank_Name": "RBL BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 80,
-        "Off_site": 163
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 67648
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 10801,
-          "Value": 14.8
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 139577,
-            "Value": 378
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "RBL",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 37,
-    "Bank_Name": "SOUTH INDIAN BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 656,
-        "Off_site": 222
-      },
-      "PoS": 283,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 2903994
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 160783,
-          "Value": 312.8
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1951486,
-            "Value": 6624.6
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "SIB",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 38,
-    "Bank_Name": "TAMILNAD MERCANTILE BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 244,
-        "Off_site": 298
-      },
-      "PoS": 1065,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 6136,
-      "Debit_Cards": 606239
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 5601,
-          "Value": 11.583215
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 33565,
-          "Value": 80.9
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1921499,
-            "Value": 7400.900000000001
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "TMB",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 39,
-    "Bank_Name": "DCB BANK LIMITED",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 98,
-        "Off_site": 153
-      },
-      "PoS": 597,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 2954,
-      "Debit_Cards": 164784
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 5541,
-          "Value": 10.8
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 379,
-            "Value": 2.1
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 50649,
-          "Value": 83
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 335686,
-            "Value": 1395.9
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "DCB",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 40,
-    "Bank_Name": "HDFC BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 4607,
-        "Off_site": 6570
-      },
-      "PoS": 233740,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 5042297,
-      "Debit_Cards": 16839269
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 13254814,
-          "Value": 34870.11498209
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 74207,
-            "Value": 499.07136545000003
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 8112916,
-          "Value": 11416.771297719999
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 29634445,
-            "Value": 124484.67532942
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "HDFC",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 41,
-    "Bank_Name": "ICICI BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 3618,
-        "Off_site": 7480
-      },
-      "PoS": 261359,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 3026665,
-      "Debit_Cards": 20402458
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 5976375,
-          "Value": 13217.7
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 7179,
-            "Value": 35.15
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 8578230,
-          "Value": 12920
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 30502832,
-            "Value": 132020
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "ICICI",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 42,
-    "Bank_Name": "INDUSIND BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 467,
-        "Off_site": 558
-      },
-      "PoS": 161,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 254402,
-      "Debit_Cards": 1372450
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 439050,
-          "Value": 1585.2
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 729,
-            "Value": 4.2
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 220964,
-          "Value": 338.40000000000003
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1339748,
-            "Value": 5482.4
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "INDUSIND",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 43,
-    "Bank_Name": "KOTAK MAHINDRA BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 381,
-        "Off_site": 623
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 385347,
-      "Debit_Cards": 1040814
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 642610,
-          "Value": 1952.127672
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 3720,
-            "Value": 24.8813
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 595909,
-          "Value": 848.68530444014
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 2368840,
-            "Value": 8373.06055232997
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "KOTAK",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 44,
-    "Bank_Name": "AXIS BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 2407,
-        "Off_site": 9389
-      },
-      "PoS": 236283,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 1173992,
-      "Debit_Cards": 14691684
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 2229233,
-          "Value": 6671.4
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 9777,
-            "Value": 35.699999999999996
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 4602778,
-          "Value": 6784.34550471
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 26590395,
-            "Value": 109578.09999999999
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "AXIS",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 45,
-    "Bank_Name": "YES BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 363,
-        "Off_site": 759
-      },
-      "PoS": 5893,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 505379
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 230323,
-          "Value": 334.3
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1023739,
-            "Value": 3535.6
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "YES",
-    "Bank_Type": "Private Sector Banks"
-  },
-  {
-    "Sr_No": 46,
-    "Bank_Name": "RBS (ABN AMRO)",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 29,
-        "Off_site": 81
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 85164,
-      "Debit_Cards": 169042
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 139120,
-          "Value": 394.51118899999994
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 595,
-            "Value": 4.2510999599999995
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 91160,
-          "Value": 163.57812612
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 290688,
-            "Value": 1185.90471545
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "RBS (ABN AMRO)",
-    "Bank_Type": "Foreign Banks"
-  },
-  {
-    "Sr_No": 47,
-    "Bank_Name": "AMERICAN EXPRESS",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 0,
-        "Off_site": 0
-      },
-      "PoS": 20841,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 635231,
-      "Debit_Cards": 0
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 1777266,
-          "Value": 15062.4
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 4609,
-            "Value": 31.549526
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "AMEX",
-    "Bank_Type": "Foreign Banks"
-  },
-  {
-    "Sr_No": 48,
-    "Bank_Name": "BARCLAYS BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 0,
-        "Off_site": 0
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 4651
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 288,
-          "Value": 1.02345153
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 635,
-            "Value": 3.31512915
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "BARCLAYS",
-    "Bank_Type": "Foreign Banks"
-  },
-  {
-    "Sr_No": 49,
-    "Bank_Name": "CITI BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 56,
-        "Off_site": 569
-      },
-      "PoS": 16051,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 2401465,
-      "Debit_Cards": 1796208
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 7537658,
-          "Value": 20295.378487
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 38460,
-            "Value": 260.17879700000003
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 1821332,
-          "Value": 3839.6049190000003
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 3469492,
-            "Value": 11607.091645
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "CITI",
-    "Bank_Type": "Foreign Banks"
-  },
-  {
-    "Sr_No": 50,
-    "Bank_Name": "DEUTSCHE BANK LTD",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 13,
-        "Off_site": 40
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 81176
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 88644,
-          "Value": 174.97624014
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 185699,
-            "Value": 723.805461
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "DEUTSCHE",
-    "Bank_Type": "Foreign Banks"
-  },
-  {
-    "Sr_No": 51,
-    "Bank_Name": "DBS INDIA BANK LIMITED",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 6,
-        "Off_site": 29
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 0,
-      "Debit_Cards": 13853
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 6822,
-          "Value": 13.899999999999999
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 60313,
-            "Value": 152.3
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "DBS",
-    "Bank_Type": "Foreign Banks"
-  },
-  {
-    "Sr_No": 52,
-    "Bank_Name": "HSBC BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 70,
-        "Off_site": 74
-      },
-      "PoS": 11353,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 502446,
-      "Debit_Cards": 584629
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 1040737,
-          "Value": 2974.25673781993
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 3428,
-            "Value": 24.73455809
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 297660,
-          "Value": 664.68337738
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 458703,
-            "Value": 2042.90146711
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "HSBC",
-    "Bank_Type": "Foreign Banks"
-  },
-  {
-    "Sr_No": 53,
-    "Bank_Name": "STANDARD CHARTERED BANK",
-    "Infrastructure": {
-      "ATMs_CRMs": {
-        "On_site": 103,
-        "Off_site": 176
-      },
-      "PoS": 0,
-      "Micro_ATMs": 0,
-      "Bharat_QR_Codes": 0,
-      "UPI_QR_Codes": 0,
-      "Credit_Cards": 1367044,
-      "Debit_Cards": 781044
-    },
-    "Card_Payments_Transactions": {
-      "Credit_Card": {
-        "at_PoS": {
-          "Volume": 2346462,
-          "Value": 7125.599999999999
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 2806,
-            "Value": 12.4
-          }
-        }
-      },
-      "Debit_Card": {
-        "at_PoS": {
-          "Volume": 615938,
-          "Value": 1008.3
-        },
-        "Online_ecom": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Others": {
-          "Volume": 0,
-          "Value": 0
-        },
-        "Cash_Withdrawal": {
-          "At_ATM": {
-            "Volume": 1330397,
-            "Value": 4649.1
-          },
-          "At_PoS": {
-            "Volume": 0,
-            "Value": 0
-          }
-        }
-      }
-    },
-    "Bank_Short_Name": "SCB",
-    "Bank_Type": "Foreign Banks"
+    }
   }
-]
+}
