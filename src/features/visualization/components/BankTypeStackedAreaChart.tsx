@@ -79,7 +79,6 @@ const BankTypeStackedAreaChart: React.FC<BankTypeStackedAreaChartProps> = ({ all
         series: typeSeries.map(s => ({
           name: s.type,
           type: 'line',
-          stack: 'total',
           data: s.values,
         })),
         animationDuration: 800,
@@ -90,9 +89,8 @@ const BankTypeStackedAreaChart: React.FC<BankTypeStackedAreaChartProps> = ({ all
 
   return (
     <div className="w-full h-[480px]">
-      <h2 className="card-title text-lg mb-2">Bank Type Comparison: Stacked Area</h2>
-      <div ref={chartRef} className="w-full h-[400px] rounded-xl" aria-label="Bank Type Stacked Area Chart" role="img" tabIndex={0} />
-      <div className="text-xs text-base-content/60 mt-2">Stacked area chart of card txn volume by bank type over time.</div>
+      <div ref={chartRef} className="w-full h-[400px]" aria-label="Bank Type Stacked Area Chart" role="img" tabIndex={0} />
+      <div className="text-xs text-base-content/60 mt-2">Card transactions volume by bank type over time.</div>
     </div>
   );
 };

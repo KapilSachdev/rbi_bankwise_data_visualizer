@@ -110,9 +110,8 @@ const TopMoversLineChart: React.FC<TopMoversLineChartProps> = ({ allData, months
   return (
     <div className="w-full h-[480px]">
       <div className="flex flex-wrap gap-4 items-center mb-2">
-        <h2 className="card-title text-lg flex-1">Top Movers: Card Transaction Growth</h2>
-        <label className="label cursor-pointer">
-          <span className="label-text mr-2">Metric:</span>
+        <label className="label cursor-pointer ml-auto">
+          <span className="label-text">Metric:</span>
           <select
             className="select select-sm select-bordered"
             value={selectedMetric}

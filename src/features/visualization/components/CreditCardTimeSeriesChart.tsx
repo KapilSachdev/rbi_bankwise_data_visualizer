@@ -18,7 +18,7 @@ echarts.use([
 
 
 interface CreditCardTimeSeriesChartProps {
-  allData: { [key: string]: BankData[] };
+  allData: Record<string, BankData[]>;
   months: string[];
 }
 

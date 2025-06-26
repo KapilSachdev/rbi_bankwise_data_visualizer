@@ -83,7 +83,7 @@ export const BANK_ACRONYMS = {
   },
   'DBS': {
     Bank_Type: "Foreign Banks",
-    names: ["DBS INDIA BANK LIMITED", 'DEVELOPMENT BANK OF SINGAPORE', "DBS Ltd."]
+    names: ["DBS BANK", "DBS INDIA BANK LIMITED", 'DEVELOPMENT BANK OF SINGAPORE', "DBS Ltd."]
   },
   'DCB': {
     Bank_Type: "Private Sector Banks",
@@ -100,7 +100,7 @@ export const BANK_ACRONYMS = {
   },
   'DHAN': {
     Bank_Type: "Private Sector Banks",
-    names: ['DHANALAXMI BANK LTD']
+    names: ['DHANALAXMI BANK LTD', "DHANALAKSHMI BANK LTD"]
   },
   'DOHA': {
     Bank_Type: "Foreign Banks",
@@ -122,13 +122,17 @@ export const BANK_ACRONYMS = {
     Bank_Type: "Payment Banks",
     names: ['FINO PAYMENTS BANK LIMITED']
   },
+  'Fincare': {
+    Bank_Type: "Small Finance Banks",
+    names: ['FINCARE SMALL FINANCE BANK LTD']
+  },
   'HDFC': {
     Bank_Type: "Private Sector Banks",
     names: ['HDFC BANK LTD']
   },
   'HSBC': {
     Bank_Type: "Foreign Banks",
-    names: ['HSBC BANK', 'HSBC LTD', "HSBC"]
+    names: ["HSBC", 'HSBC BANK', 'HSBC LTD', "HONGKONG AND SHANGHAI BKG CORPN"]
   },
   'ICICI': {
     Bank_Type: "Private Sector Banks",
@@ -248,7 +252,7 @@ export const BANK_ACRONYMS = {
   },
   'SBM': {
     Bank_Type: "Private Sector Banks",
-    names: ['SBM BANK INDIA LIMITED']
+    names: ['SBM BANK INDIA LIMITED', "SBM Bank India"]
   },
   "SBMysore": {
     Bank_Type: "Public Sector Banks",

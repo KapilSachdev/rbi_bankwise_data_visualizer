@@ -27,7 +27,7 @@ echarts.use([
 
 
 interface BankInfraBarChartProps {
-  allData: { [key: string]: BankData[] };
+  allData: Record<string, BankData[]>;
   months: string[];
 }
 

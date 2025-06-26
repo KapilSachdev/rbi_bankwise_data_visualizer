@@ -89,7 +89,8 @@ fs.readdirSync(excelDir)
       const worksheet = workbook.Sheets[sheetName];
       const data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
-      const jsonResult = [];
+      const jsonOutput = { banks: [] };
+      let totalRow = null;
 
       // Find start of data
       let startIndex = data.findIndex(row => row[1] === 'Scheduled Commercial Banks') + 1;
@@ -117,11 +118,12 @@ fs.readdirSync(excelDir)
 
       for (let i = startIndex; i < data.length; i++) {
         const row = data[i];
-        // Ensure row is defined and has at least two columns
+        // Ensure row is defined and has at least 5 columns
         if (!row || !Array.isArray(row) || typeof row[1] === 'undefined') continue;
-
-        // Skip non-data rows
-        if (!row[1] || row[1] === 'Total' || row[1] === 'Grand Total') continue;
+        if (row.length < 5) {
+          console.log(`Skipping row due to insufficient columns: ${JSON.stringify(row)}`);
+          continue;
+        }
 
         const bankData = {};
         columnMapping.forEach(({ col, path, pre_2022_03_Col, pre_2020_05_Col }) => {
@@ -140,25 +142,43 @@ fs.readdirSync(excelDir)
           if (typeof value === 'undefined' || value === null)  value = 0;
           setNestedObject(bankData, path, value);
         });
-        // Add short name/acronym for the bank
+
+        // SrNo or Bank Name can be "total" or "grand total"
+        if (["total", "grand total"].includes(bankData.Sr_No.toString().trim().toLowerCase()) || ["total", "grand total"].includes(bankData.Bank_Name.toString().trim().toLowerCase())) {
+          // Use whichever is string for Bank_Name for traceability
+          bankData.Bank_Name = typeof bankData.Sr_No === 'string' ? bankData.Sr_No : bankData.Bank_Name;
+          // Remove bank name, short name, and type for total rows
+          delete bankData.Bank_Name;
+          delete bankData.Bank_Short_Name;
+          delete bankData.Bank_Type;
+          totalRow = bankData;
+          break; // Stop processing further rows
+        }
+
         const bankName = bankData.Bank_Name;
+        // if bankName is 0 or not a string then continue to next
+        if (!bankName || typeof bankName !== 'string') continue;
+
+        // Add short name/acronym for the bank
         bankData.Bank_Short_Name = mapBankShortName(bankName);
         // As bank names can be different, pick the first name from the acronym mapping
-        if (bankData.Bank_Short_Name != 'Unknown  Bank') {
+        if (bankData.Bank_Short_Name != 'Unknown') {
           bankData.Bank_Name = mapFullNameFromShortName(bankData.Bank_Short_Name);
         }
         // Assign robust Bank_Type using utility
         bankData.Bank_Type = getBankTypeByName(bankName);
 
-        jsonResult.push(bankData);
+        jsonOutput.banks.push(bankData);
       }
 
+      // Output as { banks: [...], total: {...} } if total exists, else just { banks: [...] }
+      const output = totalRow ? { banks: jsonOutput.banks, total: totalRow } : { banks: jsonOutput.banks };
       fs.writeFileSync(
         jsonFilePath,
-        JSON.stringify(jsonResult, null, 2),
+        JSON.stringify(output, null, 2),
         'utf-8',
       );
-      console.log(`Generated ${jsonFile} (${jsonResult.length} banks)`);
+      console.log(`Generated ${jsonFile} (${jsonOutput.banks.length} banks${totalRow ? ' + total row' : ''})`);
     } catch (error) {
       console.error(`Error processing ${excelFile}:\n`, error.stack);
     }
