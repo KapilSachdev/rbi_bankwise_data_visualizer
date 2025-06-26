@@ -11,9 +11,8 @@ import RandomThemeButton from './components/common/RandomThemeButton';
 import { DATA_FOLDER } from './constants/data';
 import BankInfraBarChart from './features/visualization/components/InfraBarChart';
 import type { BankData } from './types/global.types';
-
-
-
+import TopMoversLineChart from './features/visualization/components/TopMoversLineChart';
+import BankTypeStackedAreaChart from './features/visualization/components/BankTypeStackedAreaChart';
 
 function App() {
   // Manifest and bifurcated data
@@ -66,12 +65,23 @@ function App() {
         <RandomThemeButton />
       </div>
       <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="card card-lg bg-base-100 shadow-xl">
+        <div className="card shadow-xl">
+          <div className="card-body">
+            <TopMoversLineChart allData={posData} months={posFiles.map(f => f.key)} />
+          </div>
+        </div>
+        <div className="card shadow-xl">
+          <div className="card-body">
+            <BankTypeStackedAreaChart allData={posData} months={posFiles.map(f => f.key)} />
+          </div>
+        </div>
+
+        <div className="card shadow-xl">
           <div className="card-body">
             <BankInfraBarChart allData={posData} months={posFiles.map(f => f.key)} />
           </div>
         </div>
-        <div className="card card-lg bg-base-100 shadow-xl flex flex-col justify-center">
+        <div className="card shadow-xl">
           <div className="card-body">
             <CreditCardTimeSeriesChart allData={posData} months={posFiles.map(f => f.key)} />
           </div>

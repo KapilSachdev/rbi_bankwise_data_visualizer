@@ -129,7 +129,7 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
   const option = useMemo(() => ({
     backgroundColor: 'transparent',
     title: {
-      text: 'Credit Card Count Over Time by Bank',
+      text: 'Credit Cards Over Time',
       left: 'center',
     },
     tooltip: { trigger: 'axis' },

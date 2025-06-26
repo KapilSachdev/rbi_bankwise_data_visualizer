@@ -14,13 +14,54 @@ export interface BankInfrastructure {
   Debit_Cards: number;
 }
 
+/**
+ * Common structure for transaction details (Volume, Value)
+ */
+export interface TxnDetail {
+  Volume: number;
+  Value: number;
+}
+
+/**
+ * Cash withdrawal details for credit card (ATM only)
+ */
+export interface CreditCardCashWithdrawal {
+  At_ATM: TxnDetail;
+}
+
+/**
+ * Cash withdrawal details for debit card (ATM and optional PoS)
+ */
+export interface DebitCardCashWithdrawal {
+  At_ATM: TxnDetail;
+  At_PoS?: TxnDetail;
+}
+
+/**
+ * Card payment transactions for a bank
+ */
+export interface CardPaymentsTransactions {
+  Credit_Card: {
+    at_PoS: TxnDetail;
+    Online_ecom: TxnDetail;
+    Others: TxnDetail;
+    Cash_Withdrawal: CreditCardCashWithdrawal;
+  };
+  Debit_Card: {
+    at_PoS: TxnDetail;
+    Online_ecom: TxnDetail;
+    Others: TxnDetail;
+    Cash_Withdrawal: DebitCardCashWithdrawal;
+  };
+}
+
 export interface BankData {
   Bank_Type: string;
   Sr_No: number;
   Bank_Name: string;
   Bank_Short_Name?: string;
   Infrastructure: BankInfrastructure;
-  // ...other fields omitted for brevity
+  Card_Payments_Transactions?: CardPaymentsTransactions;
 }
 
 export interface MonthlyBankData {

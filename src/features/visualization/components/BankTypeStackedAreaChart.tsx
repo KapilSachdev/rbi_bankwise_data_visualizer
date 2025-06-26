@@ -1,0 +1,100 @@
+import React, { useMemo, useRef } from 'react';
+import * as echarts from 'echarts/core';
+import { LineChart } from 'echarts/charts';
+import { GridComponent, TooltipComponent, LegendComponent, TitleComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
+import type { BankData } from '../../../types/global.types';
+import { useEchartsThemeSync } from '../../../hooks/useEchartsThemeSync';
+
+echarts.use([
+  LineChart,
+  GridComponent,
+  TooltipComponent,
+  LegendComponent,
+  TitleComponent,
+  CanvasRenderer,
+]);
+
+interface BankTypeStackedAreaChartProps {
+  allData: Record<string, BankData[]>;
+  months: string[];
+}
+
+
+
+const BankTypeStackedAreaChart: React.FC<BankTypeStackedAreaChartProps> = ({ allData, months }) => {
+  const chartRef = useRef<HTMLDivElement>(null);
+  // Get all unique bank types
+  const bankTypes = useMemo(() => {
+    const set = new Set<string>();
+    months.forEach(month => {
+      (allData[month] || []).forEach(row => set.add(row.Bank_Type || 'Unknown'));
+    });
+    return Array.from(set).sort();
+  }, [allData, months]);
+
+  // Prepare time series for each bank type
+  const typeSeries = useMemo(() => {
+    const sortedMonths = [...months].sort();
+    return bankTypes.map(type => {
+      const values = sortedMonths.map(month => {
+        const rows = (allData[month] || []).filter(r => (r.Bank_Type || 'Unknown') === type);
+        // Sum total card txn volume for this type
+        return rows.reduce((sum, row) => {
+          const credit = row.Card_Payments_Transactions?.Credit_Card;
+          const debit = row.Card_Payments_Transactions?.Debit_Card;
+          return sum +
+            (credit?.at_PoS?.Volume || 0) +
+            (credit?.Online_ecom?.Volume || 0) +
+            (debit?.at_PoS?.Volume || 0) +
+            (debit?.Online_ecom?.Volume || 0);
+        }, 0);
+      });
+      return { type, values };
+    });
+  }, [allData, months, bankTypes]);
+
+  useEchartsThemeSync(
+    chartRef,
+    () => {
+      const sortedMonths = [...months].sort();
+      return {
+        backgroundColor: 'transparent',
+        title: {
+          text: 'Card Transaction Volume by Bank Type',
+          left: 'center',
+        },
+        tooltip: { trigger: 'axis' },
+        legend: { top: 30, type: 'scroll' },
+        grid: { left: '3%', right: '4%', top: '20%', bottom: '8%', containLabel: true },
+        xAxis: {
+          type: 'category',
+          data: sortedMonths,
+          axisLabel: { rotate: 45 },
+        },
+        yAxis: {
+          type: 'value',
+          name: 'Txn Volume',
+        },
+        series: typeSeries.map(s => ({
+          name: s.type,
+          type: 'line',
+          stack: 'total',
+          data: s.values,
+        })),
+        animationDuration: 800,
+      };
+    },
+    [typeSeries, months]
+  );
+
+  return (
+    <div className="w-full h-[480px]">
+      <h2 className="card-title text-lg mb-2">Bank Type Comparison: Stacked Area</h2>
+      <div ref={chartRef} className="w-full h-[400px] rounded-xl" aria-label="Bank Type Stacked Area Chart" role="img" tabIndex={0} />
+      <div className="text-xs text-base-content/60 mt-2">Stacked area chart of card txn volume by bank type over time.</div>
+    </div>
+  );
+};
+
+export default BankTypeStackedAreaChart;

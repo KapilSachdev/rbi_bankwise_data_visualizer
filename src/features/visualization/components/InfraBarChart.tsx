@@ -45,7 +45,7 @@ const INFRA_METRICS = [
 
 const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }) => {
   const chartRef = useRef<HTMLDivElement>(null);
-  const [topN, setTopN] = useState(5);
+  const [topN, setTopN] = useState(10);
   const [metric, setMetric] = useState(INFRA_METRICS[0].value);
   const [selectedMonth, setSelectedMonth] = useState(() => months[0]);
 
@@ -113,7 +113,7 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
     () => ({
       backgroundColor: 'transparent',
       title: {
-        text: `Bank ${selectedMonth && formatMonthYear(selectedMonth)} POS Assets`,
+        text: `${INFRA_METRICS.find(m => m.value === metric)?.label || ''} (${selectedMonth && formatMonthYear(selectedMonth)})`,
         left: 'center',
       },
       tooltip: {

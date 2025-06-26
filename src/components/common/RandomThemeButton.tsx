@@ -54,25 +54,36 @@ const getSavedTheme = (): string | null => {
 
 const RandomThemeButton: React.FC = () => {
   // On mount, set theme from localStorage if available
+
+  const [lastTheme, setLastTheme] = React.useState<string | null>(null);
+
   useEffect(() => {
     const saved = getSavedTheme();
     if (saved && DAISYUI_THEMES.some(t => t.name === saved)) {
       setTheme(saved);
+      setLastTheme(saved);
+    } else {
+      // If no saved theme, use the current data-theme or default
+      const current = document.documentElement.getAttribute('data-theme');
+      if (current && DAISYUI_THEMES.some(t => t.name === current)) {
+        setLastTheme(current);
+      }
     }
   }, []);
 
   const handleRandomTheme = () => {
     const themeObj = DAISYUI_THEMES[Math.floor(Math.random() * DAISYUI_THEMES.length)];
     setTheme(themeObj.name);
+    setLastTheme(themeObj.name);
   };
 
   return (
     <button
       type="button"
       className="fixed z-50 bottom-4 right-4 btn btn-primary btn-circle shadow-lg"
-      aria-label="Random Theme"
+      aria-label="Randomise Theme"
       onClick={handleRandomTheme}
-      title="Random DaisyUI Theme"
+      title={lastTheme ? `${lastTheme}` : 'Randomise'}
     >
       <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.07-7.07l-1.41 1.41M6.34 17.66l-1.41 1.41m12.02 0l1.41-1.41M6.34 6.34L4.93 4.93" />
