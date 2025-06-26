@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { GithubIcon } from '../icons/Icons';
 
 // DaisyUI's default themes (from https://daisyui.com/docs/themes/)
 
@@ -78,15 +79,28 @@ const RandomThemeButton: React.FC = () => {
   };
 
   return (
-    <button
-      type="button"
-      className="fixed z-50 bottom-4 right-4 btn btn-primary btn-circle btn-sm shadow-md"
-      aria-label="Randomise Theme"
-      onClick={handleRandomTheme}
-      title={lastTheme ? `${lastTheme}` : 'Randomise'}
-    >
-      <div className="absolute inset--1 rounded-full border-8 border-base-300" />
-    </button>
+    <div className="fixed z-50 bottom-4 right-4 flex flex-col items-center gap-2">
+
+      <a
+        href="https://www.github.com/kapilsachdev/rbi_bankwise_data_visualizer/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn btn-xs btn-ghost"
+        aria-label="Project Home Page"
+      >
+        <GithubIcon className="size-8 stroke-base-content" />
+      </a>
+
+      <button
+        type="button"
+        className="btn btn-primary btn-circle btn-sm shadow-md"
+        aria-label="Randomise Theme"
+        onClick={handleRandomTheme}
+        title={lastTheme ? `${lastTheme}` : 'Randomise'}
+      >
+        <div className="absolute inset--1 rounded-full border-8 border-base-300" />
+      </button>
+    </div>
   );
 };
 

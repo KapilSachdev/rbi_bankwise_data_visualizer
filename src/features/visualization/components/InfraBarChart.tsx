@@ -119,18 +119,7 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
       tooltip: {
         trigger: 'axis',
         axisPointer: { type: 'shadow' },
-        formatter: (params: unknown) => {
-          if (!Array.isArray(params) || params.length === 0) return '';
-          const idx = (params[0] as { dataIndex: number }).dataIndex;
-          const bank = sortedData[idx];
-          const val = getMetricValue(bank.Infrastructure, metric);
-          return `
-            <div>
-              <div class="font-semibold text-base mb-1">${bank.Bank_Name}</div>
-              <div><span class="font-medium">${INFRA_METRICS.find(m => m.value === metric)?.label}:</span> ${val.toLocaleString()}</div>
-            </div>
-          `;
-        },
+        valueFormatter: (value: number) => value.toLocaleString()
       },
       grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
       legend: { show: false },
