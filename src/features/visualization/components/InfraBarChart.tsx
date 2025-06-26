@@ -11,11 +11,10 @@ import {
 import { BarChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 import DataFilter from '../../../components/common/DataFilter';
+import { useEchartsThemeSync } from '../../../hooks/useEchartsThemeSync';
 import type { BankData } from '../../../types/global.types';
 import { formatMonthYear } from '../../../utils/time'
-import { title } from 'process';
 
-// Register ECharts components once at the module level
 echarts.use([
   TooltipComponent,
   GridComponent,
@@ -108,10 +107,10 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
   }, [data, topN, metric]);
 
 
-  useEffect(() => {
-    if (!chartRef.current || !sortedData.length) return;
-    const chart = echarts.init(chartRef.current, 'dark');
-    const option = {
+
+  useEchartsThemeSync(
+    chartRef,
+    () => ({
       backgroundColor: 'transparent',
       title: {
         text: `Bank ${selectedMonth && formatMonthYear(selectedMonth)} POS Assets`,
@@ -141,16 +140,10 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
         axisLabel: {
           interval: 0,
           rotate: 30,
-          color: '#e5e7eb',
-          fontSize: 12,
         },
       },
       yAxis: {
         type: 'value',
-        axisLabel: {
-          color: '#e5e7eb',
-          fontSize: 12,
-        },
       },
       series: [
         {
@@ -158,7 +151,6 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
           name: INFRA_METRICS.find(m => m.value === metric)?.label || '',
           data: sortedData.map(item => getMetricValue(item.Infrastructure, metric)),
           emphasis: { focus: 'series' },
-          itemStyle: { color: '#38bdf8' },
         },
       ],
       toolbox: {
@@ -170,15 +162,9 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
         right: 10,
         top: 10,
       },
-    };
-    chart.setOption(option);
-    const handleResize = () => chart.resize();
-    window.addEventListener('resize', handleResize);
-    return () => {
-      chart.dispose();
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [sortedData, metric]);
+    }),
+    [sortedData, metric, selectedMonth]
+  );
 
   return (
     <div className="flex flex-col justify-between h-full">

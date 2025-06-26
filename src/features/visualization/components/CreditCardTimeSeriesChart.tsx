@@ -1,13 +1,12 @@
-import React, { useMemo, useRef, useEffect } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
 import { GridComponent, TooltipComponent, LegendComponent, TitleComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import DataFilter from '../../../components/common/DataFilter';
-// Removed custom YearRangeSlider, using DaisyUI slider instead
 import type { BankData } from '../../../types/global.types';
+import { useEchartsThemeSync } from '../../../hooks/useEchartsThemeSync';
 
-// Register ECharts components (safe to call multiple times)
 echarts.use([
   LineChart,
   GridComponent,
@@ -61,8 +60,7 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
       return y >= yearRange[0] && y <= yearRange[1];
     });
   }, [sortedMonths, yearRange]);
-  const chartRef = useRef<HTMLDivElement | null>(null);
-  const chartInstance = useRef<echarts.EChartsType | null>(null);
+  const chartRef = useRef<HTMLDivElement>(null);
 
   // Filter state
   const [selectedBankType, setSelectedBankType] = React.useState('');
@@ -145,43 +143,23 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
     yAxis: {
       type: 'value',
       name: 'Credit Cards',
-      axisLabel: { formatter: '{value}' },
     },
     series: sortedData.map(bank => ({
       name: bank.bank,
       type: 'line',
       data: filteredMonths.map(m => bank.values.find(v => v.month === m)?.creditCards ?? 0),
       smooth: true,
-      symbol: 'circle',
-      symbolSize: 6,
-      lineStyle: { width: 2 },
       emphasis: { focus: 'series' },
     })),
     animationDuration: 800,
   }), [sortedData, filteredMonths]);
 
-  // Initialize and update chart
-  useEffect(() => {
-    if (!chartRef.current) return;
-    if (!chartInstance.current) {
-      chartInstance.current = echarts.init(chartRef.current, 'dark');
-    }
-    chartInstance.current.setOption(option);
-    // Responsive resize
-    const handleResize = () => {
-      if (chartInstance.current) {
-        chartInstance.current.resize();
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      if (chartInstance.current) {
-        chartInstance.current.dispose();
-        chartInstance.current = null;
-      }
-    };
-  }, [option]);
+
+  useEchartsThemeSync(
+    chartRef,
+    () => option,
+    [option]
+  );
 
   return (
     <div className='flex flex-col gap-4 justify-between h-full'>

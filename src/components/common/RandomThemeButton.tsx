@@ -1,16 +1,69 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // DaisyUI's default themes (from https://daisyui.com/docs/themes/)
-const DAISYUI_THEMES = [
-  'light', 'dark', 'cupcake', 'bumblebee', 'emerald', 'corporate', 'synthwave', 'retro', 'cyberpunk',
-  'valentine', 'halloween', 'garden', 'forest', 'aqua', 'lofi', 'pastel', 'fantasy', 'wireframe',
-  'black', 'luxury', 'dracula', 'cmyk', 'autumn', 'business', 'acid', 'lemonade', 'night', 'coffee', 'winter',
+
+
+/**
+ * DaisyUI themes with their mode (light/dark) for UI and ECharts logic
+ * Source: https://daisyui.com/docs/themes/
+ */
+export const DAISYUI_THEMES = [
+  { name: 'light', mode: 'light' },
+  { name: 'dark', mode: 'dark' },
+  { name: 'cupcake', mode: 'light' },
+  { name: 'bumblebee', mode: 'light' },
+  { name: 'emerald', mode: 'light' },
+  { name: 'corporate', mode: 'light' },
+  { name: 'synthwave', mode: 'dark' },
+  { name: 'retro', mode: 'light' },
+  { name: 'cyberpunk', mode: 'dark' },
+  { name: 'valentine', mode: 'light' },
+  { name: 'halloween', mode: 'dark' },
+  { name: 'garden', mode: 'light' },
+  { name: 'forest', mode: 'dark' },
+  { name: 'aqua', mode: 'light' },
+  { name: 'lofi', mode: 'light' },
+  { name: 'pastel', mode: 'light' },
+  { name: 'fantasy', mode: 'light' },
+  { name: 'wireframe', mode: 'light' },
+  { name: 'black', mode: 'dark' },
+  { name: 'luxury', mode: 'dark' },
+  { name: 'dracula', mode: 'dark' },
+  { name: 'cmyk', mode: 'light' },
+  { name: 'autumn', mode: 'light' },
+  { name: 'business', mode: 'light' },
+  { name: 'acid', mode: 'light' },
+  { name: 'lemonade', mode: 'light' },
+  { name: 'night', mode: 'dark' },
+  { name: 'coffee', mode: 'dark' },
+  { name: 'winter', mode: 'light' },
+  // Add more as needed
 ];
 
+
+const THEME_KEY = 'daisyui-theme';
+
+const setTheme = (theme: string) => {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem(THEME_KEY, theme);
+};
+
+const getSavedTheme = (): string | null => {
+  return localStorage.getItem(THEME_KEY);
+};
+
 const RandomThemeButton: React.FC = () => {
+  // On mount, set theme from localStorage if available
+  useEffect(() => {
+    const saved = getSavedTheme();
+    if (saved && DAISYUI_THEMES.some(t => t.name === saved)) {
+      setTheme(saved);
+    }
+  }, []);
+
   const handleRandomTheme = () => {
-    const theme = DAISYUI_THEMES[Math.floor(Math.random() * DAISYUI_THEMES.length)];
-    document.documentElement.setAttribute('data-theme', theme);
+    const themeObj = DAISYUI_THEMES[Math.floor(Math.random() * DAISYUI_THEMES.length)];
+    setTheme(themeObj.name);
   };
 
   return (
