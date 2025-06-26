@@ -80,14 +80,12 @@ const RandomThemeButton: React.FC = () => {
   return (
     <button
       type="button"
-      className="fixed z-50 bottom-4 right-4 btn btn-primary btn-circle shadow-lg"
+      className="fixed z-50 bottom-4 right-4 btn btn-primary btn-circle btn-sm shadow-md"
       aria-label="Randomise Theme"
       onClick={handleRandomTheme}
       title={lastTheme ? `${lastTheme}` : 'Randomise'}
     >
-      <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.07-7.07l-1.41 1.41M6.34 17.66l-1.41 1.41m12.02 0l1.41-1.41M6.34 6.34L4.93 4.93" />
-      </svg>
+      <div className="absolute inset--1 rounded-full border-8 border-base-300" />
     </button>
   );
 };

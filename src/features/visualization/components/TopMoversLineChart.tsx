@@ -1,4 +1,5 @@
 import React, { useMemo, useRef, useEffect, useState } from 'react';
+import Doughnut from '../../../components/filters/Doughnut';
 import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
 import { GridComponent, TooltipComponent, LegendComponent, TitleComponent, ToolboxComponent } from 'echarts/components';
@@ -23,10 +24,6 @@ interface TopMoversLineChartProps {
   topN?: number;
 }
 
-/**
- * Shows the top N banks by growth in card transaction volume over time.
- * Users can select metric (credit, debit, total) and see animated trends.
- */
 const TopMoversLineChart: React.FC<TopMoversLineChartProps> = ({ allData, months, metric = 'total', topN = 5 }) => {
   const chartRef = useRef<HTMLDivElement>(null);
   const [selectedMetric, setSelectedMetric] = useState<'credit' | 'debit' | 'total'>(metric);
@@ -91,7 +88,7 @@ const TopMoversLineChart: React.FC<TopMoversLineChartProps> = ({ allData, months
         },
         yAxis: {
           type: 'value',
-          name: 'Txn Volume',
+          name: 'Transaction Volume',
         },
         series: topBanks.map(bank => ({
           name: bank.name,
@@ -101,7 +98,6 @@ const TopMoversLineChart: React.FC<TopMoversLineChartProps> = ({ allData, months
           emphasis: { focus: 'series' },
           showSymbol: false,
         })),
-        animationDuration: 800,
       };
     },
     [topBanks, months, selectedMetric, topN]
@@ -109,21 +105,24 @@ const TopMoversLineChart: React.FC<TopMoversLineChartProps> = ({ allData, months
 
   return (
     <div className="w-full h-[480px]">
-      <div className="flex flex-wrap gap-4 items-center mb-2">
-        <label className="label cursor-pointer ml-auto">
-          <span className="label-text">Metric:</span>
-          <select
-            className="select select-sm select-bordered"
-            value={selectedMetric}
-            onChange={e => setSelectedMetric(e.target.value as any)}
-            aria-label="Select metric"
-          >
-            <option value="total">Total</option>
-            <option value="credit">Credit Card</option>
-            <option value="debit">Debit Card</option>
-          </select>
-        </label>
-      </div>
+      <div className="ml-auto">
+          <Doughnut
+            options={['Total', 'Credit Card', 'Debit Card']}
+            selected={
+              selectedMetric === 'total'
+                ? 'Total'
+                : selectedMetric === 'credit'
+                ? 'Credit Card'
+                : 'Debit Card'
+            }
+            onSelect={option => {
+              setSelectedMetric(
+                option === 'Total' ? 'total' : option === 'Credit Card' ? 'credit' : 'debit'
+              );
+            }}
+            size={36}
+          />
+        </div>
       <div ref={chartRef} className="w-full h-[400px] rounded-xl" aria-label="Top Movers Card Transaction Growth" role="img" tabIndex={0} />
       <div className="text-xs text-base-content/60 mt-2">Top {topN} banks by {selectedMetric} card transaction growth over time.</div>
     </div>

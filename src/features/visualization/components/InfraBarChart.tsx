@@ -10,7 +10,7 @@ import {
 } from 'echarts/components';
 import { BarChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
-import DataFilter from '../../../components/common/DataFilter';
+import Pills from '../../../components/filters/Pills';
 import { useEchartsThemeSync } from '../../../hooks/useEchartsThemeSync';
 import type { BankData } from '../../../types/global.types';
 import { formatMonthYear } from '../../../utils/time'
@@ -52,7 +52,7 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
   useEffect(() => {
     setSelectedMonth(months[0]);
   }, [months]);
-  const [selectedBankType, setSelectedBankType] = useState('');
+  const [selectedBankType, setSelectedBankType] = useState<string>('');
 
 
   // Get all unique bank types
@@ -168,62 +168,64 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
 
   return (
     <div className="flex flex-col justify-between h-full">
-      <div className="flex justify-stretch justify-items-stretch gap-4 mb-2 w-full">
-        <DataFilter
+      <div className="grid gap-2">
+        <Pills
           bankTypes={bankTypes}
-          selectedBankType={selectedBankType}
-          onBankTypeChange={setSelectedBankType}
-          filters={{ bankType: true }}
+          selected={selectedBankType}
+          onSelect={(type: string) => setSelectedBankType(type)}
         />
-        <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem]">
-          <span>Metric</span>
-          <div className="dropdown mt-1">
-            <button
-              popoverTarget="metric-dropdown"
-              className="btn btn-sm btn-outline w-full justify-between text-base-content"
-              type="button"
-              aria-haspopup="listbox"
-              aria-expanded="false"
-            >
-              {INFRA_METRICS.find(opt => opt.value === metric)?.label || 'Select Metric'}
-            </button>
-            <ul
-              className="dropdown-content menu menu-sm p-0 shadow bg-base-100 rounded-box w-full z-10"
-              popover="auto"
-              id="metric-dropdown"
-              role="listbox"
-            >
-              {INFRA_METRICS.map(opt => (
-                <li key={opt.value}>
-                  <button
-                    className={`w-full text-left px-4 py-2 ${metric === opt.value ? 'bg-primary text-primary-content' : 'text-base-content'}`}
-                    onClick={() => setMetric(opt.value)}
-                    role="option"
-                    aria-selected={metric === opt.value}
-                  >
-                    {opt.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
+        <div className="flex justify-stretch justify-items-stretch gap-4 mb-2 w-full">
+          <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem]">
+            <span>Metric</span>
+            <div className="dropdown mt-1">
+              <button
+                popoverTarget="metric-dropdown"
+                className="btn btn-sm btn-outline w-full justify-between text-base-content"
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+              >
+                {INFRA_METRICS.find(opt => opt.value === metric)?.label || 'Select Metric'}
+              </button>
+              <ul
+                className="dropdown-content menu menu-sm p-0 shadow bg-base-100 rounded-box w-full z-10"
+                popover="auto"
+                id="metric-dropdown"
+                role="listbox"
+              >
+                {INFRA_METRICS.map(opt => (
+                  <li key={opt.value}>
+                    <button
+                      className={`w-full text-left px-4 py-2 ${metric === opt.value ? 'bg-primary text-primary-content' : 'text-base-content'}`}
+                      onClick={() => setMetric(opt.value)}
+                      role="option"
+                      aria-selected={metric === opt.value}
+                    >
+                      {opt.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
-        <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem] self-end ml-auto">
-          <div className="join mt-1">
-            <input
-              id="topN"
-              type="number"
-              min={1}
-              max={data.length}
-              value={topN}
-              onChange={e => setTopN(Math.max(1, Math.min(data.length, Number(e.target.value))))}
-              className="input input-sm input-bordered w-16 join-item text-base-content"
-              aria-label="Show top N banks"
-            />
-            <span className="join-item flex items-center px-2 text-sm bg-base-200 text-base-content">banks</span>
+          <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem] self-end ml-auto">
+            <div className="join mt-1">
+              <input
+                id="topN"
+                type="number"
+                min={1}
+                max={data.length}
+                value={topN}
+                onChange={e => setTopN(Math.max(1, Math.min(data.length, Number(e.target.value))))}
+                className="input input-sm input-bordered w-16 join-item text-base-content"
+                aria-label="Show top N banks"
+              />
+              <span className="join-item flex items-center px-2 text-sm bg-base-200 text-base-content">banks</span>
+            </div>
           </div>
         </div>
       </div>
+
       <div
         ref={chartRef}
         aria-label="Bank Infrastructure Bar Chart"

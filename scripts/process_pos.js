@@ -113,9 +113,9 @@ fs.readdirSync(excelDir)
         }
       }
 
-
-
-
+      /**
+       * Main data extraction loop: parses each row, maps columns, detects total row, and builds bankData objects.
+       */
       for (let i = startIndex; i < data.length; i++) {
         const row = data[i];
         // Ensure row is defined and has at least 5 columns
@@ -143,8 +143,11 @@ fs.readdirSync(excelDir)
           setNestedObject(bankData, path, value);
         });
 
-        // SrNo or Bank Name can be "total" or "grand total"
-        if (["total", "grand total"].includes(bankData.Sr_No.toString().trim().toLowerCase()) || ["total", "grand total"].includes(bankData.Bank_Name.toString().trim().toLowerCase())) {
+        // Robust total row detection: check both Sr_No and Bank_Name, only if they are strings
+        const srNoStr = typeof bankData.Sr_No === 'string' ? bankData.Sr_No.trim().toLowerCase() : '';
+        const bankNameStr = typeof bankData.Bank_Name === 'string' ? bankData.Bank_Name.trim().toLowerCase() : '';
+        const isTotalRow = ["total", "grand total"].includes(srNoStr) || ["total", "grand total"].includes(bankNameStr);
+        if (isTotalRow) {
           // Use whichever is string for Bank_Name for traceability
           bankData.Bank_Name = typeof bankData.Sr_No === 'string' ? bankData.Sr_No : bankData.Bank_Name;
           // Remove bank name, short name, and type for total rows
@@ -156,13 +159,13 @@ fs.readdirSync(excelDir)
         }
 
         const bankName = bankData.Bank_Name;
-        // if bankName is 0 or not a string then continue to next
+        // Only process if bankName is a non-empty string
         if (!bankName || typeof bankName !== 'string') continue;
 
         // Add short name/acronym for the bank
         bankData.Bank_Short_Name = mapBankShortName(bankName);
         // As bank names can be different, pick the first name from the acronym mapping
-        if (bankData.Bank_Short_Name != 'Unknown') {
+        if (bankData.Bank_Short_Name !== 'Unknown') {
           bankData.Bank_Name = mapFullNameFromShortName(bankData.Bank_Short_Name);
         }
         // Assign robust Bank_Type using utility

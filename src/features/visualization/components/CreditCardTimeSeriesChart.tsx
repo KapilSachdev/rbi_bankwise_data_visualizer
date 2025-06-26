@@ -3,7 +3,7 @@ import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
 import { GridComponent, TooltipComponent, LegendComponent, TitleComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
-import DataFilter from '../../../components/common/DataFilter';
+import Pills from '../../../components/filters/Pills';
 import type { BankData } from '../../../types/global.types';
 import { useEchartsThemeSync } from '../../../hooks/useEchartsThemeSync';
 
@@ -163,13 +163,14 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
 
   return (
     <div className='flex flex-col gap-4 justify-between h-full'>
-      <div className='flex gap-4 justify-between mb-4'>
-        <DataFilter
-          bankTypes={bankTypes}
-          selectedBankType={selectedBankType}
-          onBankTypeChange={setSelectedBankType}
-          filters={{ bankType: true }}
-        />
+      <div className='grid gap-4'>
+        <div className="flex-1 min-w-0">
+          <Pills
+            bankTypes={bankTypes}
+            selected={selectedBankType}
+            onSelect={setSelectedBankType}
+          />
+        </div>
 
         <div className="flex flex-col gap-2">
           <label className="text-sm font-medium" htmlFor="year-range-slider">
