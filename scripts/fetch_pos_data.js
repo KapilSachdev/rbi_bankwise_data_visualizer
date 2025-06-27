@@ -31,8 +31,8 @@ const getAtmidForMonth = (targetYear, targetMonth) => {
 };
 
 const getTargetDate = (arg) => {
-  if (arg && /^\d{2}-\d{4}$/.test(arg)) {
-    const [month, year] = arg.split('-').map(Number);
+  if (arg && /^\d{4}_\d{2}$/.test(arg)) {
+    const [year, month] = arg.split('_').map(Number);
     return { year, month };
   }
   const now = new Date();
@@ -79,10 +79,16 @@ const extractXlsxLink = (html) => {
   return href.startsWith('http') ? href : `https://www.rbi.org.in${href}`;
 };
 
+const monthArg = process.argv.find(arg => arg.startsWith('--month='));
+let yearMonth = null;
+if (monthArg) {
+  yearMonth = monthArg.split('=')[1];
+}
+
 // Main execution
 const main = async () => {
   try {
-    const { year, month } = getTargetDate(process.argv[2]);
+    const { year, month } = getTargetDate(yearMonth);
     const paddedMonth = String(month).padStart(2, '0');
     const fileBase = `bankwise_pos_stats_${year}_${paddedMonth}`;
 

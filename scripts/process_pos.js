@@ -51,6 +51,7 @@ const columnMapping = [
 
 
 // Process all Excel files in data/excel, only if corresponding JSON does not exist
+// NOTE: 2013_08 excel has two extra columns c and d and have been removed. In case refetched this needs handling
 const excelDir = path.resolve(__dirname, '../data/excel');
 const jsonDir = path.resolve(__dirname, '../public/assets/data');
 

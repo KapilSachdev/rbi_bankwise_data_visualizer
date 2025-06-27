@@ -490,7 +490,7 @@ export const BANK_ACRONYMS = {
   },
   "SBBJ": {
     Bank_Type: "Public Sector Banks",
-    names: ['State Bank of Bikaner & Jaipur'],
+    names: ['State Bank of Bikaner & Jaipur', 'State Bank of Bikaner and Jaipur'],
     legacy: true // merged with SBI
   },
   "SBT": {
