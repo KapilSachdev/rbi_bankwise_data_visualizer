@@ -88,9 +88,19 @@ const BankTypeStackedAreaChart: React.FC<BankTypeStackedAreaChartProps> = ({ all
   );
 
   return (
-    <div className="w-full h-[480px]">
-      <div ref={chartRef} className="w-full h-[400px]" aria-label="Bank Type Stacked Area Chart" role="img" tabIndex={0} />
-      <div className="text-xs text-base-content/60 mt-2">Card transactions volume by bank type over time.</div>
+    <div className="h-full grid">
+      <div className="self-end">
+      <div
+        ref={chartRef}
+        className="w-full h-[400px]"
+        aria-label="Bank Type Stacked Area Chart"
+        role="img"
+        tabIndex={0}
+      />
+      <div className="text-xs text-base-content/60 mt-2">
+        Card transactions volume by bank type over time.
+      </div>
+      </div>
     </div>
   );
 };

@@ -105,24 +105,24 @@ const TopMoversLineChart: React.FC<TopMoversLineChartProps> = ({ allData, months
 
   return (
     <div className="w-full h-[480px]">
-      <div className="ml-auto">
-          <Doughnut
-            options={['Total', 'Credit Card', 'Debit Card']}
-            selected={
-              selectedMetric === 'total'
-                ? 'Total'
-                : selectedMetric === 'credit'
-                ? 'Credit Card'
-                : 'Debit Card'
-            }
-            onSelect={option => {
-              setSelectedMetric(
-                option === 'Total' ? 'total' : option === 'Credit Card' ? 'credit' : 'debit'
-              );
-            }}
-            size={36}
-          />
-        </div>
+      <div className="flex justify-end">
+        <Doughnut
+          options={['Total', 'Credit Card', 'Debit Card']}
+          selected={
+            selectedMetric === 'total'
+              ? 'Total'
+              : selectedMetric === 'credit'
+              ? 'Credit Card'
+              : 'Debit Card'
+          }
+          onSelect={option => {
+            setSelectedMetric(
+              option === 'Total' ? 'total' : option === 'Credit Card' ? 'credit' : 'debit'
+            );
+          }}
+          size={36}
+        />
+      </div>
       <div ref={chartRef} className="w-full h-[400px] rounded-xl" aria-label="Top Movers Card Transaction Growth" role="img" tabIndex={0} />
       <div className="text-xs text-base-content/60 mt-2">Top {topN} banks by {selectedMetric} card transaction growth over time.</div>
     </div>

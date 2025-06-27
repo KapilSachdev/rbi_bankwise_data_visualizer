@@ -85,10 +85,9 @@ const RandomThemeButton: React.FC = () => {
         href="https://www.github.com/kapilsachdev/rbi_bankwise_data_visualizer/"
         target="_blank"
         rel="noopener noreferrer"
-        className="btn btn-xs btn-ghost"
         aria-label="Project Home Page"
       >
-        <SVGIcon icon="github" className="size-8 stroke-base-content" />
+        <SVGIcon icon="github" className="size-8 stroke-primary" />
       </a>
 
       <button

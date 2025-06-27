@@ -73,23 +73,23 @@ function App() {
         <RandomThemeButton />
       </div>
       <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="card shadow-sm">
+        <div className="card shadow-sm border border-base-200">
           <div className="card-body">
             <TopMoversLineChart allData={posBanksData} months={posFiles.map(f => f.key)} />
           </div>
         </div>
-        <div className="card shadow-sm">
+        <div className="card shadow-sm border border-base-200">
           <div className="card-body">
             <BankTypeStackedAreaChart allData={posBanksData} months={posFiles.map(f => f.key)} />
           </div>
         </div>
 
-        <div className="card shadow-sm">
+        <div className="card shadow-sm border border-base-200">
           <div className="card-body">
             <BankInfraBarChart allData={posBanksData} months={posFiles.map(f => f.key)} />
           </div>
         </div>
-        <div className="card shadow-sm">
+        <div className="card shadow-sm border border-base-200">
           <div className="card-body">
             <CreditCardTimeSeriesChart allData={posBanksData} months={posFiles.map(f => f.key)} />
           </div>
