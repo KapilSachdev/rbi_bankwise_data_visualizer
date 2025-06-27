@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import SVGIcon from './SVGIcon';
 // ...existing code...
 
@@ -54,9 +54,8 @@ const getSavedTheme = (): string | null => {
   return localStorage.getItem(THEME_KEY);
 };
 
-const RandomThemeButton: React.FC = () => {
-  // On mount, set theme from localStorage if available
 
+const RandomThemeButton: React.FC = () => {
   const [lastTheme, setLastTheme] = React.useState<string | null>(null);
 
   useEffect(() => {
@@ -65,7 +64,6 @@ const RandomThemeButton: React.FC = () => {
       setTheme(saved);
       setLastTheme(saved);
     } else {
-      // If no saved theme, use the current data-theme or default
       const current = document.documentElement.getAttribute('data-theme');
       if (current && DAISYUI_THEMES.some(t => t.name === current)) {
         setLastTheme(current);
@@ -73,11 +71,11 @@ const RandomThemeButton: React.FC = () => {
     }
   }, []);
 
-  const handleRandomTheme = () => {
+  const handleRandomTheme = useCallback(() => {
     const themeObj = DAISYUI_THEMES[Math.floor(Math.random() * DAISYUI_THEMES.length)];
     setTheme(themeObj.name);
     setLastTheme(themeObj.name);
-  };
+  }, []);
 
   return (
     <div className="fixed z-50 bottom-4 right-4 flex flex-col items-center gap-2">
@@ -89,16 +87,23 @@ const RandomThemeButton: React.FC = () => {
       >
         <SVGIcon icon="github" className="size-8 stroke-primary" />
       </a>
-
       <button
         type="button"
-        className="btn btn-primary btn-circle btn-sm shadow-md"
+        className="btn btn-primary btn-circle btn-sm shadow-md focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:outline-none"
         aria-label="Randomise Theme"
         onClick={handleRandomTheme}
         title={lastTheme ? `${lastTheme}` : 'Randomise'}
       >
-        <div className="absolute inset--1 rounded-full border-8 border-base-300" />
       </button>
+      <a
+        href="https://www.github.com/kapilsachdev"
+        className="badge badge-primary badge-dash text-xs"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub profile of Kapil Sachdev"
+      >
+        Kapil Sachdev
+      </a>
     </div>
   );
 };
