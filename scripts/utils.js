@@ -14,7 +14,11 @@ const normalize = (s) =>
     .replace(/\b(bank)\b/g, "bank")
     .trim();
 
-const isBankNameSimilar = (a, b) => normalize(a) === normalize(b) || a.startsWith(b) || b.startsWith(a);
+const isBankNameSimilar = (a, b) => {
+  a = normalize(a)
+  b = normalize(b)
+  return a === b || a.startsWith(b) || b.startsWith(a);
+};
 
 
 /**

@@ -24,7 +24,7 @@ const Doughnut: React.FC<DoughnutProps> = ({
   // Responsive: clamp size between 96px and 240px
   const clampedSize = Math.max(48, Math.min(size, 240));
   const radius = clampedSize / 2;
-  const innerRadius = radius * 0.58; // slightly thicker ring for modern look
+  const innerRadius = radius * 0.4; // slightly thicker ring for modern look
   const gapAngle = Math.max(4, 16 - options.length); // adaptive gap for more options
   const angleStep = 360 / options.length;
   const sliceAngle = angleStep - gapAngle;

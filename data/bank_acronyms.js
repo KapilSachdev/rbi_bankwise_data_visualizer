@@ -24,6 +24,10 @@ export const BANK_ACRONYMS = {
     names: ['ALLAHABAD BANK'],
     legacy: true // merged with Indian Bank
   },
+  "ABIPB": {
+    Bank_Type: "Payment Banks",
+    names: ['ADITYA BIRLA IDEA PAYMENTS BANK']
+  },
   'BANDHAN': {
     Bank_Type: "Private Sector Banks",
     names: ['BANDHAN BANK LIMITED']
@@ -87,7 +91,7 @@ export const BANK_ACRONYMS = {
   },
   'DCB': {
     Bank_Type: "Private Sector Banks",
-    names: ['DCB BANK LIMITED', "Development Credit Bank Limited"]
+    names: ["DCB BANK", 'DCB BANK LIMITED', "Development Credit Bank Limited", "DEVELOPMENT CREDIT BANK"]
   },
   'DENA': {
     Bank_Type: "Public Sector Banks",
@@ -212,7 +216,7 @@ export const BANK_ACRONYMS = {
   },
   'LVB': {
     Bank_Type: "Private Sector Banks",
-    names: ['Lakshmi Vilas Bank Ltd.']
+    names: ['Lakshmi Vilas Bank Ltd.', "The Lakshmi Vilas Bank Ltd.", "THE LAXMI VILAS BANK LTD"]
   },
   'NAINITAL': {
     Bank_Type: "Private Sector Banks",
@@ -236,7 +240,7 @@ export const BANK_ACRONYMS = {
   },
   'PAYTM': {
     Bank_Type: "Payment Banks",
-    names: ['PAYTM PAYMENTS BANK LIMITED']
+    names: ["Paytm", 'PAYTM PAYMENTS BANK LIMITED', "Paytm Payments Bank"]
   },
   'PSB': {
     Bank_Type: "Public Sector Banks",

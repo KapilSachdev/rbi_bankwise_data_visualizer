@@ -96,7 +96,7 @@ fs.readdirSync(excelDir)
       // Find start of data
       let startIndex = data.findIndex(row => row[1] === 'Scheduled Commercial Banks') + 1;
       // If not found, assume that excel has numbered headers before data
-      if (startIndex === 0) startIndex = data.findIndex(row => row[0] === 1);
+      if (startIndex === 0) startIndex = data.findIndex(row => row[0] === 1 || row[1] === 1);
 
 
       // Per-file year/month and format detection
@@ -160,8 +160,6 @@ fs.readdirSync(excelDir)
         }
 
         const bankName = bankData.Bank_Name;
-        // Only process if bankName is a non-empty string
-        if (!bankName || typeof bankName !== 'string') continue;
 
         // Add short name/acronym for the bank
         bankData.Bank_Short_Name = mapBankShortName(bankName);
