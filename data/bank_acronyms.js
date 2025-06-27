@@ -130,6 +130,10 @@ export const BANK_ACRONYMS = {
     Bank_Type: "Small Finance Banks",
     names: ['FINCARE SMALL FINANCE BANK LTD']
   },
+  "FirstRand": {
+    Bank_Type: "Foreign Banks",
+    names: ['FIRSTRAND BANK', 'FIRST RAND BANK']
+  },
   'HDFC': {
     Bank_Type: "Private Sector Banks",
     names: ['HDFC BANK LTD']
@@ -301,6 +305,10 @@ export const BANK_ACRONYMS = {
   'SURYODAY': {
     Bank_Type: "Small Finance Banks",
     names: ['SURYODAY SMALL FINANCE BANK LTD']
+  },
+  "RBSNV": {
+    Bank_Type: "Foreign Banks",
+    names: ['ROYAL BANK OF SCOTLAND N V']
   },
   "RBS (ABN AMRO)": {
     Bank_Type: "Foreign Banks",
