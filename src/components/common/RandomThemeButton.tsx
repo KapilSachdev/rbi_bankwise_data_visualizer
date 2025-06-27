@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { GithubIcon } from '../icons/Icons';
+import SVGIcon from './SVGIcon';
+// ...existing code...
 
 // DaisyUI's default themes (from https://daisyui.com/docs/themes/)
 
@@ -80,7 +81,6 @@ const RandomThemeButton: React.FC = () => {
 
   return (
     <div className="fixed z-50 bottom-4 right-4 flex flex-col items-center gap-2">
-
       <a
         href="https://www.github.com/kapilsachdev/rbi_bankwise_data_visualizer/"
         target="_blank"
@@ -88,7 +88,7 @@ const RandomThemeButton: React.FC = () => {
         className="btn btn-xs btn-ghost"
         aria-label="Project Home Page"
       >
-        <GithubIcon className="size-8 stroke-base-content" />
+        <SVGIcon icon="github" className="size-8 stroke-base-content" />
       </a>
 
       <button
