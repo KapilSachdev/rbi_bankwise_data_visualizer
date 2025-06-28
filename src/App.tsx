@@ -78,18 +78,18 @@ function App() {
             <TopMoversLineChart allData={posBanksData} months={posFiles.map(f => f.key)} />
           </div>
         </div>
-        <div className="card shadow-sm border border-base-200">
+        <div className="card shadow-sm border border-base-300">
           <div className="card-body">
             <BankTypeStackedAreaChart allData={posBanksData} months={posFiles.map(f => f.key)} />
           </div>
         </div>
 
-        <div className="card shadow-sm border border-base-200">
+        <div className="card shadow-sm border border-base-300">
           <div className="card-body">
             <BankInfraBarChart allData={posBanksData} months={posFiles.map(f => f.key)} />
           </div>
         </div>
-        <div className="card shadow-sm border border-base-200">
+        <div className="card shadow-sm border border-base-300">
           <div className="card-body">
             <CreditCardTimeSeriesChart allData={posBanksData} months={posFiles.map(f => f.key)} />
           </div>
