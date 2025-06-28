@@ -34,11 +34,34 @@ const RangeSlider: FC<RangeSliderProps> = ({
   const startPercent = percent(start);
   const endPercent = percent(end);
 
+
   // Mouse/touch drag logic
   const onThumbDown = (which: 'start' | 'end') => (e: React.MouseEvent | React.TouchEvent) => {
     e.preventDefault();
     setDragging(which);
     document.body.style.userSelect = 'none';
+  };
+
+  // Track click logic: move nearest thumb to click position
+  const handleTrackClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!trackRef.current) return;
+    const rect = trackRef.current.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const percent = Math.max(0, Math.min(1, clickX / rect.width));
+    let value = Math.round((min + percent * (max - min)) / step) * step;
+    value = Math.max(min, Math.min(max, value));
+    // Decide which thumb is closer
+    const distToStart = Math.abs(value - start);
+    const distToEnd = Math.abs(value - end);
+    if (distToStart < distToEnd) {
+      // Move start thumb, but don't cross end
+      if (value > end) value = end;
+      onChange([value, end]);
+    } else {
+      // Move end thumb, but don't cross start
+      if (value < start) value = start;
+      onChange([start, value]);
+    }
   };
 
   const onThumbMove = useCallback((clientX: number) => {
@@ -105,6 +128,7 @@ const RangeSlider: FC<RangeSliderProps> = ({
           ref={trackRef}
           className="relative flex-1 h-12 flex items-center cursor-pointer"
           aria-label="Range slider"
+          onClick={handleTrackClick}
         >
           {/* Value badges above thumbs */}
           <span

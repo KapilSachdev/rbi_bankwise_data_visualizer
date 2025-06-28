@@ -23,7 +23,6 @@ interface BankTypeStackedAreaChartProps {
 
 
 const BankTypeStackedAreaChart: FC<BankTypeStackedAreaChartProps> = ({ allData, months }) => {
-  // No need for chartRef or chartInstance, handled by EChartsChart
   // Get all unique bank types
   const bankTypes = useMemo(() => {
     const set = new Set<string>();

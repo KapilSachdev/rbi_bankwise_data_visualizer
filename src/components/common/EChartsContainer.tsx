@@ -46,7 +46,7 @@ const EChartsContainer: FC<EChartsContainerProps> = ({
   // Set option
   useEffect(() => {
     if (chartInstance.current) {
-      chartInstance.current.setOption(option, { notMerge: false, lazyUpdate: false });
+      chartInstance.current.setOption(option, { lazyUpdate: false });
     }
   }, [option]);
 

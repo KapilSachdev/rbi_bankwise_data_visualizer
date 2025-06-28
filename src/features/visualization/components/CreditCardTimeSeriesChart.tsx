@@ -6,8 +6,8 @@ import { FC, memo, useEffect, useMemo, useState } from 'react';
 import EChartsContainer from '../../../components/common/EChartsContainer';
 import Pills from '../../../components/filters/Pills';
 import RangeSlider from '../../../components/filters/RangeSlider';
-import type { BankData } from '../../../types/global.types';
 import { BANK_TYPES } from '../../../constants/data';
+import type { BankData } from '../../../types/global.types';
 
 echarts.use([
   LineChart,

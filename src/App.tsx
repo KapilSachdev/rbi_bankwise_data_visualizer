@@ -1,5 +1,12 @@
 
 import { useEffect, useState } from 'react';
+import RandomThemeButton from './components/common/RandomThemeButton';
+import { DATA_FOLDER } from './constants/data';
+import BankTypeStackedAreaChart from './features/visualization/components/BankTypeStackedAreaChart';
+import CreditCardTimeSeriesChart from './features/visualization/components/CreditCardTimeSeriesChart';
+import BankInfraBarChart from './features/visualization/components/InfraBarChart';
+import TopMoversLineChart from './features/visualization/components/TopMoversLineChart';
+import type { BankData } from './types/global.types';
 
 interface DataFileMeta {
   file: string;
@@ -7,13 +14,6 @@ interface DataFileMeta {
   key: string;
   type?: string;
 }
-import CreditCardTimeSeriesChart from './features/visualization/components/CreditCardTimeSeriesChart';
-import RandomThemeButton from './components/common/RandomThemeButton';
-import { DATA_FOLDER } from './constants/data';
-import BankInfraBarChart from './features/visualization/components/InfraBarChart';
-import type { BankData } from './types/global.types';
-import TopMoversLineChart from './features/visualization/components/TopMoversLineChart';
-import BankTypeStackedAreaChart from './features/visualization/components/BankTypeStackedAreaChart';
 
 
 function App() {
