@@ -1,5 +1,5 @@
 
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import * as echarts from 'echarts/core';
 import {
   TooltipComponent,
@@ -11,9 +11,9 @@ import {
 import { BarChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 import Pills from '../../../components/filters/Pills';
-import { useEchartsThemeSync } from '../../../hooks/useEchartsThemeSync';
 import type { BankData } from '../../../types/global.types';
-import { formatMonthYear } from '../../../utils/time'
+import { formatMonthYear } from '../../../utils/time';
+import EChartsContainer from '../../../components/common/EChartsContainer';
 
 echarts.use([
   TooltipComponent,
@@ -44,7 +44,7 @@ const INFRA_METRICS = [
 
 
 const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }) => {
-  const chartRef = useRef<HTMLDivElement>(null);
+  // No need for chartRef or chartInstance, handled by EChartsChart
   const [topN, setTopN] = useState(10);
   const [metric, setMetric] = useState(INFRA_METRICS[0].value);
   const [selectedMonth, setSelectedMonth] = useState(() => months[0]);
@@ -108,52 +108,50 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
 
 
 
-  useEchartsThemeSync(
-    chartRef,
-    () => ({
-      backgroundColor: 'transparent',
-      title: {
-        text: `${INFRA_METRICS.find(m => m.value === metric)?.label || ''} (${selectedMonth && formatMonthYear(selectedMonth)})`,
-        left: 'center',
+
+  const option = useMemo(() => ({
+    backgroundColor: 'transparent',
+    title: {
+      text: `${INFRA_METRICS.find(m => m.value === metric)?.label || ''} (${selectedMonth && formatMonthYear(selectedMonth)})`,
+      left: 'center',
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { type: 'shadow' },
+      valueFormatter: (value: number) => value.toLocaleString()
+    },
+    grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+    legend: { show: false },
+    xAxis: {
+      type: 'category',
+      data: sortedData.map(item => item.Bank_Short_Name),
+      axisLabel: {
+        interval: 0,
+        rotate: 30,
       },
-      tooltip: {
-        trigger: 'axis',
-        axisPointer: { type: 'shadow' },
-        valueFormatter: (value: number) => value.toLocaleString()
+    },
+    yAxis: {
+      type: 'value',
+    },
+    series: [
+      {
+        type: 'bar',
+        name: INFRA_METRICS.find(m => m.value === metric)?.label || '',
+        data: sortedData.map(item => getMetricValue(item.Infrastructure, metric)),
+        emphasis: { focus: 'series' },
       },
-      grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
-      legend: { show: false },
-      xAxis: {
-        type: 'category',
-        data: sortedData.map(item => item.Bank_Short_Name),
-        axisLabel: {
-          interval: 0,
-          rotate: 30,
-        },
+    ],
+    toolbox: {
+      feature: {
+        saveAsImage: { title: 'Save' },
+        dataView: { readOnly: true },
+        restore: {},
       },
-      yAxis: {
-        type: 'value',
-      },
-      series: [
-        {
-          type: 'bar',
-          name: INFRA_METRICS.find(m => m.value === metric)?.label || '',
-          data: sortedData.map(item => getMetricValue(item.Infrastructure, metric)),
-          emphasis: { focus: 'series' },
-        },
-      ],
-      toolbox: {
-        feature: {
-          saveAsImage: { title: 'Save' },
-          dataView: { readOnly: true },
-          restore: {},
-        },
-        right: 10,
-        top: 10,
-      },
-    }),
-    [sortedData, metric, selectedMonth]
-  );
+      right: 10,
+      top: 10,
+    },
+    animationDuration: 800,
+  }), [sortedData, metric, selectedMonth]);
 
   return (
     <div className="flex flex-col justify-between h-full">
@@ -215,8 +213,8 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
         </div>
       </div>
 
-      <div
-        ref={chartRef}
+      <EChartsContainer
+        option={option}
         aria-label="Bank Infrastructure Bar Chart"
         role="img"
         tabIndex={0}

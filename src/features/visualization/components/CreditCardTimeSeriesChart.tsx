@@ -5,7 +5,7 @@ import { GridComponent, TooltipComponent, LegendComponent, TitleComponent } from
 import { CanvasRenderer } from 'echarts/renderers';
 import Pills from '../../../components/filters/Pills';
 import type { BankData } from '../../../types/global.types';
-import { useEchartsThemeSync } from '../../../hooks/useEchartsThemeSync';
+import EChartsContainer from '../../../components/common/EChartsContainer';
 
 echarts.use([
   LineChart,
@@ -60,7 +60,7 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
       return y >= yearRange[0] && y <= yearRange[1];
     });
   }, [sortedMonths, yearRange]);
-  const chartRef = useRef<HTMLDivElement>(null);
+  // No need for chartRef or chartInstance, handled by EChartsChart
 
   // Filter state
   const [selectedBankType, setSelectedBankType] = React.useState('');
@@ -155,11 +155,7 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
   }), [sortedData, filteredMonths]);
 
 
-  useEchartsThemeSync(
-    chartRef,
-    () => option,
-    [option]
-  );
+
 
   return (
     <div className='flex flex-col gap-4 justify-between h-full'>
@@ -209,8 +205,8 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
           </div>
         </div>
       </div>
-      <div
-        ref={chartRef}
+      <EChartsContainer
+        option={option}
         className="w-full h-[400px]"
         aria-label="Credit Card Time Series Chart"
         role="img"

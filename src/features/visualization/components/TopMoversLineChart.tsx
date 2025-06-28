@@ -1,11 +1,11 @@
-import React, { useMemo, useRef, useEffect, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import Doughnut from '../../../components/filters/Doughnut';
 import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
 import { GridComponent, TooltipComponent, LegendComponent, TitleComponent, ToolboxComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import type { BankData } from '../../../types/global.types';
-import { useEchartsThemeSync } from '../../../hooks/useEchartsThemeSync';
+import EChartsContainer from '../../../components/common/EChartsContainer';
 
 echarts.use([
   LineChart,
@@ -25,7 +25,6 @@ interface TopMoversLineChartProps {
 }
 
 const TopMoversLineChart: React.FC<TopMoversLineChartProps> = ({ allData, months, metric = 'total', topN = 5 }) => {
-  const chartRef = useRef<HTMLDivElement>(null);
   const [selectedMetric, setSelectedMetric] = useState<'credit' | 'debit' | 'total'>(metric);
 
   // Prepare time series for each bank
@@ -66,42 +65,37 @@ const TopMoversLineChart: React.FC<TopMoversLineChartProps> = ({ allData, months
       .slice(0, topN);
   }, [bankSeries, topN]);
 
-  // Theme-synced ECharts
-  useEchartsThemeSync(
-    chartRef,
-    () => {
-      const sortedMonths = [...months].sort();
-      return {
-        backgroundColor: 'transparent',
-        title: {
-          text: `Top ${topN} Banks by ${selectedMetric.charAt(0).toUpperCase() + selectedMetric.slice(1)} Card Txn Growth`,
-          left: 'center',
-        },
-        tooltip: { trigger: 'axis' },
-        legend: { top: 30, type: 'scroll' },
-        toolbox: { feature: { saveAsImage: {} } },
-        grid: { left: '3%', right: '4%', top: '20%', bottom: '8%', containLabel: true },
-        xAxis: {
-          type: 'category',
-          data: sortedMonths,
-          axisLabel: { rotate: 45 },
-        },
-        yAxis: {
-          type: 'value',
-          name: 'Transaction Volume',
-        },
-        series: topBanks.map(bank => ({
-          name: bank.name,
-          type: 'line',
-          data: bank.values,
-          smooth: true,
-          emphasis: { focus: 'series' },
-          showSymbol: false,
-        })),
-      };
+
+  const sortedMonths = useMemo(() => [...months].sort(), [months]);
+  const option = useMemo(() => ({
+    backgroundColor: 'transparent',
+    title: {
+      text: `Top ${topN} Banks by ${selectedMetric.charAt(0).toUpperCase() + selectedMetric.slice(1)} Card Txn Growth`,
+      left: 'center',
     },
-    [topBanks, months, selectedMetric, topN]
-  );
+    tooltip: { trigger: 'axis' },
+    legend: { top: 30, type: 'scroll' },
+    toolbox: { feature: { saveAsImage: {} } },
+    grid: { left: '3%', right: '4%', top: '20%', bottom: '8%', containLabel: true },
+    xAxis: {
+      type: 'category',
+      data: sortedMonths,
+      axisLabel: { rotate: 45 },
+    },
+    yAxis: {
+      type: 'value',
+      name: 'Transaction Volume',
+    },
+    series: topBanks.map(bank => ({
+      name: bank.name,
+      type: 'line',
+      data: bank.values,
+      smooth: true,
+      emphasis: { focus: 'series' },
+      showSymbol: false,
+    })),
+    animationDuration: 800,
+  }), [topBanks, sortedMonths, selectedMetric, topN]);
 
   return (
     <div className="w-full h-[480px]">
@@ -123,7 +117,13 @@ const TopMoversLineChart: React.FC<TopMoversLineChartProps> = ({ allData, months
           size={36}
         />
       </div>
-      <div ref={chartRef} className="w-full h-[400px] rounded-xl" aria-label="Top Movers Card Transaction Growth" role="img" tabIndex={0} />
+      <EChartsContainer
+        option={option}
+        className="w-full h-[400px] rounded-xl"
+        aria-label="Top Movers Card Transaction Growth"
+        role="img"
+        tabIndex={0}
+      />
       <div className="text-xs text-base-content/60 mt-2">Top {topN} banks by {selectedMetric} card transaction growth over time.</div>
     </div>
   );

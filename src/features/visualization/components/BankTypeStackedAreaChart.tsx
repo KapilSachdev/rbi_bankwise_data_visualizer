@@ -1,10 +1,10 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo } from 'react';
 import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
 import { GridComponent, TooltipComponent, LegendComponent, TitleComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import type { BankData } from '../../../types/global.types';
-import { useEchartsThemeSync } from '../../../hooks/useEchartsThemeSync';
+import EChartsContainer from '../../../components/common/EChartsContainer';
 
 echarts.use([
   LineChart,
@@ -23,7 +23,7 @@ interface BankTypeStackedAreaChartProps {
 
 
 const BankTypeStackedAreaChart: React.FC<BankTypeStackedAreaChartProps> = ({ allData, months }) => {
-  const chartRef = useRef<HTMLDivElement>(null);
+  // No need for chartRef or chartInstance, handled by EChartsChart
   // Get all unique bank types
   const bankTypes = useMemo(() => {
     const set = new Set<string>();
@@ -54,52 +54,47 @@ const BankTypeStackedAreaChart: React.FC<BankTypeStackedAreaChartProps> = ({ all
     });
   }, [allData, months, bankTypes]);
 
-  useEchartsThemeSync(
-    chartRef,
-    () => {
-      const sortedMonths = [...months].sort();
-      return {
-        backgroundColor: 'transparent',
-        title: {
-          text: 'Card Transaction Volume by Bank Type',
-          left: 'center',
-        },
-        tooltip: { trigger: 'axis' },
-        legend: { top: 30, type: 'scroll' },
-        grid: { left: '3%', right: '4%', top: '20%', bottom: '8%', containLabel: true },
-        xAxis: {
-          type: 'category',
-          data: sortedMonths,
-          axisLabel: { rotate: 45 },
-        },
-        yAxis: {
-          type: 'value',
-          name: 'Txn Volume',
-        },
-        series: typeSeries.map(s => ({
-          name: s.type,
-          type: 'line',
-          data: s.values,
-        })),
-        animationDuration: 800,
-      };
+
+  const sortedMonths = useMemo(() => [...months].sort(), [months]);
+  const option = useMemo(() => ({
+    backgroundColor: 'transparent',
+    title: {
+      text: 'Card Transaction Volume by Bank Type',
+      left: 'center',
     },
-    [typeSeries, months]
-  );
+    tooltip: { trigger: 'axis' },
+    legend: { top: 30, type: 'scroll' },
+    grid: { left: '3%', right: '4%', top: '20%', bottom: '8%', containLabel: true },
+    xAxis: {
+      type: 'category',
+      data: sortedMonths,
+      axisLabel: { rotate: 45 },
+    },
+    yAxis: {
+      type: 'value',
+      name: 'Txn Volume',
+    },
+    series: typeSeries.map(s => ({
+      name: s.type,
+      type: 'line',
+      data: s.values,
+    })),
+    animationDuration: 800,
+  }), [typeSeries, sortedMonths]);
 
   return (
     <div className="h-full grid">
       <div className="self-end">
-      <div
-        ref={chartRef}
-        className="w-full h-[400px]"
-        aria-label="Bank Type Stacked Area Chart"
-        role="img"
-        tabIndex={0}
-      />
-      <div className="text-xs text-base-content/60 mt-2">
-        Card transactions volume by bank type over time.
-      </div>
+        <EChartsContainer
+          option={option}
+          className="w-full h-[400px]"
+          aria-label="Bank Type Stacked Area Chart"
+          role="img"
+          tabIndex={0}
+        />
+        <div className="text-xs text-base-content/60 mt-2">
+          Card transactions volume by bank type over time.
+        </div>
       </div>
     </div>
   );
