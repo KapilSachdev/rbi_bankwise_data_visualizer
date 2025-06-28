@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 
 
 interface PillsProps {
@@ -7,7 +7,7 @@ interface PillsProps {
   onSelect: (type: string) => void;
 }
 
-const Pills: React.FC<PillsProps> = ({ bankTypes, selected, onSelect }) => (
+const Pills: FC<PillsProps> = ({ bankTypes, selected, onSelect }) => (
   <div className="overflow-x-auto w-full scrollbar-none" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
     <div className="gap-2 rounded-full px-1 py-1 shadow flex-nowrap inline-flex min-w-max">
       <button

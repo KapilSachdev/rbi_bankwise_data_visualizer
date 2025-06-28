@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 interface DataFilterProps {
   months?: string[];
@@ -17,7 +17,7 @@ interface DataFilterProps {
   };
 }
 
-const DataFilter: React.FC<DataFilterProps> = ({
+const DataFilter: FC<DataFilterProps> = ({
   months = [],
   bankTypes = [],
   selectedMonth = '',

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { FC, useMemo } from 'react';
 import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
 import { GridComponent, TooltipComponent, LegendComponent, TitleComponent } from 'echarts/components';
@@ -22,7 +22,7 @@ interface BankTypeStackedAreaChartProps {
 
 
 
-const BankTypeStackedAreaChart: React.FC<BankTypeStackedAreaChartProps> = ({ allData, months }) => {
+const BankTypeStackedAreaChart: FC<BankTypeStackedAreaChartProps> = ({ allData, months }) => {
   // No need for chartRef or chartInstance, handled by EChartsChart
   // Get all unique bank types
   const bankTypes = useMemo(() => {

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, RefObject, MutableRefObject } from 'react';
 import * as echarts from 'echarts/core';
 import type { EChartsType, EChartsCoreOption } from 'echarts/core';
 
@@ -9,7 +9,7 @@ import type { EChartsType, EChartsCoreOption } from 'echarts/core';
 export function useECharts(
   option: EChartsCoreOption,
   onInit?: (chart: EChartsType) => void
-): [React.RefObject<HTMLDivElement | null>, React.MutableRefObject<EChartsType | null>] {
+): [RefObject<HTMLDivElement | null>, MutableRefObject<EChartsType | null>] {
   const chartRef = useRef<HTMLDivElement | null>(null);
   const chartInstance = useRef<EChartsType | null>(null);
 

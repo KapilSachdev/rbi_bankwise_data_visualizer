@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 import Doughnut from '../../../components/filters/Doughnut';
 import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
@@ -24,7 +24,7 @@ interface TopMoversLineChartProps {
   topN?: number;
 }
 
-const TopMoversLineChart: React.FC<TopMoversLineChartProps> = ({ allData, months, metric = 'total', topN = 5 }) => {
+const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metric = 'total', topN = 5 }) => {
   const [selectedMetric, setSelectedMetric] = useState<'credit' | 'debit' | 'total'>(metric);
 
   // Prepare time series for each bank

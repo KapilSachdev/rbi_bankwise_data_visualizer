@@ -1,19 +1,14 @@
 
-import React, { useEffect, useMemo, useState } from 'react';
-import * as echarts from 'echarts/core';
-import {
-  TooltipComponent,
-  GridComponent,
-  LegendComponent,
-  ToolboxComponent,
-  MarkLineComponent,
-} from 'echarts/components';
 import { BarChart } from 'echarts/charts';
+import { GridComponent, LegendComponent, MarkLineComponent, ToolboxComponent, TooltipComponent, } from 'echarts/components';
+import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
+import { FC, useMemo, useState } from 'react';
+import { BANK_TYPES } from '../../../constants/data';
+import EChartsContainer from '../../../components/common/EChartsContainer';
 import Pills from '../../../components/filters/Pills';
 import type { BankData } from '../../../types/global.types';
 import { formatMonthYear } from '../../../utils/time';
-import EChartsContainer from '../../../components/common/EChartsContainer';
 
 echarts.use([
   TooltipComponent,
@@ -43,23 +38,22 @@ const INFRA_METRICS = [
 ];
 
 
-const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }) => {
+const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months }) => {
   // No need for chartRef or chartInstance, handled by EChartsChart
+
   const [topN, setTopN] = useState(10);
   const [metric, setMetric] = useState(INFRA_METRICS[0].value);
-  const [selectedMonth, setSelectedMonth] = useState(() => months[0]);
-
-  useEffect(() => {
-    setSelectedMonth(months[0]);
-  }, [months]);
+  // Always use the first month in months as selectedMonth, fallback to '' if empty
+  const [selectedMonth, setSelectedMonth] = useState<string>(months[0] || '');
   const [selectedBankType, setSelectedBankType] = useState<string>('');
 
+  // Keep selectedMonth in sync with months[0] if months changes
+  if (months[0] && selectedMonth !== months[0]) {
+    setSelectedMonth(months[0]);
+  }
 
   // Get all unique bank types
-  const bankTypes = useMemo(() => {
-    const all = months.flatMap(m => allData[m] || []);
-    return Array.from(new Set(all.map(d => d.Bank_Type)));
-  }, [allData, months]);
+  const bankTypes = BANK_TYPES
 
   // Filtered data for chart
   const data = useMemo(() => {
@@ -159,7 +153,7 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
         <Pills
           bankTypes={bankTypes}
           selected={selectedBankType}
-          onSelect={(type: string) => setSelectedBankType(type)}
+          onSelect={setSelectedBankType}
         />
         <div className="flex justify-stretch justify-items-stretch gap-4 mb-2 w-full">
           <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem]">
@@ -215,10 +209,10 @@ const BankInfraBarChart: React.FC<BankInfraBarChartProps> = ({ allData, months }
 
       <EChartsContainer
         option={option}
+        className="w-full h-[400px]"
         aria-label="Bank Infrastructure Bar Chart"
         role="img"
         tabIndex={0}
-        className="w-full h-[400px]"
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { FC, KeyboardEvent, useRef, useState } from 'react';
 
 interface RadialMenuProps {
   options: string[];
@@ -16,7 +16,7 @@ interface RadialMenuProps {
  * @param centerLabel - Label for the center button (optional)
  * @param openOn - 'hover' or 'click' to open the menu (default: 'click')
  */
-const RadialMenu: React.FC<RadialMenuProps> = ({
+const RadialMenu: FC<RadialMenuProps> = ({
   options,
   selected,
   onSelect,
@@ -52,7 +52,7 @@ const RadialMenu: React.FC<RadialMenuProps> = ({
   };
 
   // Accessibility: keyboard navigation
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Escape') setOpen(false);
   };
 

@@ -1,13 +1,13 @@
-import React, { useRef, useEffect } from 'react';
+import type { EChartsCoreOption, EChartsType } from 'echarts/core';
 import * as echarts from 'echarts/core';
-import type { EChartsType, EChartsCoreOption } from 'echarts/core';
+import { CSSProperties, FC, memo, useEffect, useRef } from 'react';
 import { useEchartsThemeSync } from '../../hooks/useEchartsThemeSync';
 
 
 type EChartsContainerProps = {
   option: EChartsCoreOption;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   onInit?: (chart: EChartsType) => void;
   themeSync?: boolean; // default true
   'aria-label'?: string;
@@ -16,11 +16,11 @@ type EChartsContainerProps = {
 };
 
 /**
- * Generic, reusable ECharts chart component for React.
+ * Generic, reusable ECharts chart component for React
  * Handles chart instance lifecycle, resizing, and theme sync.
  * Pass ECharts option, and optionally get chart instance via onInit.
  */
-const EChartsContainer: React.FC<EChartsContainerProps> = ({
+const EChartsContainer: FC<EChartsContainerProps> = ({
   option,
   className = '',
   style,
@@ -71,4 +71,4 @@ const EChartsContainer: React.FC<EChartsContainerProps> = ({
   );
 };
 
-export default React.memo(EChartsContainer);
+export default memo(EChartsContainer);

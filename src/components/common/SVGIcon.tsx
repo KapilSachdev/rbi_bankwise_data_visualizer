@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { FC, memo, SVGProps } from 'react';
 
-interface SVGIconProps extends React.SVGProps<SVGSVGElement> {
+interface SVGIconProps extends SVGProps<SVGSVGElement> {
   /**
    * The symbol id from the sprite (e.g., "icon-github").
    */
@@ -13,10 +13,10 @@ interface SVGIconProps extends React.SVGProps<SVGSVGElement> {
  * @param className Tailwind/daisyUI classes for styling
  * @param rest Other SVG props (e.g., aria-label, title)
  */
-const SVGIcon: React.FC<SVGIconProps> = ({ icon, className = 'size-8', ...rest }) => (
+const SVGIcon: FC<SVGIconProps> = ({ icon, className = 'size-8', ...rest }) => (
   <svg className={className} {...rest}>
     <use href={`assets/icons.svg#${icon}`} />
   </svg>
 );
 
-export default React.memo(SVGIcon);
+export default memo(SVGIcon);

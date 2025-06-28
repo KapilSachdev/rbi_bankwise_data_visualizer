@@ -1,11 +1,13 @@
-import React, { useEffect, useMemo, useRef } from 'react';
-import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
-import { GridComponent, TooltipComponent, LegendComponent, TitleComponent } from 'echarts/components';
+import { GridComponent, LegendComponent, TitleComponent, TooltipComponent } from 'echarts/components';
+import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
-import Pills from '../../../components/filters/Pills';
-import type { BankData } from '../../../types/global.types';
+import { FC, memo, useEffect, useMemo, useState } from 'react';
 import EChartsContainer from '../../../components/common/EChartsContainer';
+import Pills from '../../../components/filters/Pills';
+import RangeSlider from '../../../components/filters/RangeSlider';
+import type { BankData } from '../../../types/global.types';
+import { BANK_TYPES } from '../../../constants/data';
 
 echarts.use([
   LineChart,
@@ -22,7 +24,7 @@ interface CreditCardTimeSeriesChartProps {
   months: string[];
 }
 
-const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ allData, months }) => {
+const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData, months }) => {
   // Ensure months are sorted in ascending order (earliest to latest)
   const sortedMonths = useMemo(() => {
     return [...months].sort();
@@ -46,10 +48,10 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
     return [start, end] as [number, number];
   }, [years]);
 
-  const [yearRange, setYearRange] = React.useState<[number, number]>(defaultYearRange);
+  const [yearRange, setYearRange] = useState<[number, number]>(defaultYearRange);
 
   // Set default year range to last 5 years on mount or when years change
-  React.useEffect(() => {
+  useEffect(() => {
     setYearRange(defaultYearRange);
   }, [defaultYearRange[0], defaultYearRange[1]]);
 
@@ -63,17 +65,13 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
   // No need for chartRef or chartInstance, handled by EChartsChart
 
   // Filter state
-  const [selectedBankType, setSelectedBankType] = React.useState('');
-  const [selectedBanks, setSelectedBanks] = React.useState<string[]>([]);
+  const [selectedBankType, setSelectedBankType] = useState('');
 
   // Get all unique bank types
-  const bankTypes = useMemo(() => {
-    const all = filteredMonths.flatMap(m => allData[m] || []);
-    return Array.from(new Set(all.map(d => d.Bank_Type)));
-  }, [allData, filteredMonths]);
+  const bankTypes = BANK_TYPES
 
-  // Get all unique banks (filtered by type), only those with credit cards > 0 in at least one month
-  const banks = useMemo(() => {
+  // Build time series data for all banks matching filter (only if they have >0 credit cards in at least one month)
+  const chartData = useMemo(() => {
     const all = filteredMonths.flatMap(m => allData[m] || []);
     const filtered = selectedBankType ? all.filter(d => d.Bank_Type === selectedBankType) : all;
     // Group by bank name
@@ -82,39 +80,21 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
       if (!bankMap.has(d.Bank_Name)) bankMap.set(d.Bank_Name, []);
       bankMap.get(d.Bank_Name)!.push(d);
     });
-    // Only include banks with credit cards > 0 in at least one month
+    // Build time series for each bank
     return Array.from(bankMap.entries())
-      .filter(([, arr]) => arr.some(b => b.Infrastructure?.Credit_Cards > 0))
-      .map(([name]) => name);
+      .map(([bankName, arr]) => {
+        const values = filteredMonths.map(month => {
+          const bank = (allData[month] || []).find(d => d.Bank_Name === bankName);
+          return { month, creditCards: bank?.Infrastructure?.Credit_Cards ?? 0 };
+        });
+        // Only include if at least one value > 0
+        if (values.some(v => v.creditCards > 0)) {
+          return { bank: bankName, values };
+        }
+        return null;
+      })
+      .filter(Boolean) as { bank: string; values: { month: string; creditCards: number }[] }[];
   }, [allData, filteredMonths, selectedBankType]);
-
-  // Whenever selectedBankType changes, reset selectedBanks to top 5 for that type (with >0 credit cards)
-  useEffect(() => {
-    if (banks.length > 0) {
-      const latestMonth = filteredMonths[filteredMonths.length - 1];
-      const data = (allData[latestMonth] || [])
-        .filter(d => (!selectedBankType || d.Bank_Type === selectedBankType) && d.Infrastructure?.Credit_Cards > 0);
-      const sorted = [...data].sort((a, b) => (b.Infrastructure?.Credit_Cards ?? 0) - (a.Infrastructure?.Credit_Cards ?? 0));
-      setSelectedBanks(sorted.map(d => d.Bank_Name));
-    } else {
-      setSelectedBanks([]);
-    }
-  }, [selectedBankType, banks.length, allData, filteredMonths]);
-
-  // Build time series data for selected banks (only if they have >0 credit cards in at least one month)
-  const chartData = useMemo(() => {
-    return selectedBanks.map(bankName => {
-      const values = filteredMonths.map(month => {
-        const bank = (allData[month] || []).find(d => d.Bank_Name === bankName);
-        return { month, creditCards: bank?.Infrastructure?.Credit_Cards ?? 0 };
-      });
-      // Only include if at least one value > 0
-      if (values.some(v => v.creditCards > 0)) {
-        return { bank: bankName, values };
-      }
-      return null;
-    }).filter(Boolean) as { bank: string; values: { month: string; creditCards: number }[] }[];
-  }, [selectedBanks, allData, filteredMonths]);
 
   // Sort by latest credit card count
   const sortedData = useMemo(() => {
@@ -154,9 +134,6 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
     animationDuration: 800,
   }), [sortedData, filteredMonths]);
 
-
-
-
   return (
     <div className='flex flex-col gap-4 justify-between h-full'>
       <div className='grid gap-4'>
@@ -168,42 +145,13 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
           />
         </div>
 
-        <div className="flex flex-col gap-2">
-          <label className="text-sm font-medium" htmlFor="year-range-slider">
-            Year Range: {yearRange[0]} - {yearRange[1]}
-          </label>
-          <div className="flex items-center gap-2">
-            <span className="text-xs">{years[0]}</span>
-            <input
-              id="year-range-slider"
-              type="range"
-              min={years[0]}
-              max={years[years.length - 1]}
-              value={yearRange[0]}
-              className="range range-primary flex-1"
-              step={1}
-              onChange={e => {
-                const newStart = Number(e.target.value);
-                setYearRange(([_, end]) => [Math.min(newStart, end), Math.max(newStart, end)]);
-              }}
-              aria-label="Select start year"
-            />
-            <input
-              type="range"
-              min={years[0]}
-              max={years[years.length - 1]}
-              value={yearRange[1]}
-              className="range range-secondary flex-1"
-              step={1}
-              onChange={e => {
-                const newEnd = Number(e.target.value);
-                setYearRange(([start, _]) => [Math.min(start, newEnd), Math.max(start, newEnd)]);
-              }}
-              aria-label="Select end year"
-            />
-            <span className="text-xs">{years[years.length - 1]}</span>
-          </div>
-        </div>
+        <RangeSlider
+          min={years[0]}
+          max={years[years.length - 1]}
+          value={yearRange}
+          onChange={setYearRange}
+          step={1}
+        />
       </div>
       <EChartsContainer
         option={option}
@@ -216,4 +164,4 @@ const CreditCardTimeSeriesChart: React.FC<CreditCardTimeSeriesChartProps> = ({ a
   );
 };
 
-export default React.memo(CreditCardTimeSeriesChart);
+export default memo(CreditCardTimeSeriesChart);

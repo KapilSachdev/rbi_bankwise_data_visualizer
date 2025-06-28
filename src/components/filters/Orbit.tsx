@@ -1,10 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { FC, KeyboardEvent, ReactNode, useEffect, useRef, useState } from 'react';
 
 interface OrbitMenuProps {
   options: string[];
   selected: string;
   onSelect: (option: string) => void;
-  centerIcon?: React.ReactNode;
+  centerIcon?: ReactNode;
   openOn?: 'hover' | 'click';
 }
 
@@ -17,7 +17,7 @@ interface OrbitMenuProps {
  * @param openOn - 'hover' or 'click' to open the menu (default: 'click')
  */
 
-const OrbitMenu: React.FC<OrbitMenuProps> = ({
+const OrbitMenu: FC<OrbitMenuProps> = ({
   options,
   selected,
   onSelect,
@@ -33,7 +33,7 @@ const OrbitMenu: React.FC<OrbitMenuProps> = ({
   const ORBIT_ROTATION_SPEED = 0.03; // degrees per ms, controls orbit rotation speed
   const [orbitAngle, setOrbitAngle] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     let raf: number | undefined;
     if (open) {
       let last = performance.now();
@@ -70,7 +70,7 @@ const OrbitMenu: React.FC<OrbitMenuProps> = ({
   };
 
   // Accessibility: keyboard navigation
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Escape') setOpen(false);
   };
 

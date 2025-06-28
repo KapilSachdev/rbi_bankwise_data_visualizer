@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import { FC, memo, useCallback, useEffect, useState } from 'react';
 import SVGIcon from './SVGIcon';
 // ...existing code...
 
@@ -55,8 +55,8 @@ const getSavedTheme = (): string | null => {
 };
 
 
-const RandomThemeButton: React.FC = () => {
-  const [lastTheme, setLastTheme] = React.useState<string | null>(null);
+const RandomThemeButton: FC = () => {
+  const [lastTheme, setLastTheme] = useState<string | null>(null);
 
   useEffect(() => {
     const saved = getSavedTheme();
@@ -108,4 +108,4 @@ const RandomThemeButton: React.FC = () => {
   );
 };
 
-export default React.memo(RandomThemeButton);
+export default memo(RandomThemeButton);

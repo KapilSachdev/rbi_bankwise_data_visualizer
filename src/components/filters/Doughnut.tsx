@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 interface DoughnutProps {
   options: string[];
@@ -15,7 +15,7 @@ interface DoughnutProps {
  * - Uses SVG for precise, interactive segments.
  */
 
-const Doughnut: React.FC<DoughnutProps> = ({
+const Doughnut: FC<DoughnutProps> = ({
   options,
   selected,
   onSelect,
