@@ -1,11 +1,11 @@
-import React, { FC, useMemo, useState } from 'react';
-import Doughnut from '../../../components/filters/Doughnut';
-import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
-import { GridComponent, TooltipComponent, LegendComponent, TitleComponent, ToolboxComponent } from 'echarts/components';
+import { GridComponent, LegendComponent, TitleComponent, ToolboxComponent, TooltipComponent } from 'echarts/components';
+import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
-import type { BankData } from '../../../types/global.types';
+import { FC, useMemo, useState } from 'react';
 import EChartsContainer from '../../../components/common/EChartsContainer';
+import Doughnut from '../../../components/filters/Doughnut';
+import type { BankData } from '../../../types/global.types';
 
 echarts.use([
   LineChart,
@@ -22,9 +22,10 @@ interface TopMoversLineChartProps {
   months: string[];
   metric?: 'credit' | 'debit' | 'total';
   topN?: number;
+  chartRef?: { current: echarts.EChartsType | null };
 }
 
-const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metric = 'total', topN = 5 }) => {
+const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metric = 'total', topN = 5, chartRef }) => {
   const [selectedMetric, setSelectedMetric] = useState<'credit' | 'debit' | 'total'>(metric);
 
   // Prepare time series for each bank
@@ -76,7 +77,7 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
     tooltip: { trigger: 'axis' },
     legend: { top: 30, type: 'scroll' },
     toolbox: { feature: { saveAsImage: {} } },
-    grid: { left: '3%', right: '4%', top: '20%', bottom: '8%', containLabel: true },
+    grid: { left: '3%', right: '4%', top: '20%', bottom: '8%' },
     xAxis: {
       type: 'category',
       data: sortedMonths,
@@ -106,8 +107,8 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
             selectedMetric === 'total'
               ? 'Total'
               : selectedMetric === 'credit'
-              ? 'Credit Card'
-              : 'Debit Card'
+                ? 'Credit Card'
+                : 'Debit Card'
           }
           onSelect={option => {
             setSelectedMetric(
@@ -123,6 +124,7 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
         aria-label="Top Movers Card Transaction Growth"
         role="img"
         tabIndex={0}
+        onInit={instance => { if (chartRef) chartRef.current = instance; }}
       />
       <div className="text-xs text-base-content/60 mt-2">Top {topN} banks by {selectedMetric} card transaction growth over time.</div>
     </div>

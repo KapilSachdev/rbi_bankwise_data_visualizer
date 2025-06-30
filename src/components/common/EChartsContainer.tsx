@@ -1,7 +1,7 @@
 import type { EChartsCoreOption, EChartsType } from 'echarts/core';
 import * as echarts from 'echarts/core';
 import { CSSProperties, FC, memo, useEffect, useRef } from 'react';
-import { useEchartsThemeSync } from '../../hooks/useEchartsThemeSync';
+import { useEchartsThemeSync, useRegisterEchartsThemes, setEchartsTheme } from '../../hooks/useEchartsThemeSync';
 
 
 type EChartsContainerProps = {
@@ -31,17 +31,30 @@ const EChartsContainer: FC<EChartsContainerProps> = ({
   const chartRef = useRef<HTMLDivElement | null>(null);
   const chartInstance = useRef<EChartsType | null>(null);
 
-  // Init chart
+  // Register ECharts themes once
+  useRegisterEchartsThemes();
+  // Listen for ECharts theme changes (independent of DaisyUI)
+  const echartsTheme = useEchartsThemeSync();
+
+  // Init chart on mount
   useEffect(() => {
-    if (chartRef.current && !chartInstance.current) {
-      chartInstance.current = echarts.init(chartRef.current);
-      if (onInit && chartInstance.current) onInit(chartInstance.current);
-    }
+    if (!chartRef.current) return;
+    chartInstance.current = echarts.init(chartRef.current, echartsTheme);
+    if (onInit && chartInstance.current) onInit(chartInstance.current);
     return () => {
       chartInstance.current?.dispose();
       chartInstance.current = null;
     };
+    // Only run on mount/unmount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onInit]);
+
+  // Update theme in-place (ECharts 6+) when theme changes
+  useEffect(() => {
+    if (chartInstance.current && echartsTheme) {
+      setEchartsTheme(chartInstance.current, echartsTheme);
+    }
+  }, [echartsTheme]);
 
   // Set option
   useEffect(() => {
@@ -57,9 +70,6 @@ const EChartsContainer: FC<EChartsContainerProps> = ({
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  // Theme sync
-  useEchartsThemeSync(themeSync ? chartInstance.current : null);
 
   return (
     <div

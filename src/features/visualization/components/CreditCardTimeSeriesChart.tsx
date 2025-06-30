@@ -22,9 +22,10 @@ echarts.use([
 interface CreditCardTimeSeriesChartProps {
   allData: Record<string, BankData[]>;
   months: string[];
+  chartRef?: { current: echarts.EChartsType | null };
 }
 
-const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData, months }) => {
+const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData, months, chartRef }) => {
   // Ensure months are sorted in ascending order (earliest to latest)
   const sortedMonths = useMemo(() => {
     return [...months].sort();
@@ -114,7 +115,7 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
     },
     tooltip: { trigger: 'axis' },
     legend: { top: 30, type: 'scroll' },
-    grid: { left: '3%', right: '4%', top: '30%', bottom: '0%', containLabel: true },
+    grid: { left: '3%', right: '4%', top: '30%', bottom: '0%' },
     xAxis: {
       type: 'category',
       data: filteredMonths,
@@ -159,6 +160,7 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
         aria-label="Credit Card Time Series Chart"
         role="img"
         tabIndex={0}
+        onInit={instance => { if (chartRef) chartRef.current = instance; }}
       />
     </div>
   );

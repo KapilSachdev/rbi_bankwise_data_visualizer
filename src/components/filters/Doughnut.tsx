@@ -73,7 +73,6 @@ const Doughnut: FC<DoughnutProps> = ({
         width={clampedSize}
         height={clampedSize}
         className="block focus:outline-none drop-shadow-sm"
-        aria-hidden="true"
         focusable="false"
         style={{ background: 'transparent' }}
       >
@@ -106,7 +105,6 @@ const Doughnut: FC<DoughnutProps> = ({
             key={option}
             className="absolute flex flex-col items-center"
             style={{ left: x, top: y, transform: 'translate(-50%, -50%)' }}
-            aria-hidden="true"
           >
             <span
               className={`text-xs font-medium p-0.5 rounded bg-base-100/80 text-base-content  pointer-events-auto whitespace-nowrap max-w-[72px] truncate ${selected === option ? 'shadow-xl border border-base-100/50' : 'group-hover/pie:visible invisible'}`}

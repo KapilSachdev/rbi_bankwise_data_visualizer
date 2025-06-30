@@ -1,10 +1,10 @@
-import React, { FC, useMemo } from 'react';
-import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
-import { GridComponent, TooltipComponent, LegendComponent, TitleComponent } from 'echarts/components';
+import { GridComponent, LegendComponent, TitleComponent, TooltipComponent } from 'echarts/components';
+import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
-import type { BankData } from '../../../types/global.types';
+import { FC, useMemo } from 'react';
 import EChartsContainer from '../../../components/common/EChartsContainer';
+import type { BankData } from '../../../types/global.types';
 
 echarts.use([
   LineChart,
@@ -18,11 +18,12 @@ echarts.use([
 interface BankTypeStackedAreaChartProps {
   allData: Record<string, BankData[]>;
   months: string[];
+  chartRef?: { current: echarts.EChartsType | null };
 }
 
 
 
-const BankTypeStackedAreaChart: FC<BankTypeStackedAreaChartProps> = ({ allData, months }) => {
+const BankTypeStackedAreaChart: FC<BankTypeStackedAreaChartProps> = ({ allData, months, chartRef }) => {
   // Get all unique bank types
   const bankTypes = useMemo(() => {
     const set = new Set<string>();
@@ -63,7 +64,7 @@ const BankTypeStackedAreaChart: FC<BankTypeStackedAreaChartProps> = ({ allData, 
     },
     tooltip: { trigger: 'axis' },
     legend: { top: 30, type: 'scroll' },
-    grid: { left: '3%', right: '4%', top: '20%', bottom: '8%', containLabel: true },
+    grid: { left: '3%', right: '4%', top: '20%', bottom: '8%' },
     xAxis: {
       type: 'category',
       data: sortedMonths,
@@ -90,6 +91,7 @@ const BankTypeStackedAreaChart: FC<BankTypeStackedAreaChartProps> = ({ allData, 
           aria-label="Bank Type Stacked Area Chart"
           role="img"
           tabIndex={0}
+          onInit={instance => { if (chartRef) chartRef.current = instance; }}
         />
         <div className="text-xs text-base-content/60 mt-2">
           Card transactions volume by bank type over time.

@@ -6,6 +6,7 @@ import BankTypeStackedAreaChart from './features/visualization/components/BankTy
 import CreditCardTimeSeriesChart from './features/visualization/components/CreditCardTimeSeriesChart';
 import BankInfraBarChart from './features/visualization/components/InfraBarChart';
 import TopMoversLineChart from './features/visualization/components/TopMoversLineChart';
+
 import type { BankData } from './types/global.types';
 
 interface DataFileMeta {
@@ -16,15 +17,14 @@ interface DataFileMeta {
 }
 
 
+
 function App() {
   // Manifest and bifurcated data
   const [files, setFiles] = useState<DataFileMeta[]>([]);
-  // Now each value is { banks: BankData[], summary?: object }
   const [posData, setPosData] = useState<{ [key: string]: { banks: BankData[]; summary?: unknown } }>({});
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [neftData, setNeftData] = useState<{ [key: string]: { banks: BankData[]; summary?: unknown } }>({});
 
-  // Load manifest and then all months' data on mount
+
   useEffect(() => {
     fetch(`${DATA_FOLDER}/index.json`)
       .then(res => res.json())
@@ -59,13 +59,19 @@ function App() {
       });
   }, []);
 
-  // Only POS files for POS-based charts
   const posFiles = files.filter(f => f.type === 'pos');
-
-  // Helper to extract just the banks array for each month for chart components
   const posBanksData = Object.fromEntries(
     Object.entries(posData).map(([k, v]) => [k, v?.banks ?? []])
   );
+
+  const chartRefs = {
+    topMovers: { current: null },
+    bankType: { current: null },
+    infra: { current: null },
+    creditCard: { current: null },
+  };
+
+
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-base-200 via-base-100 to-base-300 flex flex-col items-center py-8 px-2">
@@ -75,23 +81,39 @@ function App() {
       <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="card shadow-sm border border-base-300">
           <div className="card-body">
-            <TopMoversLineChart allData={posBanksData} months={posFiles.map(f => f.key)} />
+            <TopMoversLineChart
+              allData={posBanksData}
+              months={posFiles.map(f => f.key)}
+              chartRef={chartRefs.topMovers}
+            />
           </div>
         </div>
         <div className="card shadow-sm border border-base-300">
           <div className="card-body">
-            <BankTypeStackedAreaChart allData={posBanksData} months={posFiles.map(f => f.key)} />
+            <BankTypeStackedAreaChart
+              allData={posBanksData}
+              months={posFiles.map(f => f.key)}
+              chartRef={chartRefs.bankType}
+            />
           </div>
         </div>
 
         <div className="card shadow-sm border border-base-300">
           <div className="card-body">
-            <BankInfraBarChart allData={posBanksData} months={posFiles.map(f => f.key)} />
+            <BankInfraBarChart
+              allData={posBanksData}
+              months={posFiles.map(f => f.key)}
+              chartRef={chartRefs.infra}
+            />
           </div>
         </div>
         <div className="card shadow-sm border border-base-300">
           <div className="card-body">
-            <CreditCardTimeSeriesChart allData={posBanksData} months={posFiles.map(f => f.key)} />
+            <CreditCardTimeSeriesChart
+              allData={posBanksData}
+              months={posFiles.map(f => f.key)}
+              chartRef={chartRefs.creditCard}
+            />
           </div>
         </div>
       </div>

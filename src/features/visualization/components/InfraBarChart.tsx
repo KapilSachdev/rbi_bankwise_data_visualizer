@@ -4,9 +4,9 @@ import { GridComponent, LegendComponent, MarkLineComponent, ToolboxComponent, To
 import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 import { FC, useMemo, useState } from 'react';
-import { BANK_TYPES } from '../../../constants/data';
 import EChartsContainer from '../../../components/common/EChartsContainer';
 import Pills from '../../../components/filters/Pills';
+import { BANK_TYPES } from '../../../constants/data';
 import type { BankData } from '../../../types/global.types';
 import { formatMonthYear } from '../../../utils/time';
 
@@ -24,6 +24,7 @@ echarts.use([
 interface BankInfraBarChartProps {
   allData: Record<string, BankData[]>;
   months: string[];
+  chartRef?: { current: echarts.EChartsType | null };
 }
 
 const INFRA_METRICS = [
@@ -38,7 +39,7 @@ const INFRA_METRICS = [
 ];
 
 
-const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months }) => {
+const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartRef }) => {
 
   const [topN, setTopN] = useState(10);
   const [metric, setMetric] = useState(INFRA_METRICS[0].value);
@@ -99,9 +100,6 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months }) => {
       .slice(0, topN);
   }, [data, topN, metric]);
 
-
-
-
   const option = useMemo(() => ({
     backgroundColor: 'transparent',
     title: {
@@ -113,7 +111,7 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months }) => {
       axisPointer: { type: 'shadow' },
       valueFormatter: (value: number) => value.toLocaleString()
     },
-    grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+    grid: { left: '3%', right: '4%', bottom: '3%' },
     legend: { show: false },
     xAxis: {
       type: 'category',
@@ -212,6 +210,7 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months }) => {
         aria-label="Bank Infrastructure Bar Chart"
         role="img"
         tabIndex={0}
+        onInit={instance => { if (chartRef) chartRef.current = instance; }}
       />
     </div>
   );
