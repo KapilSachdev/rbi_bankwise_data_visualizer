@@ -104,15 +104,12 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartR
     backgroundColor: 'transparent',
     title: {
       text: `${INFRA_METRICS.find(m => m.value === metric)?.label || ''} (${selectedMonth && formatMonthYear(selectedMonth)})`,
-      left: 'center',
     },
     tooltip: {
       trigger: 'axis',
       axisPointer: { type: 'shadow' },
       valueFormatter: (value: number) => value.toLocaleString()
     },
-    grid: { left: '3%', right: '4%', bottom: '3%' },
-    legend: { show: false },
     xAxis: {
       type: 'category',
       data: sortedData.map(item => item.Bank_Short_Name),
@@ -141,7 +138,6 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartR
       right: 10,
       top: 10,
     },
-    animationDuration: 800,
   }), [sortedData, metric, selectedMonth]);
 
   return (

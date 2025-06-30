@@ -111,7 +111,6 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
     backgroundColor: 'transparent',
     title: {
       text: 'Credit Cards Over Time',
-      left: 'center',
     },
     tooltip: { trigger: 'axis' },
     legend: { top: 30, type: 'scroll' },
@@ -132,7 +131,6 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
       smooth: true,
       emphasis: { focus: 'series' },
     })),
-    animationDuration: 800,
   }), [sortedData, filteredMonths]);
 
   return (

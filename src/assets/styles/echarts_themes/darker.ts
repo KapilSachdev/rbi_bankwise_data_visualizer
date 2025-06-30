@@ -1,40 +1,38 @@
-// ECharts 6+ theme format for essos
-export const essos = {
+// ECharts 6+ theme format for darker
+export const darker = {
   color: [
-    '#893448',
-    '#d95850',
-    '#eb8146',
-    '#ffb248',
-    '#f2d643',
-    '#ebdba4',
+    '#dd6b66',
+    '#759aa0',
+    '#e69d87',
+    '#8dc1a9',
+    '#ea7e53',
+    '#eedd78',
+    '#73a373',
+    '#73b9bc',
+    '#7289ab',
+    '#91ca8c',
+    '#f49f42',
   ],
-  backgroundColor: 'rgba(242,234,191,0.15)',
+  backgroundColor: 'rgba(51,51,51,1)',
   textStyle: {
-    color: '#333',
+    color: '#eee',
   },
   title: {
     textStyle: {
-      color: '#893448',
+      color: '#eeeeee',
     },
     subtextStyle: {
-      color: '#d95850',
+      color: '#aaa',
     },
   },
   legend: {
     textStyle: {
-      color: '#999999',
+      color: '#eee',
     },
   },
   visualMap: {
     inRange: {
-      color: [
-        '#893448',
-        '#d95850',
-        '#eb8146',
-        '#ffb248',
-        '#f2d643',
-        'rgb(247,238,173)',
-      ],
+      color: ['#bf444c', '#d88273', '#f6efa6'],
     },
   },
   toolbox: {
@@ -50,7 +48,7 @@ export const essos = {
   tooltip: {
     axisPointer: {
       lineStyle: {
-        color: '#ccc',
+        color: '#eeeeee',
         width: 1,
       },
     },
@@ -59,27 +57,27 @@ export const essos = {
     borderColor: '#ccc',
   },
   dataZoom: {
-    backgroundColor: 'rgba(255,255,255,0)',
+    backgroundColor: 'rgba(47,69,84,0)',
     dataBackground: {
       areaStyle: {
-        color: 'rgba(255,178,72,0.5)',
+        color: 'rgba(255,255,255,0.3)',
       },
       lineStyle: {
-        color: '#ffb248',
+        color: '#a7b7cc',
       },
     },
-    fillerColor: 'rgba(255,178,72,0.15)',
-    handleColor: '#ffb248',
+    fillerColor: 'rgba(167,183,204,0.4)',
+    handleColor: '#a7b7cc',
     textStyle: {
-      color: '#333',
+      color: '#eeeeee',
     },
   },
   axisPointer: {
     lineStyle: {
-      color: '#ccc',
+      color: '#eeeeee',
     },
     crossStyle: {
-      color: '#ccc',
+      color: '#eeeeee',
     },
     shadowStyle: {
       color: 'rgba(200,200,200,0.02)',
@@ -88,124 +86,124 @@ export const essos = {
   categoryAxis: {
     axisLine: {
       lineStyle: {
-        color: '#333',
+        color: '#eee',
       },
     },
     axisTick: {
       show: true,
       lineStyle: {
-        color: '#333',
+        color: '#eee',
       },
     },
     axisLabel: {
-      color: '#333',
+      color: '#eee',
     },
     splitLine: {
       show: false,
       lineStyle: {
-        color: ['#ccc'],
+        color: ['#444'],
       },
     },
     splitArea: {
       show: false,
       areaStyle: {
-        color: ['rgba(250,250,250,0.3)', 'rgba(200,200,200,0.3)'],
+        color: ['rgba(60,60,60,0.3)', 'rgba(40,40,40,0.3)'],
       },
     },
   },
   valueAxis: {
     axisLine: {
       lineStyle: {
-        color: '#333',
+        color: '#eee',
       },
     },
     axisTick: {
       show: true,
       lineStyle: {
-        color: '#333',
+        color: '#eee',
       },
     },
     axisLabel: {
-      color: '#333',
+      color: '#eee',
     },
     splitLine: {
       show: true,
       lineStyle: {
-        color: ['#ccc'],
+        color: ['#444'],
       },
     },
     splitArea: {
       show: false,
       areaStyle: {
-        color: ['rgba(250,250,250,0.3)', 'rgba(200,200,200,0.3)'],
+        color: ['rgba(60,60,60,0.3)', 'rgba(40,40,40,0.3)'],
       },
     },
   },
   logAxis: {
     axisLine: {
       lineStyle: {
-        color: '#333',
+        color: '#eee',
       },
     },
     axisTick: {
       show: true,
       lineStyle: {
-        color: '#333',
+        color: '#eee',
       },
     },
     axisLabel: {
-      color: '#333',
+      color: '#eee',
     },
     splitLine: {
       show: true,
       lineStyle: {
-        color: ['#ccc'],
+        color: ['#444'],
       },
     },
     splitArea: {
       show: false,
       areaStyle: {
-        color: ['rgba(250,250,250,0.3)', 'rgba(200,200,200,0.3)'],
+        color: ['rgba(60,60,60,0.3)', 'rgba(40,40,40,0.3)'],
       },
     },
   },
   timeAxis: {
     axisLine: {
       lineStyle: {
-        color: '#333',
+        color: '#eee',
       },
     },
     axisTick: {
       show: true,
       lineStyle: {
-        color: '#333',
+        color: '#eee',
       },
     },
     axisLabel: {
-      color: '#333',
+      color: '#eee',
     },
     splitLine: {
       show: true,
       lineStyle: {
-        color: ['#ccc'],
+        color: ['#444'],
       },
     },
     splitArea: {
       show: false,
       areaStyle: {
-        color: ['rgba(250,250,250,0.3)', 'rgba(200,200,200,0.3)'],
+        color: ['rgba(60,60,60,0.3)', 'rgba(40,40,40,0.3)'],
       },
     },
   },
   line: {
-    symbol: 'emptyCircle',
-    symbolSize: 6,
+    symbol: 'circle',
+    symbolSize: 4,
     lineStyle: {
       width: 2,
-      smooth: true,
+      smooth: false,
     },
     itemStyle: {
-      borderWidth: 2,
+      borderWidth: 1,
     },
   },
   graph: {
@@ -216,51 +214,51 @@ export const essos = {
   },
   map: {
     label: {
-      color: '#893448',
+      color: '#000',
       emphasis: {
-        color: '#893448',
+        color: 'rgb(100,0,0)',
       },
     },
     itemStyle: {
-      areaColor: '#f3f3f3',
-      borderColor: '#999999',
+      areaColor: '#eee',
+      borderColor: '#444',
       borderWidth: 0.5,
       emphasis: {
-        areaColor: '#ffb248',
-        borderColor: '#eb8146',
+        areaColor: 'rgba(255,215,0,0.8)',
+        borderColor: '#444',
         borderWidth: 1,
       },
     },
   },
   candlestick: {
     itemStyle: {
-      color: '#eb8146',
-      color0: 'transparent',
-      borderColor: '#d95850',
-      borderColor0: '#58c470',
-      borderWidth: 2,
+      color: '#fd1050',
+      color0: '#0cf49b',
+      borderColor: '#fd1050',
+      borderColor0: '#0cf49b',
+      borderWidth: 1,
     },
   },
   timeline: {
     lineStyle: {
-      color: '#893448',
+      color: '#eeeeee',
       width: 1,
     },
     itemStyle: {
-      color: '#893448',
+      color: '#dd6b66',
       borderWidth: 1,
     },
     controlStyle: {
-      color: '#893448',
-      borderColor: '#893448',
+      color: '#eeeeee',
+      borderColor: '#eeeeee',
       borderWidth: 0.5,
     },
     label: {
-      color: '#893448',
+      color: '#eeeeee',
     },
     checkpointStyle: {
-      color: '#eb8146',
-      borderColor: 'rgba(255,178,72,0.41)',
+      color: '#e43c59',
+      borderColor: 'rgba(194,53,49, 0.5)',
     },
   },
 }

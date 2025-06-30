@@ -18,7 +18,7 @@ export function setEchartsThemeName(theme: string) {
 export function useEchartsThemeSync() {
   const [echartsTheme, setEchartsTheme] = useState<string>(() =>
     localStorage.getItem('echarts-theme') || (ECHARTS_THEMES[0]?.name ?? 'default')
-  
+
   );
 
   useEffect(() => {

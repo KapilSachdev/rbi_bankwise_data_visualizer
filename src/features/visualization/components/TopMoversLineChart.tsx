@@ -72,12 +72,10 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
     backgroundColor: 'transparent',
     title: {
       text: `Top ${topN} Banks by ${selectedMetric.charAt(0).toUpperCase() + selectedMetric.slice(1)} Card Txn Growth`,
-      left: 'center',
     },
     tooltip: { trigger: 'axis' },
-    legend: { top: 30, type: 'scroll' },
+    legend: { x: 'right', type: 'scroll' },
     toolbox: { feature: { saveAsImage: {} } },
-    grid: { left: '3%', right: '4%', top: '20%', bottom: '8%' },
     xAxis: {
       type: 'category',
       data: sortedMonths,
@@ -90,12 +88,8 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
     series: topBanks.map(bank => ({
       name: bank.name,
       type: 'line',
-      data: bank.values,
-      smooth: true,
-      emphasis: { focus: 'series' },
-      showSymbol: false,
+      data: bank.values
     })),
-    animationDuration: 800,
   }), [topBanks, sortedMonths, selectedMetric, topN]);
 
   return (
@@ -122,11 +116,8 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
         option={option}
         className="w-full h-[400px] rounded-xl"
         aria-label="Top Movers Card Transaction Growth"
-        role="img"
-        tabIndex={0}
         onInit={instance => { if (chartRef) chartRef.current = instance; }}
       />
-      <div className="text-xs text-base-content/60 mt-2">Top {topN} banks by {selectedMetric} card transaction growth over time.</div>
     </div>
   );
 };

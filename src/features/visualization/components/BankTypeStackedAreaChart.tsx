@@ -63,7 +63,7 @@ const BankTypeStackedAreaChart: FC<BankTypeStackedAreaChartProps> = ({ allData, 
       left: 'center',
     },
     tooltip: { trigger: 'axis' },
-    legend: { top: 30, type: 'scroll' },
+    legend: { type: 'scroll' },
     grid: { left: '3%', right: '4%', top: '20%', bottom: '8%' },
     xAxis: {
       type: 'category',
@@ -79,7 +79,6 @@ const BankTypeStackedAreaChart: FC<BankTypeStackedAreaChartProps> = ({ allData, 
       type: 'line',
       data: s.values,
     })),
-    animationDuration: 800,
   }), [typeSeries, sortedMonths]);
 
   return (
