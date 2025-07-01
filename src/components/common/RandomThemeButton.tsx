@@ -109,7 +109,7 @@ const RandomThemeButton: FC = () => {
   }, []);
 
 
-  const updateMetaTheme = () => {
+  const updateMetaTheme = (mode: string | 'light' | 'dark') => {
     let primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim();
     if (primaryColor.startsWith('oklch')) {
       primaryColor = oklchToHex(primaryColor);
@@ -122,6 +122,7 @@ const RandomThemeButton: FC = () => {
     }
     if (primaryColor) {
       meta.setAttribute('content', primaryColor);
+      meta.setAttribute('media', `(prefers-color-scheme: ${mode})`);
     }
   }
 
@@ -129,12 +130,8 @@ const RandomThemeButton: FC = () => {
     const themeObj = UI_THEMES[Math.floor(Math.random() * UI_THEMES.length)];
     setTheme(themeObj.name);
     setLastTheme(themeObj.name);
-    updateMetaTheme();
+    updateMetaTheme(themeObj.mode);
   }, []);
-  // Update meta theme color whenever theme changes
-  useEffect(() => {
-    updateMetaTheme();
-  }, [lastTheme]);
 
   return (
     <div className="fixed z-50 bottom-4 right-4 flex flex-col items-center gap-2">
