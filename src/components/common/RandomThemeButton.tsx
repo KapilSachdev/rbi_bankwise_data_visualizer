@@ -1,6 +1,7 @@
 import { FC, memo, useCallback, useEffect, useState } from 'react';
 import { ECHARTS_THEMES } from '../../assets/styles/echarts_themes';
 import { setEchartsThemeName } from '../../hooks/useEchartsThemeSync';
+import { oklchToHex } from '../../utils/color';
 import SVGIcon from './SVGIcon';
 
 export const UI_THEMES = [
@@ -59,11 +60,11 @@ const ChartThemeButton: FC<ChartThemeButtonProps> = ({ uiTheme }) => {
     setCurrentTheme(localStorage.getItem('echarts-theme') || ECHARTS_THEMES[0].name);
   }, []);
 
-  useEffect(()=>{
-      const uiThemeMode = UI_THEMES.find((theme) => theme.name == uiTheme)?.mode;
-      const chartThemeMode = ECHARTS_THEMES.find(theme => theme.name == currentTheme)?.mode
-      if (uiThemeMode != chartThemeMode) handleNextTheme();
-  },[uiTheme])
+  useEffect(() => {
+    const uiThemeMode = UI_THEMES.find((theme) => theme.name == uiTheme)?.mode;
+    const chartThemeMode = ECHARTS_THEMES.find(theme => theme.name == currentTheme)?.mode
+    if (uiThemeMode != chartThemeMode) handleNextTheme();
+  }, [uiTheme])
 
   const handleNextTheme = useCallback(() => {
     const idx = ECHARTS_THEMES.findIndex(t => t.name === currentTheme);
@@ -107,11 +108,33 @@ const RandomThemeButton: FC = () => {
     }
   }, []);
 
+
+  const updateMetaTheme = () => {
+    let primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim();
+    if (primaryColor.startsWith('oklch')) {
+      primaryColor = oklchToHex(primaryColor);
+    }
+    let meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute('name', 'theme-color');
+      document.head.appendChild(meta);
+    }
+    if (primaryColor) {
+      meta.setAttribute('content', primaryColor);
+    }
+  }
+
   const handleRandomTheme = useCallback(() => {
     const themeObj = UI_THEMES[Math.floor(Math.random() * UI_THEMES.length)];
     setTheme(themeObj.name);
     setLastTheme(themeObj.name);
+    updateMetaTheme();
   }, []);
+  // Update meta theme color whenever theme changes
+  useEffect(() => {
+    updateMetaTheme();
+  }, [lastTheme]);
 
   return (
     <div className="fixed z-50 bottom-4 right-4 flex flex-col items-center gap-2">
