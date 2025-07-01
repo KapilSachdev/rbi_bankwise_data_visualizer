@@ -115,7 +115,6 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
       <EChartsContainer
         option={option}
         className="w-full h-[400px] rounded-xl"
-        aria-label="Top Movers Card Transaction Growth"
         onInit={instance => { if (chartRef) chartRef.current = instance; }}
       />
     </div>

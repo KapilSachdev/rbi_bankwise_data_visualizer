@@ -55,26 +55,19 @@ const Doughnut: FC<DoughnutProps> = ({
   };
 
   // Helper for label truncation
-  const getShortLabel = (label: string) =>
-    label.length > 12 ? label.slice(0, 10) + '…' : label;
-
-
+  const getShortLabel = (label: string) => label.length > 12 ? label.slice(0, 10) + '…' : label;
 
   return (
     <div
       className="group/pie relative flex items-center justify-center w-full min-h-[160px] py-4"
       style={{ maxWidth: clampedSize * 1.5, minWidth: clampedSize, minHeight: clampedSize + 32 }}
-      aria-label="Pie filter menu"
-      role="menu"
-      tabIndex={0}
-      // Keyboard navigation removed for now
     >
       <svg
         width={clampedSize}
         height={clampedSize}
         className="block focus:outline-none drop-shadow-sm"
-        focusable="false"
         style={{ background: 'transparent' }}
+        aria-hidden="true"
       >
         {options.map((option, i) => (
           <path
@@ -82,13 +75,10 @@ const Doughnut: FC<DoughnutProps> = ({
             d={getSlicePath(i)}
             className={`cursor-pointer ${selected === option ? 'fill-primary' : 'fill-base-200 hover:fill-primary/30'} focus:outline-none`}
             tabIndex={-1}
-            role="menuitemradio"
-            aria-label={option}
+            role="radio"
             aria-checked={selected === option}
+            aria-label={option}
             onClick={() => onSelect(option)}
-            onKeyDown={e => {
-              if (e.key === 'Enter' || e.key === ' ') onSelect(option);
-            }}
           />
         ))}
       </svg>
@@ -105,6 +95,8 @@ const Doughnut: FC<DoughnutProps> = ({
             key={option}
             className="absolute flex flex-col items-center"
             style={{ left: x, top: y, transform: 'translate(-50%, -50%)' }}
+            role="presentation"
+            aria-hidden="true"
           >
             <span
               className={`text-xs font-medium p-0.5 rounded bg-base-100/80 text-base-content  pointer-events-auto whitespace-nowrap max-w-[72px] truncate ${selected === option ? 'shadow-xl border border-base-100/50' : 'group-hover/pie:visible invisible'}`}

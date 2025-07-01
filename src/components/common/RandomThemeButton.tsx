@@ -83,7 +83,7 @@ const ChartThemeButton: FC<ChartThemeButtonProps> = ({ uiTheme }) => {
       onClick={handleNextTheme}
       title={`Chart Theme: ${currentTheme}`}
     >
-      <SVGIcon icon="chart" className="max-sm:size-4 md:size-8" />
+      <SVGIcon icon="chart" className="max-sm:size-6 md:size-8" />
     </a>
   );
 };
@@ -122,7 +122,7 @@ const RandomThemeButton: FC = () => {
         title={lastTheme ? `${lastTheme}` : 'Randomise'}
         onClick={handleRandomTheme}
       >
-        <SVGIcon icon="paint_roller" className="max-sm:size-4 md:size-8" />
+        <SVGIcon icon="paint_roller" className="max-sm:size-6 md:size-8" />
       </a>
 
       <ChartThemeButton uiTheme={lastTheme} />
@@ -133,7 +133,7 @@ const RandomThemeButton: FC = () => {
         rel="noopener noreferrer"
         aria-label="Project Home Page"
       >
-        <SVGIcon icon="github" className="max-sm:size-4 md:size-8" />
+        <SVGIcon icon="github" className="max-sm:size-6 md:size-8" />
       </a>
     </div>
   );
