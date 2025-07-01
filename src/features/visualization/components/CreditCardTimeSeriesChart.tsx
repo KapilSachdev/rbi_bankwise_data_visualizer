@@ -54,7 +54,7 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
   // Set default year range to last 5 years on mount or when years change
   useEffect(() => {
     setYearRange(defaultYearRange);
-  }, [defaultYearRange[0], defaultYearRange[1]]);
+  }, [defaultYearRange]);
 
   // Filter months by selected year range
   const filteredMonths = useMemo(() => {
@@ -83,7 +83,7 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
     });
     // Build time series for each bank
     return Array.from(bankMap.entries())
-      .map(([bankName, arr]) => {
+      .map(([bankName]) => {
         const values = filteredMonths.map(month => {
           const bank = (allData[month] || []).find(d => d.Bank_Name === bankName);
           return { month, creditCards: bank?.Infrastructure?.Credit_Cards ?? 0 };

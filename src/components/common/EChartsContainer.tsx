@@ -25,7 +25,7 @@ const EChartsContainer: FC<EChartsContainerProps> = ({
   className = '',
   style,
   onInit,
-  themeSync = true,
+  // themeSync = true, // removed unused prop
   ...rest
 }) => {
   const chartRef = useRef<HTMLDivElement | null>(null);

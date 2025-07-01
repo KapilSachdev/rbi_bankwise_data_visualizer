@@ -1,4 +1,4 @@
-import { FC, useRef, useState, useCallback, useEffect } from 'react';
+import { FC, useRef, useState, useCallback, useEffect, MouseEvent, TouchEvent, KeyboardEvent } from 'react';
 
 interface RangeSliderProps {
   min: number;
@@ -30,25 +30,25 @@ const RangeSlider: FC<RangeSliderProps> = ({
   const [dragging, setDragging] = useState<null | 'start' | 'end'>(null);
 
   // Calculate percent positions for thumbs
-  const percent = (val: number) => ((val - min) / (max - min)) * 100;
+  const percent = useCallback((val: number) => ((val - min) / (max - min)) * 100, [min, max]);
   const startPercent = percent(start);
   const endPercent = percent(end);
 
 
   // Mouse/touch drag logic
-  const onThumbDown = (which: 'start' | 'end') => (e: React.MouseEvent | React.TouchEvent) => {
+  const onThumbDown = useCallback((which: 'start' | 'end') => (e: MouseEvent | TouchEvent) => {
     e.preventDefault();
     setDragging(which);
     document.body.style.userSelect = 'none';
-  };
+  }, []);
 
   // Track click logic: move nearest thumb to click position
-  const handleTrackClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleTrackClick = useCallback((e: MouseEvent<HTMLDivElement>) => {
     if (!trackRef.current) return;
     const rect = trackRef.current.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
-    const percent = Math.max(0, Math.min(1, clickX / rect.width));
-    let value = Math.round((min + percent * (max - min)) / step) * step;
+    const clickPercent = Math.max(0, Math.min(1, clickX / rect.width));
+    let value = Math.round((min + clickPercent * (max - min)) / step) * step;
     value = Math.max(min, Math.min(max, value));
     // Decide which thumb is closer
     const distToStart = Math.abs(value - start);
@@ -62,7 +62,7 @@ const RangeSlider: FC<RangeSliderProps> = ({
       if (value < start) value = start;
       onChange([start, value]);
     }
-  };
+  }, [end, max, min, onChange, start, step]);
 
   const onThumbMove = useCallback((clientX: number) => {
     if (!trackRef.current || dragging === null) return;
@@ -83,42 +83,49 @@ const RangeSlider: FC<RangeSliderProps> = ({
   // Mouse/touch event listeners
   useEffect(() => {
     if (dragging === null) return;
-    const move = (e: MouseEvent | TouchEvent) => {
-      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-      onThumbMove(clientX);
+    const move = (e: Event) => {
+      if ('touches' in e) {
+        const touchEvent = e as unknown as TouchEvent;
+        if (touchEvent.touches && touchEvent.touches.length > 0) {
+          onThumbMove(touchEvent.touches[0].clientX);
+        }
+      } else if ('clientX' in e) {
+        const mouseEvent = e as unknown as MouseEvent;
+        onThumbMove(mouseEvent.clientX);
+      }
     };
     const up = () => {
       setDragging(null);
       document.body.style.userSelect = '';
     };
-    window.addEventListener('mousemove', move);
-    window.addEventListener('touchmove', move);
+    window.addEventListener('mousemove', move as EventListener);
+    window.addEventListener('touchmove', move as EventListener);
     window.addEventListener('mouseup', up);
     window.addEventListener('touchend', up);
     return () => {
-      window.removeEventListener('mousemove', move);
-      window.removeEventListener('touchmove', move);
+      window.removeEventListener('mousemove', move as EventListener);
+      window.removeEventListener('touchmove', move as EventListener);
       window.removeEventListener('mouseup', up);
       window.removeEventListener('touchend', up);
     };
   }, [dragging, onThumbMove]);
 
   // Keyboard accessibility
-  const handleThumbKey = (which: 'start' | 'end') => (e: React.KeyboardEvent) => {
+  const handleThumbKey = useCallback((which: 'start' | 'end') => (e: KeyboardEvent<HTMLDivElement>) => {
     let delta = 0;
     if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') delta = -step;
     if (e.key === 'ArrowRight' || e.key === 'ArrowUp') delta = step;
     if (delta !== 0) {
       e.preventDefault();
       if (which === 'start') {
-        let newStart = Math.min(Math.max(start + delta, min), end);
+        const newStart = Math.min(Math.max(start + delta, min), end);
         onChange([newStart, end]);
       } else {
-        let newEnd = Math.max(Math.min(end + delta, max), start);
+        const newEnd = Math.max(Math.min(end + delta, max), start);
         onChange([start, newEnd]);
       }
     }
-  };
+  }, [end, max, min, onChange, start, step]);
 
   return (
     <div className={`flex flex-col gap-2 ${className}`}>

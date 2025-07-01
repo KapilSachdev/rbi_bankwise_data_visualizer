@@ -22,7 +22,7 @@ function App() {
   // Manifest and bifurcated data
   const [files, setFiles] = useState<DataFileMeta[]>([]);
   const [posData, setPosData] = useState<{ [key: string]: { banks: BankData[]; summary?: unknown } }>({});
-  const [neftData, setNeftData] = useState<{ [key: string]: { banks: BankData[]; summary?: unknown } }>({});
+  // const [neftData, setNeftData] = useState<{ [key: string]: { banks: BankData[]; summary?: unknown } }>({});
 
 
   useEffect(() => {
@@ -45,14 +45,11 @@ function App() {
       })
       .then(results => {
         const pos: { [key: string]: { banks: BankData[]; summary?: unknown } } = {};
-        const neft: { [key: string]: { banks: BankData[]; summary?: unknown } } = {};
         results.forEach((result) => {
           const { key, type, data } = result as { key: string; type: string; data: { banks: BankData[]; summary?: unknown } };
           if (type === 'pos') pos[key] = data;
-          else if (type === 'neft') neft[key] = data;
         });
         setPosData(pos);
-        setNeftData(neft);
       })
       .catch(err => {
         console.error('Failed to load month data:', err);

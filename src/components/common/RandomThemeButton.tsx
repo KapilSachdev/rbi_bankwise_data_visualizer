@@ -1,41 +1,10 @@
 import { FC, memo, useCallback, useEffect, useState } from 'react';
-import { ECHARTS_THEMES } from '../../assets/styles/echarts_themes';
+import { ECHARTS_THEMES, UI_THEMES } from '../../constants/themes';
 import { setEchartsThemeName } from '../../hooks/useEchartsThemeSync';
 import { oklchToHex } from '../../utils/color';
 import SVGIcon from './SVGIcon';
 
-export const UI_THEMES = [
-  { name: 'light', mode: 'light' },
-  { name: 'dark', mode: 'dark' },
-  { name: 'cupcake', mode: 'light' },
-  { name: 'bumblebee', mode: 'light' },
-  { name: 'emerald', mode: 'light' },
-  { name: 'corporate', mode: 'light' },
-  { name: 'synthwave', mode: 'dark' },
-  { name: 'retro', mode: 'light' },
-  { name: 'cyberpunk', mode: 'dark' },
-  { name: 'valentine', mode: 'light' },
-  { name: 'halloween', mode: 'dark' },
-  { name: 'garden', mode: 'light' },
-  { name: 'forest', mode: 'dark' },
-  { name: 'aqua', mode: 'light' },
-  { name: 'lofi', mode: 'light' },
-  { name: 'pastel', mode: 'light' },
-  { name: 'fantasy', mode: 'light' },
-  { name: 'wireframe', mode: 'light' },
-  { name: 'black', mode: 'dark' },
-  { name: 'luxury', mode: 'dark' },
-  { name: 'dracula', mode: 'dark' },
-  { name: 'cmyk', mode: 'light' },
-  { name: 'autumn', mode: 'light' },
-  { name: 'business', mode: 'light' },
-  { name: 'acid', mode: 'light' },
-  { name: 'lemonade', mode: 'light' },
-  { name: 'night', mode: 'dark' },
-  { name: 'coffee', mode: 'dark' },
-  { name: 'winter', mode: 'light' },
-  // Add more as needed
-];
+
 
 const THEME_KEY = 'theme';
 
@@ -52,19 +21,9 @@ interface ChartThemeButtonProps {
   uiTheme: string | null;
 }
 
+
 const ChartThemeButton: FC<ChartThemeButtonProps> = ({ uiTheme }) => {
   const [currentTheme, setCurrentTheme] = useState<string>(() => localStorage.getItem('echarts-theme') || ECHARTS_THEMES[0].name);
-
-  // Only update local state from localStorage on mount (in case user reloads)
-  useEffect(() => {
-    setCurrentTheme(localStorage.getItem('echarts-theme') || ECHARTS_THEMES[0].name);
-  }, []);
-
-  useEffect(() => {
-    const uiThemeMode = UI_THEMES.find((theme) => theme.name == uiTheme)?.mode;
-    const chartThemeMode = ECHARTS_THEMES.find(theme => theme.name == currentTheme)?.mode
-    if (uiThemeMode != chartThemeMode) handleNextTheme();
-  }, [uiTheme])
 
   const handleNextTheme = useCallback(() => {
     const idx = ECHARTS_THEMES.findIndex(t => t.name === currentTheme);
@@ -75,6 +34,18 @@ const ChartThemeButton: FC<ChartThemeButtonProps> = ({ uiTheme }) => {
     setCurrentTheme(nextTheme);
     setEchartsThemeName(nextTheme); // This will dispatch the event for listeners
   }, [currentTheme, uiTheme]);
+
+  // Only update local state from localStorage on mount (in case user reloads)
+  useEffect(() => {
+    setCurrentTheme(localStorage.getItem('echarts-theme') || ECHARTS_THEMES[0].name);
+  }, []);
+
+  useEffect(() => {
+    const uiThemeMode = UI_THEMES.find((theme) => theme.name == uiTheme)?.mode;
+    const chartThemeMode = ECHARTS_THEMES.find(theme => theme.name == currentTheme)?.mode;
+    if (uiThemeMode != chartThemeMode) handleNextTheme();
+
+  }, [uiTheme, currentTheme, handleNextTheme]);
 
   return (
     <a
@@ -94,16 +65,13 @@ const RandomThemeButton: FC = () => {
 
   useEffect(() => {
     const saved = getSavedTheme();
-    let themeToSet: string | null = null;
     if (saved && UI_THEMES.some(t => t.name === saved)) {
       setTheme(saved);
       setLastTheme(saved);
-      themeToSet = saved;
     } else {
       const current = document.documentElement.getAttribute('data-theme');
       if (current && UI_THEMES.some(t => t.name === current)) {
         setLastTheme(current);
-        themeToSet = current;
       }
     }
   }, []);
