@@ -109,12 +109,12 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
 
   const option = useMemo(() => ({
     backgroundColor: 'transparent',
-    title: {
-      text: 'Credit Cards Over Time',
+    tooltip: {
+      trigger: 'axis',
+      valueFormatter: (value: number) => value.toLocaleString('en-IN')
     },
-    tooltip: { trigger: 'axis' },
-    legend: { top: 30, type: 'scroll' },
-    grid: { left: '3%', right: '4%', top: '30%', bottom: '0%' },
+    legend: { x: 'right', y: 'top', type: 'scroll' },
+    grid: { left: '1%', right: '1%', bottom: '1%', containLabel: true },
     xAxis: {
       type: 'category',
       data: filteredMonths,
@@ -135,6 +135,9 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
 
   return (
     <div className='flex flex-col gap-4 justify-between h-full'>
+      <div className='text-lg text-center font-semibold'>
+        Credit Card Time Series
+      </div>
       <div className='grid gap-4'>
         <div className="flex-1 min-w-0">
           <Pills

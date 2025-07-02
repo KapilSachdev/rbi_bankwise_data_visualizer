@@ -70,11 +70,14 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
   const sortedMonths = useMemo(() => [...months].sort(), [months]);
   const option = useMemo(() => ({
     backgroundColor: 'transparent',
-    title: {
-      text: `Top ${topN} Banks by ${selectedMetric.charAt(0).toUpperCase() + selectedMetric.slice(1)} Card Txn Growth`,
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      },
+      valueFormatter: (value: number) => value.toLocaleString('en-IN')
     },
-    tooltip: { trigger: 'axis' },
-    legend: { x: 'right', type: 'scroll' },
+    legend: { x: 'right', y: 'top' },
     toolbox: { feature: { saveAsImage: {} } },
     xAxis: {
       type: 'category',
@@ -94,6 +97,9 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
 
   return (
     <div className="w-full h-[480px]">
+      <div className="text-lg text-center font-semibold">
+        Top {topN} Banks by {selectedMetric.charAt(0).toUpperCase() + selectedMetric.slice(1)} Card Transaction Growth Over Time
+      </div>
       <div className="flex justify-end">
         <Doughnut
           options={['Total', 'Credit Card', 'Debit Card']}

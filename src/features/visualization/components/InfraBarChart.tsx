@@ -102,13 +102,10 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartR
 
   const option = useMemo(() => ({
     backgroundColor: 'transparent',
-    title: {
-      text: `${INFRA_METRICS.find(m => m.value === metric)?.label || ''} (${selectedMonth && formatMonthYear(selectedMonth)})`,
-    },
     tooltip: {
       trigger: 'axis',
       axisPointer: { type: 'shadow' },
-      valueFormatter: (value: number) => value.toLocaleString()
+      valueFormatter: (value: number) => value.toLocaleString('en-IN')
     },
     xAxis: {
       type: 'category',
@@ -142,6 +139,9 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartR
 
   return (
     <div className="flex flex-col justify-between h-full">
+      <div className="text-lg text-center font-semibold">
+        {INFRA_METRICS.find(m => m.value === metric)?.label || ''} - {selectedMonth && formatMonthYear(selectedMonth)}
+      </div>
       <div className="grid gap-2">
         <Pills
           bankTypes={bankTypes}

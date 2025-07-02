@@ -58,12 +58,11 @@ const BankTypeStackedAreaChart: FC<BankTypeStackedAreaChartProps> = ({ allData, 
   const sortedMonths = useMemo(() => [...months].sort(), [months]);
   const option = useMemo(() => ({
     backgroundColor: 'transparent',
-    title: {
-      text: 'Card Transaction Volume by Bank Type',
-      left: 'center',
+    tooltip: {
+      trigger: 'axis',
+      valueFormatter: (value: number) => value.toLocaleString('en-IN')
     },
-    tooltip: { trigger: 'axis' },
-    legend: { type: 'scroll' },
+    legend: { x: 'right', y: 'top', type: 'scroll' },
     grid: { left: '3%', right: '4%', top: '20%', bottom: '8%' },
     xAxis: {
       type: 'category',
@@ -83,6 +82,9 @@ const BankTypeStackedAreaChart: FC<BankTypeStackedAreaChartProps> = ({ allData, 
 
   return (
     <div className="h-full grid">
+      <div className="text-lg text-center font-semibold">
+        Card Transactions Volume by Bank Type Over Time
+      </div>
       <div className="self-end">
         <EChartsContainer
           option={option}
