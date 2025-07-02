@@ -98,7 +98,7 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
   return (
     <div className="w-full h-[480px]">
       <div className="text-lg text-center font-semibold">
-        Top {topN} Banks by {selectedMetric.charAt(0).toUpperCase() + selectedMetric.slice(1)} Card Transaction Growth Over Time
+        Number of {selectedMetric.charAt(0).toUpperCase() + selectedMetric.slice(1)} Card Transactions of Top {topN} Banks
       </div>
       <div className="flex justify-end">
         <Doughnut
