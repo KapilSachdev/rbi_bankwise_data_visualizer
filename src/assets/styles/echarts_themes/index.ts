@@ -1,6 +1,7 @@
 import { chalk } from './chalk';
 import { darker } from './darker';
 import { essos } from './essos'
+import { infographic } from './infographic'
 import { purplePassion } from './purple_passion'
 
 export const ECHARTS_THEMES = [
@@ -10,5 +11,6 @@ export const ECHARTS_THEMES = [
   { name: 'purplePassion', mode: 'dark', themeOptions: purplePassion },
   { name: 'default', mode: 'light' },
   { name: 'essos', mode: 'light', themeOptions: essos },
+  { name: 'infographic', mode: 'light', themeOptions: infographic },
 ];
 
