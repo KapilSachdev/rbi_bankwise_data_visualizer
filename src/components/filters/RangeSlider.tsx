@@ -128,7 +128,7 @@ const RangeSlider: FC<RangeSliderProps> = ({
   }, [end, max, min, onChange, start, step]);
 
   return (
-    <div className={`flex flex-col gap-2 ${className}`}>
+    <div className={`flex flex-col gap-2 w-full ${className}`}>
       <div className="flex items-center gap-2 select-none">
         {startLabel && <span className="text-xs">{startLabel}</span>}
         <div
@@ -153,7 +153,7 @@ const RangeSlider: FC<RangeSliderProps> = ({
             {end}
           </span>
           {/* Track */}
-          <div className="absolute left-0 right-0 h-2 rounded-selector bg-base-200" style={{ top: '50%', transform: 'translateY(-50%)' }} />
+          <div className="absolute left-0 right-0 h-2 rounded-selector bg-base-300" style={{ top: '50%', transform: 'translateY(-50%)' }} />
           {/* Selected range */}
           <div
             className="absolute h-2 rounded-selector bg-primary"

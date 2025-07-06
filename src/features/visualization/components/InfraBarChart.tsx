@@ -150,7 +150,17 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartR
           onSelect={setSelectedBankType}
         />
         <div className="flex justify-stretch justify-items-stretch gap-4 mb-2 w-full">
-          <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem]">
+          <div className="flex flex-col text-xs font-medium text-base-content self-end">
+            <TopNInput
+              value={topN}
+              min={1}
+              max={data.length}
+              onChange={setTopN}
+              label="banks"
+              className="mt-1"
+            />
+          </div>
+          <div className="flex flex-col text-xs font-medium text-base-content ml-auto">
             <span>Metric</span>
             <div className="dropdown mt-1">
               <button
@@ -182,16 +192,6 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartR
                 ))}
               </ul>
             </div>
-          </div>
-          <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem] self-end ml-auto">
-            <TopNInput
-              value={topN}
-              min={1}
-              max={data.length}
-              onChange={setTopN}
-              label="banks"
-              className="mt-1"
-            />
           </div>
         </div>
       </div>

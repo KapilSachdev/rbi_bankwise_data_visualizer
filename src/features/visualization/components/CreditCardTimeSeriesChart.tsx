@@ -143,13 +143,6 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
         <div className='text-lg text-center font-semibold flex-1'>
           Credit Card Time Series
         </div>
-        <TopNInput
-          value={topN}
-          min={1}
-          max={chartData.length}
-          onChange={setTopN}
-          label="banks"
-        />
       </div>
       <div className='grid gap-4'>
         <div className="flex-1 min-w-0">
@@ -159,14 +152,22 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
             onSelect={setSelectedBankType}
           />
         </div>
-
-        <RangeSlider
-          min={years[0]}
-          max={years[years.length - 1]}
-          value={yearRange}
-          onChange={setYearRange}
-          step={1}
-        />
+        <div className="flex w-full justify-between gap-4">
+          <TopNInput
+            value={topN}
+            min={1}
+            max={chartData.length}
+            onChange={setTopN}
+            label="banks"
+          />
+          <RangeSlider
+            min={years[0]}
+            max={years[years.length - 1]}
+            value={yearRange}
+            onChange={setYearRange}
+            step={1}
+          />
+        </div>
       </div>
       <EChartsContainer
         option={option}

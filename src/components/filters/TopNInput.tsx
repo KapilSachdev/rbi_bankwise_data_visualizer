@@ -26,7 +26,7 @@ const TopNInput: FC<TopNInputProps> = ({
   label = 'banks',
   className = '',
 }) => (
-  <div className={`join ${className}`}>
+  <div className={`join items-center ${className}`}>
     <input
       type="number"
       min={min}
@@ -39,7 +39,7 @@ const TopNInput: FC<TopNInputProps> = ({
       className="input input-sm input-bordered w-16 join-item text-base-content"
       aria-label={`Show top N ${label}`}
     />
-    <span className="join-item flex items-center px-2 text-sm bg-base-200 text-base-content">{label}</span>
+    <span className="join-item flex items-center h-8 px-2 py-0 text-sm bg-base-200 text-base-content">{label}</span>
   </div>
 );
 
