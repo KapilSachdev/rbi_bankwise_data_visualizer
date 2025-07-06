@@ -6,6 +6,7 @@ import { FC, memo, useEffect, useMemo, useState } from 'react';
 import EChartsContainer from '../../../components/common/EChartsContainer';
 import Pills from '../../../components/filters/Pills';
 import RangeSlider from '../../../components/filters/RangeSlider';
+import TopNInput from '../../../components/filters/TopNInput';
 import { BANK_TYPES } from '../../../constants/data';
 import type { BankData } from '../../../types/global.types';
 
@@ -97,15 +98,18 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
       .filter(Boolean) as { bank: string; values: { month: string; creditCards: number }[] }[];
   }, [allData, filteredMonths, selectedBankType]);
 
-  // Sort by latest credit card count
+  // Top N state and sorted data
+  const [topN, setTopN] = useState(10);
+  const latestMonth = filteredMonths[filteredMonths.length - 1];
   const sortedData = useMemo(() => {
-    const latestMonth = filteredMonths[filteredMonths.length - 1];
-    return [...chartData].sort((a, b) => {
-      const aVal = a.values.find(v => v.month === latestMonth)?.creditCards ?? 0;
-      const bVal = b.values.find(v => v.month === latestMonth)?.creditCards ?? 0;
-      return bVal - aVal;
-    });
-  }, [chartData, filteredMonths]);
+    return [...chartData]
+      .sort((a, b) => {
+        const aVal = a.values.find(v => v.month === latestMonth)?.creditCards ?? 0;
+        const bVal = b.values.find(v => v.month === latestMonth)?.creditCards ?? 0;
+        return bVal - aVal;
+      })
+      .slice(0, topN);
+  }, [chartData, filteredMonths, topN, latestMonth]);
 
   const option = useMemo(() => ({
     backgroundColor: 'transparent',
@@ -135,8 +139,17 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
 
   return (
     <div className='flex flex-col gap-4 justify-between h-full'>
-      <div className='text-lg text-center font-semibold'>
-        Credit Card Time Series
+      <div className='flex flex-row items-center justify-between gap-2'>
+        <div className='text-lg text-center font-semibold flex-1'>
+          Credit Card Time Series
+        </div>
+        <TopNInput
+          value={topN}
+          min={1}
+          max={chartData.length}
+          onChange={setTopN}
+          label="banks"
+        />
       </div>
       <div className='grid gap-4'>
         <div className="flex-1 min-w-0">

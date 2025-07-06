@@ -6,6 +6,7 @@ import { CanvasRenderer } from 'echarts/renderers';
 import { FC, useMemo, useState } from 'react';
 import EChartsContainer from '../../../components/common/EChartsContainer';
 import Pills from '../../../components/filters/Pills';
+import TopNInput from '../../../components/filters/TopNInput';
 import { BANK_TYPES } from '../../../constants/data';
 import type { BankData } from '../../../types/global.types';
 import { formatMonthYear } from '../../../utils/time';
@@ -183,19 +184,14 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartR
             </div>
           </div>
           <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem] self-end ml-auto">
-            <div className="join mt-1">
-              <input
-                id="topN"
-                type="number"
-                min={1}
-                max={data.length}
-                value={topN}
-                onChange={e => setTopN(Math.max(1, Math.min(data.length, Number(e.target.value))))}
-                className="input input-sm input-bordered w-16 join-item text-base-content"
-                aria-label="Show top N banks"
-              />
-              <span className="join-item flex items-center px-2 text-sm bg-base-200 text-base-content">banks</span>
-            </div>
+            <TopNInput
+              value={topN}
+              min={1}
+              max={data.length}
+              onChange={setTopN}
+              label="banks"
+              className="mt-1"
+            />
           </div>
         </div>
       </div>

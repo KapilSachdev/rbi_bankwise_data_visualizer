@@ -7,7 +7,7 @@ export const UI_THEMES = [
   { name: 'corporate', mode: 'light' },
   { name: 'synthwave', mode: 'dark' },
   { name: 'retro', mode: 'light' },
-  { name: 'cyberpunk', mode: 'dark' },
+  { name: 'cyberpunk', mode: 'light' },
   { name: 'valentine', mode: 'light' },
   { name: 'halloween', mode: 'dark' },
   { name: 'garden', mode: 'light' },
