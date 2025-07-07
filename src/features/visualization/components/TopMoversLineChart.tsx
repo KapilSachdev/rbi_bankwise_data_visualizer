@@ -2,9 +2,12 @@ import { LineChart } from 'echarts/charts';
 import { GridComponent, LegendComponent, TitleComponent, ToolboxComponent, TooltipComponent } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
-import { FC, useMemo, useState } from 'react';
+import { FC, useMemo, useState, useEffect } from 'react';
 import EChartsContainer from '../../../components/common/EChartsContainer';
 import Doughnut from '../../../components/filters/Doughnut';
+import TopNInput from '../../../components/filters/TopNInput';
+import RangeSlider from '../../../components/filters/RangeSlider';
+import { useYearRangeData } from '../../../hooks/useYearRangeData';
 import type { BankData } from '../../../types/global.types';
 
 echarts.use([
@@ -27,12 +30,26 @@ interface TopMoversLineChartProps {
 
 const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metric = 'total', topN = 5, chartRef }) => {
   const [selectedMetric, setSelectedMetric] = useState<'credit' | 'debit' | 'total'>(metric);
+  const [topNState, setTopNState] = useState<number>(topN);
 
-  // Prepare time series for each bank
+  // Get year range and default from months
+  const { years, defaultYearRange } = useYearRangeData(months);
+  const [yearRange, setYearRange] = useState<[number, number]>(defaultYearRange);
+  useEffect(() => { setYearRange(defaultYearRange); }, [defaultYearRange]);
+
+  // Filter months by year range
+  const sortedMonths = useMemo(() => [...months].sort(), [months]);
+  const filteredMonths = useMemo(() => {
+    return sortedMonths.filter(m => {
+      const y = Number(m.slice(0, 4));
+      return y >= yearRange[0] && y <= yearRange[1];
+    });
+  }, [sortedMonths, yearRange]);
+
+  // Prepare time series for each bank (filtered by year range)
   const bankSeries = useMemo(() => {
     const bankMap = new Map<string, { name: string; values: number[] }>();
-    const sortedMonths = [...months].sort();
-    sortedMonths.forEach((month, mi) => {
+    filteredMonths.forEach((month, mi) => {
       (allData[month] || []).forEach(row => {
         const bank = row.Bank_Short_Name?.trim() || row.Bank_Name;
         const credit = row.Card_Payments_Transactions?.Credit_Card;
@@ -50,24 +67,23 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
             (debit?.Online_ecom?.Volume || 0);
         }
         if (!bankMap.has(bank)) {
-          bankMap.set(bank, { name: bank, values: Array(sortedMonths.length).fill(0) });
+          bankMap.set(bank, { name: bank, values: Array(filteredMonths.length).fill(0) });
         }
         bankMap.get(bank)!.values[mi] = value;
       });
     });
     return Array.from(bankMap.values());
-  }, [allData, months, selectedMetric]);
+  }, [allData, filteredMonths, selectedMetric]);
 
-  // Compute growth for each bank (last - first)
+  // Compute total sum for each bank over filtered period and get top N banks by sum
   const topBanks = useMemo(() => {
     return [...bankSeries]
-      .map(b => ({ ...b, growth: b.values[b.values.length - 1] - b.values[0] }))
-      .sort((a, b) => b.growth - a.growth)
-      .slice(0, topN);
-  }, [bankSeries, topN]);
+      .map(b => ({ ...b, total: b.values.reduce((sum, v) => sum + v, 0) }))
+      .sort((a, b) => b.total - a.total)
+      .slice(0, topNState);
+  }, [bankSeries, topNState]);
 
 
-  const sortedMonths = useMemo(() => [...months].sort(), [months]);
   const option = useMemo(() => ({
     backgroundColor: 'transparent',
     tooltip: {
@@ -81,7 +97,7 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
     toolbox: { feature: { saveAsImage: {} } },
     xAxis: {
       type: 'category',
-      data: sortedMonths,
+      data: filteredMonths,
       axisLabel: { rotate: 45 },
     },
     yAxis: {
@@ -93,14 +109,30 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
       type: 'line',
       data: bank.values
     })),
-  }), [topBanks, sortedMonths, selectedMetric, topN]);
+  }), [topBanks, filteredMonths, selectedMetric]);
 
   return (
     <div className="w-full h-[480px]">
       <div className="text-lg text-center font-semibold">
-        Number of {selectedMetric.charAt(0).toUpperCase() + selectedMetric.slice(1)} Card Transactions of Top {topN} Banks
+        Number of {selectedMetric.charAt(0).toUpperCase() + selectedMetric.slice(1)} Card Transactions of Top {topNState} Banks
       </div>
-      <div className="flex justify-end">
+      <div className="flex w-full items-center justify-between gap-4 mb-2">
+        <div className="flex flex-1 items-center gap-4">
+          <TopNInput
+            value={topNState}
+            min={1}
+            max={bankSeries.length}
+            onChange={setTopNState}
+            label="banks"
+          />
+          <RangeSlider
+            min={years[0]}
+            max={years[years.length - 1]}
+            value={yearRange}
+            onChange={setYearRange}
+            step={1}
+          />
+        </div>
         <Doughnut
           options={['Total', 'Credit Card', 'Debit Card']}
           selected={
@@ -123,7 +155,7 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
         className="w-full h-[400px] rounded-xl"
         onInit={instance => { if (chartRef) chartRef.current = instance; }}
       />
-    </div>
+    </div >
   );
 };
 
