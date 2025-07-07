@@ -92,7 +92,7 @@ const BankTypeStackedAreaChart: FC<BankTypeStackedAreaChartProps> = ({ allData, 
 
   return (
     <div className="h-full grid">
-      <div className="text-lg text-center font-semibold">
+      <div className="text-lg text-center font-semibold mb-4">
         Card Transactions Volume by Bank Type Over Time
       </div>
       <div className="flex w-full justify-end gap-4 mb-2">

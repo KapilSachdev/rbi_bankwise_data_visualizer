@@ -68,53 +68,50 @@ function App() {
     creditCard: { current: null },
   };
 
-
-
   return (
-    <main className="min-h-screen bg-gradient-to-br from-base-200 via-base-100 to-base-300 flex flex-col items-center py-8 px-2">
-      <div className="w-full flex justify-end max-w-7xl mb-4">
-        <RandomThemeButton />
+    <main className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
+      <div className="card shadow-sm border border-base-300">
+        <div className="card-body">
+          <TopMoversLineChart
+            allData={posBanksData}
+            months={posFiles.map(f => f.key)}
+            chartRef={chartRefs.topMovers}
+          />
+        </div>
       </div>
-      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="card shadow-sm border border-base-300">
-          <div className="card-body">
-            <TopMoversLineChart
-              allData={posBanksData}
-              months={posFiles.map(f => f.key)}
-              chartRef={chartRefs.topMovers}
-            />
-          </div>
+      <div className="card shadow-sm border border-base-300">
+        <div className="card-body">
+          <BankTypeStackedAreaChart
+            allData={posBanksData}
+            months={posFiles.map(f => f.key)}
+            chartRef={chartRefs.bankType}
+          />
         </div>
-        <div className="card shadow-sm border border-base-300">
-          <div className="card-body">
-            <BankTypeStackedAreaChart
-              allData={posBanksData}
-              months={posFiles.map(f => f.key)}
-              chartRef={chartRefs.bankType}
-            />
-          </div>
+      </div>
+      <div className="card shadow-sm border border-base-300">
+        <div className="card-body">
+          <CreditCardTimeSeriesChart
+            allData={posBanksData}
+            months={posFiles.map(f => f.key)}
+            chartRef={chartRefs.creditCard}
+          />
         </div>
+      </div>
 
-        <div className="card shadow-sm border border-base-300">
-          <div className="card-body">
-            <BankInfraBarChart
-              allData={posBanksData}
-              months={posFiles.map(f => f.key)}
-              chartRef={chartRefs.infra}
-            />
-          </div>
-        </div>
-        <div className="card shadow-sm border border-base-300">
-          <div className="card-body">
-            <CreditCardTimeSeriesChart
-              allData={posBanksData}
-              months={posFiles.map(f => f.key)}
-              chartRef={chartRefs.creditCard}
-            />
-          </div>
+      <div className="card shadow-sm border border-base-300">
+        <div className="card-body">
+          <BankInfraBarChart
+            allData={posBanksData}
+            months={posFiles.map(f => f.key)}
+            chartRef={chartRefs.infra}
+          />
         </div>
       </div>
-    </main>
+
+      <RandomThemeButton />
+
+
+    </main >
   );
 }
 
