@@ -7,6 +7,7 @@ import EChartsContainer from '../../../components/common/EChartsContainer';
 import Pills from '../../../components/filters/Pills';
 import RangeSlider from '../../../components/filters/RangeSlider';
 import TopNInput from '../../../components/filters/TopNInput';
+import { useYearRangeData } from '../../../hooks/useYearRangeData';
 import { BANK_TYPES } from '../../../constants/data';
 import type { BankData } from '../../../types/global.types';
 
@@ -27,37 +28,11 @@ interface CreditCardTimeSeriesChartProps {
 }
 
 const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData, months, chartRef }) => {
-  // Ensure months are sorted in ascending order (earliest to latest)
-  const sortedMonths = useMemo(() => {
-    return [...months].sort();
-  }, [months]);
-
-  // Extract unique years from months (format: YYYY_MM or YYYY-MM)
-  const years = useMemo(() => {
-    const yearSet = new Set<number>();
-    sortedMonths.forEach(m => {
-      const y = Number(m.slice(0, 4));
-      if (!isNaN(y)) yearSet.add(y);
-    });
-    return Array.from(yearSet).sort((a, b) => a - b);
-  }, [sortedMonths]);
-
-  // Default year range: last 5 years (or all if <5)
-  const defaultYearRange = useMemo(() => {
-    if (years.length === 0) return [0, 0] as [number, number];
-    const end = years[years.length - 1];
-    const start = years.length > 5 ? years[years.length - 5] : years[0];
-    return [start, end] as [number, number];
-  }, [years]);
-
+  // DRY: Use shared hook for years and default range
+  const { years, defaultYearRange } = useYearRangeData(months);
   const [yearRange, setYearRange] = useState<[number, number]>(defaultYearRange);
-
-  // Set default year range to last 5 years on mount or when years change
-  useEffect(() => {
-    setYearRange(defaultYearRange);
-  }, [defaultYearRange]);
-
-  // Filter months by selected year range
+  useEffect(() => { setYearRange(defaultYearRange); }, [defaultYearRange]);
+  const sortedMonths = useMemo(() => [...months].sort(), [months]);
   const filteredMonths = useMemo(() => {
     return sortedMonths.filter(m => {
       const y = Number(m.slice(0, 4));
@@ -82,24 +57,26 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
       if (!bankMap.has(d.Bank_Name)) bankMap.set(d.Bank_Name, []);
       bankMap.get(d.Bank_Name)!.push(d);
     });
-    // Build time series for each bank
+    // Build time series for each bank, include short name for UX
     return Array.from(bankMap.entries())
-      .map(([bankName]) => {
+      .map(([bankName, bankDatas]) => {
+        // Try to get short name from any entry (should be same for all)
+        const bankShortName = bankDatas[0]?.Bank_Short_Name || bankName;
         const values = filteredMonths.map(month => {
           const bank = (allData[month] || []).find(d => d.Bank_Name === bankName);
           return { month, creditCards: bank?.Infrastructure?.Credit_Cards ?? 0 };
         });
         // Only include if at least one value > 0
         if (values.some(v => v.creditCards > 0)) {
-          return { bank: bankName, values };
+          return { bank: bankName, bankShortName, values };
         }
         return null;
       })
-      .filter(Boolean) as { bank: string; values: { month: string; creditCards: number }[] }[];
+      .filter(Boolean) as { bank: string; bankShortName: string; values: { month: string; creditCards: number }[] }[];
   }, [allData, filteredMonths, selectedBankType]);
 
   // Top N state and sorted data
-  const [topN, setTopN] = useState(10);
+  const [topN, setTopN] = useState(5);
   const latestMonth = filteredMonths[filteredMonths.length - 1];
   const sortedData = useMemo(() => {
     return [...chartData]
@@ -129,11 +106,9 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
       name: 'Credit Cards',
     },
     series: sortedData.map(bank => ({
-      name: bank.bank,
+      name: bank.bankShortName || bank.bank,
       type: 'line',
       data: filteredMonths.map(m => bank.values.find(v => v.month === m)?.creditCards ?? 0),
-      smooth: true,
-      emphasis: { focus: 'series' },
     })),
   }), [sortedData, filteredMonths]);
 

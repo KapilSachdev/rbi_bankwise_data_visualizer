@@ -2,8 +2,10 @@ import { LineChart } from 'echarts/charts';
 import { GridComponent, LegendComponent, TitleComponent, TooltipComponent } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
-import { FC, useMemo } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import EChartsContainer from '../../../components/common/EChartsContainer';
+import RangeSlider from '../../../components/filters/RangeSlider';
+import { useYearRangeData } from '../../../hooks/useYearRangeData';
 import type { BankData } from '../../../types/global.types';
 
 echarts.use([
@@ -21,8 +23,6 @@ interface BankTypeStackedAreaChartProps {
   chartRef?: { current: echarts.EChartsType | null };
 }
 
-
-
 const BankTypeStackedAreaChart: FC<BankTypeStackedAreaChartProps> = ({ allData, months, chartRef }) => {
   // Get all unique bank types
   const bankTypes = useMemo(() => {
@@ -33,13 +33,25 @@ const BankTypeStackedAreaChart: FC<BankTypeStackedAreaChartProps> = ({ allData, 
     return Array.from(set).sort();
   }, [allData, months]);
 
-  // Prepare time series for each bank type
+
+  // DRY: Use shared hook for years and default range
+  const { years, defaultYearRange } = useYearRangeData(months);
+  const [yearRange, setYearRange] = useState<[number, number]>(defaultYearRange);
+  useEffect(() => { setYearRange(defaultYearRange); }, [defaultYearRange]);
+  const sortedMonths = useMemo(() => [...months].sort(), [months]);
+  const filteredMonths = useMemo(() => {
+    return sortedMonths.filter(m => {
+      const y = Number(m.slice(0, 4));
+      return y >= yearRange[0] && y <= yearRange[1];
+    });
+  }, [sortedMonths, yearRange]);
+
+  // Prepare time series for each bank type (filtered by year range)
   const typeSeries = useMemo(() => {
-    const sortedMonths = [...months].sort();
     return bankTypes.map(type => {
-      const values = sortedMonths.map(month => {
+      const values = filteredMonths.map(month => {
         const rows = (allData[month] || []).filter(r => (r.Bank_Type || 'Unknown') === type);
-        // Sum total card txn volume for this type
+        // Sum total card transaction volume for this type
         return rows.reduce((sum, row) => {
           const credit = row.Card_Payments_Transactions?.Credit_Card;
           const debit = row.Card_Payments_Transactions?.Debit_Card;
@@ -52,10 +64,8 @@ const BankTypeStackedAreaChart: FC<BankTypeStackedAreaChartProps> = ({ allData, 
       });
       return { type, values };
     });
-  }, [allData, months, bankTypes]);
+  }, [allData, filteredMonths, bankTypes]);
 
-
-  const sortedMonths = useMemo(() => [...months].sort(), [months]);
   const option = useMemo(() => ({
     backgroundColor: 'transparent',
     tooltip: {
@@ -66,24 +76,33 @@ const BankTypeStackedAreaChart: FC<BankTypeStackedAreaChartProps> = ({ allData, 
     grid: { left: '3%', right: '4%', top: '20%', bottom: '8%' },
     xAxis: {
       type: 'category',
-      data: sortedMonths,
+      data: filteredMonths,
       axisLabel: { rotate: 45 },
     },
     yAxis: {
       type: 'value',
-      name: 'Txn Volume',
+      name: 'Transaction Volume'
     },
     series: typeSeries.map(s => ({
       name: s.type,
       type: 'line',
       data: s.values,
     })),
-  }), [typeSeries, sortedMonths]);
+  }), [typeSeries, filteredMonths]);
 
   return (
     <div className="h-full grid">
       <div className="text-lg text-center font-semibold">
         Card Transactions Volume by Bank Type Over Time
+      </div>
+      <div className="flex w-full justify-end gap-4 mb-2">
+        <RangeSlider
+          min={years[0]}
+          max={years[years.length - 1]}
+          value={yearRange}
+          onChange={setYearRange}
+          step={1}
+        />
       </div>
       <div className="self-end">
         <EChartsContainer

@@ -20,7 +20,7 @@ interface TopNInputProps {
  */
 const TopNInput: FC<TopNInputProps> = ({
   value,
-  min = 1,
+  min = 0,
   max = 1000,
   onChange,
   label = 'banks',

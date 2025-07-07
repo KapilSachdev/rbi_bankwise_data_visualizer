@@ -42,7 +42,7 @@ const INFRA_METRICS = [
 
 const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartRef }) => {
 
-  const [topN, setTopN] = useState(10);
+  const [topN, setTopN] = useState(5);
   const [metric, setMetric] = useState(INFRA_METRICS[0].value);
   // Always use the first month in months as selectedMonth, fallback to '' if empty
   const [selectedMonth, setSelectedMonth] = useState<string>(months[0] || '');
