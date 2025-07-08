@@ -31,12 +31,9 @@ const EChartsContainer: FC<EChartsContainerProps> = ({
   const chartRef = useRef<HTMLDivElement | null>(null);
   const chartInstance = useRef<EChartsType | null>(null);
 
-  // Register ECharts themes once
   useRegisterEchartsThemes();
-  // Listen for ECharts theme changes (independent of DaisyUI)
   const echartsTheme = useEchartsThemeSync();
 
-  // Init chart on mount
   useEffect(() => {
     if (!chartRef.current) return;
     chartInstance.current = echarts.init(chartRef.current, echartsTheme);
@@ -45,30 +42,35 @@ const EChartsContainer: FC<EChartsContainerProps> = ({
       chartInstance.current?.dispose();
       chartInstance.current = null;
     };
-    // Only run on mount/unmount
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onInit]);
 
-  // Update theme in-place (ECharts 6+) when theme changes
   useEffect(() => {
     if (chartInstance.current && echartsTheme) {
       setEchartsTheme(chartInstance.current, echartsTheme);
     }
   }, [echartsTheme]);
 
-  // Set option
   useEffect(() => {
     if (chartInstance.current) {
-      chartInstance.current.setOption(option, { lazyUpdate: false });
+      chartInstance.current.setOption(option, { lazyUpdate: true });
     }
   }, [option]);
 
-  // Resize on container size change
+  // Debounced resize on container size change
   useEffect(() => {
     if (!chartInstance.current) return;
-    const handleResize = () => chartInstance.current?.resize();
+    let resizeTimeout: number | undefined;
+    const handleResize = () => {
+      if (resizeTimeout) window.clearTimeout(resizeTimeout);
+      resizeTimeout = window.setTimeout(() => {
+        chartInstance.current?.resize();
+      }, 120);
+    };
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (resizeTimeout) window.clearTimeout(resizeTimeout);
+    };
   }, []);
 
   return (

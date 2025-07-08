@@ -116,23 +116,21 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
       <div className="text-lg text-center font-semibold">
         Number of {selectedMetric.charAt(0).toUpperCase() + selectedMetric.slice(1)} Card Transactions of Top {topNState} Banks
       </div>
-      <div className="flex w-full items-center justify-between gap-4 mb-2">
-        <div className="flex flex-1 items-center gap-4">
-          <TopNInput
-            value={topNState}
-            min={1}
-            max={bankSeries.length}
-            onChange={setTopNState}
-            label="banks"
-          />
-          <RangeSlider
-            min={years[0]}
-            max={years[years.length - 1]}
-            value={yearRange}
-            onChange={setYearRange}
-            step={1}
-          />
-        </div>
+      <div className="flex w-full items-center justify-between gap-6 mb-2">
+        <TopNInput
+          value={topNState}
+          min={1}
+          max={bankSeries.length}
+          onChange={setTopNState}
+          label="banks"
+        />
+        <RangeSlider
+          min={years[0]}
+          max={years[years.length - 1]}
+          value={yearRange}
+          onChange={setYearRange}
+          step={1}
+        />
         <Doughnut
           options={['Total', 'Credit Card', 'Debit Card']}
           selected={

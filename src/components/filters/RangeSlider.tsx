@@ -1,4 +1,5 @@
 import { FC, useRef, useState, useCallback, useEffect, MouseEvent, TouchEvent, KeyboardEvent } from 'react';
+import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 
 interface RangeSliderProps {
   min: number;
@@ -28,6 +29,8 @@ const RangeSlider: FC<RangeSliderProps> = ({
 }) => {
   const trackRef = useRef<HTMLDivElement>(null);
   const [dragging, setDragging] = useState<null | 'start' | 'end'>(null);
+  // Debounced value for onChange
+  const debouncedValue = useDebouncedValue([start, end]);
 
   // Calculate percent positions for thumbs
   const percent = useCallback((val: number) => ((val - min) / (max - min)) * 100, [min, max]);
@@ -41,6 +44,14 @@ const RangeSlider: FC<RangeSliderProps> = ({
     setDragging(which);
     document.body.style.userSelect = 'none';
   }, []);
+
+  // Call onChange only when debounced value changes
+  useEffect(() => {
+    if (debouncedValue[0] !== start || debouncedValue[1] !== end) {
+      onChange(debouncedValue as [number, number]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedValue]);
 
   // Track click logic: move nearest thumb to click position
   const handleTrackClick = useCallback((e: MouseEvent<HTMLDivElement>) => {
