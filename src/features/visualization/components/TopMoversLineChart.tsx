@@ -88,9 +88,6 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
     backgroundColor: 'transparent',
     tooltip: {
       trigger: 'axis',
-      axisPointer: {
-        type: 'shadow'
-      },
       valueFormatter: (value: number) => value.toLocaleString('en-IN')
     },
     legend: { x: 'right', y: 'top' },

@@ -8,6 +8,7 @@ import BankInfraBarChart from './features/visualization/components/InfraBarChart
 import TopMoversLineChart from './features/visualization/components/TopMoversLineChart';
 
 import type { BankData } from './types/global.types';
+import Hero from './features/home/Hero';
 
 interface DataFileMeta {
   file: string;
@@ -69,45 +70,47 @@ function App() {
   };
 
   return (
-    <main className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
-      <div className="card shadow-sm border border-base-300">
-        <div className="card-body">
-          <TopMoversLineChart
-            allData={posBanksData}
-            months={posFiles.map(f => f.key)}
-            chartRef={chartRefs.topMovers}
-          />
+    <main className="grid">
+      <Hero />
+      <article className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
+        <div className="card shadow-sm border border-base-300">
+          <div className="card-body">
+            <TopMoversLineChart
+              allData={posBanksData}
+              months={posFiles.map(f => f.key)}
+              chartRef={chartRefs.topMovers}
+            />
+          </div>
         </div>
-      </div>
-      <div className="card shadow-sm border border-base-300">
-        <div className="card-body">
-          <BankTypeStackedAreaChart
-            allData={posBanksData}
-            months={posFiles.map(f => f.key)}
-            chartRef={chartRefs.bankType}
-          />
+        <div className="card shadow-sm border border-base-300">
+          <div className="card-body">
+            <BankTypeStackedAreaChart
+              allData={posBanksData}
+              months={posFiles.map(f => f.key)}
+              chartRef={chartRefs.bankType}
+            />
+          </div>
         </div>
-      </div>
-      <div className="card shadow-sm border border-base-300">
-        <div className="card-body">
-          <CreditCardTimeSeriesChart
-            allData={posBanksData}
-            months={posFiles.map(f => f.key)}
-            chartRef={chartRefs.creditCard}
-          />
+        <div className="card shadow-sm border border-base-300">
+          <div className="card-body">
+            <CreditCardTimeSeriesChart
+              allData={posBanksData}
+              months={posFiles.map(f => f.key)}
+              chartRef={chartRefs.creditCard}
+            />
+          </div>
         </div>
-      </div>
 
-      <div className="card shadow-sm border border-base-300">
-        <div className="card-body">
-          <BankInfraBarChart
-            allData={posBanksData}
-            months={posFiles.map(f => f.key)}
-            chartRef={chartRefs.infra}
-          />
+        <div className="card shadow-sm border border-base-300">
+          <div className="card-body">
+            <BankInfraBarChart
+              allData={posBanksData}
+              months={posFiles.map(f => f.key)}
+              chartRef={chartRefs.infra}
+            />
+          </div>
         </div>
-      </div>
-
+      </article>
       <RandomThemeButton />
 
 

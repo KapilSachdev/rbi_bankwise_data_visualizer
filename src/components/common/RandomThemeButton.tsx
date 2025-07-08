@@ -3,6 +3,7 @@ import { ECHARTS_THEMES, UI_THEMES } from '../../constants/themes';
 import { setEchartsThemeName } from '../../hooks/useEchartsThemeSync';
 import { oklchToHex } from '../../utils/color';
 import SVGIcon from './SVGIcon';
+import GithubLogo from '../icons/GithubLogo';
 
 
 
@@ -122,7 +123,7 @@ const RandomThemeButton: FC = () => {
         rel="noopener noreferrer"
         aria-label="Project Home Page"
       >
-        <SVGIcon icon="github" className="max-sm:size-6 md:size-8" />
+        <GithubLogo className="max-sm:size-6 md:size-8" animationClassName="animated-outline" duration={3000} />
       </a>
     </div>
   );

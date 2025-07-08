@@ -1,0 +1,29 @@
+/* Shape completion */
+.animated-outline {
+  stroke-dasharray: var(--perimeter, 100);
+  stroke-dashoffset: var(--perimeter, 100);
+  animation: outline-draw var(--duration, 3s) linear forwards;
+}
+
+@keyframes outline-draw {
+  0% {
+    stroke-dashoffset: var(--perimeter, 100);
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Shape outline following */
+.animated-dash {
+  stroke-dasharray: calc(var(--perimeter, 100) * 0.25) calc(var(--perimeter, 100) * 0.75);
+  stroke-dashoffset: var(--perimeter, 100);
+  animation: dash-move var(--duration, 3s) linear infinite;
+}
+
+@keyframes dash-move {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
