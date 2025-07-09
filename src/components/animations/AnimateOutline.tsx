@@ -1,5 +1,5 @@
 
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect, cloneElement } from 'react';
 import './animations.css';
 
 /**
@@ -37,7 +37,7 @@ export const AnimateOutline: React.FC<AnimateOutlineProps> = ({ children, durati
 
   // Only attach the ref if the child is a string element (e.g., 'circle', 'rect', etc.)
   const isDomElement = typeof children.type === 'string';
-  return React.cloneElement(children, {
+  return cloneElement(children, {
     ...(isDomElement ? { ref: shapeRef } : {}),
     className: [children.props.className, animationClassName].filter(Boolean).join(' '),
     style: { ...(children.props.style || {}) },

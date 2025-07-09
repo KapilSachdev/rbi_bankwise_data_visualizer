@@ -1,4 +1,4 @@
-import React, { FC, KeyboardEvent, ReactNode, useEffect, useRef, useState } from 'react';
+import { FC, KeyboardEvent, ReactNode, useEffect, useRef, useState } from 'react';
 
 interface OrbitMenuProps {
   options: string[];

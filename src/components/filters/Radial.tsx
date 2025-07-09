@@ -1,4 +1,4 @@
-import React, { FC, KeyboardEvent, useRef, useState } from 'react';
+import { FC, KeyboardEvent, useRef, useState } from 'react';
 
 interface RadialMenuProps {
   options: string[];

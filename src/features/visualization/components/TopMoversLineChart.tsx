@@ -4,7 +4,7 @@ import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 import { FC, useEffect, useMemo, useState } from 'react';
 import EChartsContainer from '../../../components/common/EChartsContainer';
-import Doughnut from '../../../components/filters/Doughnut';
+import TriangleSwitch from '../../../components/filters/TriangleSwitch';
 import Pills from '../../../components/filters/Pills';
 import RangeSlider from '../../../components/filters/RangeSlider';
 import TopNInput from '../../../components/filters/TopNInput';
@@ -141,7 +141,7 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
             onChange={setYearRange}
             step={1}
           />
-          <Doughnut
+          <TriangleSwitch
             options={['Total', 'Credit Card', 'Debit Card']}
             selected={
               selectedMetric === 'total'
@@ -155,7 +155,7 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
                 option === 'Total' ? 'total' : option === 'Credit Card' ? 'credit' : 'debit'
               );
             }}
-            size={36}
+            size={48}
           />
         </div>
       </div>

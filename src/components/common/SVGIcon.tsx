@@ -1,4 +1,4 @@
-import React, { FC, memo, SVGProps } from 'react';
+import { FC, memo, SVGProps } from 'react';
 
 interface SVGIconProps extends SVGProps<SVGSVGElement> {
   /**
@@ -10,7 +10,7 @@ interface SVGIconProps extends SVGProps<SVGSVGElement> {
 /**
  * Renders an SVG icon from the sprite at public/assets/icons.svg.
  * @param icon The symbol id (e.g., "icon-github")
- * @param className 
+ * @param className
  * @param rest Other SVG props (e.g., aria-label, title)
  */
 const SVGIcon: FC<SVGIconProps> = ({ icon, className = 'size-8', ...rest }) => (

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 interface DoughnutProps {
   options: string[];
@@ -108,9 +108,8 @@ const Doughnut: FC<DoughnutProps> = ({
             {/* Tooltip for overflowed text */}
             {option.length > 12 && (
               <span
-                className={`tooltip tooltip-open tooltip-bottom text-xs bg-base-200 text-base-content px-2 py-1 rounded mt-1 z-10 ${
-                  selected === option ? 'opacity-100' : 'opacity-0'
-                }`}
+                className={`tooltip tooltip-open tooltip-bottom text-xs bg-base-200 text-base-content px-2 py-1 rounded mt-1 z-10 ${selected === option ? 'opacity-100' : 'opacity-0'
+                  }`}
               >
                 {option}
               </span>
