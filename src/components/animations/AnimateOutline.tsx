@@ -24,10 +24,12 @@ export const AnimateOutline: React.FC<AnimateOutlineProps> = ({ children, durati
     const el = shapeRef.current;
     if (!el) return;
     let perimeter = 100;
-    if ('getTotalLength' in el && typeof (el as any).getTotalLength === 'function') {
+    if ('getTotalLength' in el && typeof (el as unknown as { getTotalLength: () => number }).getTotalLength === 'function') {
       try {
-        perimeter = (el as any).getTotalLength();
-      } catch { }
+        perimeter = (el as unknown as { getTotalLength: () => number }).getTotalLength();
+      } catch {
+        console.error('getTotalLength failed');
+      }
     }
     el.style.setProperty('--perimeter', `${perimeter}`);
     el.style.setProperty('--duration', `${duration}ms`);

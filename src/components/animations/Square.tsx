@@ -8,7 +8,7 @@ export interface SquareProps {
 
 const Square: React.FC<SquareProps> = ({ animationClassName }) => (
   <svg width={48} height={48} viewBox="0 0 40 40" aria-label="Square" className="block mx-auto text-primary">
-    <AnimateOutline className={animationClassName}>
+    <AnimateOutline animationClassName={animationClassName}>
       <rect
         x={8}
         y={8}

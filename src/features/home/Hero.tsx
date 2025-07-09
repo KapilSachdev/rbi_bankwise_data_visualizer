@@ -8,9 +8,6 @@ import Triangle from '../../components/animations/Triangle';
 export const Hero: React.FC = () => {
   return (
     <section className="hero flex items-center justify-center relative">
-      <Circle />
-      <Square />
-      <Triangle />
     </section>
   );
 };
