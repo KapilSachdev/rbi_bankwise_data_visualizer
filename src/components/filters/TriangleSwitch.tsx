@@ -1,187 +1,122 @@
-import React, { useRef, useEffect, useState } from 'react';
-// Helper to get the total length of the triangle perimeter
-const getTrianglePerimeter = (points: [number, number][]) => {
-  let len = 0;
-  for (let i = 0; i < points.length; i++) {
-    const [x1, y1] = points[i];
-    const [x2, y2] = points[(i + 1) % points.length];
-    len += Math.hypot(x2 - x1, y2 - y1);
-  }
-  return len;
-};
-
-// Helper to get the length up to a side (for stroke-dashoffset)
-const getOffsetToSide = (points: [number, number][], sideIdx: number) => {
-  let offset = 0;
-  for (let i = 0; i < sideIdx; i++) {
-    const [x1, y1] = points[i];
-    const [x2, y2] = points[(i + 1) % points.length];
-    offset += Math.hypot(x2 - x1, y2 - y1);
-  }
-  return offset;
-};
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 interface TriangleSwitchProps {
   options: [string, string, string];
   selected: string;
   onSelect: (option: string) => void;
-
   size?: number;
 }
 
-
-const TRIANGLE_SIDES = [
-  {
-    coords: { x1: 32, y1: 8, x2: 56, y2: 56 },
-    id: 'right',
-    textDy: -10,
-    reverse: false
-  },
-  {
-    coords: { x1: 8, y1: 56, x2: 56, y2: 56 },
-    id: 'bottom',
-    textDy: 10,
-    reverse: false
-  },
-  {
-    coords: { x1: 8, y1: 56, x2: 32, y2: 8 },
-    id: 'left',
-    textDy: -10,
-    reverse: false
-  }
+const POINTS = [
+  [32, 8],   // Top
+  [56, 56],  // Right
+  [8, 56]    // Left
 ];
 
-/**
- * TriangleSwitch - A clean and accessible SVG-based triangle switch.
- */
+const TRIANGLE_SIDES = [
+  { id: 'right', textDy: -10, points: [0, 1] },
+  { id: 'bottom', textDy: 10, points: [1, 2] },
+  { id: 'left', textDy: -10, points: [2, 0] }
+];
+
 const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
   options,
   selected,
   onSelect,
   size = 64
 }) => {
+  const polygonRef = useRef<SVGPolygonElement>(null);
   const radioGroupRef = useRef<HTMLDivElement>(null);
-  // For animation
-  const trianglePoints: [number, number][] = [
-    [32, 8],
-    [56, 56],
-    [8, 56],
-  ];
-  // Animation state: fromIdx, toIdx, progress
-  const selectedIdx = options.findIndex(o => o === selected);
-  const [animState, setAnimState] = useState(() => ({
-    fromIdx: selectedIdx,
-    toIdx: selectedIdx,
-    progress: 1
-  }));
-  const perimeter = getTrianglePerimeter(trianglePoints);
-  const sideLens = [
-    Math.hypot(56 - 32, 56 - 8),
-    Math.hypot(8 - 56, 56 - 56),
-    Math.hypot(32 - 8, 8 - 56),
-  ];
+  const [prevIdx, setPrevIdx] = useState(-1);
+  const selectedIdx = options.indexOf(selected);
 
-  // Animate when selectedIdx changes
+  // Calculate geometry once
+  const { sideLengths, perimeter, dashOffsets } = useMemo(() => {
+    const sideLengths = TRIANGLE_SIDES.map((_, i) => {
+      const [p1, p2] = [POINTS[i], POINTS[(i + 1) % 3]];
+      return Math.sqrt((p2[0] - p1[0]) ** 2 + (p2[1] - p1[1]) ** 2);
+    });
+
+    const perimeter = sideLengths.reduce((sum, len) => sum + len, 0);
+    const dashOffsets = [
+      0,
+      sideLengths[0],
+      sideLengths[0] + sideLengths[1]
+    ];
+
+    return { sideLengths, perimeter, dashOffsets };
+  }, []);
+
+  // Animation handling
   useEffect(() => {
-    if (selectedIdx === animState.toIdx && animState.progress === 1) return;
-    let running = true;
-    setAnimState({ fromIdx: animState.toIdx, toIdx: selectedIdx, progress: 0 });
-    let startTime: number | null = null;
-    const duration = 350;
-    function animate(ts: number) {
-      if (!running) return;
-      if (startTime == null) startTime = ts;
-      const elapsed = ts - startTime;
-      let progress = Math.min(1, elapsed / duration);
-      setAnimState(state => ({ ...state, progress }));
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        setAnimState({ fromIdx: selectedIdx, toIdx: selectedIdx, progress: 1 });
-      }
+    if (selectedIdx === prevIdx || prevIdx === -1) {
+      setPrevIdx(selectedIdx);
+      return;
     }
-    requestAnimationFrame(animate);
-    return () => { running = false; };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedIdx]);
 
-  useEffect(() => {
-    if (radioGroupRef.current) {
-      const selectedRadio = radioGroupRef.current.querySelector(`[aria-label="${selected}"]`) as HTMLElement;
-      selectedRadio?.focus();
-    }
-  }, [selected]);
+    const polygon = polygonRef.current;
+    if (!polygon) return;
 
-  // Compute animated stroke-dashoffset
-  let dashOffset = 0;
-  let dashArray = 0;
-  const { fromIdx, toIdx, progress } = animState;
-  if (fromIdx !== toIdx && progress < 1) {
-    // Animate along the shortest path (clockwise or counterclockwise), always 1 or 2 steps
-    const from = getOffsetToSide(trianglePoints, fromIdx);
-    const n = trianglePoints.length;
-    let stepsCW = (toIdx - fromIdx + n) % n;
-    let stepsCCW = (fromIdx - toIdx + n) % n;
-    let useCCW = stepsCCW < stepsCW;
-    if (stepsCCW === stepsCW) {
-      if (stepsCW === 1) {
-        useCCW = (toIdx - fromIdx + n) % n !== 1;
-      } else {
-        useCCW = false;
-      }
-    }
-    let dist = 0;
-    if (useCCW) {
-      for (let i = 0; i < stepsCCW; ++i) {
-        const idxA = (fromIdx - i + n) % n;
-        const idxB = (idxA - 1 + n) % n;
-        dist += Math.hypot(
-          trianglePoints[idxA][0] - trianglePoints[idxB][0],
-          trianglePoints[idxA][1] - trianglePoints[idxB][1]
-        );
-      }
-      dashArray = dist;
-      dashOffset = (from - (dist * progress) + perimeter) % perimeter;
+    const fromOffset = -dashOffsets[prevIdx];
+    const toOffset = -dashOffsets[selectedIdx];
+
+    // Calculate the direct distance between points
+    const directDistance = toOffset - fromOffset;
+
+    // Calculate the distance going the other way around
+    let wrapAroundDistance;
+    if (directDistance > 0) {
+      wrapAroundDistance = directDistance - perimeter;
     } else {
-      for (let i = 0; i < stepsCW; ++i) {
-        const idxA = (fromIdx + i) % n;
-        const idxB = (idxA + 1) % n;
-        dist += Math.hypot(
-          trianglePoints[idxA][0] - trianglePoints[idxB][0],
-          trianglePoints[idxA][1] - trianglePoints[idxB][1]
-        );
-      }
-      dashArray = dist;
-      dashOffset = (from + (dist * progress)) % perimeter;
+      wrapAroundDistance = perimeter + directDistance;
     }
-  } else {
-    // Always highlight only the selected edge, never wrap around
-    dashArray = sideLens[selectedIdx];
-    dashOffset = getOffsetToSide(trianglePoints, selectedIdx);
-    // If dashArray is 0 (should never happen), fallback to full perimeter
-    if (dashArray === 0) {
-      dashArray = perimeter;
-      dashOffset = 0;
-    }
-  }
+
+    // Choose the direction with the smallest absolute distance
+    const shouldWrap = Math.abs(wrapAroundDistance) < Math.abs(directDistance);
+    const finalToOffset = shouldWrap ? fromOffset + wrapAroundDistance : fromOffset + directDistance;
+
+    polygon.style.transition = 'none';
+    polygon.style.strokeDashoffset = `${fromOffset}`;
+
+    requestAnimationFrame(() => {
+      polygon.style.transition = 'stroke-dashoffset 350ms cubic-bezier(0.4, 0, 0.2, 1)';
+      polygon.style.strokeDashoffset = `${finalToOffset}`;
+    });
+
+    const handler = () => setPrevIdx(selectedIdx);
+    polygon.addEventListener('transitionend', handler, { once: true });
+
+    return () => polygon.removeEventListener('transitionend', handler);
+  }, [selectedIdx, prevIdx, dashOffsets, perimeter]);
+
+  // Accessibility focus
+  useEffect(() => {
+    const radio = radioGroupRef.current?.querySelector<HTMLElement>(`[aria-label="${selected}"]`);
+    radio?.focus();
+  }, [selected]);
 
   return (
     <div
+      ref={radioGroupRef}
       className="flex flex-col items-center justify-center"
       style={{ minWidth: size * 2, minHeight: size * 1.5 }}
       role="radiogroup"
       aria-label="Triangle switch"
-      ref={radioGroupRef}
     >
       <svg
         width={size}
         height={size}
         viewBox="0 0 64 64"
         className="block mx-auto"
-        style={{ touchAction: 'manipulation', overflow: 'visible' }}
+        style={{
+          touchAction: 'manipulation',
+          overflow: 'visible',
+          shapeRendering: 'geometricPrecision',
+          textRendering: 'geometricPrecision'
+        }}
         aria-hidden="true"
       >
-        {/* Triangle outline */}
+        {/* Static triangle outline */}
         <polygon
           points="32,8 56,56 8,56"
           fill="none"
@@ -189,69 +124,75 @@ const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
           strokeWidth={4}
         />
 
-        {/* Animated selection stroke */}
+        {/* Animated highlight */}
         <polygon
+          ref={polygonRef}
           points="32,8 56,56 8,56"
           fill="none"
           stroke="var(--color-primary)"
           strokeWidth={6}
           strokeLinejoin="round"
           strokeLinecap="round"
-          strokeDasharray={dashArray + ',' + (perimeter - dashArray)}
-          strokeDashoffset={-dashOffset}
-          style={{ transition: progress === 1 ? 'stroke-dashoffset 0.2s' : undefined }}
+          strokeDasharray={`${sideLengths[selectedIdx]},${perimeter - sideLengths[selectedIdx]}`}
+          strokeDashoffset={-dashOffsets[selectedIdx]}
           opacity={1}
           pointerEvents="none"
         />
 
-        {/* Define SVG paths for each triangle side for textPath usage */}
         <defs>
-          {TRIANGLE_SIDES.map((side, idx) => (
-            <path
-              key={side.id}
-              id={side.id}
-              d={`M${side.coords.x1},${side.coords.y1} L${side.coords.x2},${side.coords.y2}`}
-              fill="none"
-            />
-          ))}
+          {TRIANGLE_SIDES.map((side, idx) => {
+            let [start, end] = side.points.map(i => POINTS[i]);
+            // For the 'bottom' side, reverse the direction so text is not reversed
+            if (side.id === 'bottom') {
+              [start, end] = [end, start];
+            }
+            return (
+              <path
+                key={side.id}
+                id={side.id}
+                d={`M${start[0]},${start[1]} L${end[0]},${end[1]}`}
+                fill="none"
+              />
+            );
+          })}
         </defs>
 
-        {/* Map over the triangle sides to render lines and tilted labels */}
         {options.map((option, index) => {
           const side = TRIANGLE_SIDES[index];
-          if (!side) {
-            console.warn(`Missing side configuration for option at index ${index}`);
-            return null;
-          }
+          const isSelected = selectedIdx === index;
+
           return (
             <React.Fragment key={option}>
               <line
-                x1={side.coords.x1}
-                y1={side.coords.y1}
-                x2={side.coords.x2}
-                y2={side.coords.y2}
-                stroke={"var(--color-base-300)"}
+                x1={POINTS[side.points[0]][0]}
+                y1={POINTS[side.points[0]][1]}
+                x2={POINTS[side.points[1]][0]}
+                y2={POINTS[side.points[1]][1]}
+                stroke="var(--color-base-300)"
                 strokeWidth={8}
                 opacity={0.1}
                 strokeLinecap="round"
-                className="outline-none"
-                style={{ cursor: 'pointer', transition: 'stroke 0.2s, opacity 0.2s', outline: 'none' }}
-                tabIndex={selectedIdx === index ? 0 : -1}
+                style={{
+                  cursor: 'pointer',
+                  transition: 'opacity 0.2s',
+                  opacity: isSelected ? 0.2 : 0.1,
+                  outline: 'none'
+                }}
+                tabIndex={isSelected ? 0 : -1}
                 role="radio"
-                aria-checked={selectedIdx === index}
+                aria-checked={isSelected}
                 aria-label={option}
                 onClick={() => onSelect(option)}
-                onKeyDown={e => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    onSelect(option);
-                  }
-                }}
+                onKeyDown={e => (e.key === ' ' || e.key === 'Enter') && onSelect(option)}
               />
               <text
-                fontSize={8}
+                fontSize={16}
                 fill="var(--color-base-content)"
-                style={{ pointerEvents: 'none' }}
+                style={{
+                  pointerEvents: 'none',
+                  overflow: 'visible',
+                  textOverflow: 'unset'
+                }}
                 dy={side.textDy}
               >
                 <textPath
@@ -267,7 +208,7 @@ const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
           );
         })}
       </svg>
-    </div >
+    </div>
   );
 };
 
