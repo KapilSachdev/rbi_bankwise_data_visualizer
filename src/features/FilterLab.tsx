@@ -31,9 +31,8 @@ const FilterLab: React.FC = () => {
   const [doughnut, setDoughnut] = useState(doughnutOptions[0]);
 
   return (
-    <section className="p-6 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">🧪 Filter Lab</h1>
-      <p className="mb-8 text-base-content/70">A staging area for all filter components. Use this page to test, debug, and refine filter UIs and logic in isolation.</p>
+    <section className="p-6">
+      <h1 className="text-3xl font-bold mb-6">Filter Lab</h1>
       <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
         <div className="card bg-base-100 shadow border border-base-300">
           <div className="card-body">

@@ -11,7 +11,7 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   { label: 'Dashboard', icon: 'home', path: '/' },
   { label: 'Filter Lab', icon: 'filter', path: '/filter-lab' },
-  { label: 'SVG Icon Lab', icon: 'paint_roller', path: '/svg-lab' },
+  { label: 'SVG Lab', icon: 'paint_roller', path: '/svg-lab' },
 ];
 
 /**
@@ -19,44 +19,38 @@ const menuItems: MenuItem[] = [
  * Handles its own open/close state and route navigation.
  */
 const NavigationDock: FC = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Close menu on route change
-  useEffect(() => { setMenuOpen(false); }, [location.pathname]);
+  // Handler for menu navigation and closing dropdown
+  const handleMenuClick = (path: string) => {
+    navigate(path);
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  };
 
   return (
-    <>
-      {/* Hamburger menu button */}
-      <a
-        role="button"
-        className="cursor-pointer text-primary"
-        aria-label="Open navigation menu"
-        onClick={() => setMenuOpen(v => !v)}
-      >
+    <div className="dropdown dropdown-left dropdown-end">
+      <div tabIndex={0} role='button' className="cursor-pointer text-primary" aria-label="Open navigation menu">
         <SVGIcon icon="menu" className="max-sm:size-6 md:size-8" />
-      </a>
-
-      {/* Floating menu */}
-      {menuOpen && (
-        <ul className="absolute bottom-16 right-0 menu bg-base-100 border border-base-300 rounded-xl shadow-lg min-w-[180px] animate-fade-in z-50 p-2">
-          {menuItems.map(item => (
-            <li key={item.path} className="w-full">
-              <button
-                className={`flex items-center gap-3 px-4 py-3 text-base-content text-left w-full ${location.pathname === item.path ? 'font-bold text-primary' : ''}`}
-                onClick={() => navigate(item.path)}
-                aria-current={location.pathname === item.path ? 'page' : undefined}
-                tabIndex={0}
-              >
-                <SVGIcon icon={item.icon} className="size-5" />
-                {item.label}
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </>
+      </div>
+      <ul tabIndex={0} className="menu rounded dropdown-content bg-base-100 shadow-md">
+        {menuItems.map(item => (
+          <li key={item.path} className="w-full">
+            <button
+              className={`flex items-center gap-3 px-4 py-3 text-base-content ${location.pathname === item.path ? 'font-bold text-primary' : ''}`}
+              onClick={() => handleMenuClick(item.path)}
+              aria-current={location.pathname === item.path ? 'page' : undefined}
+              tabIndex={0}
+            >
+              {/* <SVGIcon icon={item.icon} className="size-5" /> */}
+              {item.label}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

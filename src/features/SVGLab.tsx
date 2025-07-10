@@ -13,7 +13,7 @@ const SVGLab: React.FC = () => {
   const filteredIcons = iconNames.filter(name => name.toLowerCase().includes(search.toLowerCase()));
 
   return (
-    <section className="p-6 max-w-4xl mx-auto">
+    <section className="p-6">
       <h1 className="text-3xl font-bold mb-6">SVG Lab</h1>
       <input
         type="text"

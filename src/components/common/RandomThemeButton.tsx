@@ -106,8 +106,17 @@ const RandomThemeButton: FC = () => {
 
   return (
     <div className="fixed z-50 bottom-4 right-4 flex flex-col items-center gap-2">
-      {/* Navigation dock menu */}
-      <NavigationDock />
+
+      {/* Github repository link */}
+      <a
+        href="https://www.github.com/kapilsachdev/rbi_bankwise_data_visualizer/"
+        target="_blank"
+        className='cursor-pointer text-primary'
+        rel="noopener noreferrer"
+        aria-label="Project Home Page"
+      >
+        <GithubLogo className="max-sm:size-6 md:size-8" animationClassName="animated-outline" duration={3000} />
+      </a>
 
       {/* Theme randomizer */}
       <a
@@ -121,16 +130,8 @@ const RandomThemeButton: FC = () => {
       </a>
 
       <ChartThemeButton uiTheme={lastTheme} />
+      <NavigationDock />
 
-      <a
-        href="https://www.github.com/kapilsachdev/rbi_bankwise_data_visualizer/"
-        target="_blank"
-        className='cursor-pointer text-primary'
-        rel="noopener noreferrer"
-        aria-label="Project Home Page"
-      >
-        <GithubLogo className="max-sm:size-6 md:size-8" animationClassName="animated-outline" duration={3000} />
-      </a>
     </div>
   );
 };
