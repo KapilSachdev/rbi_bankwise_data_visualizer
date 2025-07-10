@@ -117,7 +117,7 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
 
   return (
     <div className="flex flex-col gap-4 justify-between h-full">
-      <div className="text-lg text-center font-semibold">
+      <div className="text-lg text-center font-medium">
         Number of {selectedMetric.charAt(0).toUpperCase() + selectedMetric.slice(1)} Card Transactions of Top {topNState} Banks
       </div>
       <div className="grid gap-2">
@@ -142,17 +142,17 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
             step={1}
           />
           <TriangleSwitch
-            options={['Total', 'Credit Card', 'Debit Card']}
+            options={['Total', 'Credit', 'Debit']}
             selected={
               selectedMetric === 'total'
                 ? 'Total'
                 : selectedMetric === 'credit'
-                  ? 'Credit Card'
-                  : 'Debit Card'
+                  ? 'Credit'
+                  : 'Debit'
             }
             onSelect={option => {
               setSelectedMetric(
-                option === 'Total' ? 'total' : option === 'Credit Card' ? 'credit' : 'debit'
+                option === 'Total' ? 'total' : option === 'Credit' ? 'credit' : 'debit'
               );
             }}
             size={48}

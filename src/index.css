@@ -1,4 +1,10 @@
 @import "tailwindcss";
+
 @plugin "daisyui" {
   themes: all;
+}
+
+/* Set global font family fallback */
+html {
+  font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
 }

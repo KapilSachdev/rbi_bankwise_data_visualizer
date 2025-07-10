@@ -36,7 +36,7 @@ const TopNInput: FC<TopNInputProps> = ({
         const v = Math.max(min, Math.min(max, Number(e.target.value)));
         onChange(v);
       }}
-      className="input input-sm input-bordered w-16 join-item text-base-content"
+      className="input input-xs input-bordered w-12 join-item text-base-content"
       aria-label={`Show top N ${label}`}
     />
     <span className="join-item flex items-center h-8 px-2 py-0 text-sm bg-base-200 text-base-content">{label}</span>

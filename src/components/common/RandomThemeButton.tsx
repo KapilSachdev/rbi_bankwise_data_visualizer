@@ -111,7 +111,7 @@ const RandomThemeButton: FC = () => {
       <a
         href="https://www.github.com/kapilsachdev/rbi_bankwise_data_visualizer/"
         target="_blank"
-        className='cursor-pointer text-primary'
+        className='cursor-pointer text-primary mb-10'
         rel="noopener noreferrer"
         aria-label="Project Home Page"
       >

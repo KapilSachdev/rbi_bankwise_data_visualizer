@@ -140,7 +140,7 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartR
 
   return (
     <div className="flex flex-col justify-between h-full">
-      <div className="text-lg text-center font-semibold">
+      <div className="text-lg text-center font-medium">
         {INFRA_METRICS.find(m => m.value === metric)?.label || ''} - {selectedMonth && formatMonthYear(selectedMonth)}
       </div>
       <div className="grid gap-2">

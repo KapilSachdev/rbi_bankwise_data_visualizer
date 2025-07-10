@@ -115,7 +115,7 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
   return (
     <div className='flex flex-col gap-4 justify-between h-full'>
       <div className='flex flex-row items-center justify-between gap-2'>
-        <div className='text-lg text-center font-semibold flex-1'>
+        <div className='text-lg text-center font-medium flex-1'>
           Credit Card Time Series
         </div>
       </div>
