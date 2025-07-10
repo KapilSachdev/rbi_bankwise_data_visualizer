@@ -1,14 +1,11 @@
-
 import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import RandomThemeButton from './components/common/RandomThemeButton';
 import { DATA_FOLDER } from './constants/data';
-import BankTypeStackedAreaChart from './features/visualization/components/BankTypeStackedAreaChart';
-import CreditCardTimeSeriesChart from './features/visualization/components/CreditCardTimeSeriesChart';
-import BankInfraBarChart from './features/visualization/components/InfraBarChart';
-import TopMoversLineChart from './features/visualization/components/TopMoversLineChart';
-
+import Dashboard from './features/Dashboard';
+import FilterLab from './features/FilterLab';
+import SVGLab from './features/SVGLab';
 import type { BankData } from './types/global.types';
-import Hero from './features/home/Hero';
 
 interface DataFileMeta {
   file: string;
@@ -17,14 +14,11 @@ interface DataFileMeta {
   type?: string;
 }
 
-
-
 function App() {
   // Manifest and bifurcated data
   const [files, setFiles] = useState<DataFileMeta[]>([]);
   const [posData, setPosData] = useState<{ [key: string]: { banks: BankData[]; summary?: unknown } }>({});
   // const [neftData, setNeftData] = useState<{ [key: string]: { banks: BankData[]; summary?: unknown } }>({});
-
 
   useEffect(() => {
     fetch(`${DATA_FOLDER}/index.json`)
@@ -62,59 +56,24 @@ function App() {
     Object.entries(posData).map(([k, v]) => [k, v?.banks ?? []])
   );
 
-  const chartRefs = {
-    topMovers: { current: null },
-    bankType: { current: null },
-    infra: { current: null },
-    creditCard: { current: null },
-  };
-
   return (
     <main className="grid">
-      <Hero />
-      <article className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
-        <div className="card shadow-sm border border-base-300">
-          <div className="card-body">
-            <TopMoversLineChart
-              allData={posBanksData}
-              months={posFiles.map(f => f.key)}
-              chartRef={chartRefs.topMovers}
-            />
-          </div>
-        </div>
-        <div className="card shadow-sm border border-base-300">
-          <div className="card-body">
-            <BankTypeStackedAreaChart
-              allData={posBanksData}
-              months={posFiles.map(f => f.key)}
-              chartRef={chartRefs.bankType}
-            />
-          </div>
-        </div>
-        <div className="card shadow-sm border border-base-300">
-          <div className="card-body">
-            <CreditCardTimeSeriesChart
-              allData={posBanksData}
-              months={posFiles.map(f => f.key)}
-              chartRef={chartRefs.creditCard}
-            />
-          </div>
-        </div>
-
-        <div className="card shadow-sm border border-base-300">
-          <div className="card-body">
-            <BankInfraBarChart
-              allData={posBanksData}
-              months={posFiles.map(f => f.key)}
-              chartRef={chartRefs.infra}
-            />
-          </div>
-        </div>
-      </article>
+      {/* Persistent dock, theme, and global UI here */}
       <RandomThemeButton />
-
-
-    </main >
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Dashboard
+              posBanksData={posBanksData}
+              posFiles={posFiles}
+            />
+          }
+        />
+        <Route path="/filter-lab" element={<FilterLab />} />
+        <Route path="/svg-lab" element={<SVGLab />} />
+      </Routes>
+    </main>
   );
 }
 

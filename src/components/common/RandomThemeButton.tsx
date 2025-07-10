@@ -4,6 +4,7 @@ import { setEchartsThemeName } from '../../hooks/useEchartsThemeSync';
 import { oklchToHex } from '../../utils/color';
 import SVGIcon from './SVGIcon';
 import GithubLogo from '../icons/GithubLogo';
+import NavigationDock from './NavigationDock';
 
 
 
@@ -102,8 +103,13 @@ const RandomThemeButton: FC = () => {
     updateMetaTheme(themeObj.mode);
   }, []);
 
+
   return (
     <div className="fixed z-50 bottom-4 right-4 flex flex-col items-center gap-2">
+      {/* Navigation dock menu */}
+      <NavigationDock />
+
+      {/* Theme randomizer */}
       <a
         role="button"
         className="cursor-pointer text-primary"

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 
 interface TriangleSwitchProps {
   options: [string, string, string];
@@ -162,7 +162,7 @@ const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
           const isSelected = selectedIdx === index;
 
           return (
-            <React.Fragment key={option}>
+            <Fragment key={option}>
               <line
                 x1={POINTS[side.points[0]][0]}
                 y1={POINTS[side.points[0]][1]}
@@ -204,7 +204,7 @@ const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
                   {option}
                 </textPath>
               </text>
-            </React.Fragment>
+            </Fragment>
           );
         })}
       </svg>
