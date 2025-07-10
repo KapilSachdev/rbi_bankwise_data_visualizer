@@ -14,7 +14,7 @@ interface DashboardProps {
 const Dashboard: React.FC<DashboardProps> = ({ posBanksData, posFiles }) => (
   <>
     <Hero />
-    <article className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
+    <article className="grid lg:grid-cols-2 gap-8 py-8">
       <div className="card shadow-sm border border-base-300">
         <div className="card-body">
           <TopMoversLineChart

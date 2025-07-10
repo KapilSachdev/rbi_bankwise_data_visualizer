@@ -105,7 +105,7 @@ const RandomThemeButton: FC = () => {
 
 
   return (
-    <div className="fixed z-50 bottom-4 right-4 flex flex-col items-center gap-2">
+    <div className="fixed z-50 bottom-4 right-4 flex flex-col items-center gap-6 md:gap-2">
 
       {/* Github repository link */}
       <a

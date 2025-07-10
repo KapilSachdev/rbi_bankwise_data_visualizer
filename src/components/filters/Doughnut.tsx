@@ -86,9 +86,9 @@ const Doughnut: FC<DoughnutProps> = ({
       {options.map((option, i) => {
         const angle = (angleStep * (i + 0.5) - 90) * (Math.PI / 180);
         // Place label further out for clarity
-        const labelRadius = radius + 20;
-        const x = radius + labelRadius * Math.cos(angle);
-        const y = radius + labelRadius * Math.sin(angle);
+        const labelRadius = radius + 15;
+        const x = radius + labelRadius * Math.cos(angle) + 25;
+        const y = radius + labelRadius * Math.sin(angle) + 15;
         const shortLabel = getShortLabel(option);
         return (
           <div

@@ -14,9 +14,9 @@ const POINTS = [
 ];
 
 const TRIANGLE_SIDES = [
-  { id: 'right', textDy: -10, points: [0, 1] },
-  { id: 'bottom', textDy: 10, points: [1, 2] },
-  { id: 'left', textDy: -10, points: [2, 0] }
+  { id: 'right', textDy: -16, points: [0, 1] },
+  { id: 'bottom', textDy: 16, points: [1, 2] },
+  { id: 'left', textDy: -16, points: [2, 0] }
 ];
 
 const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
@@ -121,7 +121,7 @@ const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
           points="32,8 56,56 8,56"
           fill="none"
           stroke="var(--color-base-300)"
-          strokeWidth={4}
+          strokeWidth={8}
         />
 
         {/* Animated highlight */}
@@ -130,7 +130,7 @@ const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
           points="32,8 56,56 8,56"
           fill="none"
           stroke="var(--color-primary)"
-          strokeWidth={6}
+          strokeWidth={10}
           strokeLinejoin="round"
           strokeLinecap="round"
           strokeDasharray={`${sideLengths[selectedIdx]},${perimeter - sideLengths[selectedIdx]}`}
@@ -169,8 +169,8 @@ const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
                 x2={POINTS[side.points[1]][0]}
                 y2={POINTS[side.points[1]][1]}
                 stroke="var(--color-base-300)"
-                strokeWidth={8}
-                opacity={0.1}
+                strokeWidth={12}
+                opacity={0.3}
                 strokeLinecap="round"
                 style={{
                   cursor: 'pointer',

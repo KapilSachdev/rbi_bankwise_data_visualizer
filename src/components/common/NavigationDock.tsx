@@ -9,9 +9,9 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
-  { label: 'Dashboard', icon: 'home', path: '/' },
-  { label: 'Filter Lab', icon: 'filter', path: '/filter-lab' },
   { label: 'SVG Lab', icon: 'paint_roller', path: '/svg-lab' },
+  { label: 'Filter Lab', icon: 'filter', path: '/filter-lab' },
+  { label: 'Dashboard', icon: 'home', path: '/' },
 ];
 
 /**

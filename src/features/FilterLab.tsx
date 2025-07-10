@@ -7,12 +7,14 @@ import RadialMenu from '../components/filters/Radial';
 import TriangleSwitch from '../components/filters/TriangleSwitch';
 import OrbitMenu from '../components/filters/Orbit';
 import Doughnut from '../components/filters/Doughnut';
+import { BANK_TYPES } from '../constants/data';
+
 
 const FilterLab: React.FC = () => {
   // Local state for each filter demo
   // Pills
-  const pillsOptions = ['Public', 'Private', 'Foreign'];
-  const [pillsValue, setPillsValue] = useState('Public');
+  const pillsOptions = BANK_TYPES;
+  const [pillsValue, setPillsValue] = useState(BANK_TYPES[0]);
   // TopNInput
   const [topN, setTopN] = useState(5);
   // RangeSlider
@@ -33,7 +35,7 @@ const FilterLab: React.FC = () => {
   return (
     <section className="p-6">
       <h1 className="text-3xl font-bold mb-6">Filter Lab</h1>
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
+      <div className="grid gap-8 grid-cols-2 md:grid-cols-4">
         <div className="card bg-base-100 shadow border border-base-300">
           <div className="card-body">
             <h2 className="card-title">Pills</h2>
