@@ -57,7 +57,7 @@ const ChartThemeButton: FC<ChartThemeButtonProps> = ({ uiTheme }) => {
       onClick={handleNextTheme}
       title={`Chart Theme: ${currentTheme}`}
     >
-      <SVGIcon icon="chart" className="max-sm:size-6 md:size-8" />
+      <SVGIcon icon="chart" className="size-6 md:size-10" />
     </a>
   );
 };
@@ -115,7 +115,7 @@ const RandomThemeButton: FC = () => {
         rel="noopener noreferrer"
         aria-label="Project Home Page"
       >
-        <GithubLogo className="max-sm:size-6 md:size-8" animationClassName="animated-outline" duration={3000} />
+        <GithubLogo className="size-6 md:size-10" animationClassName="animated-outline" duration={3000} />
       </a>
 
       {/* Theme randomizer */}
@@ -126,7 +126,7 @@ const RandomThemeButton: FC = () => {
         title={lastTheme ? `${lastTheme}` : 'Randomise'}
         onClick={handleRandomTheme}
       >
-        <SVGIcon icon="paint_roller" className="max-sm:size-6 md:size-8" />
+        <SVGIcon icon="paint_roller" className="size-6 md:size-10" />
       </a>
 
       <ChartThemeButton uiTheme={lastTheme} />

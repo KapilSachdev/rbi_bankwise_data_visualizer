@@ -33,7 +33,7 @@ const NavigationDock: FC = () => {
   return (
     <div className="dropdown dropdown-left dropdown-end">
       <div tabIndex={0} role='button' className="cursor-pointer text-primary" aria-label="Open navigation menu">
-        <SVGIcon icon="menu" className="max-sm:size-6 md:size-8" />
+        <SVGIcon icon="menu" className="size-6 md:size-10" />
       </div>
       <ul tabIndex={0} className="menu rounded dropdown-content bg-base-100 shadow-md">
         {menuItems.map(item => (
