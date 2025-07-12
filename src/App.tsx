@@ -51,7 +51,7 @@ function App() {
       });
   }, []);
 
-  const posFiles = files.filter(f => f.type === 'pos');
+  const months = files.filter(f => f.type === 'pos').map(f => f.key);
   const posBanksData = Object.fromEntries(
     Object.entries(posData).map(([k, v]) => [k, v?.banks ?? []])
   );
@@ -66,7 +66,7 @@ function App() {
           element={
             <Dashboard
               posBanksData={posBanksData}
-              posFiles={posFiles}
+              months={months}
             />
           }
         />

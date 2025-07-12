@@ -8,10 +8,10 @@ import BankInfraBarChart from './visualization/components/InfraBarChart';
 
 interface DashboardProps {
   posBanksData: { [key: string]: BankData[] };
-  posFiles: { key: string }[];
+  months: string[];
 }
 
-const Dashboard: React.FC<DashboardProps> = ({ posBanksData, posFiles }) => (
+const Dashboard: React.FC<DashboardProps> = ({ posBanksData, months }) => (
   <>
     <Hero />
     <article className="grid lg:grid-cols-2 gap-8 py-8">
@@ -19,7 +19,7 @@ const Dashboard: React.FC<DashboardProps> = ({ posBanksData, posFiles }) => (
         <div className="card-body">
           <TopMoversLineChart
             allData={posBanksData}
-            months={posFiles.map(f => f.key)}
+            months={months}
           />
         </div>
       </div>
@@ -27,7 +27,7 @@ const Dashboard: React.FC<DashboardProps> = ({ posBanksData, posFiles }) => (
         <div className="card-body">
           <BankTypeStackedAreaChart
             allData={posBanksData}
-            months={posFiles.map(f => f.key)}
+            months={months}
           />
         </div>
       </div>
@@ -35,7 +35,7 @@ const Dashboard: React.FC<DashboardProps> = ({ posBanksData, posFiles }) => (
         <div className="card-body">
           <CreditCardTimeSeriesChart
             allData={posBanksData}
-            months={posFiles.map(f => f.key)}
+            months={months}
           />
         </div>
       </div>
@@ -43,7 +43,7 @@ const Dashboard: React.FC<DashboardProps> = ({ posBanksData, posFiles }) => (
         <div className="card-body">
           <BankInfraBarChart
             allData={posBanksData}
-            months={posFiles.map(f => f.key)}
+            months={months}
           />
         </div>
       </div>
