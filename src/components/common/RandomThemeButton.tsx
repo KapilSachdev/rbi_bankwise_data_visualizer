@@ -28,9 +28,9 @@ const ChartThemeButton: FC<ChartThemeButtonProps> = ({ uiTheme }) => {
   const [currentTheme, setCurrentTheme] = useState<string>(() => localStorage.getItem('echarts-theme') || ECHARTS_THEMES[0].name);
 
   const handleNextTheme = useCallback(() => {
-    const idx = ECHARTS_THEMES.findIndex(t => t.name === currentTheme);
     const uiThemeMode = UI_THEMES.find((theme) => theme.name == uiTheme)?.mode;
     const availableThemes = ECHARTS_THEMES.filter(theme => theme.mode == uiThemeMode);
+    const idx = availableThemes.findIndex(t => t.name === currentTheme);
     const nextIdx = (idx + 1) % availableThemes.length;
     const nextTheme = availableThemes[nextIdx]?.name;
     setCurrentTheme(nextTheme);

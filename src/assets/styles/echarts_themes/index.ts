@@ -1,17 +1,21 @@
+
 import { chalk } from './chalk';
 import { darker } from './darker';
-import { essos } from './essos'
-import { infographic } from './infographic'
-import { inspired } from './inspired'
-import { purplePassion } from './purple_passion'
+import { essos } from './essos';
+import { infographic } from './infographic';
+import { inspired } from './inspired';
+import { purplePassion } from './purple_passion';
+import { v5 } from './v5';
+
 
 export const ECHARTS_THEMES = [
-  { name: 'dark', mode: 'dark' },
-  { name: 'darker', mode: 'dark', themeOptions: darker },
-  { name: 'chalk', mode: 'dark', themeOptions: chalk },
-  { name: 'purplePassion', mode: 'dark', themeOptions: purplePassion },
-  { name: 'default', mode: 'light' },
-  { name: 'essos', mode: 'light', themeOptions: essos },
-  { name: 'infographic', mode: 'light', themeOptions: infographic },
-  { name: 'inspired', mode: 'light', themeOptions: inspired },
+  { mode: 'dark', name: 'dark' },
+  { mode: 'dark', name: 'darker', themeOptions: darker },
+  { mode: 'dark', name: 'chalk', themeOptions: chalk },
+  { mode: 'dark', name: 'purplePassion', themeOptions: purplePassion },
+  { mode: 'light', name: 'default' },
+  { mode: 'light', name: 'essos', themeOptions: essos },
+  { mode: 'light', name: 'infographic', themeOptions: infographic },
+  { mode: 'light', name: 'inspired', themeOptions: inspired },
+  { mode: 'light', name: 'v5', themeOptions: v5 },
 ];
