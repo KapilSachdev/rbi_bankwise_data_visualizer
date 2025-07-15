@@ -5,6 +5,7 @@ import { oklchToHex } from '../../utils/color';
 import SVGIcon from './SVGIcon';
 import GithubLogo from '../icons/GithubLogo';
 import NavigationDock from './NavigationDock';
+import LayoutSwitcher from '../../features/layouts/LayoutSwitcher';
 
 
 
@@ -62,7 +63,7 @@ const ChartThemeButton: FC<ChartThemeButtonProps> = ({ uiTheme }) => {
   );
 };
 
-const RandomThemeButton: FC = () => {
+const FloatingDock: FC = () => {
   const [lastTheme, setLastTheme] = useState<string | null>(null);
 
   useEffect(() => {
@@ -106,7 +107,6 @@ const RandomThemeButton: FC = () => {
 
   return (
     <div className="fixed z-50 bottom-4 right-4 flex flex-col items-center gap-6 md:gap-2">
-
       {/* Github repository link */}
       <a
         href="https://www.github.com/kapilsachdev/rbi_bankwise_data_visualizer/"
@@ -130,10 +130,15 @@ const RandomThemeButton: FC = () => {
       </a>
 
       <ChartThemeButton uiTheme={lastTheme} />
-      <NavigationDock />
 
+      {/* Layout Switcher docked here */}
+      <div className="w-full flex flex-col items-center">
+        <LayoutSwitcher />
+      </div>
+
+      <NavigationDock />
     </div>
   );
 };
 
-export default memo(RandomThemeButton);
+export default memo(FloatingDock);

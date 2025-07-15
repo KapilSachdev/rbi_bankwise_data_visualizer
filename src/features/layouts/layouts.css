@@ -1,0 +1,15 @@
+.btn-active {
+  @apply bg-primary-focus text-white;
+}
+
+.collapse {
+  @apply transition-all duration-300;
+}
+
+.collapse-open .collapse-content {
+  @apply block;
+}
+
+.collapse .collapse-content {
+  @apply hidden;
+}

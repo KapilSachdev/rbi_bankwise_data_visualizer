@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import RandomThemeButton from './components/common/RandomThemeButton';
+import FloatingDock from './components/common/FloatingDock';
 import { DATA_FOLDER } from './constants/data';
 import Dashboard from './features/Dashboard';
 import FilterLab from './features/FilterLab';
@@ -14,7 +14,19 @@ interface DataFileMeta {
   type?: string;
 }
 
+interface LayoutContextType {
+  layout: string;
+  setLayout: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const LayoutContext = createContext<LayoutContextType>({
+  layout: 'grid',
+  setLayout: () => { },
+});
+
 function App() {
+  const [layout, setLayout] = useState('grid');
+
   // Manifest and bifurcated data
   const [files, setFiles] = useState<DataFileMeta[]>([]);
   const [posData, setPosData] = useState<{ [key: string]: { banks: BankData[]; summary?: unknown } }>({});
@@ -57,23 +69,26 @@ function App() {
   );
 
   return (
-    <main className="grid">
-      {/* Persistent dock, theme, and global UI here */}
-      <RandomThemeButton />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Dashboard
-              posBanksData={posBanksData}
-              months={months}
-            />
-          }
-        />
-        <Route path="/filter-lab" element={<FilterLab />} />
-        <Route path="/svg-lab" element={<SVGLab />} />
-      </Routes>
-    </main>
+    <LayoutContext.Provider value={{ layout, setLayout }}>
+      <main className="grid">
+        {/* Persistent dock, theme, and global UI here */}
+        <FloatingDock />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="min-h-screen">
+                <Dashboard
+                  posBanksData={posBanksData}
+                  months={months} />
+              </div>
+            }
+          />
+          <Route path="/filter-lab" element={<FilterLab />} />
+          <Route path="/svg-lab" element={<SVGLab />} />
+        </Routes>
+      </main>
+    </LayoutContext.Provider>
   );
 }
 
