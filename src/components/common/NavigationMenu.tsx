@@ -15,10 +15,10 @@ const menuItems: MenuItem[] = [
 ];
 
 /**
- * NavigationDock: A floating dock/hamburger menu for navigation.
+ * NavigationMenu: A floating dock/hamburger menu for navigation.
  * Handles its own open/close state and route navigation.
  */
-const NavigationDock: FC = () => {
+const NavigationMenu: FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -31,7 +31,7 @@ const NavigationDock: FC = () => {
   };
 
   return (
-    <div className="dropdown dropdown-left dropdown-end">
+    <div className="dropdown dropdown-hover dropdown-left dropdown-end">
       <div tabIndex={0} role='button' className="cursor-pointer text-primary" aria-label="Open navigation menu">
         <SVGIcon icon="menu" className="size-6 md:size-10" />
       </div>
@@ -54,4 +54,4 @@ const NavigationDock: FC = () => {
   );
 };
 
-export default NavigationDock;
+export default NavigationMenu;

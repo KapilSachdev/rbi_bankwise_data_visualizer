@@ -4,7 +4,7 @@ import { setEchartsThemeName } from '../../hooks/useEchartsThemeSync';
 import { oklchToHex } from '../../utils/color';
 import SVGIcon from './SVGIcon';
 import GithubLogo from '../icons/GithubLogo';
-import NavigationDock from './NavigationDock';
+import NavigationMenu from './NavigationMenu';
 import LayoutSwitcher from '../../features/layouts/LayoutSwitcher';
 
 
@@ -136,7 +136,7 @@ const FloatingDock: FC = () => {
         <LayoutSwitcher />
       </div>
 
-      <NavigationDock />
+      <NavigationMenu />
     </div>
   );
 };

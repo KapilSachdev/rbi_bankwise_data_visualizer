@@ -32,7 +32,7 @@ function LayoutSwitcher() {
     <div className="relative flex items-center" tabIndex={-1}>
       {/* Main icon button */}
       <button
-        className={`btn btn-ghost btn-circle bg-primary`}
+        className={`btn btn-ghost btn-circle`}
         aria-label="Select layout"
         title="Select layout"
         onMouseEnter={() => setOpen(true)}
@@ -41,7 +41,7 @@ function LayoutSwitcher() {
         tabIndex={0}
         type="button"
       >
-        <SVGIcon icon={LAYOUTS.find(l => l.key === layout)?.icon || 'grid'} className="size-5" />
+        <SVGIcon icon='grid' className="fill-primary size-6 md:size-10" />
       </button>
       {/* Slide-out panel */}
       <div
