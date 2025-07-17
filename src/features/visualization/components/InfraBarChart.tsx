@@ -144,11 +144,6 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartR
         {INFRA_METRICS.find(m => m.value === metric)?.label || ''} - {selectedMonth && formatMonthYear(selectedMonth)}
       </div>
       <div className="grid gap-2">
-        <Pills
-          bankTypes={bankTypes}
-          selected={selectedBankType}
-          onSelect={setSelectedBankType}
-        />
         <div className="flex justify-stretch justify-items-stretch gap-4 mb-2 w-full">
           <div className="flex flex-col text-xs font-medium text-base-content self-end">
             <TopNInput
@@ -194,6 +189,11 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartR
             </div>
           </div>
         </div>
+        <Pills
+          bankTypes={bankTypes}
+          selected={selectedBankType}
+          onSelect={setSelectedBankType}
+        />
       </div>
 
       <EChartsContainer

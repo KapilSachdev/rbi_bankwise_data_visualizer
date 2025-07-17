@@ -1,4 +1,3 @@
-
 import { useContext, useRef, useState } from 'react';
 import { LayoutContext } from '../../App';
 import SVGIcon from '../../components/common/SVGIcon';

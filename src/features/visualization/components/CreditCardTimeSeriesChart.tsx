@@ -120,13 +120,6 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
         </div>
       </div>
       <div className='grid gap-4'>
-        <div className="flex-1 min-w-0">
-          <Pills
-            bankTypes={bankTypes}
-            selected={selectedBankType}
-            onSelect={setSelectedBankType}
-          />
-        </div>
         <div className="flex w-full justify-between gap-4">
           <TopNInput
             value={topN}
@@ -143,6 +136,11 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
             step={1}
           />
         </div>
+        <Pills
+          bankTypes={bankTypes}
+          selected={selectedBankType}
+          onSelect={setSelectedBankType}
+        />
       </div>
       <EChartsContainer
         option={option}

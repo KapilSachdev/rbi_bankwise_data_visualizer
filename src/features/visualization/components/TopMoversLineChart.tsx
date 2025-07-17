@@ -121,11 +121,7 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
         Number of {selectedMetric.charAt(0).toUpperCase() + selectedMetric.slice(1)} Card Transactions of Top {topNState} Banks
       </div>
       <div className="grid gap-2">
-        <Pills
-          bankTypes={BANK_TYPES}
-          selected={selectedBankType}
-          onSelect={setSelectedBankType}
-        />
+
         <div className="flex w-full items-center justify-between gap-6 mb-2">
           <TopNInput
             value={topNState}
@@ -158,6 +154,12 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
             size={48}
           />
         </div>
+
+        <Pills
+          bankTypes={BANK_TYPES}
+          selected={selectedBankType}
+          onSelect={setSelectedBankType}
+        />
       </div>
       <EChartsContainer
         option={option}
