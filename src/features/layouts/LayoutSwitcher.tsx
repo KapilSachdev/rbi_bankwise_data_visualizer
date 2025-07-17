@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from 'react';
-import { LayoutContext } from '../../App';
+import { LayoutContext } from '../../context/LayoutContext';
 import SVGIcon from '../../components/common/SVGIcon';
 
 const LAYOUTS = [
