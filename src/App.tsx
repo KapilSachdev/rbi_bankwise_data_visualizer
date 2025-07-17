@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import FloatingDock from './components/common/FloatingDock';
 import { DATA_FOLDER } from './constants/data';
@@ -14,15 +14,7 @@ interface DataFileMeta {
   type?: string;
 }
 
-interface LayoutContextType {
-  layout: string;
-  setLayout: React.Dispatch<React.SetStateAction<string>>;
-}
-
-export const LayoutContext = createContext<LayoutContextType>({
-  layout: 'grid',
-  setLayout: () => { },
-});
+import { LayoutContext } from './context/LayoutContext';
 
 function App() {
   const [layout, setLayout] = useState('grid');

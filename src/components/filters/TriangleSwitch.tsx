@@ -140,7 +140,7 @@ const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
         />
 
         <defs>
-          {TRIANGLE_SIDES.map((side, idx) => {
+          {TRIANGLE_SIDES.map((side) => {
             let [start, end] = side.points.map(i => POINTS[i]);
             // For the 'bottom' side, reverse the direction so text is not reversed
             if (side.id === 'bottom') {

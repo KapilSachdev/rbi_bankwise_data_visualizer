@@ -136,7 +136,7 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartR
       right: 10,
       top: 10,
     },
-  }), [sortedData, metric, selectedMonth]);
+  }), [sortedData, metric]);
 
   return (
     <div className="flex flex-col justify-between h-full">

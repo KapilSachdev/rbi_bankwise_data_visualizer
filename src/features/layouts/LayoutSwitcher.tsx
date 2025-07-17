@@ -30,22 +30,21 @@ function LayoutSwitcher() {
   return (
     <div className="relative flex items-center" tabIndex={-1}>
       {/* Main icon button */}
-      <button
-        className={`btn btn-ghost btn-circle`}
+      <div
+        className="cursor-pointer"
         aria-label="Select layout"
         title="Select layout"
         onMouseEnter={() => setOpen(true)}
         onFocus={() => setOpen(true)}
         onBlur={handleBlur}
         tabIndex={0}
-        type="button"
       >
         <SVGIcon icon='grid' className="text-primary size-6 md:size-10" />
-      </button>
+      </div>
       {/* Slide-out panel */}
       <div
         ref={panelRef}
-        className={`absolute right-12 top-1/2 -translate-y-1/2 flex flex-row-reverse gap-2 bg-base-200/90 glass rounded-xl shadow-lg px-2 py-1 border border-base-300 transition-all duration-200 ${open ? 'opacity-100 pointer-events-auto scale-100' : 'opacity-0 pointer-events-none scale-95'}`}
+        className={`absolute right-12 top-1/2 -translate-y-1/2 flex flex-row-reverse gap-2 bg-base-200/90 glass rounded-xl shadow-lg px-2 py-1 transition-all duration-200 ${open ? 'opacity-100 pointer-events-auto scale-100' : 'opacity-0 pointer-events-none scale-95'}`}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
         tabIndex={-1}
@@ -55,7 +54,7 @@ function LayoutSwitcher() {
         {LAYOUTS.map(l => (
           <button
             key={l.key}
-            className={`btn btn-ghost btn-circle flex items-center justify-center transition-colors ${layout === l.key ? 'border-primary text-primary shadow-md' : 'text-base-content/70'}`}
+            className={`btn btn-ghost btn-circle flex items-center justify-center transition-colors ${layout === l.key ? 'border-2 border-primary text-primary shadow-md' : 'text-base-content/70'}`}
             aria-label={l.label}
             title={l.label}
             onClick={() => { setLayout(l.key); setOpen(false); }}

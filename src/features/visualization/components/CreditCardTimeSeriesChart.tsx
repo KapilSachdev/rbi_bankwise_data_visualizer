@@ -86,7 +86,7 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
         return bVal - aVal;
       })
       .slice(0, topN);
-  }, [chartData, filteredMonths, topN, latestMonth]);
+  }, [chartData, topN, latestMonth]);
 
   const option = useMemo(() => ({
     backgroundColor: 'transparent',

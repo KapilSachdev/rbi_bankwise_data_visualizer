@@ -5,9 +5,9 @@ import BankTypeStackedAreaChart from './visualization/components/BankTypeStacked
 import CreditCardTimeSeriesChart from './visualization/components/CreditCardTimeSeriesChart';
 import BankInfraBarChart from './visualization/components/InfraBarChart';
 import TopMoversLineChart from './visualization/components/TopMoversLineChart';
-import { LayoutContext } from '../App';
-import { GridLayout, AccordionLayout } from './layouts/Layouts';
-
+import { LayoutContext } from '../context/LayoutContext';
+import { GridLayout, AccordionLayout } from './layouts';
+import type { ChartItem } from './layouts/GridLayout';
 
 interface DashboardProps {
   posBanksData: { [key: string]: BankData[] };
@@ -15,9 +15,9 @@ interface DashboardProps {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ posBanksData, months }) => {
-  const { layout, setLayout } = useContext(LayoutContext);
+  const { layout } = useContext(LayoutContext);
 
-  const charts = [
+  const charts: ChartItem[] = [
     { component: TopMoversLineChart, props: { allData: posBanksData, months } },
     { component: BankTypeStackedAreaChart, props: { allData: posBanksData, months } },
     { component: CreditCardTimeSeriesChart, props: { allData: posBanksData, months } },
