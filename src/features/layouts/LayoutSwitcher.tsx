@@ -40,7 +40,7 @@ function LayoutSwitcher() {
         tabIndex={0}
         type="button"
       >
-        <SVGIcon icon='grid' className="fill-primary size-6 md:size-10" />
+        <SVGIcon icon='grid' className="text-primary size-6 md:size-10" />
       </button>
       {/* Slide-out panel */}
       <div
@@ -55,7 +55,7 @@ function LayoutSwitcher() {
         {LAYOUTS.map(l => (
           <button
             key={l.key}
-            className={`btn btn-ghost btn-circle flex items-center justify-center transition-colors ${layout === l.key ? 'bg-primary text-primary-content shadow-md' : 'text-base-content/70'}`}
+            className={`btn btn-ghost btn-circle flex items-center justify-center transition-colors ${layout === l.key ? 'border-primary text-primary shadow-md' : 'text-base-content/70'}`}
             aria-label={l.label}
             title={l.label}
             onClick={() => { setLayout(l.key); setOpen(false); }}
