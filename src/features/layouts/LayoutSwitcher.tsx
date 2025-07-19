@@ -10,7 +10,7 @@ const LAYOUTS = [
   },
   {
     key: 'accordion',
-    icon: 'accordion',
+    icon: 'layers',
     label: 'Accordion Layout',
   },
 ];

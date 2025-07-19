@@ -7,7 +7,7 @@ const iconNames = [
   'paint_roller',
   'github',
   'grid',
-  'accordion',
+  'layers',
 ];
 
 const SVGLab: React.FC = () => {
