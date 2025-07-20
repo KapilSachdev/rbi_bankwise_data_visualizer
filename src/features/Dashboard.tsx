@@ -8,6 +8,7 @@ import TopMoversLineChart from './visualization/components/TopMoversLineChart';
 import { LayoutContext } from '../context/LayoutContext';
 import { GridLayout, AccordionLayout } from './layouts';
 import type { ChartItem } from './layouts/GridLayout';
+import { formatMonthYear } from '../utils/time';
 
 interface DashboardProps {
   posBanksData: { [key: string]: BankData[] };
@@ -18,10 +19,24 @@ const Dashboard: React.FC<DashboardProps> = ({ posBanksData, months }) => {
   const { layout } = useContext(LayoutContext);
 
   const charts: ChartItem[] = [
-    { component: TopMoversLineChart, props: { allData: posBanksData, months } },
-    { component: BankTypeStackedAreaChart, props: { allData: posBanksData, months } },
-    { component: CreditCardTimeSeriesChart, props: { allData: posBanksData, months } },
-    { component: BankInfraBarChart, props: { allData: posBanksData, months } },
+    {
+      component: TopMoversLineChart,
+      props: { title: 'Card Transactions Top Movers', allData: posBanksData, months }
+    },
+    {
+      component: BankTypeStackedAreaChart,
+      props: { title: 'Card Transactions Volume by Bank Type Over Time', allData: posBanksData, months }
+    },
+    {
+      component: CreditCardTimeSeriesChart,
+      props: { title: 'Credit Card Transactions Over Time', allData: posBanksData, months }
+    },
+    {
+      component: BankInfraBarChart,
+      props: {
+        title: `Bank Infrastructure ( ${months[0] && formatMonthYear(months[0])} )`, allData: posBanksData, months
+      }
+    },
   ];
   return (
     <>
