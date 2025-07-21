@@ -9,9 +9,10 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
-  { label: 'SVG Lab', icon: 'paint_roller', path: '/svg-lab' },
-  { label: 'Filter Lab', icon: 'filter', path: '/filter-lab' },
-  { label: 'Dashboard', icon: 'home', path: '/' },
+  { label: 'SVG Lab', icon: 'paint_roller', path: '/svg_lab' },
+  { label: 'Filter Lab', icon: 'filter', path: '/filter_lab' },
+  { label: 'Credit Card', icon: 'credit_card', path: '/credit_cards' },
+  { label: 'Home', icon: 'home', path: '/' },
 ];
 
 /**
@@ -39,7 +40,7 @@ const NavigationMenu: FC = () => {
         {menuItems.map(item => (
           <li key={item.path} className="w-full">
             <button
-              className={`flex items-center gap-3 px-4 py-3 text-base-content ${location.pathname === item.path ? 'font-bold text-primary' : ''}`}
+              className={`flex flex-nowrap items-center gap-3 px-4 py-3 text-base-content w-full whitespace-nowrap ${location.pathname === item.path ? 'font-bold text-primary' : ''}`}
               onClick={() => handleMenuClick(item.path)}
               aria-current={location.pathname === item.path ? 'page' : undefined}
               tabIndex={0}

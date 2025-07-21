@@ -7,7 +7,7 @@ import BankInfraBarChart from './visualization/components/InfraBarChart';
 import TopMoversLineChart from './visualization/components/TopMoversLineChart';
 import { LayoutContext } from '../context/LayoutContext';
 import { GridLayout, AccordionLayout } from './layouts';
-import type { ChartItem } from './layouts/GridLayout';
+import type { ChartItem } from './layouts/types';
 import { formatMonthYear } from '../utils/time';
 
 interface DashboardProps {

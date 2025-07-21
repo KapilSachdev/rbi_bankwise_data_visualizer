@@ -1,15 +1,6 @@
 
-import { ComponentType, createElement, FC, ReactElement } from "react";
-
-
-export interface ChartItem {
-  component: ComponentType<any>;
-  props?: any;
-}
-
-export interface LayoutProps {
-  charts: ChartItem[];
-}
+import { createElement, FC } from "react";
+import type { ChartItem, LayoutProps } from "./types";
 
 const AccordionLayout: FC<LayoutProps> = ({ charts }) => (
   <div className="flex flex-col gap-4 py-8">

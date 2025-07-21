@@ -1,15 +1,6 @@
 
-import { ComponentType, createElement, FC, ReactElement } from "react";
-
-
-export interface ChartItem {
-  component: ComponentType<any>;
-  props?: any;
-}
-
-export interface LayoutProps {
-  charts: ChartItem[];
-}
+import { createElement, FC } from "react";
+import type { ChartItem, LayoutProps } from "./types";
 
 const GridLayout: FC<LayoutProps> = ({ charts }) => (
   <article className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">

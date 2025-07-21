@@ -2,10 +2,14 @@ import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import FloatingDock from './components/common/FloatingDock';
 import { DATA_FOLDER } from './constants/data';
+import CreditCardDashboard from './features/CreditCardDashboard';
 import Dashboard from './features/Dashboard';
 import FilterLab from './features/FilterLab';
 import SVGLab from './features/SVGLab';
+
+import { LayoutContext } from './context/LayoutContext';
 import type { BankData } from './types/global.types';
+
 
 interface DataFileMeta {
   file: string;
@@ -13,8 +17,6 @@ interface DataFileMeta {
   key: string;
   type?: string;
 }
-
-import { LayoutContext } from './context/LayoutContext';
 
 function App() {
   const [layout, setLayout] = useState('grid');
@@ -62,22 +64,24 @@ function App() {
 
   return (
     <LayoutContext.Provider value={{ layout, setLayout }}>
-      <main className="grid">
+      <main className="grid min-h-screen">
         {/* Persistent dock, theme, and global UI here */}
         <FloatingDock />
         <Routes>
           <Route
             path="/"
             element={
-              <div className="min-h-screen">
-                <Dashboard
-                  posBanksData={posBanksData}
-                  months={months} />
-              </div>
+              <Dashboard
+                posBanksData={posBanksData}
+                months={months} />
             }
           />
-          <Route path="/filter-lab" element={<FilterLab />} />
-          <Route path="/svg-lab" element={<SVGLab />} />
+          <Route
+            path="/credit_cards"
+            element={<CreditCardDashboard posBanksData={posBanksData} months={months} />}
+          />
+          <Route path="/filter_lab" element={<FilterLab />} />
+          <Route path="/svg_lab" element={<SVGLab />} />
         </Routes>
       </main>
     </LayoutContext.Provider>
