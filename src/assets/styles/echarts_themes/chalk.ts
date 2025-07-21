@@ -27,6 +27,19 @@ export const chalk = {
       color: '#eee',
     },
   },
+    pie: {
+      label: {
+        color: '#fff',
+        textBorderColor: 'transparent',
+        textBorderWidth: 0,
+        fontWeight: 'bold',
+      },
+      labelLine: {
+        lineStyle: {
+          color: '#fff',
+        },
+      },
+    },
   visualMap: {
     inRange: {
       color: ['#fc97af', '#87f7cf'],

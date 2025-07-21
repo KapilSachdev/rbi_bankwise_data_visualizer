@@ -30,6 +30,19 @@ export const darker = {
       color: '#eee',
     },
   },
+  pie: {
+    label: {
+      color: '#fff',
+      textBorderColor: 'transparent',
+      textBorderWidth: 0,
+      fontWeight: 'bold',
+    },
+    labelLine: {
+      lineStyle: {
+        color: '#fff',
+      },
+    },
+  },
   visualMap: {
     inRange: {
       color: ['#bf444c', '#d88273', '#f6efa6'],
