@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { LayoutContext } from '../context/LayoutContext';
 import { BankData } from '../types/global.types';
 import { AccordionLayout, GridLayout } from './layouts';
-import CreditCardCashWithdrawalChart from '../visualization/credit_cards/CashWithdrawalChart';
+import CreditCardCashWithdrawalChart from '../visualization/credit_cards/CategoryWiseTimeSeriesChart';
 import CreditCardTimeSeriesChart from '../visualization/credit_cards/TimeSeriesChart';
 import CreditCardTypeBreakdownChart from '../visualization/credit_cards/TypeBreakdownChart';
 import TopCreditCardBanksChart from '../visualization/credit_cards/TopBanksChart';
@@ -45,6 +45,7 @@ const CreditCardDashboard: React.FC<CreditCardDashboardProps> = ({ posBanksData,
       props: {
         title: 'Credit Card Cash Withdrawal Trends',
         allData: posBanksData,
+        months,
       }
     },
   ];
