@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import SVGIcon from '../components/common/SVGIcon';
+import SVGIcon from './common/SVGIcon';
 
 const iconNames = [
   'menu',

@@ -4,12 +4,12 @@ import { GridComponent, LegendComponent, MarkLineComponent, ToolboxComponent, To
 import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 import { FC, useMemo, useState } from 'react';
-import EChartsContainer from '../../../components/common/EChartsContainer';
-import Pills from '../../../components/filters/Pills';
-import TopNInput from '../../../components/filters/TopNInput';
-import { BANK_TYPES } from '../../../constants/data';
-import type { BankData } from '../../../types/global.types';
-import { formatMonthYear } from '../../../utils/time';
+import EChartsContainer from '../../components/common/EChartsContainer';
+import Pills from '../../components/filters/Pills';
+import TopNInput from '../../components/filters/TopNInput';
+import { BANK_TYPES } from '../../constants/data';
+import type { BankData } from '../../types/global.types';
+import { formatMonthYear } from '../../utils/time';
 
 echarts.use([
   TooltipComponent,

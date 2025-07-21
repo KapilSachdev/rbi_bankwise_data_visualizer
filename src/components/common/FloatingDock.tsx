@@ -5,7 +5,7 @@ import { oklchToHex } from '../../utils/color';
 import SVGIcon from './SVGIcon';
 import GithubLogo from '../icons/GithubLogo';
 import NavigationMenu from './NavigationMenu';
-import LayoutSwitcher from '../../features/layouts/LayoutSwitcher';
+import LayoutSwitcher from '../layouts/LayoutSwitcher';
 
 
 

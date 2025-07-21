@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import FloatingDock from './components/common/FloatingDock';
 import { DATA_FOLDER } from './constants/data';
-import CreditCardDashboard from './features/CreditCardDashboard';
-import Dashboard from './features/Dashboard';
-import FilterLab from './features/FilterLab';
-import SVGLab from './features/SVGLab';
+import CreditCardDashboard from './components/CreditCardDashboard';
+import Dashboard from './components/Dashboard';
+import FilterLab from './components/FilterLab';
+import SVGLab from './components/SVGLab';
 
 import { LayoutContext } from './context/LayoutContext';
 import type { BankData } from './types/global.types';

@@ -1,14 +1,13 @@
 import { PieChart } from 'echarts/charts';
 import * as echarts from 'echarts/core';
 import { FC, useMemo } from 'react';
-import EChartsContainer from '../../../components/common/EChartsContainer';
-import { BankData } from '../../../types/global.types';
+import EChartsContainer from '../../components/common/EChartsContainer';
+import { BankData } from '../../types/global.types';
 
 import type { EChartsType } from 'echarts/core';
 
 interface CreditCardTypeBreakdownChartProps {
   allData: { [key: string]: BankData[] };
-  months: string[];
   showTitle?: boolean;
   onTitleChange?: (title: string) => void;
   chartRef?: { current: EChartsType | null };
@@ -16,7 +15,7 @@ interface CreditCardTypeBreakdownChartProps {
 
 echarts.use(PieChart);
 
-const CreditCardTypeBreakdownChart: FC<CreditCardTypeBreakdownChartProps> = ({ allData, months, showTitle = true, onTitleChange, chartRef }) => {
+const CreditCardTypeBreakdownChart: FC<CreditCardTypeBreakdownChartProps> = ({ allData, showTitle = true, onTitleChange, chartRef }) => {
   // Aggregate transaction types for credit cards
   const breakdown = useMemo(() => {
     let atPos = 0, online = 0, cash = 0, others = 0;
@@ -69,7 +68,7 @@ const CreditCardTypeBreakdownChart: FC<CreditCardTypeBreakdownChartProps> = ({ a
         aria-label={chartTitle}
         role="figure"
         tabIndex={0}
-        onInit={instance => { if (chartRef) chartRef.current = instance; }}
+        onInit={(instance: EChartsType) => { if (chartRef) chartRef.current = instance; }}
       />
     </div>
   );

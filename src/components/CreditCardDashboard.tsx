@@ -2,11 +2,11 @@ import { useContext } from 'react';
 import { LayoutContext } from '../context/LayoutContext';
 import { BankData } from '../types/global.types';
 import { AccordionLayout, GridLayout } from './layouts';
-import CreditCardCashWithdrawalChart from './visualization/components/CreditCardCashWithdrawalChart';
-import CreditCardTimeSeriesChart from './visualization/components/CreditCardTimeSeriesChart';
-import CreditCardTypeBreakdownChart from './visualization/components/CreditCardTypeBreakdownChart';
-import TopCreditCardBanksChart from './visualization/components/TopCreditCardBanksChart';
-import { ChartItem } from './layouts/types';
+import CreditCardCashWithdrawalChart from '../visualization/credit_cards/CashWithdrawalChart';
+import CreditCardTimeSeriesChart from '../visualization/credit_cards/TimeSeriesChart';
+import CreditCardTypeBreakdownChart from '../visualization/credit_cards/TypeBreakdownChart';
+import TopCreditCardBanksChart from '../visualization/credit_cards/TopBanksChart';
+import { ChartItem, LayoutProps } from './layouts/types';
 
 interface CreditCardDashboardProps {
   posBanksData: { [key: string]: BankData[] };
@@ -16,7 +16,7 @@ interface CreditCardDashboardProps {
 const CreditCardDashboard: React.FC<CreditCardDashboardProps> = ({ posBanksData, months }) => {
   const { layout } = useContext(LayoutContext);
 
-  const charts: ChartItem[] = [
+  const charts: ChartItem<any>[] = [
     {
       component: CreditCardTimeSeriesChart,
       props: {
@@ -30,7 +30,6 @@ const CreditCardDashboard: React.FC<CreditCardDashboardProps> = ({ posBanksData,
       props: {
         title: 'Top Banks by Credit Card Volume',
         allData: posBanksData,
-        months,
         topN: 10,
       }
     },
@@ -39,7 +38,6 @@ const CreditCardDashboard: React.FC<CreditCardDashboardProps> = ({ posBanksData,
       props: {
         title: 'Credit Card Transaction Type Breakdown',
         allData: posBanksData,
-        months,
       }
     },
     {
@@ -47,7 +45,6 @@ const CreditCardDashboard: React.FC<CreditCardDashboardProps> = ({ posBanksData,
       props: {
         title: 'Credit Card Cash Withdrawal Trends',
         allData: posBanksData,
-        months,
       }
     },
   ];

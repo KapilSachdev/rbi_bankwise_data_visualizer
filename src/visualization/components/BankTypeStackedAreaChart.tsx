@@ -3,10 +3,10 @@ import { GridComponent, LegendComponent, TitleComponent, TooltipComponent } from
 import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 import { FC, useEffect, useMemo, useState } from 'react';
-import EChartsContainer from '../../../components/common/EChartsContainer';
-import RangeSlider from '../../../components/filters/RangeSlider';
-import { useYearRangeData } from '../../../hooks/useYearRangeData';
-import type { BankData } from '../../../types/global.types';
+import EChartsContainer from '../../components/common/EChartsContainer';
+import RangeSlider from '../../components/filters/RangeSlider';
+import { useYearRangeData } from '../../hooks/useYearRangeData';
+import type { BankData } from '../../types/global.types';
 
 echarts.use([
   LineChart,

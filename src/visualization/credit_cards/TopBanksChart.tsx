@@ -1,20 +1,19 @@
 import { FC, useMemo, useState } from 'react';
-import EChartsContainer from '../../../components/common/EChartsContainer';
-import TopNInput from '../../../components/filters/TopNInput';
-import { BankData } from '../../../types/global.types';
+import EChartsContainer from '../../components/common/EChartsContainer';
+import TopNInput from '../../components/filters/TopNInput';
+import { BankData } from '../../types/global.types';
 
 import type { EChartsType } from 'echarts/core';
 
 interface TopCreditCardBanksChartProps {
   allData: { [key: string]: BankData[] };
-  months: string[];
   topN?: number;
   showTitle?: boolean;
   onTitleChange?: (title: string) => void;
   chartRef?: { current: EChartsType | null };
 }
 
-const TopCreditCardBanksChart: FC<TopCreditCardBanksChartProps> = ({ allData, months, topN = 5, showTitle = true, onTitleChange, chartRef }) => {
+const TopCreditCardBanksChart: FC<TopCreditCardBanksChartProps> = ({ allData, topN = 5, showTitle = true, onTitleChange, chartRef }) => {
   // TopN state for user control
   const [currentTopN, setCurrentTopN] = useState(topN);
 
@@ -76,7 +75,7 @@ const TopCreditCardBanksChart: FC<TopCreditCardBanksChartProps> = ({ allData, mo
         aria-label={chartTitle}
         role="figure"
         tabIndex={0}
-        onInit={instance => { if (chartRef) chartRef.current = instance; }}
+        onInit={(instance: EChartsType) => { if (chartRef) chartRef.current = instance; }}
       />
     </div>
   );

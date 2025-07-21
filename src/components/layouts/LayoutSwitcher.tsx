@@ -1,6 +1,6 @@
 import { useContext, useRef, useState } from 'react';
 import { LayoutContext } from '../../context/LayoutContext';
-import SVGIcon from '../../components/common/SVGIcon';
+import SVGIcon from '../common/SVGIcon';
 
 const LAYOUTS = [
   {

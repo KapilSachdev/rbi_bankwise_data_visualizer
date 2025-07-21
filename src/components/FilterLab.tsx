@@ -1,12 +1,12 @@
 
 import { useState } from 'react';
-import Pills from '../components/filters/Pills';
-import TopNInput from '../components/filters/TopNInput';
-import RangeSlider from '../components/filters/RangeSlider';
-import RadialMenu from '../components/filters/Radial';
-import TriangleSwitch from '../components/filters/TriangleSwitch';
-import OrbitMenu from '../components/filters/Orbit';
-import Doughnut from '../components/filters/Doughnut';
+import Pills from './filters/Pills';
+import TopNInput from './filters/TopNInput';
+import RangeSlider from './filters/RangeSlider';
+import RadialMenu from './filters/Radial';
+import TriangleSwitch from './filters/TriangleSwitch';
+import OrbitMenu from './filters/Orbit';
+import Doughnut from './filters/Doughnut';
 import { BANK_TYPES } from '../constants/data';
 
 

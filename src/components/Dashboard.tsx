@@ -1,10 +1,8 @@
 import { useContext } from 'react';
 import { BankData } from '../types/global.types';
 import Hero from './home/Hero';
-import BankTypeStackedAreaChart from './visualization/components/BankTypeStackedAreaChart';
-import CreditCardTimeSeriesChart from './visualization/components/CreditCardTimeSeriesChart';
-import BankInfraBarChart from './visualization/components/InfraBarChart';
-import TopMoversLineChart from './visualization/components/TopMoversLineChart';
+import { BankTypeStackedAreaChart, InfraBarChart, TopMoversLineChart } from '../visualization/components';
+import { CashWithdrawalChart, TimeSeriesChart, TopBanksChart, TypeBreakdownChart } from '../visualization/credit_cards';
 import { LayoutContext } from '../context/LayoutContext';
 import { GridLayout, AccordionLayout } from './layouts';
 import type { ChartItem } from './layouts/types';
@@ -18,7 +16,7 @@ interface DashboardProps {
 const Dashboard: React.FC<DashboardProps> = ({ posBanksData, months }) => {
   const { layout } = useContext(LayoutContext);
 
-  const charts: ChartItem[] = [
+  const charts: ChartItem<any>[] = [
     {
       component: TopMoversLineChart,
       props: { title: 'Card Transactions Top Movers', allData: posBanksData, months }
@@ -28,11 +26,11 @@ const Dashboard: React.FC<DashboardProps> = ({ posBanksData, months }) => {
       props: { title: 'Card Transactions Volume by Bank Type Over Time', allData: posBanksData, months }
     },
     {
-      component: CreditCardTimeSeriesChart,
+      component: TimeSeriesChart,
       props: { title: 'Credit Card Transactions Over Time', allData: posBanksData, months }
     },
     {
-      component: BankInfraBarChart,
+      component: InfraBarChart,
       props: {
         title: `Bank Infrastructure ( ${months[0] && formatMonthYear(months[0])} )`, allData: posBanksData, months
       }

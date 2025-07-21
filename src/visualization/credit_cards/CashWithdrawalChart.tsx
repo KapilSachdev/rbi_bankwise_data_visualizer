@@ -1,18 +1,17 @@
 import { FC, useMemo } from 'react';
-import EChartsContainer from '../../../components/common/EChartsContainer';
-import { BankData } from '../../../types/global.types';
+import EChartsContainer from '../../components/common/EChartsContainer';
+import { BankData } from '../../types/global.types';
 
 import type { EChartsType } from 'echarts/core';
 
 interface CreditCardCashWithdrawalChartProps {
   allData: { [key: string]: BankData[] };
-  months: string[];
   showTitle?: boolean;
   onTitleChange?: (title: string) => void;
   chartRef?: { current: EChartsType | null };
 }
 
-const CreditCardCashWithdrawalChart: FC<CreditCardCashWithdrawalChartProps> = ({ allData, months, showTitle = true, onTitleChange, chartRef }) => {
+const CreditCardCashWithdrawalChart: FC<CreditCardCashWithdrawalChartProps> = ({ allData, showTitle = true, onTitleChange, chartRef }) => {
   // Aggregate cash withdrawal volume and value for credit cards
   const totals = useMemo(() => {
     let atmVol = 0, atmVal = 0;
@@ -70,7 +69,7 @@ const CreditCardCashWithdrawalChart: FC<CreditCardCashWithdrawalChartProps> = ({
         aria-label={chartTitle}
         role="figure"
         tabIndex={0}
-        onInit={instance => { if (chartRef) chartRef.current = instance; }}
+        onInit={(instance: EChartsType) => { if (chartRef) chartRef.current = instance; }}
       />
     </div>
   );
