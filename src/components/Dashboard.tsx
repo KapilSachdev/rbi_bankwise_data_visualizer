@@ -38,7 +38,6 @@ const Dashboard: React.FC<DashboardProps> = ({ posBanksData, months }) => {
   ];
   return (
     <>
-      <Hero />
       <article>
         {layout === 'grid' && <GridLayout charts={charts} />}
         {layout === 'accordion' && <AccordionLayout charts={charts} />}
