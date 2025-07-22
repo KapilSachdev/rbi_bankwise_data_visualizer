@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { LayoutContext } from '../context/LayoutContext';
 import { BankData } from '../types/global.types';
-import CreditCardCashWithdrawalChart from '../visualization/credit_cards/CategoryWiseTimeSeriesChart';
-import CreditCardTimeSeriesChart from '../visualization/credit_cards/TimeSeriesChart';
+import CreditCardCashWithdrawalChart from '../visualization/cards/CategoryWiseTimeSeriesChart';
+import CreditCardTimeSeriesChart from '../visualization/cards/TimeSeriesChart';
 import { AccordionLayout, CardLayout } from './layouts';
 import { ChartItem } from './layouts/types';
 

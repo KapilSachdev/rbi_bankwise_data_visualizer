@@ -3,7 +3,7 @@ import { LayoutContext } from '../context/LayoutContext';
 import { BankData } from '../types/global.types';
 import { formatMonthYear } from '../utils/time';
 import { BankTypeStackedAreaChart, InfraBarChart, TopMoversLineChart } from '../visualization/components';
-import { TimeSeriesChart } from '../visualization/credit_cards';
+import { TimeSeriesChart } from '../visualization/cards';
 import { AccordionLayout, CardLayout } from './layouts';
 import type { ChartItem } from './layouts/types';
 

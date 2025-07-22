@@ -77,7 +77,7 @@ function App() {
             }
           />
           <Route
-            path="/credit_cards"
+            path="/cards"
             element={<CreditCardDashboard posBanksData={posBanksData} months={months} />}
           />
           <Route path="/filter_lab" element={<FilterLab />} />
