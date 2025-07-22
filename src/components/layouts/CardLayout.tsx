@@ -2,7 +2,7 @@
 import { createElement, FC } from "react";
 import type { ChartItem, LayoutProps } from "./types";
 
-const GridLayout: FC<LayoutProps> = ({ charts }) => (
+const CardLayout: FC<LayoutProps> = ({ charts }) => (
   <article className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
     {charts.map((chart, index) => {
       const chartTitle = (chart.props && typeof chart.props.title === 'string')
@@ -11,7 +11,7 @@ const GridLayout: FC<LayoutProps> = ({ charts }) => (
       return (
         <div
           key={index}
-          className="card p-4 shadow-md border border-base-100 transition-transform hover:scale-[1.025] focus-within:scale-[1.025] outline-none focus:ring-2 focus:ring-primary"
+          className="card bg-base-200/30 p-4 shadow-sm hover:border hover:border-base-300 hover:shadow-lg hover:scale-[1.005] focus:ring-2 focus:ring-primary"
           tabIndex={0}
           aria-label={chartTitle}
         >
@@ -24,4 +24,4 @@ const GridLayout: FC<LayoutProps> = ({ charts }) => (
   </article>
 );
 
-export default GridLayout;
+export default CardLayout;

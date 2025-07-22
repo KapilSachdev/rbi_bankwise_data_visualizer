@@ -188,12 +188,23 @@ const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
               <text
                 fontSize={16}
                 fill="var(--color-base-content)"
-                style={{
-                  pointerEvents: 'none',
-                  overflow: 'visible',
-                  textOverflow: 'unset'
-                }}
+                className={
+                  [
+                    'cursor-pointer',
+                    'focus:outline-none',
+                    'overflow-visible',
+                    'transition-all',
+                    'duration-200',
+                    isSelected ? 'font-semibold' : 'font-light',
+                  ].join(' ')
+                }
                 dy={side.textDy}
+                tabIndex={0}
+                role="radio"
+                aria-checked={isSelected}
+                aria-label={option}
+                onClick={() => onSelect(option)}
+                onKeyDown={e => (e.key === ' ' || e.key === 'Enter') && onSelect(option)}
               >
                 <textPath
                   href={`#${side.id}`}

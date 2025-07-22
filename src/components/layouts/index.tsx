@@ -1,4 +1,4 @@
-import GridLayout from "./GridLayout";
+import CardLayout from "./CardLayout";
 import AccordionLayout from "./AccordionLayout";
 
-export { GridLayout, AccordionLayout };
+export { CardLayout, AccordionLayout };

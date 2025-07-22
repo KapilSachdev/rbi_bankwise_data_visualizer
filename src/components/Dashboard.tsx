@@ -4,7 +4,7 @@ import { BankData } from '../types/global.types';
 import { formatMonthYear } from '../utils/time';
 import { BankTypeStackedAreaChart, InfraBarChart, TopMoversLineChart } from '../visualization/components';
 import { TimeSeriesChart } from '../visualization/credit_cards';
-import { AccordionLayout, GridLayout } from './layouts';
+import { AccordionLayout, CardLayout } from './layouts';
 import type { ChartItem } from './layouts/types';
 
 interface DashboardProps {
@@ -38,7 +38,7 @@ const Dashboard: React.FC<DashboardProps> = ({ posBanksData, months }) => {
   return (
     <>
       <article>
-        {layout === 'grid' && <GridLayout charts={charts} />}
+        {layout === 'grid' && <CardLayout charts={charts} />}
         {layout === 'accordion' && <AccordionLayout charts={charts} />}
       </article>
     </>

@@ -3,7 +3,7 @@ import { LayoutContext } from '../context/LayoutContext';
 import { BankData } from '../types/global.types';
 import CreditCardCashWithdrawalChart from '../visualization/credit_cards/CategoryWiseTimeSeriesChart';
 import CreditCardTimeSeriesChart from '../visualization/credit_cards/TimeSeriesChart';
-import { AccordionLayout, GridLayout } from './layouts';
+import { AccordionLayout, CardLayout } from './layouts';
 import { ChartItem } from './layouts/types';
 
 interface CreditCardDashboardProps {
@@ -35,7 +35,7 @@ const CreditCardDashboard: React.FC<CreditCardDashboardProps> = ({ posBanksData,
 
   return (
     <article>
-      {layout === 'grid' && <GridLayout charts={charts} />}
+      {layout === 'grid' && <CardLayout charts={charts} />}
       {layout === 'accordion' && <AccordionLayout charts={charts} />}
     </article>
   );
