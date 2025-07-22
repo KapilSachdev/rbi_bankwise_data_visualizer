@@ -1,12 +1,11 @@
 import { useContext } from 'react';
-import { BankData } from '../types/global.types';
-import Hero from './home/Hero';
-import { BankTypeStackedAreaChart, InfraBarChart, TopMoversLineChart } from '../visualization/components';
-import { CashWithdrawalChart, TimeSeriesChart, TopBanksChart, TypeBreakdownChart } from '../visualization/credit_cards';
 import { LayoutContext } from '../context/LayoutContext';
-import { GridLayout, AccordionLayout } from './layouts';
-import type { ChartItem } from './layouts/types';
+import { BankData } from '../types/global.types';
 import { formatMonthYear } from '../utils/time';
+import { BankTypeStackedAreaChart, InfraBarChart, TopMoversLineChart } from '../visualization/components';
+import { TimeSeriesChart } from '../visualization/credit_cards';
+import { AccordionLayout, GridLayout } from './layouts';
+import type { ChartItem } from './layouts/types';
 
 interface DashboardProps {
   posBanksData: { [key: string]: BankData[] };

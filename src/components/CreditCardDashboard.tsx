@@ -1,12 +1,10 @@
 import { useContext } from 'react';
 import { LayoutContext } from '../context/LayoutContext';
 import { BankData } from '../types/global.types';
-import { AccordionLayout, GridLayout } from './layouts';
 import CreditCardCashWithdrawalChart from '../visualization/credit_cards/CategoryWiseTimeSeriesChart';
 import CreditCardTimeSeriesChart from '../visualization/credit_cards/TimeSeriesChart';
-import CreditCardTypeBreakdownChart from '../visualization/credit_cards/TypeBreakdownChart';
-import TopCreditCardBanksChart from '../visualization/credit_cards/TopBanksChart';
-import { ChartItem, LayoutProps } from './layouts/types';
+import { AccordionLayout, GridLayout } from './layouts';
+import { ChartItem } from './layouts/types';
 
 interface CreditCardDashboardProps {
   posBanksData: { [key: string]: BankData[] };
@@ -23,21 +21,6 @@ const CreditCardDashboard: React.FC<CreditCardDashboardProps> = ({ posBanksData,
         title: 'Credit Card Transactions Over Time',
         allData: posBanksData,
         months,
-      }
-    },
-    {
-      component: TopCreditCardBanksChart,
-      props: {
-        title: 'Top Banks by Credit Card Volume',
-        allData: posBanksData,
-        topN: 10,
-      }
-    },
-    {
-      component: CreditCardTypeBreakdownChart,
-      props: {
-        title: 'Credit Card Transaction Type Breakdown',
-        allData: posBanksData,
       }
     },
     {

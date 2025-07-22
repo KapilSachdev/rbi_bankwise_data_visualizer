@@ -1,20 +1,20 @@
 import { LineChart } from 'echarts/charts';
 import {
+  DataZoomComponent,
   GridComponent,
   LegendComponent,
   TitleComponent,
-  TooltipComponent,
-  DataZoomComponent
+  TooltipComponent
 } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
-import { FC, memo, useEffect, useMemo, useState, useRef } from 'react'; // Added useRef
+import { FC, memo, useEffect, useMemo, useRef, useState } from 'react'; // Added useRef
 import EChartsContainer from '../../components/common/EChartsContainer';
 import Pills from '../../components/filters/Pills';
 import RangeSlider from '../../components/filters/RangeSlider';
 import TopNInput from '../../components/filters/TopNInput';
-import { useYearRangeData } from '../../hooks/useYearRangeData';
 import { BANK_TYPES } from '../../constants/data';
+import { useYearRangeData } from '../../hooks/useYearRangeData';
 import type { BankData } from '../../types/global.types';
 
 // Echarts registration: Register all necessary components at once.
@@ -159,7 +159,7 @@ const CategoryWiseTimeSeriesChart: FC<CategoryWiseTimeSeriesChartProps> = ({
       valueFormatter: (value: number) => value.toLocaleString('en-IN'),
     },
     legend: { x: 'right', y: 'top', type: 'scroll' },
-    grid: { left: '1%', right: '1%', bottom: '1%', containLabel: true }, // Added containLabel for better axis label visibility
+    grid: { left: '1%', right: '1%', bottom: '1%' },
     xAxis: {
       type: 'category',
       data: filteredMonths,
@@ -274,7 +274,6 @@ const CategoryWiseTimeSeriesChart: FC<CategoryWiseTimeSeriesChartProps> = ({
         aria-label='Credit Card Category Time Series Chart'
         role='img'
         tabIndex={0}
-        // Use chartInstanceRef for onInit
         onInit={(instance) => {
           chartInstanceRef.current = instance;
         }}
