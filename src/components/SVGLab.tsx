@@ -8,6 +8,8 @@ const iconNames = [
   'github',
   'grid',
   'layers',
+  'info',
+  'arrow',
 ];
 
 const SVGLab: React.FC = () => {

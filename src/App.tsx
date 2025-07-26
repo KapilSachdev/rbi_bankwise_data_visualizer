@@ -7,6 +7,8 @@ import Dashboard from './components/Dashboard';
 import FilterLab from './components/FilterLab';
 import SVGLab from './components/SVGLab';
 
+import BankProfileDashboard from './components/BankProfileDashboard';
+
 import { LayoutContext } from './context/LayoutContext';
 import type { BankData } from './types/global.types';
 
@@ -82,6 +84,14 @@ function App() {
           />
           <Route path="/filter_lab" element={<FilterLab />} />
           <Route path="/svg_lab" element={<SVGLab />} />
+          <Route
+            path="/bank_profile"
+            element={
+              <BankProfileDashboard
+                posBanksData={posBanksData}
+                months={months} />
+            }
+          />
         </Routes>
       </main>
     </LayoutContext.Provider>
