@@ -120,7 +120,7 @@ const main = async () => {
     const xlsxUrl = await fetchXlsxLinkWithRetry(pageUrl, 5, 2000);
     console.log('Found xlsx:', xlsxUrl);
 
-    const excelDir = path.resolve(getModuleDir(), '../data/excel');
+    const excelDir = path.resolve(getModuleDir(), '../data/excel/neft');
     ensureDir(excelDir);
     const xlsxPath = path.join(excelDir, `${fileBase}.xlsx`);
 

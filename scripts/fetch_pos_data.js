@@ -93,7 +93,7 @@ const main = async () => {
     const fileBase = `bankwise_pos_stats_${year}_${paddedMonth}`;
 
     // Check if the file already exists, and if it does return early
-    const excelDir = path.resolve(getModuleDir(), '../data/excel');
+    const excelDir = path.resolve(getModuleDir(), '../data/excel/pos');
     ensureDir(excelDir);
     const xlsxPath = path.join(excelDir, `${fileBase}.xlsx`);
     if (fs.existsSync(xlsxPath)) {

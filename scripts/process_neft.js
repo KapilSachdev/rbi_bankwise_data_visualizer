@@ -32,7 +32,7 @@ const main = () => {
   const { year, month } = getTargetDate(process.argv[2]);
   const paddedMonth = String(month).padStart(2, '0');
   const fileBase = `bankwise_neft_stats_${year}_${paddedMonth}`;
-  const excelDir = path.resolve(getModuleDir(), '../data/excel');
+  const excelDir = path.resolve(getModuleDir(), '../data/excel/neft');
   const xlsxPath = path.join(excelDir, `${fileBase}.xlsx`);
   const outputDir = path.resolve(getModuleDir(), '../public/assets/data');
   const outputPath = path.join(outputDir, `${fileBase}.json`);

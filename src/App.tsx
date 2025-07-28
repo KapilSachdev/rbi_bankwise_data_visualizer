@@ -29,18 +29,23 @@ function App() {
   // const [neftData, setNeftData] = useState<{ [key: string]: { banks: BankData[]; summary?: unknown } }>({});
 
   useEffect(() => {
-    fetch(`${DATA_FOLDER}/index.json`)
-      .then(res => res.json())
-      .then((manifest: { neft: DataFileMeta[]; pos: DataFileMeta[] }) => {
-        const allFiles = [...(manifest.neft || []), ...(manifest.pos || [])];
+    Promise.all([
+      fetch(`${DATA_FOLDER.pos}/index.json`).then(res => res.json()),
+      fetch(`${DATA_FOLDER.neft}/index.json`).then(res => res.json())
+    ])
+      .then(([posManifest, neftManifest]) => {
+        const allFiles = [
+          ...(neftManifest.neft || []).map((f: any) => ({ ...f, type: 'neft' })),
+          ...(posManifest.pos || []).map((f: any) => ({ ...f, type: 'pos' })),
+        ];
         setFiles(allFiles);
         const allMeta = [
-          ...(manifest.neft || []).map(f => ({ ...f, type: 'neft' })),
-          ...(manifest.pos || []).map(f => ({ ...f, type: 'pos' })),
+          ...(neftManifest.neft || []).map((f: any) => ({ ...f, type: 'neft' })),
+          ...(posManifest.pos || []).map((f: any) => ({ ...f, type: 'pos' })),
         ];
         return Promise.all(
           allMeta.map(f =>
-            fetch(`${DATA_FOLDER}/${f.file}`)
+            fetch(`${DATA_FOLDER[f.type]}/${f.file}`)
               .then(res => res.json())
               .then(data => ({ key: f.key, type: f.type, data }))
           )
@@ -55,11 +60,12 @@ function App() {
         setPosData(pos);
       })
       .catch(err => {
-        console.error('Failed to load month data:', err);
+        console.error('Failed to load data:', err);
       });
   }, []);
 
   const months = files.filter(f => f.type === 'pos').map(f => f.key);
+  console.log(months);
   const posBanksData = Object.fromEntries(
     Object.entries(posData).map(([k, v]) => [k, v?.banks ?? []])
   );

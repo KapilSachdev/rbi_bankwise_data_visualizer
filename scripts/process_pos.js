@@ -52,7 +52,7 @@ const columnMapping = [
 
 // Process all Excel files in data/excel, only if corresponding JSON does not exist
 // NOTE: 2013_08 excel has two extra columns c and d and have been removed. In case refetched this needs handling
-const excelDir = path.resolve(__dirname, '../data/excel');
+const excelDir = path.resolve(__dirname, '../data/excel/pos');
 const jsonDir = path.resolve(__dirname, '../public/assets/data');
 
 let filePrefix = 'bankwise_pos_stats_';
@@ -140,7 +140,7 @@ fs.readdirSync(excelDir)
             value = row[col + 1];
           }
           // If value is undefined or null, set to 0 for numbers, '' for strings
-          if (typeof value === 'undefined' || value === null)  value = 0;
+          if (typeof value === 'undefined' || value === null) value = 0;
           setNestedObject(bankData, path, value);
         });
 
@@ -185,4 +185,3 @@ fs.readdirSync(excelDir)
       console.error(`Error processing ${excelFile}:\n`, error.stack);
     }
   });
-
