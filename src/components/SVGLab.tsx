@@ -29,7 +29,7 @@ const SVGLab: React.FC = () => {
       />
       <div className="grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {filteredIcons.map(name => (
-          <div key={name} className="flex flex-col items-center p-4 bg-base-100 rounded-lg border border-base-300 shadow hover:shadow-lg transition">
+          <div key={name} className="flex flex-col items-center p-4 bg-base-100 rounded-selector border border-base-300 shadow hover:shadow-lg transition">
             <SVGIcon icon={name} className="size-24 mb-2 text-primary" />
             <span className="text-xs font-mono select-all break-all text-base-content/80">{name}</span>
           </div>

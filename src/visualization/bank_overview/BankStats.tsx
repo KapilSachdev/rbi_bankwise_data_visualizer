@@ -18,30 +18,43 @@ interface MoMIndicatorProps {
   previousValue: number | undefined;
 }
 
-// MoMIndicator component with clear styling and accessibility
-const MoMIndicator: FC<MoMIndicatorProps> = memo(({ currentValue, previousValue }) => {
-  const mom = calculateMoM(currentValue, previousValue);
 
-  if (mom === null) {
+// Improved MoMIndicator: shows both absolute and percent change, with pronounced visual style
+const MoMIndicator: FC<MoMIndicatorProps> = memo(({ currentValue, previousValue }) => {
+  const percent = calculateMoM(currentValue, previousValue);
+  if (percent === null || previousValue === undefined || currentValue === undefined || isNaN(previousValue) || isNaN(currentValue)) {
     return null;
   }
-
-  const isPositive = mom > 0;
-  const isNegative = mom < 0;
-  const badgeClass = isPositive ? 'badge-success' : isNegative ? 'badge-error' : 'badge-neutral';
-  const arrowRotationClass = isNegative ? 'rotate-180' : '';
-  const ariaLabel = isPositive ? 'Month over month increase' : isNegative ? 'Month over month decrease' : 'No change month over month';
+  const absChange = currentValue - previousValue;
+  const isPositive = absChange > 0;
+  const isNegative = absChange < 0;
+  const isZero = absChange === 0;
+  const sign = isPositive ? '+' : isNegative ? '' : '';
+  // Use DaisyUI/Tailwind semantic color classes for theming
+  const color = isPositive
+    ? 'bg-success/10 text-success border-success'
+    : isNegative
+      ? 'bg-error/10 text-error border-error'
+      : 'bg-base-200 text-base-content border-base-300';
+  // Use only 'arrow' icon and rotate for direction
+  const icon = 'arrow';
+  const rotateClass = isPositive ? '' : isNegative ? 'rotate-180' : 'rotate-90';
+  const ariaLabel = isPositive
+    ? `Increased by ${absChange.toLocaleString()} (${percent.toFixed(1)}%) from last month`
+    : isNegative
+      ? `Decreased by ${Math.abs(absChange).toLocaleString()} (${Math.abs(percent).toFixed(1)}%) from last month`
+      : 'No change from last month';
 
   return (
-    <span className={`badge badge-xs flex items-center gap-1 ${badgeClass}`} aria-label={`${Math.abs(mom).toFixed(1)}% ${ariaLabel}`}>
-      {mom !== 0 && (
-        <SVGIcon
-          icon="arrow" // Ensure this SVGIcon is accessible and provides a visual cue
-          className={`w-3 h-3 ${arrowRotationClass}`}
-          aria-hidden="true" // Hide from screen readers as parent span has aria-label
-        />
-      )}
-      {Math.abs(mom).toFixed(1)}%
+    <span
+      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-selector border font-semibold text-xs shadow-sm ${color} transition-all duration-200`}
+      aria-label={ariaLabel}
+      title={ariaLabel}
+    >
+      <span className="inline-flex items-center justify-center w-4 h-4 rounded-selector mr-1">
+        <SVGIcon icon={icon} className={`w-4 h-4 stroke-[2] ${rotateClass}`} aria-hidden="true" />
+      </span>
+      {sign}{Math.abs(absChange).toLocaleString()} <span className="opacity-60">({sign}{Math.abs(percent).toFixed(1)}%)</span>
     </span>
   );
 });
@@ -128,17 +141,17 @@ const BankStats: FC<BankStatsProps> = ({ currentMonth, selectedBankData, prevMon
           </h2>
           <div className="flex flex-wrap gap-4 items-center">
             {monthBadge && (
-              <div className="badge badge-info badge-lg p-3" aria-label={`Data for ${monthBadge}`}>
+              <div className="badge badge-primary badge-lg p-2" aria-label={`Data for ${monthBadge}`}>
                 {monthBadge}
               </div>
             )}
             {selectedBankData.Bank_Type && (
-              <div className="badge badge-primary badge-lg p-3">
+              <div className="badge badge-lg p-2">
                 {selectedBankData.Bank_Type}
               </div>
             )}
             {selectedBankData.Bank_Short_Name && (
-              <div className="badge badge-neutral badge-lg p-3">
+              <div className="badge badge-lg p-2">
                 {selectedBankData.Bank_Short_Name}
               </div>
             )}
@@ -150,7 +163,7 @@ const BankStats: FC<BankStatsProps> = ({ currentMonth, selectedBankData, prevMon
         </p>
 
         {/* Statistics Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 bg-base-200 p-4 rounded-xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-2 rounded-selector">
           {STAT_ITEMS_CONFIG.map((item, index) => (
             <StatItem
               key={item.title} // Use title as key, assuming titles are unique

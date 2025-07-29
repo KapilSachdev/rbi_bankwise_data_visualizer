@@ -163,7 +163,7 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
       </div>
       <EChartsContainer
         option={option}
-        className="w-full h-[400px] rounded-xl"
+        className="w-full h-[400px] rounded-selector"
         onInit={instance => { if (chartRef) chartRef.current = instance; }}
       />
     </div >

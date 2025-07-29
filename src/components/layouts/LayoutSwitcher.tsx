@@ -28,7 +28,7 @@ function LayoutSwitcher() {
       </div>
 
       {/* The dropdown content (panel) */}
-      <div tabIndex={0} className="dropdown-content bg-base-100 shadow-lg px-2 py-1 rounded-box flex flex-row gap-2">
+      <div tabIndex={0} className="dropdown-content bg-base-100 shadow-lg px-2 py-1 rounded-selector flex flex-row gap-2">
         {LAYOUT_OPTIONS.map(option => (
           <button
             key={option.key}

@@ -42,7 +42,7 @@ const DataFilter: FC<DataFilterProps> = ({
               {selectedMonth || 'Select Month'}
             </button>
             <ul
-              className="dropdown-content menu menu-sm p-0 shadow bg-base-100 rounded-box w-full z-10"
+              className="dropdown-content menu menu-sm p-0 shadow bg-base-100 rounded-selector w-full z-10"
               popover="auto"
               id="month-dropdown"
               role="listbox"
@@ -77,7 +77,7 @@ const DataFilter: FC<DataFilterProps> = ({
               {selectedBankType || 'All'}
             </button>
             <ul
-              className="dropdown-content menu menu-sm p-0 shadow bg-base-100 rounded-box w-full z-10"
+              className="dropdown-content menu menu-sm p-0 shadow bg-base-100 rounded-selector w-full z-10"
               popover="auto"
               id="banktype-dropdown"
               role="listbox"
