@@ -22,23 +22,27 @@ interface MoMIndicatorProps {
 // Improved MoMIndicator: shows both absolute and percent change, with pronounced visual style
 const MoMIndicator: FC<MoMIndicatorProps> = memo(({ currentValue, previousValue }) => {
   const percent = calculateMoM(currentValue, previousValue);
+
   if (percent === null || previousValue === undefined || currentValue === undefined || isNaN(previousValue) || isNaN(currentValue)) {
     return null;
   }
+
   const absChange = currentValue - previousValue;
   const isPositive = absChange > 0;
   const isNegative = absChange < 0;
   const isZero = absChange === 0;
-  const sign = isPositive ? '+' : isNegative ? '' : '';
-  // Use DaisyUI/Tailwind semantic color classes for theming
-  const color = isPositive
+
+  const sign = isPositive ? '+' : '';
+
+  const colorClass = isPositive
     ? 'bg-success/10 text-success border-success'
     : isNegative
       ? 'bg-error/10 text-error border-error'
       : 'bg-base-200 text-base-content border-base-300';
-  // Use only 'arrow' icon and rotate for direction
+
   const icon = 'arrow';
   const rotateClass = isPositive ? '' : isNegative ? 'rotate-180' : 'rotate-90';
+
   const ariaLabel = isPositive
     ? `Increased by ${absChange.toLocaleString()} (${percent.toFixed(1)}%) from last month`
     : isNegative
@@ -47,45 +51,42 @@ const MoMIndicator: FC<MoMIndicatorProps> = memo(({ currentValue, previousValue 
 
   return (
     <span
-      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-selector border font-semibold text-xs shadow-sm ${color} transition-all duration-200`}
+      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full border font-semibold text-xs shadow-sm ${colorClass} transition-all duration-200`}
       aria-label={ariaLabel}
       title={ariaLabel}
     >
-      <span className="inline-flex items-center justify-center w-4 h-4 rounded-selector mr-1">
-        <SVGIcon icon={icon} className={`w-4 h-4 stroke-[2] ${rotateClass}`} aria-hidden="true" />
+      <span className="inline-flex items-center justify-center w-4 h-4 rounded-full mr-1">
+        <SVGIcon icon={icon} className={`w-3 h-3 stroke-[2] ${rotateClass}`} aria-hidden="true" />
       </span>
-      {sign}{Math.abs(absChange).toLocaleString()} <span className="opacity-60">({sign}{Math.abs(percent).toFixed(1)}%)</span>
+      {isZero ? (
+        'No change'
+      ) : (
+        <>
+          {sign}{Math.abs(absChange).toLocaleString()}
+          <span className="text-sm opacity-70 ml-0.5">({sign}{Math.abs(percent).toFixed(1)}%)</span>
+        </>
+      )}
     </span>
   );
 });
 
 MoMIndicator.displayName = 'MoMIndicator';
 
+
 interface StatItemProps {
   title: string;
   value: number | string | undefined;
-  description: string;
-  valueColorClass?: string;
   currentValueForMoM?: number;
   previousValueForMoM?: number;
 }
 
-// StatItem component for displaying individual statistics
-export const StatItem: FC<StatItemProps> = memo(({
-  title,
-  value,
-  description,
-  valueColorClass = '',
-  currentValueForMoM,
-  previousValueForMoM,
-}) => (
+export const StatItem: FC<StatItemProps> = memo(({ title, value, currentValueForMoM, previousValueForMoM }) => (
   <div className="stat place-items-center">
     <div className="stat-title">{title}</div>
-    <div className={`stat-value ${valueColorClass}`}>
+    <div className="stat-value">
       {value !== undefined && value !== null && value !== '' ? value : '-'}
     </div>
     <div className="stat-desc flex items-center gap-2">
-      {description}
       <MoMIndicator currentValue={currentValueForMoM} previousValue={previousValueForMoM} />
     </div>
   </div>
@@ -113,14 +114,14 @@ const formatMonthDisplay = (month: string): string => {
 
 // Configuration for StatItems to reduce repetition
 const STAT_ITEMS_CONFIG = [
-  { title: "UPI QR Codes", description: "UPI-enabled payments", valuePath: (data: BankData) => data.Infrastructure?.UPI_QR_Codes, valueColorClass: "text-warning" },
-  { title: "Credit Cards", description: "Cards issued", valuePath: (data: BankData) => data.Infrastructure?.Credit_Cards, valueColorClass: "text-error" },
-  { title: "Debit Cards", description: "Cards issued", valuePath: (data: BankData) => data.Infrastructure?.Debit_Cards, valueColorClass: "text-success" },
-  { title: "On-site ATMs", description: "Includes CRMs", valuePath: (data: BankData) => data.Infrastructure?.ATMs_CRMs?.On_site, valueColorClass: "text-secondary" },
-  { title: "Off-site ATMs", description: "Extended reach", valuePath: (data: BankData) => data.Infrastructure?.ATMs_CRMs?.Off_site },
-  { title: "PoS Terminals", description: "Point of Sale devices", valuePath: (data: BankData) => data.Infrastructure?.PoS, valueColorClass: "text-accent" },
-  { title: "Micro ATMs", description: "Compact ATM solutions", valuePath: (data: BankData) => data.Infrastructure?.Micro_ATMs },
-  { title: "Bharat QR Codes", description: "Digital payment codes", valuePath: (data: BankData) => data.Infrastructure?.Bharat_QR_Codes, valueColorClass: "text-info" },
+  { title: "UPI QR Codes", valuePath: (data: BankData) => data.Infrastructure?.UPI_QR_Codes },
+  { title: "Credit Cards", valuePath: (data: BankData) => data.Infrastructure?.Credit_Cards },
+  { title: "Debit Cards", valuePath: (data: BankData) => data.Infrastructure?.Debit_Cards },
+  { title: "On-site ATMs", valuePath: (data: BankData) => data.Infrastructure?.ATMs_CRMs?.On_site },
+  { title: "Off-site ATMs", valuePath: (data: BankData) => data.Infrastructure?.ATMs_CRMs?.Off_site },
+  { title: "PoS Terminals", valuePath: (data: BankData) => data.Infrastructure?.PoS },
+  { title: "Micro ATMs", valuePath: (data: BankData) => data.Infrastructure?.Micro_ATMs },
+  { title: "Bharat QR Codes", valuePath: (data: BankData) => data.Infrastructure?.Bharat_QR_Codes },
 ];
 
 // Main BankStats component
@@ -166,11 +167,9 @@ const BankStats: FC<BankStatsProps> = ({ currentMonth, selectedBankData, prevMon
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-2 rounded-selector">
           {STAT_ITEMS_CONFIG.map((item, index) => (
             <StatItem
-              key={item.title} // Use title as key, assuming titles are unique
+              key={item.title}
               title={item.title}
               value={item.valuePath(selectedBankData)}
-              description={item.description}
-              valueColorClass={item.valueColorClass}
               currentValueForMoM={item.valuePath(selectedBankData)}
               previousValueForMoM={prevMonthBankData ? item.valuePath(prevMonthBankData) : undefined}
             />
