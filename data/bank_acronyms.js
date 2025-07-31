@@ -361,7 +361,7 @@ export const BANK_ACRONYMS = {
   },
   'ABHYUDAYA': {
     Bank_Type: "Cooperative Banks",
-    names: ['ABHYUDAYA CO-OP BANK LTD']
+    names: ['ABHYUDAYA CO-OP BANK LTD', 'ABHYUDAYA CO-OPERATIVE BANK LTD']
   },
   'AMCB': {
     Bank_Type: "Cooperative Banks",
