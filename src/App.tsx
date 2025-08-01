@@ -26,7 +26,8 @@ function App() {
   // Manifest and bifurcated data
   const [files, setFiles] = useState<DataFileMeta[]>([]);
   const [posData, setPosData] = useState<{ [key: string]: { banks: BankData[]; summary?: unknown } }>({});
-  // const [neftData, setNeftData] = useState<{ [key: string]: { banks: BankData[]; summary?: unknown } }>({});
+  // For Digital Banking, keep the full object (with NEFT, RTGS, Mobile_Banking, Internet_Banking arrays)
+  const [digitalBankingData, setDigitalBankingData] = useState<{ [key: string]: any }>({});
 
   useEffect(() => {
     Promise.all([
@@ -53,22 +54,28 @@ function App() {
       })
       .then(results => {
         const pos: { [key: string]: { banks: BankData[]; summary?: unknown } } = {};
+        const digital: { [key: string]: any } = {};
         results.forEach((result) => {
-          const { key, type, data } = result as { key: string; type: string; data: { banks: BankData[]; summary?: unknown } };
+          const { key, type, data } = result as { key: string; type: string; data: any };
           if (type === 'pos') pos[key] = data;
+          if (type === 'neft') {
+            digital[key] = data;
+          }
         });
         setPosData(pos);
+        setDigitalBankingData(digital);
       })
       .catch(err => {
         console.error('Failed to load data:', err);
       });
   }, []);
 
+
   const months = files.filter(f => f.type === 'pos').map(f => f.key);
-  console.log(months);
   const posBanksData = Object.fromEntries(
     Object.entries(posData).map(([k, v]) => [k, v?.banks ?? []])
   );
+
 
   return (
     <LayoutContext.Provider value={{ layout, setLayout }}>
@@ -81,7 +88,8 @@ function App() {
             element={
               <Dashboard
                 posBanksData={posBanksData}
-                months={months} />
+                months={months}
+              />
             }
           />
           <Route
@@ -95,7 +103,9 @@ function App() {
             element={
               <BankProfileDashboard
                 posBanksData={posBanksData}
-                months={months} />
+                digitalBankingData={digitalBankingData}
+                months={months}
+              />
             }
           />
         </Routes>

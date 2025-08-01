@@ -26,10 +26,21 @@ const getPreviousMonth = (currentMonth: string, months: string[]): string | null
 
 interface BankProfileDashboardProps {
   posBanksData: { [month: string]: BankData[] };
+  digitalBankingData: {
+    [month: string]: {
+      NEFT?: any[];
+      RTGS?: any[];
+      Mobile_Banking?: any[];
+      Internet_Banking?: any[];
+    };
+  };
   months: string[];
+  rtgsBanksData?: { [month: string]: any[] };
+  mobileBanksData?: { [month: string]: any[] };
+  internetBanksData?: { [month: string]: any[] };
 }
 
-const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ posBanksData, months }) => {
+const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ months, posBanksData, digitalBankingData }) => {
   const [selectedMonth, setSelectedMonth] = useState<string>('');
   const [selectedBank, setSelectedBank] = useState<string>('');
 
@@ -40,10 +51,22 @@ const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ posBanksData, mon
     }
   }, [months, selectedMonth]);
 
+  // Compute previous month before using it
+  const prevMonth = useMemo(() => getPreviousMonth(selectedMonth, months), [selectedMonth, months]);
   // Get banks for selected month
   const banksForMonth = useMemo(() => posBanksData[selectedMonth] || [], [posBanksData, selectedMonth]);
+  // Extract NEFT, RTGS, Mobile, Internet arrays from digitalBankingData[selectedMonth] (if present)
+  const neftMonthObj = digitalBankingData[selectedMonth] || {};
+  const prevNeftMonthObj = prevMonth ? (digitalBankingData[prevMonth] || {}) : {};
+  const neftBanksForMonth = Array.isArray(neftMonthObj.NEFT) ? neftMonthObj.NEFT : [];
+  const rtgsBanksForMonth = Array.isArray(neftMonthObj.RTGS) ? neftMonthObj.RTGS : [];
+  const mobileBanksForMonth = Array.isArray(neftMonthObj.Mobile_Banking) ? neftMonthObj.Mobile_Banking : [];
+  const internetBanksForMonth = Array.isArray(neftMonthObj.Internet_Banking) ? neftMonthObj.Internet_Banking : [];
+  const prevNeftBanksForMonth = Array.isArray(prevNeftMonthObj.NEFT) ? prevNeftMonthObj.NEFT : [];
+  const prevRTGSBanksForMonth = Array.isArray(prevNeftMonthObj.RTGS) ? prevNeftMonthObj.RTGS : [];
+  const prevMobileBanksForMonth = Array.isArray(prevNeftMonthObj.Mobile_Banking) ? prevNeftMonthObj.Mobile_Banking : [];
+  const prevInternetBanksForMonth = Array.isArray(prevNeftMonthObj.Internet_Banking) ? prevNeftMonthObj.Internet_Banking : [];
 
-  // Set default bank when month changes or bank is missing
   useEffect(() => {
     if (banksForMonth.length > 0 && !banksForMonth.some(b => b.Bank_Name === selectedBank)) {
       setSelectedBank(banksForMonth[0].Bank_Name);
@@ -54,14 +77,34 @@ const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ posBanksData, mon
 
   const bankNames = useMemo(() => banksForMonth.map(b => b.Bank_Name), [banksForMonth]);
   const selectedBankData = useMemo(() => banksForMonth.find(b => b.Bank_Name === selectedBank) || null, [banksForMonth, selectedBank]);
+  const selectedNeftBankData = useMemo(() => neftBanksForMonth.find(b => b.Bank_Name === selectedBank) || null, [neftBanksForMonth, selectedBank]);
+  const selectedRTGSBankData = useMemo(() => rtgsBanksForMonth.find(b => b.Bank_Name === selectedBank) || null, [rtgsBanksForMonth, selectedBank]);
+  const selectedMobileBankingData = useMemo(() => mobileBanksForMonth.find(b => b.Bank_Name === selectedBank) || null, [mobileBanksForMonth, selectedBank]);
+  const selectedInternetBankingData = useMemo(() => internetBanksForMonth.find(b => b.Bank_Name === selectedBank) || null, [internetBanksForMonth, selectedBank]);
 
   // Previous month and previous bank data
-  const prevMonth = useMemo(() => getPreviousMonth(selectedMonth, months), [selectedMonth, months]);
   const prevMonthBankData = useMemo(() => {
     if (!prevMonth || !selectedBank) return null;
     const prevBanks = posBanksData[prevMonth] || [];
     return prevBanks.find(b => b.Bank_Name === selectedBank) || null;
   }, [prevMonth, selectedBank, posBanksData]);
+
+  const prevMonthNeftBankData = useMemo(() => {
+    if (!prevMonth || !selectedBank) return null;
+    return prevNeftBanksForMonth.find(b => b.Bank_Name === selectedBank) || null;
+  }, [prevMonth, selectedBank, prevNeftBanksForMonth]);
+  const prevMonthRTGSBankData = useMemo(() => {
+    if (!prevMonth || !selectedBank) return null;
+    return prevRTGSBanksForMonth.find(b => b.Bank_Name === selectedBank) || null;
+  }, [prevMonth, selectedBank, prevRTGSBanksForMonth]);
+  const prevMonthMobileBankingData = useMemo(() => {
+    if (!prevMonth || !selectedBank) return null;
+    return prevMobileBanksForMonth.find(b => b.Bank_Name === selectedBank) || null;
+  }, [prevMonth, selectedBank, prevMobileBanksForMonth]);
+  const prevMonthInternetBankingData = useMemo(() => {
+    if (!prevMonth || !selectedBank) return null;
+    return prevInternetBanksForMonth.find(b => b.Bank_Name === selectedBank) || null;
+  }, [prevMonth, selectedBank, prevInternetBanksForMonth]);
 
   // Handlers
   const handleMonthSelect = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -110,8 +153,19 @@ const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ posBanksData, mon
           </select>
         </div>
       </div>
+
       {selectedBankData ? (
-        <BankStats currentMonth={selectedMonth} selectedBankData={selectedBankData} prevMonthBankData={prevMonthBankData} />
+        <BankStats
+          currentMonth={selectedMonth}
+          selectedBankData={selectedBankData}
+          prevMonthBankData={prevMonthBankData}
+          digitalBankingData={{
+            neft: { current: selectedNeftBankData, prev: prevMonthNeftBankData },
+            rtgs: { current: selectedRTGSBankData, prev: prevMonthRTGSBankData },
+            mobile: { current: selectedMobileBankingData, prev: prevMonthMobileBankingData },
+            internet: { current: selectedInternetBankingData, prev: prevMonthInternetBankingData },
+          }}
+        />
       ) : (
         <div role="alert" className="alert alert-info shadow-lg">
           <SVGIcon icon="info" className="shrink-0 w-6 h-6" aria-label="Info" />

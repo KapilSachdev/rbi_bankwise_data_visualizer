@@ -1,6 +1,78 @@
 import { FC, memo, useMemo } from 'react';
 import SVGIcon from '../../components/common/SVGIcon';
 import type { BankData } from '../../types/global.types';
+import { formatCurrency } from '../../utils/currency';
+import { formatMonthYear } from '../../utils/time';
+
+// --- Type Guards and Data Structure Distinction ---
+// PoS data structure (ATM/PoS/Card)
+export interface PosBankData extends BankData {
+  Infrastructure: BankData['Infrastructure'];
+  Card_Payments_Transactions?: BankData['Card_Payments_Transactions'];
+}
+
+// NEFT data structure
+export interface NEFTBankData {
+  Sr_No: number;
+  Bank_Name: string;
+  Bank_Short_Name: string;
+  Bank_Type: string;
+  Received_Inward_Credits: { No: number; Amount: number };
+  Total_Outward_Debits: { No: number; Amount: number };
+}
+
+// RTGS data structure
+export interface RTGSBankData {
+  Sr_No: number;
+  Bank_Name: string;
+  Bank_Short_Name: string;
+  Bank_Type: string;
+  Outward_Transactions: { No: number; Amount: number };
+  Inward_Transactions: { No: number; Amount: number };
+}
+
+// Mobile Banking data structure
+export interface MobileBankingData {
+  Sr_No: number;
+  Bank_Name: string;
+  Bank_Short_Name: string;
+  Bank_Type: string;
+  Volume: number;
+  Value: number;
+  Active_Customers: number;
+}
+
+// Internet Banking data structure
+export interface InternetBankingData {
+  Sr_No: number;
+  Bank_Name: string;
+  Bank_Short_Name: string;
+  Bank_Type: string;
+  Volume: number;
+  Value: number;
+  Active_Customers: number;
+}
+
+// Type guards for runtime type checking
+export function isPosBankData(data: any): data is PosBankData {
+  return data && typeof data === 'object' && 'Infrastructure' in data;
+}
+
+export function isNEFTBankData(data: any): data is NEFTBankData {
+  return data && typeof data === 'object' && 'Received_Inward_Credits' in data && 'Total_Outward_Debits' in data;
+}
+
+export function isRTGSBankData(data: any): data is RTGSBankData {
+  return data && typeof data === 'object' && 'Outward_Transactions' in data && 'Inward_Transactions' in data;
+}
+
+export function isMobileBankingData(data: any): data is MobileBankingData {
+  return data && typeof data === 'object' && 'Volume' in data && 'Value' in data && 'Active_Customers' in data && !('Received_Inward_Credits' in data);
+}
+
+export function isInternetBankingData(data: any): data is InternetBankingData {
+  return data && typeof data === 'object' && 'Volume' in data && 'Value' in data && 'Active_Customers' in data && !('Outward_Transactions' in data);
+}
 
 // Utility to safely calculate Month-over-Month (MoM)
 const calculateMoM = (current: number | undefined, prev: number | undefined): number | null => {
@@ -94,23 +166,19 @@ export const StatItem: FC<StatItemProps> = memo(({ title, value, currentValueFor
 
 StatItem.displayName = 'StatItem';
 
+interface DigitalBankingData {
+  neft?: { current: NEFTBankData | null, prev: NEFTBankData | null };
+  rtgs?: { current: RTGSBankData | null, prev: RTGSBankData | null };
+  mobile?: { current: MobileBankingData | null, prev: MobileBankingData | null };
+  internet?: { current: InternetBankingData | null, prev: InternetBankingData | null };
+}
+
 interface BankStatsProps {
   currentMonth: string;
   selectedBankData: BankData | null;
   prevMonthBankData: BankData | null;
+  digitalBankingData?: DigitalBankingData;
 }
-
-// Helper to format month for display
-const formatMonthDisplay = (month: string): string => {
-  if (!month) return '';
-  const [year, monthNum] = month.split('-');
-  const monthNames = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
-  const monthIndex = parseInt(monthNum, 10) - 1;
-  return `${monthNames[monthIndex]} ${year}`;
-};
 
 // Configuration for StatItems to reduce repetition
 const STAT_ITEMS_CONFIG = [
@@ -125,12 +193,23 @@ const STAT_ITEMS_CONFIG = [
 ];
 
 // Main BankStats component
-const BankStats: FC<BankStatsProps> = ({ currentMonth, selectedBankData, prevMonthBankData }) => {
+const BankStats: FC<BankStatsProps> = ({ currentMonth, selectedBankData, prevMonthBankData, digitalBankingData }) => {
   if (!selectedBankData) {
     return null;
   }
 
-  const monthBadge = useMemo(() => formatMonthDisplay(currentMonth), [currentMonth]);
+  // Section 1: Infrastructure (PoS/ATM/Card)
+  const isPos = isPosBankData(selectedBankData);
+  const isPrevPos = prevMonthBankData && isPosBankData(prevMonthBankData);
+
+  // Section 2: Digital Banking (NEFT, RTGS, Mobile, Internet)
+  // These are passed as explicit props, not as selectedBankData
+  const neft = digitalBankingData?.neft;
+  const rtgs = digitalBankingData?.rtgs;
+  const mobile = digitalBankingData?.mobile;
+  const internet = digitalBankingData?.internet;
+
+  const monthBadge = useMemo(() => formatMonthYear(currentMonth), [currentMonth]);
 
   return (
     <div className="card bg-base-100 shadow-xl border border-base-300">
@@ -138,7 +217,7 @@ const BankStats: FC<BankStatsProps> = ({ currentMonth, selectedBankData, prevMon
         {/* Bank Header Section */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
           <h2 className="card-title text-3xl font-extrabold text-accent mb-2 sm:mb-0">
-            {selectedBankData.Bank_Name}
+            {selectedBankData?.Bank_Name || neft?.current?.Bank_Name || rtgs?.current?.Bank_Name || mobile?.current?.Bank_Name || internet?.current?.Bank_Name}
           </h2>
           <div className="flex flex-wrap gap-4 items-center">
             {monthBadge && (
@@ -146,34 +225,170 @@ const BankStats: FC<BankStatsProps> = ({ currentMonth, selectedBankData, prevMon
                 {monthBadge}
               </div>
             )}
-            {selectedBankData.Bank_Type && (
+            {(selectedBankData?.Bank_Type || neft?.current?.Bank_Type || rtgs?.current?.Bank_Type || mobile?.current?.Bank_Type || internet?.current?.Bank_Type) && (
               <div className="badge badge-lg p-2">
-                {selectedBankData.Bank_Type}
+                {selectedBankData?.Bank_Type || neft?.current?.Bank_Type || rtgs?.current?.Bank_Type || mobile?.current?.Bank_Type || internet?.current?.Bank_Type}
               </div>
             )}
-            {selectedBankData.Bank_Short_Name && (
+            {(selectedBankData?.Bank_Short_Name || neft?.current?.Bank_Short_Name || rtgs?.current?.Bank_Short_Name || mobile?.current?.Bank_Short_Name || internet?.current?.Bank_Short_Name) && (
               <div className="badge badge-lg p-2">
-                {selectedBankData.Bank_Short_Name}
+                {selectedBankData?.Bank_Short_Name || neft?.current?.Bank_Short_Name || rtgs?.current?.Bank_Short_Name || mobile?.current?.Bank_Short_Name || internet?.current?.Bank_Short_Name}
               </div>
             )}
           </div>
         </div>
 
         <p className="text-lg text-gray-600 mb-6">
-          Infrastructure overview for the selected bank.
+          Infrastructure and digital banking overview for the selected bank.
         </p>
 
-        {/* Statistics Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-2 rounded-selector">
-          {STAT_ITEMS_CONFIG.map((item, index) => (
-            <StatItem
-              key={item.title}
-              title={item.title}
-              value={item.valuePath(selectedBankData)}
-              currentValueForMoM={item.valuePath(selectedBankData)}
-              previousValueForMoM={prevMonthBankData ? item.valuePath(prevMonthBankData) : undefined}
-            />
-          ))}
+        {/* Section 1: Infrastructure (PoS/ATM/Card) */}
+        {isPos && (
+          <div className="mb-8">
+            <h3 className="font-bold text-lg mb-2">ATM / PoS / Card Infrastructure</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-2 rounded-selector">
+              {STAT_ITEMS_CONFIG.map((item, index) => (
+                <StatItem
+                  key={item.title}
+                  title={item.title}
+                  value={item.valuePath(selectedBankData)}
+                  currentValueForMoM={item.valuePath(selectedBankData)}
+                  previousValueForMoM={isPrevPos ? item.valuePath(prevMonthBankData) : undefined}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Section 2: Digital Banking (NEFT, RTGS, Mobile, Internet) - Compact Row Layout */}
+        <div className="mb-8">
+          <h3 className="font-bold text-lg mb-2">Digital Banking Overview</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {/* NEFT */}
+            <div className="rounded-selector p-4 h-full flex flex-col">
+              <h4 className="font-semibold mb-2 text-center">NEFT</h4>
+              {neft?.current ? (
+                <div className="flex flex-col gap-2 flex-1">
+                  <StatItem
+                    title="Inward Credits (No.)"
+                    value={neft.current.Received_Inward_Credits.No.toLocaleString()}
+                    currentValueForMoM={neft.current.Received_Inward_Credits.No}
+                    previousValueForMoM={neft.prev?.Received_Inward_Credits.No}
+                  />
+                  <StatItem
+                    title="Inward Credits (Amount)"
+                    value={formatCurrency(neft.current.Received_Inward_Credits.Amount)}
+                    currentValueForMoM={neft.current.Received_Inward_Credits.Amount}
+                    previousValueForMoM={neft.prev?.Received_Inward_Credits.Amount}
+                  />
+                  <StatItem
+                    title="Outward Debits (No.)"
+                    value={neft.current.Total_Outward_Debits.No.toLocaleString()}
+                    currentValueForMoM={neft.current.Total_Outward_Debits.No}
+                    previousValueForMoM={neft.prev?.Total_Outward_Debits.No}
+                  />
+                  <StatItem
+                    title="Outward Debits (Amount)"
+                    value={formatCurrency(neft.current.Total_Outward_Debits.Amount)}
+                    currentValueForMoM={neft.current.Total_Outward_Debits.Amount}
+                    previousValueForMoM={neft.prev?.Total_Outward_Debits.Amount}
+                  />
+                </div>
+              ) : (
+                <div className="text-center text-base-content/60">No data</div>
+              )}
+            </div>
+            {/* RTGS */}
+            <div className="rounded-selector p-4 h-full flex flex-col">
+              <h4 className="font-semibold mb-2 text-center">RTGS</h4>
+              {rtgs?.current ? (
+                <div className="flex flex-col gap-2 flex-1">
+                  <StatItem
+                    title="Outward Txns (No.)"
+                    value={rtgs.current.Outward_Transactions.No.toLocaleString()}
+                    currentValueForMoM={rtgs.current.Outward_Transactions.No}
+                    previousValueForMoM={rtgs.prev?.Outward_Transactions.No}
+                  />
+                  <StatItem
+                    title="Outward Txns (Amount)"
+                    value={formatCurrency(rtgs.current.Outward_Transactions.Amount)}
+                    currentValueForMoM={rtgs.current.Outward_Transactions.Amount}
+                    previousValueForMoM={rtgs.prev?.Outward_Transactions.Amount}
+                  />
+                  <StatItem
+                    title="Inward Txns (No.)"
+                    value={rtgs.current.Inward_Transactions.No.toLocaleString()}
+                    currentValueForMoM={rtgs.current.Inward_Transactions.No}
+                    previousValueForMoM={rtgs.prev?.Inward_Transactions.No}
+                  />
+                  <StatItem
+                    title="Inward Txns (Amount)"
+                    value={formatCurrency(rtgs.current.Inward_Transactions.Amount)}
+                    currentValueForMoM={rtgs.current.Inward_Transactions.Amount}
+                    previousValueForMoM={rtgs.prev?.Inward_Transactions.Amount}
+                  />
+                </div>
+              ) : (
+                <div className="text-center text-base-content/60">No data</div>
+              )}
+            </div>
+            {/* Mobile Banking */}
+            <div className="rounded-selector p-4 h-full flex flex-col">
+              <h4 className="font-semibold mb-2 text-center">Mobile Banking</h4>
+              {mobile?.current ? (
+                <div className="flex flex-col gap-2 flex-1">
+                  <StatItem
+                    title="Volume"
+                    value={mobile.current.Volume.toLocaleString()}
+                    currentValueForMoM={mobile.current.Volume}
+                    previousValueForMoM={mobile.prev?.Volume}
+                  />
+                  <StatItem
+                    title="Value"
+                    value={formatCurrency(mobile.current.Value)}
+                    currentValueForMoM={mobile.current.Value}
+                    previousValueForMoM={mobile.prev?.Value}
+                  />
+                  <StatItem
+                    title="Active Customers"
+                    value={mobile.current.Active_Customers.toLocaleString()}
+                    currentValueForMoM={mobile.current.Active_Customers}
+                    previousValueForMoM={mobile.prev?.Active_Customers}
+                  />
+                </div>
+              ) : (
+                <div className="text-center text-base-content/60">No data</div>
+              )}
+            </div>
+            {/* Internet Banking */}
+            <div className="rounded-selector p-4 h-full flex flex-col">
+              <h4 className="font-semibold mb-2 text-center">Internet Banking</h4>
+              {internet?.current ? (
+                <div className="flex flex-col gap-2 flex-1">
+                  <StatItem
+                    title="Volume"
+                    value={internet.current.Volume.toLocaleString()}
+                    currentValueForMoM={internet.current.Volume}
+                    previousValueForMoM={internet.prev?.Volume}
+                  />
+                  <StatItem
+                    title="Value"
+                    value={formatCurrency(internet.current.Value)}
+                    currentValueForMoM={internet.current.Value}
+                    previousValueForMoM={internet.prev?.Value}
+                  />
+                  <StatItem
+                    title="Active Customers"
+                    value={internet.current.Active_Customers.toLocaleString()}
+                    currentValueForMoM={internet.current.Active_Customers}
+                    previousValueForMoM={internet.prev?.Active_Customers}
+                  />
+                </div>
+              ) : (
+                <div className="text-center text-base-content/60">No data</div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
