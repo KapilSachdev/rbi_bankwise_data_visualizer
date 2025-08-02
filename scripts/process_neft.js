@@ -93,7 +93,7 @@ const main = () => {
   const fileBase = `bankwise_neft_stats_${year}_${paddedMonth}`;
   const excelDir = path.resolve(getModuleDir(), '../data/excel/neft');
   const xlsxPath = path.join(excelDir, `${fileBase}.xlsx`);
-  const outputDir = path.resolve(getModuleDir(), '../public/assets/data');
+  const outputDir = path.resolve(getModuleDir(), '../public/assets/data/neft');
   const outputPath = path.join(outputDir, `${fileBase}.json`);
 
   if (!fs.existsSync(xlsxPath)) {
