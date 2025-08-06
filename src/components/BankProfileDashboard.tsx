@@ -2,6 +2,7 @@
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import type { BankData } from '../types/global.types';
 import BankStats from '../visualization/bank_overview/BankStats';
+import BankTimeSeriesChart from '../visualization/bank_overview/BankTimeSeriesChart';
 import SVGIcon from './common/SVGIcon';
 
 // --- Utility Functions ---
@@ -77,6 +78,15 @@ const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ months, posBanksD
 
   const bankNames = useMemo(() => banksForMonth.map(b => b.Bank_Name), [banksForMonth]);
   const selectedBankData = useMemo(() => banksForMonth.find(b => b.Bank_Name === selectedBank) || null, [banksForMonth, selectedBank]);
+
+  // Build time series data for selected bank across all months (PoS only)
+  const selectedBankTimeSeriesData = useMemo(() =>
+    months.reverse().map(month => {
+      const bankArr = posBanksData[month] || [];
+      return bankArr.find(b => b.Bank_Name === selectedBank) || null;
+    }).filter((b): b is BankData => Boolean(b)),
+    [months, posBanksData, selectedBank]
+  );
   const selectedNeftBankData = useMemo(() => neftBanksForMonth.find(b => b.Bank_Name === selectedBank) || null, [neftBanksForMonth, selectedBank]);
   const selectedRTGSBankData = useMemo(() => rtgsBanksForMonth.find(b => b.Bank_Name === selectedBank) || null, [rtgsBanksForMonth, selectedBank]);
   const selectedMobileBankingData = useMemo(() => mobileBanksForMonth.find(b => b.Bank_Name === selectedBank) || null, [mobileBanksForMonth, selectedBank]);
@@ -155,17 +165,26 @@ const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ months, posBanksD
       </div>
 
       {selectedBankData ? (
-        <BankStats
-          currentMonth={selectedMonth}
-          selectedBankData={selectedBankData}
-          prevMonthBankData={prevMonthBankData}
-          digitalBankingData={{
-            neft: { current: selectedNeftBankData, prev: prevMonthNeftBankData },
-            rtgs: { current: selectedRTGSBankData, prev: prevMonthRTGSBankData },
-            mobile: { current: selectedMobileBankingData, prev: prevMonthMobileBankingData },
-            internet: { current: selectedInternetBankingData, prev: prevMonthInternetBankingData },
-          }}
-        />
+        <article className='grid gap-4'>
+          <BankStats
+            currentMonth={selectedMonth}
+            selectedBankData={selectedBankData}
+            prevMonthBankData={prevMonthBankData}
+            digitalBankingData={{
+              neft: { current: selectedNeftBankData, prev: prevMonthNeftBankData },
+              rtgs: { current: selectedRTGSBankData, prev: prevMonthRTGSBankData },
+              mobile: { current: selectedMobileBankingData, prev: prevMonthMobileBankingData },
+              internet: { current: selectedInternetBankingData, prev: prevMonthInternetBankingData },
+            }}
+          />
+          <BankTimeSeriesChart
+            bankData={selectedBankTimeSeriesData}
+            months={months}
+            metrics={["ATMs_CRMs", "PoS", "Credit_Cards", "Debit_Cards"]}
+            bankName={selectedBank}
+            digitalBankingData={digitalBankingData}
+          />
+        </article>
       ) : (
         <div role="alert" className="alert alert-info shadow-lg">
           <SVGIcon icon="info" className="shrink-0 w-6 h-6" aria-label="Info" />
