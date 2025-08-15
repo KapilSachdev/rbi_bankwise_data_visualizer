@@ -15,18 +15,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup pnpm and install dependencies
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          run_install: false
+
       - name: Setup Node.js (with pnpm cache)
         uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: 'pnpm'
 
-      - name: Setup pnpm and install dependencies
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-          run_install:
-            - args: ['--frozen-lockfile']
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build
         run: pnpm run build
