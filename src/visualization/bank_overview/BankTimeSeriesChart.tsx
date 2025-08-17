@@ -48,11 +48,11 @@ const BankTimeSeriesChart: FC<BankTimeSeriesChartProps> = ({ bankName, bankData,
   return (
     <div className="card bg-base-100 shadow border-base-300 mb-8">
       <div className="card-body">
-        <h3 className="card-title text-xl font-bold mb-2">{bankName} – Monthly Trends</h3>
+        <h3 className="card-title text-xl font-bold mb-2">{bankName} - Monthly Trends</h3>
         <EChartsContainer
           option={chartOption}
           className='w-full h-[400px]'
-          aria-label='Credit Card Category Time Series Chart'
+          aria-label={`${bankName} - Monthly trends for ${metrics.map(m => m.replace(/_/g, ' ')).join(', ')}`}
           role='img'
           tabIndex={0}
           onInit={instance => { chartInstanceRef.current = instance; }}
