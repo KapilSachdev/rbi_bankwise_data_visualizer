@@ -8,7 +8,7 @@ import tsParser from '@typescript-eslint/parser';
 
 /** @type {import('eslint').FlatConfig[]} */
 export default [
-  { ignores: ['dist', 'node_modules'] },
+  { ignores: ['dist', 'data', 'public', 'node_modules'] },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
