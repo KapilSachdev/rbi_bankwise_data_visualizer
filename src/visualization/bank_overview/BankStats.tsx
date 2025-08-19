@@ -112,7 +112,7 @@ const MoMIndicator: FC<MoMIndicatorProps> = memo(({ currentValue, previousValue 
       ? 'bg-error/10 text-error border-error'
       : 'bg-base-200 text-base-content border-base-300';
 
-  const icon = 'arrow';
+  const icon = 'triangle';
   const rotateClass = isPositive ? '' : isNegative ? 'rotate-180' : 'rotate-90';
 
   const ariaLabel = isPositive
@@ -153,9 +153,9 @@ interface StatItemProps {
 }
 
 export const StatItem: FC<StatItemProps> = memo(({ title, value, currentValueForMoM, previousValueForMoM }) => (
-  <div className="stat place-items-center">
-    <div className="stat-title">{title}</div>
-    <div className="stat-value">
+  <div className="stat place-items-center p-2 text-sm bg-transparent">
+    <div className="stat-title text-xs text-base-content/70">{title}</div>
+    <div className="stat-value text-lg font-semibold">
       {value !== undefined && value !== null && value !== '' ? value : '-'}
     </div>
     <div className="stat-desc flex items-center gap-2">
@@ -237,10 +237,6 @@ const BankStats: FC<BankStatsProps> = ({ currentMonth, selectedBankData, prevMon
             )}
           </div>
         </div>
-
-        <p className="text-lg text-gray-600 mb-6">
-          Infrastructure and digital banking overview for the selected bank.
-        </p>
 
         {/* Section 1: Infrastructure (PoS/ATM/Card) */}
         {isPos && (

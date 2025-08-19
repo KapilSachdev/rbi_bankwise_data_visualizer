@@ -81,7 +81,8 @@ const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ months, posBanksD
 
   // Build time series data for selected bank across all months (PoS only)
   const selectedBankTimeSeriesData = useMemo(() =>
-    months.reverse().map(month => {
+    // copy months before reversing to avoid mutating the prop passed from parent
+    [...months].reverse().map(month => {
       const bankArr = posBanksData[month] || [];
       return bankArr.find(b => b.Bank_Name === selectedBank) || null;
     }).filter((b): b is BankData => Boolean(b)),

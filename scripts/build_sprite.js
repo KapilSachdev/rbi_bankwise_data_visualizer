@@ -26,6 +26,10 @@ function extractSvgContent(svg, filename) {
   return { viewBox, inner };
 }
 
+function minifyInnerSvg(inner) {
+  return inner.replace(/\s+/g, ' ').replace(/>\s+</g, '><').trim();
+}
+
 function buildSprite() {
   const files = fs.readdirSync(ICONS_DIR).filter(f => f.endsWith('.svg'));
   let processed = 0;
@@ -36,9 +40,10 @@ function buildSprite() {
     processed++;
     const { viewBox, inner } = result;
     const id = getSymbolId(file);
-    return `  <symbol id="${id}" viewBox="${viewBox}">\n${inner}\n  </symbol>`;
+    const minInner = minifyInnerSvg(inner);
+    return `<symbol id="${id}" viewBox="${viewBox}">${minInner}</symbol>`;
   }).filter(Boolean);
-  const sprite = `<svg xmlns="http://www.w3.org/2000/svg" style="display:none">\n${symbols.join('\n')}\n</svg>\n`;
+  const sprite = `<svg xmlns="http://www.w3.org/2000/svg" style="display:none">${symbols.join('')}</svg>\n`;
   fs.writeFileSync(SPRITE_PATH, sprite, 'utf8');
   console.log(`SVG sprite generated with ${processed} icons at ${SPRITE_PATH}`);
 }
