@@ -112,7 +112,6 @@ const MoMIndicator: FC<MoMIndicatorProps> = memo(({ currentValue, previousValue 
       ? 'bg-error/10 text-error border-error'
       : 'bg-base-200 text-base-content border-base-300';
 
-  const icon = 'triangle';
   const rotateClass = isPositive ? '' : isNegative ? 'rotate-180' : 'rotate-90';
 
   const ariaLabel = isPositive
@@ -123,12 +122,12 @@ const MoMIndicator: FC<MoMIndicatorProps> = memo(({ currentValue, previousValue 
 
   return (
     <span
-      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full border font-semibold text-xs shadow-sm ${colorClass} transition-all duration-200`}
+      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-selector border font-semibold text-xs shadow-sm ${colorClass} transition-all duration-200`}
       aria-label={ariaLabel}
       title={ariaLabel}
     >
-      <span className="inline-flex items-center justify-center w-4 h-4 rounded-full mr-1">
-        <SVGIcon icon={icon} className={`w-3 h-3 stroke-[2] ${rotateClass}`} aria-hidden="true" />
+      <span className="inline-flex items-center justify-center w-4 h-4 rounded-selector mr-1">
+        <SVGIcon icon='triangle' className={`w-3 h-3 ${rotateClass}`} aria-hidden="true" />
       </span>
       {isZero ? (
         'No change'
@@ -216,23 +215,15 @@ const BankStats: FC<BankStatsProps> = ({ currentMonth, selectedBankData, prevMon
       <div className="card-body">
         {/* Bank Header Section */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
-          <h2 className="card-title text-3xl font-extrabold text-accent mb-2 sm:mb-0">
-            {selectedBankData?.Bank_Name || neft?.current?.Bank_Name || rtgs?.current?.Bank_Name || mobile?.current?.Bank_Name || internet?.current?.Bank_Name}
+          <h2 className="card-title text-3xl font-extrabold mb-2 sm:mb-0">
+            {selectedBankData?.Bank_Name}
           </h2>
           <div className="flex flex-wrap gap-4 items-center">
+            <div className="badge badge-lg p-2">{selectedBankData?.Bank_Type}</div>
+            <div className="badge badge-lg p-2">{selectedBankData?.Bank_Short_Name}</div>
             {monthBadge && (
-              <div className="badge badge-primary badge-lg p-2" aria-label={`Data for ${monthBadge}`}>
+              <div className="badge badge-info badge-lg p-2" aria-label={`Data for ${monthBadge}`}>
                 {monthBadge}
-              </div>
-            )}
-            {(selectedBankData?.Bank_Type || neft?.current?.Bank_Type || rtgs?.current?.Bank_Type || mobile?.current?.Bank_Type || internet?.current?.Bank_Type) && (
-              <div className="badge badge-lg p-2">
-                {selectedBankData?.Bank_Type || neft?.current?.Bank_Type || rtgs?.current?.Bank_Type || mobile?.current?.Bank_Type || internet?.current?.Bank_Type}
-              </div>
-            )}
-            {(selectedBankData?.Bank_Short_Name || neft?.current?.Bank_Short_Name || rtgs?.current?.Bank_Short_Name || mobile?.current?.Bank_Short_Name || internet?.current?.Bank_Short_Name) && (
-              <div className="badge badge-lg p-2">
-                {selectedBankData?.Bank_Short_Name || neft?.current?.Bank_Short_Name || rtgs?.current?.Bank_Short_Name || mobile?.current?.Bank_Short_Name || internet?.current?.Bank_Short_Name}
               </div>
             )}
           </div>
