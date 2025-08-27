@@ -6,7 +6,6 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DATA_DIR = path.join(__dirname, '../public/assets/data');
-const OUTPUT_PATH = path.join(__dirname, '../public/assets/data/index.json');
 
 // Helper to extract type and date from filename
 
@@ -19,10 +18,7 @@ function parseFileInfo(filename) {
     type,
     file: filename,
     key: `${year}-${month}`,
-    label:
-      type === 'neft'
-        ? `${monthName(month)} ${year}`
-        : `${monthName(month)} ${year}`,
+    label: `${monthName(month)} ${year}`,
   };
 }
 
@@ -36,29 +32,34 @@ function monthName(mm) {
 
 
 async function main() {
-  const files = await fs.readdir(DATA_DIR);
-  const manifest = { neft: [], pos: [] };
+  const subdirs = ['neft', 'pos'];
 
-  for (const file of files) {
-    if (!file.endsWith('.json')) continue;
-    const info = parseFileInfo(file);
-    if (!info) continue;
-    manifest[info.type].push({
-      type: info.type,
-      file: info.file,
-      label: info.label,
-      key: info.key,
-    });
+  for (const subdir of subdirs) {
+    const subdirPath = path.join(DATA_DIR, subdir);
+    const files = await fs.readdir(subdirPath);
+    const manifest = [];
+
+    for (const file of files) {
+      if (!file.endsWith('.json') || file === 'index.json') continue;
+      const info = parseFileInfo(file);
+      if (!info) continue;
+      manifest.push({
+        type: info.type,
+        file: info.file,
+        label: info.label,
+        key: info.key,
+      });
+    }
+
+    // Sort by key descending (latest first)
+    manifest.sort((a, b) => b.key.localeCompare(a.key));
+
+    // Ensure output directory exists (though it should already)
+    const outputPath = path.join(subdirPath, 'index.json');
+    const outputData = { [subdir]: manifest };
+    await fs.writeFile(outputPath, JSON.stringify(outputData, null, 2));
+    console.log(`Manifest written to ${outputPath}`);
   }
-
-  // Sort by key descending (latest first)
-  manifest.neft.sort((a, b) => b.key.localeCompare(a.key));
-  manifest.pos.sort((a, b) => b.key.localeCompare(a.key));
-
-  // Ensure output directory exists
-  await fs.mkdir(path.dirname(OUTPUT_PATH), { recursive: true });
-  await fs.writeFile(OUTPUT_PATH, JSON.stringify(manifest, null, 2));
-  console.log(`Manifest written to ${OUTPUT_PATH}`);
 }
 
 main();
