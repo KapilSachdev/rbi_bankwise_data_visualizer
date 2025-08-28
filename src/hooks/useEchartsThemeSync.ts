@@ -1,4 +1,3 @@
-
 import * as echarts from 'echarts/core';
 import { useEffect, useState } from 'react';
 import { ECHARTS_THEMES } from '../assets/styles/echarts_themes';
