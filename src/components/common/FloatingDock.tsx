@@ -29,8 +29,8 @@ const ChartThemeButton: FC<ChartThemeButtonProps> = ({ uiTheme }) => {
   const [currentTheme, setCurrentTheme] = useState<string>(() => localStorage.getItem('echarts-theme') || ECHARTS_THEMES[0].name);
 
   const handleNextTheme = useCallback(() => {
-    const uiThemeMode = UI_THEMES.find((theme) => theme.name == uiTheme)?.mode;
-    const availableThemes = ECHARTS_THEMES.filter(theme => theme.mode == uiThemeMode);
+    const uiThemeMode = UI_THEMES.find((theme) => theme.name === uiTheme)?.mode;
+    const availableThemes = ECHARTS_THEMES.filter(theme => theme.mode === uiThemeMode);
     const idx = availableThemes.findIndex(t => t.name === currentTheme);
     const nextIdx = (idx + 1) % availableThemes.length;
     const nextTheme = availableThemes[nextIdx]?.name;
@@ -38,16 +38,17 @@ const ChartThemeButton: FC<ChartThemeButtonProps> = ({ uiTheme }) => {
     setEchartsThemeName(nextTheme); // This will dispatch the event for listeners
   }, [currentTheme, uiTheme]);
 
-  // Only update local state from localStorage on mount (in case user reloads)
   useEffect(() => {
-    setCurrentTheme(localStorage.getItem('echarts-theme') || ECHARTS_THEMES[0].name);
-  }, []);
+    const uiThemeMode = UI_THEMES.find((theme) => theme.name === uiTheme)?.mode;
+    const chartThemeMode = ECHARTS_THEMES.find(theme => theme.name === currentTheme)?.mode;
 
-  useEffect(() => {
-    const uiThemeMode = UI_THEMES.find((theme) => theme.name == uiTheme)?.mode;
-    const chartThemeMode = ECHARTS_THEMES.find(theme => theme.name == currentTheme)?.mode;
-    if (uiThemeMode != chartThemeMode) handleNextTheme();
-
+    if (uiThemeMode && chartThemeMode && uiThemeMode !== chartThemeMode) {
+      // Add a small delay to prevent rapid cycling
+      const timeoutId = setTimeout(() => {
+        handleNextTheme();
+      }, 100);
+      return () => clearTimeout(timeoutId);
+    }
   }, [uiTheme, currentTheme, handleNextTheme]);
 
   return (
@@ -111,7 +112,7 @@ const FloatingDock: FC = () => {
       <a
         href="https://www.github.com/kapilsachdev/rbi_bankwise_data_visualizer/"
         target="_blank"
-        className='cursor-pointer text-primary mb-10'
+        className="cursor-pointer text-primary mb-10"
         rel="noopener noreferrer"
         aria-label="Project Home Page"
       >

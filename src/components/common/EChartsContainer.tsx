@@ -9,7 +9,6 @@ type EChartsContainerProps = {
   className?: string;
   style?: CSSProperties;
   onInit?: (chart: EChartsType) => void;
-  themeSync?: boolean; // default true
   'aria-label'?: string;
   role?: string;
   tabIndex?: number;
@@ -25,7 +24,6 @@ const EChartsContainer: FC<EChartsContainerProps> = ({
   className = '',
   style,
   onInit,
-  // themeSync = true, // removed unused prop
   ...rest
 }) => {
   const chartRef = useRef<HTMLDivElement | null>(null);

@@ -27,7 +27,7 @@ const DataFilter: FC<DataFilterProps> = ({
   filters = { month: true, bankType: true },
 }) => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
       {filters.month && months.length > 0 && onMonthChange && (
         <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem]">
           <span>Month</span>
