@@ -1,5 +1,7 @@
 // Global project types and interfaces
 
+import type { EChartsType } from 'echarts';
+
 // Infrastructure and Bank Data
 export interface BankInfrastructure {
   ATMs_CRMs: {
@@ -23,19 +25,22 @@ export interface TxnDetail {
 }
 
 /**
+ * Cash withdrawal details (ATM and optional PoS)
+ */
+export interface CashWithdrawal {
+  At_ATM: TxnDetail;
+  At_PoS?: TxnDetail;
+}
+
+/**
  * Cash withdrawal details for credit card (ATM only)
  */
-export interface CreditCardCashWithdrawal {
-  At_ATM: TxnDetail;
-}
+export interface CreditCardCashWithdrawal extends Omit<CashWithdrawal, 'At_PoS'> { }
 
 /**
  * Cash withdrawal details for debit card (ATM and optional PoS)
  */
-export interface DebitCardCashWithdrawal {
-  At_ATM: TxnDetail;
-  At_PoS?: TxnDetail;
-}
+export interface DebitCardCashWithdrawal extends CashWithdrawal { }
 
 /**
  * Card payment transactions for a bank
@@ -69,6 +74,9 @@ export interface MonthlyBankData {
   banks: BankData[];
 }
 
+// Common type for monthly data maps
+export type MonthlyBankDataMap = Record<string, BankData[]>;
+
 // Credit Card Time Series
 export interface CreditCardTimeSeries {
   bank: string;
@@ -81,15 +89,10 @@ export interface CreditCardTimeSeriesChartProps {
 }
 
 // Infra Bar Chart
-export interface ATMData {
-  Bank_Type: string;
-  Bank_Name: string;
-  Bank_Short_Name: string;
-  Infrastructure: BankInfrastructure;
-}
-
 export interface BankInfraBarChartProps {
-  data: ATMData[];
+  allData: MonthlyBankDataMap;
+  months: string[];
+  chartRef?: { current: EChartsType | null };
 }
 
 // DataFilter
@@ -104,4 +107,21 @@ export interface DataFilterProps {
     month?: boolean;
     bankType?: boolean;
   };
+}
+
+// Bank Profile Dashboard
+export interface BankProfileDashboardProps {
+  posBanksData: MonthlyBankDataMap;
+  digitalBankingData: {
+    [month: string]: {
+      NEFT?: any[];
+      RTGS?: any[];
+      Mobile_Banking?: any[];
+      Internet_Banking?: any[];
+    };
+  };
+  months: string[];
+  rtgsBanksData?: { [month: string]: any[] };
+  mobileBanksData?: { [month: string]: any[] };
+  internetBanksData?: { [month: string]: any[] };
 }
