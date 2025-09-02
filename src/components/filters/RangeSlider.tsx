@@ -1,5 +1,5 @@
-import { FC, useRef, useState, useCallback, useEffect, MouseEvent, TouchEvent, KeyboardEvent } from 'react';
-import { useDebouncedValue } from '../../hooks/useDebouncedValue';
+import { motion } from 'framer-motion';
+import { FC, useCallback, useEffect, useRef, useState } from 'react';
 
 interface RangeSliderProps {
   min: number;
@@ -8,14 +8,11 @@ interface RangeSliderProps {
   onChange: (range: [number, number]) => void;
   step?: number;
   className?: string;
-  startLabel?: string;
-  endLabel?: string;
+  disabled?: boolean;
 }
 
-
 /**
- * A true two-thumb range slider with a single track and two draggable thumbs, styled with daisyUI/Tailwind.
- * Emits [start, end] range, prevents thumbs from crossing, accessible and keyboard-friendly.
+ * Modern dual-thumb range slider with smooth animations and full accessibility
  */
 const RangeSlider: FC<RangeSliderProps> = ({
   min,
@@ -24,188 +21,177 @@ const RangeSlider: FC<RangeSliderProps> = ({
   onChange,
   step = 1,
   className = '',
-  startLabel,
-  endLabel,
+  disabled = false,
 }) => {
   const trackRef = useRef<HTMLDivElement>(null);
   const [dragging, setDragging] = useState<null | 'start' | 'end'>(null);
-  // Debounced value for onChange
-  const debouncedValue = useDebouncedValue([start, end]);
 
-  // Calculate percent positions for thumbs
-  const percent = useCallback((val: number) => ((val - min) / (max - min)) * 100, [min, max]);
-  const startPercent = percent(start);
-  const endPercent = percent(end);
+  // Calculate positions
+  const getPosition = useCallback((val: number) => ((val - min) / (max - min)) * 100, [min, max]);
+  const startPos = getPosition(start);
+  const endPos = getPosition(end);
 
+  // Convert position to value
+  const positionToValue = useCallback((position: number) => {
+    const clamped = Math.max(0, Math.min(100, position));
+    const rawValue = min + (clamped / 100) * (max - min);
+    return Math.round(rawValue / step) * step;
+  }, [min, max, step]);
 
-  // Mouse/touch drag logic
-  const onThumbDown = useCallback((which: 'start' | 'end') => (e: MouseEvent | TouchEvent) => {
-    e.preventDefault();
-    setDragging(which);
-    document.body.style.userSelect = 'none';
-  }, []);
+  // Handle drag start
+  const handleThumbDown = useCallback((thumb: 'start' | 'end') =>
+    (e: React.MouseEvent | React.TouchEvent) => {
+      if (disabled) return;
+      e.preventDefault();
+      setDragging(thumb);
+      document.body.style.userSelect = 'none';
+      document.body.style.cursor = 'grabbing';
+    }, [disabled]);
 
-  // Call onChange only when debounced value changes
-  useEffect(() => {
-    if (debouncedValue[0] !== start || debouncedValue[1] !== end) {
-      onChange(debouncedValue as [number, number]);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedValue]);
-
-  // Track click logic: move nearest thumb to click position
-  const handleTrackClick = useCallback((e: MouseEvent<HTMLDivElement>) => {
-    if (!trackRef.current) return;
-    const rect = trackRef.current.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const clickPercent = Math.max(0, Math.min(1, clickX / rect.width));
-    let value = Math.round((min + clickPercent * (max - min)) / step) * step;
-    value = Math.max(min, Math.min(max, value));
-    // Decide which thumb is closer
-    const distToStart = Math.abs(value - start);
-    const distToEnd = Math.abs(value - end);
-    if (distToStart < distToEnd) {
-      // Move start thumb, but don't cross end
-      if (value > end) value = end;
-      onChange([value, end]);
-    } else {
-      // Move end thumb, but don't cross start
-      if (value < start) value = start;
-      onChange([start, value]);
-    }
-  }, [end, max, min, onChange, start, step]);
-
-  const onThumbMove = useCallback((clientX: number) => {
+  // Handle drag move
+  const handleMove = useCallback((clientX: number) => {
     if (!trackRef.current || dragging === null) return;
-    const rect = trackRef.current.getBoundingClientRect();
-    let percent = (clientX - rect.left) / rect.width;
-    percent = Math.max(0, Math.min(1, percent));
-    let value = Math.round((min + percent * (max - min)) / step) * step;
-    value = Math.max(min, Math.min(max, value));
-    if (dragging === 'start') {
-      if (value > end) value = end;
-      onChange([value, end]);
-    } else {
-      if (value < start) value = start;
-      onChange([start, value]);
-    }
-  }, [dragging, min, max, start, end, step, onChange]);
 
-  // Mouse/touch event listeners
+    const rect = trackRef.current.getBoundingClientRect();
+    const position = ((clientX - rect.left) / rect.width) * 100;
+    const newValue = positionToValue(position);
+
+    if (dragging === 'start') {
+      const clampedValue = Math.min(Math.max(newValue, min), end);
+      onChange([clampedValue, end]);
+    } else {
+      const clampedValue = Math.max(Math.min(newValue, max), start);
+      onChange([start, clampedValue]);
+    }
+  }, [dragging, positionToValue, min, max, start, end, onChange]);
+
+  // Handle track click
+  const handleTrackClick = useCallback((e: React.MouseEvent) => {
+    if (disabled || !trackRef.current) return;
+
+    const rect = trackRef.current.getBoundingClientRect();
+    const position = ((e.clientX - rect.left) / rect.width) * 100;
+    const clickValue = positionToValue(position);
+
+    // Move closer thumb
+    const distToStart = Math.abs(clickValue - start);
+    const distToEnd = Math.abs(clickValue - end);
+
+    if (distToStart < distToEnd) {
+      onChange([Math.min(clickValue, end), end]);
+    } else {
+      onChange([start, Math.max(clickValue, start)]);
+    }
+  }, [disabled, positionToValue, start, end, onChange]);
+
+  // Global event listeners
   useEffect(() => {
     if (dragging === null) return;
-    const move = (e: Event) => {
-      if ('touches' in e) {
-        const touchEvent = e as unknown as TouchEvent;
-        if (touchEvent.touches && touchEvent.touches.length > 0) {
-          onThumbMove(touchEvent.touches[0].clientX);
-        }
-      } else if ('clientX' in e) {
-        const mouseEvent = e as unknown as MouseEvent;
-        onThumbMove(mouseEvent.clientX);
+
+    const handleGlobalMove = (e: Event) => {
+      const clientX = 'touches' in e
+        ? (e as TouchEvent).touches[0]?.clientX
+        : (e as MouseEvent).clientX;
+
+      if (clientX !== undefined) {
+        handleMove(clientX);
       }
     };
-    const up = () => {
+
+    const handleGlobalUp = () => {
       setDragging(null);
       document.body.style.userSelect = '';
+      document.body.style.cursor = '';
     };
-    window.addEventListener('mousemove', move as EventListener);
-    window.addEventListener('touchmove', move as EventListener);
-    window.addEventListener('mouseup', up);
-    window.addEventListener('touchend', up);
-    return () => {
-      window.removeEventListener('mousemove', move as EventListener);
-      window.removeEventListener('touchmove', move as EventListener);
-      window.removeEventListener('mouseup', up);
-      window.removeEventListener('touchend', up);
-    };
-  }, [dragging, onThumbMove]);
 
-  // Keyboard accessibility
-  const handleThumbKey = useCallback((which: 'start' | 'end') => (e: KeyboardEvent<HTMLDivElement>) => {
-    let delta = 0;
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') delta = -step;
-    if (e.key === 'ArrowRight' || e.key === 'ArrowUp') delta = step;
-    if (delta !== 0) {
-      e.preventDefault();
-      if (which === 'start') {
-        const newStart = Math.min(Math.max(start + delta, min), end);
-        onChange([newStart, end]);
-      } else {
-        const newEnd = Math.max(Math.min(end + delta, max), start);
-        onChange([start, newEnd]);
-      }
-    }
-  }, [end, max, min, onChange, start, step]);
+    document.addEventListener('mousemove', handleGlobalMove);
+    document.addEventListener('touchmove', handleGlobalMove);
+    document.addEventListener('mouseup', handleGlobalUp);
+    document.addEventListener('touchend', handleGlobalUp);
+
+    return () => {
+      document.removeEventListener('mousemove', handleGlobalMove);
+      document.removeEventListener('touchmove', handleGlobalMove);
+      document.removeEventListener('mouseup', handleGlobalUp);
+      document.removeEventListener('touchend', handleGlobalUp);
+    };
+  }, [dragging, handleMove]);
 
   return (
-    <div className={`flex flex-col gap-2 w-full ${className}`}>
-      <div className="flex items-center gap-2 select-none">
-        {startLabel && <span className="text-xs">{startLabel}</span>}
-        <div
-          ref={trackRef}
-          className="relative flex-1 h-12 flex items-center cursor-pointer"
-          aria-label="Range slider"
-          onClick={handleTrackClick}
+    <div className={`flex flex-col gap-3 w-full ${className}`}>
+
+      {/* Slider */}
+      <div
+        ref={trackRef}
+        className={`relative h-2 rounded-selector cursor-pointer transition-colors ${disabled ? 'bg-base-300 cursor-not-allowed' : 'bg-base-300 hover:bg-base-content/20'
+          }`}
+        onClick={handleTrackClick}
+        style={{ touchAction: 'none' }}
+      >
+        {/* Active range */}
+        <motion.div
+          className="absolute h-full rounded-selector bg-primary"
+          initial={false}
+          animate={{
+            left: `${startPos}%`,
+            width: `${endPos - startPos}%`,
+          }}
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        />
+
+        {/* Start Thumb */}
+        <motion.div
+          className={`absolute w-5 h-5 rounded-selector border-2 shadow-lg cursor-grab transition-all duration-200 ${disabled
+            ? 'bg-base-300 border-base-400 cursor-not-allowed'
+            : dragging === 'start'
+              ? 'bg-primary border-primary scale-110 shadow-xl'
+              : 'bg-primary border-base-100'
+            }`}
+          style={{
+            left: `calc(${startPos}% - 0.625rem)`,
+            top: '50%',
+            transform: 'translateY(-50%)',
+          }}
+          onMouseDown={handleThumbDown('start')}
+          onTouchStart={handleThumbDown('start')}
+          role="slider"
+          aria-valuemin={min}
+          aria-valuemax={end}
+          aria-valuenow={start}
+          aria-label={`Start value: ${start}`}
         >
-          {/* Value badges above thumbs */}
-          <span
-            className="absolute -top-2 left-0 translate-x-[-50%] badge badge-primary text-xs px-2 py-1 select-none pointer-events-none"
-            style={{ left: `calc(${startPercent}% )` }}
-            aria-hidden="true"
-          >
+          {/* Value label above thumb */}
+          <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 badge badge-primary text-xs font-medium px-1.5 py-0.5 rounded-selector shadow-sm border border-base-300 whitespace-nowrap">
             {start}
-          </span>
-          <span
-            className="absolute -top-2 left-0 translate-x-[-50%] badge badge-primary text-xs px-2 py-1 select-none pointer-events-none"
-            style={{ left: `calc(${endPercent}% )` }}
-            aria-hidden="true"
-          >
+          </div>
+        </motion.div>
+
+        {/* End Thumb */}
+        <motion.div
+          className={`absolute w-5 h-5 rounded-selector border-2 shadow-lg cursor-grab transition-all duration-200 ${disabled
+            ? 'bg-base-300 border-base-400 cursor-not-allowed'
+            : dragging === 'end'
+              ? 'bg-primary border-primary scale-110 shadow-xl'
+              : 'bg-primary border-base-100'
+            }`}
+          style={{
+            left: `calc(${endPos}% - 0.625rem)`,
+            top: '50%',
+            transform: 'translateY(-50%)',
+          }}
+          onMouseDown={handleThumbDown('end')}
+          onTouchStart={handleThumbDown('end')}
+          role="slider"
+          aria-valuemin={start}
+          aria-valuemax={max}
+          aria-valuenow={end}
+          aria-label={`End value: ${end}`}
+        >
+          {/* Value label above thumb */}
+          <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 badge badge-primary text-xs font-medium px-1.5 py-0.5 rounded-selector shadow-sm border border-base-300 whitespace-nowrap">
             {end}
-          </span>
-          {/* Track */}
-          <div className="absolute left-0 right-0 h-2 rounded-selector bg-base-300" style={{ top: '50%', transform: 'translateY(-50%)' }} />
-          {/* Selected range */}
-          <div
-            className="absolute h-2 rounded-selector bg-primary"
-            style={{
-              left: `${startPercent}%`,
-              width: `${endPercent - startPercent}%`,
-              top: '50%',
-              transform: 'translateY(-50%)',
-              zIndex: 1,
-            }}
-          />
-          {/* Start thumb */}
-          <div
-            role="slider"
-            tabIndex={0}
-            aria-valuemin={min}
-            aria-valuemax={end}
-            aria-valuenow={start}
-            aria-label="Select start value"
-            className={`absolute w-5 h-5 rounded-selector bg-primary border-2 border-base-100 shadow transition-all duration-100 focus:outline-none focus:ring-2 focus:ring-primary z-10 cursor-pointer ${dragging === 'start' ? 'scale-110' : ''}`}
-            style={{ left: `calc(${startPercent}% - 0.625rem)`, top: '50%', transform: 'translateY(-50%)' }}
-            onMouseDown={onThumbDown('start')}
-            onTouchStart={onThumbDown('start')}
-            onKeyDown={handleThumbKey('start')}
-          />
-          {/* End thumb */}
-          <div
-            role="slider"
-            tabIndex={0}
-            aria-valuemin={start}
-            aria-valuemax={max}
-            aria-valuenow={end}
-            aria-label="Select end value"
-            className={`absolute w-5 h-5 rounded-selector bg-primary border-2 border-base-100 shadow transition-all duration-100 focus:outline-none focus:ring-2 focus:ring-primary z-10 cursor-pointer ${dragging === 'end' ? 'scale-110' : ''}`}
-            style={{ left: `calc(${endPercent}% - 0.625rem)`, top: '50%', transform: 'translateY(-50%)' }}
-            onMouseDown={onThumbDown('end')}
-            onTouchStart={onThumbDown('end')}
-            onKeyDown={handleThumbKey('end')}
-          />
-        </div>
-        {endLabel && <span className="text-xs">{endLabel}</span>}
+          </div>
+        </motion.div>
       </div>
     </div>
   );
