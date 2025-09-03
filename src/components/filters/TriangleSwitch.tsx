@@ -19,18 +19,24 @@ const TRIANGLE_SIDES = [
   { id: 'left', textDy: -16, points: [2, 0] }
 ];
 
-const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
-  options,
-  selected,
-  onSelect,
-  size = 64
-}) => {
-  const polygonRef = useRef<SVGPolygonElement>(null);
-  const radioGroupRef = useRef<HTMLDivElement>(null);
+/**
+ * Custom hook to handle triangle geometry calculations and animation logic for the TriangleSwitch component.
+ * Encapsulates the math for side lengths, perimeter, dash offsets, and smooth transitions between selections.
+ * @param selectedIdx - The index of the currently selected option.
+ * @param polygonRef - Ref to the animated SVG polygon element.
+ * @param radioGroupRef - Ref to the radio group container for accessibility focus.
+ * @param selected - The currently selected option string for focus management.
+ * @returns Object containing sideLengths, perimeter, and dashOffsets for rendering.
+ */
+const useTriangleAnimation = (
+  selectedIdx: number,
+  polygonRef: React.RefObject<SVGPolygonElement | null>,
+  radioGroupRef: React.RefObject<HTMLDivElement | null>,
+  selected: string
+) => {
   const [prevIdx, setPrevIdx] = useState(-1);
-  const selectedIdx = options.indexOf(selected);
 
-  // Calculate geometry once
+  // Calculate geometry once - computes side lengths, perimeter, and dash offsets for the triangle.
   const { sideLengths, perimeter, dashOffsets } = useMemo(() => {
     const sideLengths = TRIANGLE_SIDES.map((_, i) => {
       const [p1, p2] = [POINTS[i], POINTS[(i + 1) % 3]];
@@ -47,7 +53,7 @@ const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
     return { sideLengths, perimeter, dashOffsets };
   }, []);
 
-  // Animation handling
+  // Animation handling - manages smooth transitions between selected options by calculating the shortest path.
   useEffect(() => {
     if (selectedIdx === prevIdx || prevIdx === -1) {
       setPrevIdx(selectedIdx);
@@ -89,11 +95,39 @@ const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
     return () => polygon.removeEventListener('transitionend', handler);
   }, [selectedIdx, prevIdx, dashOffsets, perimeter]);
 
-  // Accessibility focus
+  // Accessibility focus - ensures the selected radio element receives focus for screen readers.
   useEffect(() => {
     const radio = radioGroupRef.current?.querySelector<HTMLElement>(`[aria-label="${selected}"]`);
     radio?.focus();
-  }, [selected]);
+  }, [selected, radioGroupRef]);
+
+  return { sideLengths, perimeter, dashOffsets };
+};
+
+/**
+ * TriangleSwitch component - A unique triangular radio switch with smooth animations and full accessibility support.
+ * Allows selection of one of three options via clicks or keyboard navigation, with visual feedback on the triangle edges.
+ * @param options - Array of three string options to display on the triangle sides.
+ * @param selected - The currently selected option string.
+ * @param onSelect - Callback function invoked when an option is selected.
+ * @param size - Optional size of the SVG (default: 64).
+ */
+const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
+  options,
+  selected,
+  onSelect,
+  size = 64
+}) => {
+  const polygonRef = useRef<SVGPolygonElement>(null);
+  const radioGroupRef = useRef<HTMLDivElement>(null);
+  const selectedIdx = options.indexOf(selected);
+
+  const { sideLengths, perimeter, dashOffsets } = useTriangleAnimation(
+    selectedIdx,
+    polygonRef,
+    radioGroupRef,
+    selected
+  );
 
   return (
     <div
