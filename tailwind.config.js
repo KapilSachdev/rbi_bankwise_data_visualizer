@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        worksans: ["Work Sans", "ui-sans-serif", "system-ui", "sans-serif"],
+        worksans: ["Geist", "ui-sans-serif", "system-ui", "sans-serif"],
       },
     },
   },
