@@ -5,6 +5,28 @@
 }
 
 /* Set global font family fallback */
-html {
-  font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+:root {
+  --font-serif: 'DM Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, serif;
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;
+}
+
+/* Apply fonts to body and headings */
+body {
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+}
+
+code,
+pre {
+  font-family: var(--font-mono);
 }
