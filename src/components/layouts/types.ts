@@ -1,11 +1,11 @@
 
 import { ComponentType } from 'react';
 
-export interface ChartItem<P extends { title?: string } = { title?: string }> {
+export interface ChartItem<P = Record<string, unknown>> {
   component: ComponentType<P>;
   props?: P;
 }
 
-export interface LayoutProps<P extends { title?: string } = { title?: string }> {
+export interface LayoutProps<P = Record<string, unknown>> {
   charts: ChartItem<P>[];
 }

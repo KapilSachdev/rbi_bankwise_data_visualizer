@@ -9,8 +9,6 @@ export function oklchToHex(oklchStr: string): string {
   if (!match) return "#ff9900"; // fallback
 
   let [_, lStr, cStr, hStr] = match;
-  let l = parseFloat(lStr) / 100;
-  let c = parseFloat(cStr);
   // Parse values and normalize
   const L = parseFloat(lStr) / 100; // lightness (0..1)
   const chroma = parseFloat(cStr);

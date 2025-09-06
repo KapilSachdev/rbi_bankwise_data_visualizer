@@ -10,17 +10,17 @@ interface BankTimeSeriesChartProps {
   bankName: string;
   digitalBankingData?: {
     [month: string]: {
-      NEFT?: any[];
-      RTGS?: any[];
-      Mobile_Banking?: any[];
-      Internet_Banking?: any[];
+      NEFT?: unknown[];
+      RTGS?: unknown[];
+      Mobile_Banking?: unknown[];
+      Internet_Banking?: unknown[];
     };
   };
 }
-const BankTimeSeriesChart: FC<BankTimeSeriesChartProps> = ({ bankName, bankData, months, metrics, digitalBankingData }) => {
+const BankTimeSeriesChart: FC<BankTimeSeriesChartProps> = ({ bankName, bankData, months, metrics }) => {
   const chartInstanceRef = useRef<EChartsType | null>(null);
   const chartOption = useMemo(() => {
-    const series = metrics.map((metric, idx) => ({
+    const series = metrics.map((metric) => ({
       name: metric.replace(/_/g, ' '),
       type: 'line',
       smooth: true,

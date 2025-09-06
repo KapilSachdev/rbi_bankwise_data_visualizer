@@ -20,6 +20,17 @@ interface DataFileMeta {
   type?: string;
 }
 
+interface ManifestData {
+  neft?: DataFileMeta[];
+  pos?: DataFileMeta[];
+}
+
+interface ProcessedData {
+  key: string;
+  type: string;
+  data: unknown;
+}
+
 function App() {
   const [layout, setLayout] = useState('grid');
 
@@ -27,39 +38,39 @@ function App() {
   const [files, setFiles] = useState<DataFileMeta[]>([]);
   const [posData, setPosData] = useState<{ [key: string]: { banks: BankData[]; summary?: unknown } }>({});
   // For Digital Banking, keep the full object (with NEFT, RTGS, Mobile_Banking, Internet_Banking arrays)
-  const [digitalBankingData, setDigitalBankingData] = useState<{ [key: string]: any }>({});
+  const [digitalBankingData, setDigitalBankingData] = useState<{ [key: string]: Record<string, unknown> }>({});
 
   useEffect(() => {
     Promise.all([
       fetch(`${DATA_FOLDER.pos}/index.json`).then(res => res.json()),
       fetch(`${DATA_FOLDER.neft}/index.json`).then(res => res.json())
     ])
-      .then(([posManifest, neftManifest]) => {
+      .then(([posManifest, neftManifest]: [ManifestData, ManifestData]) => {
         const allFiles = [
-          ...(neftManifest.neft || []).map((f: any) => ({ ...f, type: 'neft' })),
-          ...(posManifest.pos || []).map((f: any) => ({ ...f, type: 'pos' })),
+          ...(neftManifest.neft || []).map((f: DataFileMeta) => ({ ...f, type: 'neft' })),
+          ...(posManifest.pos || []).map((f: DataFileMeta) => ({ ...f, type: 'pos' })),
         ];
         setFiles(allFiles);
         const allMeta = [
-          ...(neftManifest.neft || []).map((f: any) => ({ ...f, type: 'neft' })),
-          ...(posManifest.pos || []).map((f: any) => ({ ...f, type: 'pos' })),
+          ...(neftManifest.neft || []).map((f: DataFileMeta) => ({ ...f, type: 'neft' })),
+          ...(posManifest.pos || []).map((f: DataFileMeta) => ({ ...f, type: 'pos' })),
         ];
         return Promise.all(
           allMeta.map(f =>
             fetch(`${DATA_FOLDER[f.type]}/${f.file}`)
               .then(res => res.json())
-              .then(data => ({ key: f.key, type: f.type, data }))
+              .then(data => ({ key: f.key, type: f.type, data } as ProcessedData))
           )
         );
       })
-      .then(results => {
+      .then((results: ProcessedData[]) => {
         const pos: { [key: string]: { banks: BankData[]; summary?: unknown } } = {};
-        const digital: { [key: string]: any } = {};
+        const digital: { [key: string]: Record<string, unknown> } = {};
         results.forEach((result) => {
-          const { key, type, data } = result as { key: string; type: string; data: any };
-          if (type === 'pos') pos[key] = data;
+          const { key, type, data } = result;
+          if (type === 'pos') pos[key] = data as { banks: BankData[]; summary?: unknown };
           if (type === 'neft') {
-            digital[key] = data;
+            digital[key] = data as Record<string, unknown>;
           }
         });
         setPosData(pos);

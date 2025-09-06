@@ -35,12 +35,17 @@ export interface CashWithdrawal {
 /**
  * Cash withdrawal details for credit card (ATM only)
  */
-export interface CreditCardCashWithdrawal extends Omit<CashWithdrawal, 'At_PoS'> { }
+export interface CreditCardCashWithdrawal {
+  At_ATM: TxnDetail;
+}
 
 /**
  * Cash withdrawal details for debit card (ATM and optional PoS)
  */
-export interface DebitCardCashWithdrawal extends CashWithdrawal { }
+export interface DebitCardCashWithdrawal {
+  At_ATM: TxnDetail;
+  At_PoS?: TxnDetail;
+}
 
 /**
  * Card payment transactions for a bank
@@ -114,14 +119,14 @@ export interface BankProfileDashboardProps {
   posBanksData: MonthlyBankDataMap;
   digitalBankingData: {
     [month: string]: {
-      NEFT?: any[];
-      RTGS?: any[];
-      Mobile_Banking?: any[];
-      Internet_Banking?: any[];
+      NEFT?: unknown[];
+      RTGS?: unknown[];
+      Mobile_Banking?: unknown[];
+      Internet_Banking?: unknown[];
     };
   };
   months: string[];
-  rtgsBanksData?: { [month: string]: any[] };
-  mobileBanksData?: { [month: string]: any[] };
-  internetBanksData?: { [month: string]: any[] };
+  rtgsBanksData?: { [month: string]: unknown[] };
+  mobileBanksData?: { [month: string]: unknown[] };
+  internetBanksData?: { [month: string]: unknown[] };
 }
