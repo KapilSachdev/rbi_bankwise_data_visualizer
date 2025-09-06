@@ -74,6 +74,68 @@ export interface BankData {
   Card_Payments_Transactions?: CardPaymentsTransactions;
 }
 
+// NEFT Data
+export interface NeftData {
+  Sr_No: number;
+  Bank_Name: string;
+  Bank_Short_Name: string;
+  Bank_Type: string;
+  Received_Inward_Credits: {
+    No: number;
+    Amount: number;
+  };
+  Total_Outward_Debits: {
+    No: number;
+    Amount: number;
+  };
+}
+
+// RTGS Data
+export interface RtgsData {
+  Sr_No: number;
+  Bank_Name: string;
+  Bank_Short_Name: string;
+  Bank_Type: string;
+  Outward_Transactions: {
+    No: number;
+    Amount: number;
+  };
+  Inward_Transactions: {
+    No: number;
+    Amount: number;
+  };
+}
+
+// Mobile Banking Data
+export interface MobileBankingData {
+  Sr_No: number;
+  Bank_Name: string;
+  Bank_Short_Name: string;
+  Bank_Type: string;
+  Volume: number;
+  Value: number;
+  Active_Customers: number;
+}
+
+// Internet Banking Data
+export interface InternetBankingData {
+  Sr_No: number;
+  Bank_Name: string;
+  Bank_Short_Name: string;
+  Bank_Type: string;
+  Volume: number;
+  Value: number;
+  Active_Customers: number;
+}
+
+// Digital Banking Data Structure
+export interface DigitalBankingData {
+  NEFT?: NeftData[];
+  RTGS?: RtgsData[];
+  Mobile_Banking?: MobileBankingData[];
+  Internet_Banking?: InternetBankingData[];
+}
+
 export interface MonthlyBankData {
   month: string; // e.g., '2025-03'
   banks: BankData[];
@@ -118,15 +180,10 @@ export interface DataFilterProps {
 export interface BankProfileDashboardProps {
   posBanksData: MonthlyBankDataMap;
   digitalBankingData: {
-    [month: string]: {
-      NEFT?: unknown[];
-      RTGS?: unknown[];
-      Mobile_Banking?: unknown[];
-      Internet_Banking?: unknown[];
-    };
+    [month: string]: DigitalBankingData;
   };
   months: string[];
-  rtgsBanksData?: { [month: string]: unknown[] };
-  mobileBanksData?: { [month: string]: unknown[] };
-  internetBanksData?: { [month: string]: unknown[] };
+  rtgsBanksData?: { [month: string]: RtgsData[] };
+  mobileBanksData?: { [month: string]: MobileBankingData[] };
+  internetBanksData?: { [month: string]: InternetBankingData[] };
 }
