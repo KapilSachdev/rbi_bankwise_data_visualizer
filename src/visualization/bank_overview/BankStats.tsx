@@ -2,7 +2,6 @@ import { FC, memo, useMemo } from 'react';
 import SVGIcon from '../../components/common/SVGIcon';
 import type { BankData } from '../../types/global.types';
 import { formatCurrency } from '../../utils/currency';
-import { formatMonthYear } from '../../utils/time';
 
 // --- Type Guards and Data Structure Distinction ---
 // PoS data structure (ATM/PoS/Card)
@@ -208,27 +207,9 @@ const BankStats: FC<BankStatsProps> = ({ currentMonth, selectedBankData, prevMon
   const mobile = digitalBankingData?.mobile;
   const internet = digitalBankingData?.internet;
 
-  const monthBadge = useMemo(() => formatMonthYear(currentMonth), [currentMonth]);
-
   return (
     <div className="card bg-base-100 shadow-xl border border-base-300">
       <div className="card-body">
-        {/* Bank Header Section */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
-          <h2 className="card-title text-3xl font-extrabold mb-2 sm:mb-0">
-            {selectedBankData?.Bank_Name}
-          </h2>
-          <div className="flex flex-wrap gap-4 items-center">
-            <div className="badge badge-lg p-2">{selectedBankData?.Bank_Type}</div>
-            <div className="badge badge-lg p-2">{selectedBankData?.Bank_Short_Name}</div>
-            {monthBadge && (
-              <div className="badge badge-info badge-lg p-2" aria-label={`Data for ${monthBadge}`}>
-                {monthBadge}
-              </div>
-            )}
-          </div>
-        </div>
-
         {/* Section 1: Infrastructure (PoS/ATM/Card) */}
         {isPos && (
           <div className="mb-8">

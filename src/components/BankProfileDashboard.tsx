@@ -4,7 +4,7 @@ import type { BankData, BankProfileDashboardProps } from '../types/global.types'
 import BankStats from '../visualization/bank_overview/BankStats';
 import BankTimeSeriesChart from '../visualization/bank_overview/BankTimeSeriesChart';
 import SVGIcon from './common/SVGIcon';
-import { getPreviousMonth } from '../utils/time';
+import { getPreviousMonth, formatMonthYear } from '../utils/time';
 
 const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ months, posBanksData, digitalBankingData }) => {
   const [selectedMonth, setSelectedMonth] = useState<string>('');
@@ -83,52 +83,62 @@ const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ months, posBanksD
   }, [prevMonth, selectedBank, prevInternetBanksForMonth]);
 
   // Handlers
-  const handleMonthSelect = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedMonth(e.target.value);
-  }, []);
-  const handleBankSelect = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedBank(e.target.value);
-  }, []);
+  const handlePrevMonth = useCallback(() => {
+    const currentIndex = months.indexOf(selectedMonth);
+    if (currentIndex < months.length - 1) {
+      setSelectedMonth(months[currentIndex + 1]);
+    }
+  }, [months, selectedMonth]);
+
+  const handleNextMonth = useCallback(() => {
+    const currentIndex = months.indexOf(selectedMonth);
+    if (currentIndex > 0) {
+      setSelectedMonth(months[currentIndex - 1]);
+    }
+  }, [months, selectedMonth]);
 
   // DaisyUI: select, card, alert, divider
   return (
     <div className="container mx-auto p-4 sm:p-8">
-      <div className="flex flex-col md:flex-row gap-4 mb-8">
-        <div className="flex-1">
-          <label className="label" htmlFor="month-select">
-            <span className="label-text">Select Month</span>
-          </label>
-          <select
-            id="month-select"
-            className="select select-bordered w-full"
-            value={selectedMonth}
-            onChange={handleMonthSelect}
-            aria-label="Select Month"
-            disabled={months.length === 0}
-          >
-            {months.map(month => (
-              <option key={month} value={month}>{month}</option>
-            ))}
-          </select>
+      {/* Bank Hero Banner */}
+      {selectedBankData && (
+        <div className="card bg-base-100 shadow-xl border border-base-300 mb-8">
+          <div className="card-body">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between">
+              <div className="flex flex-col">
+                <h2 className="card-title text-3xl font-extrabold mb-2">
+                  {selectedBankData.Bank_Name}
+                </h2>
+                <div className="flex gap-2">
+                  <div className="badge badge-lg p-2">{selectedBankData.Bank_Type}</div>
+                  <div className="badge badge-lg p-2">{selectedBankData.Bank_Short_Name}</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 mt-4 sm:mt-0">
+                <button
+                  className="btn btn-ghost"
+                  onClick={handlePrevMonth}
+                  disabled={months.indexOf(selectedMonth) === months.length - 1}
+                  aria-label="Previous Month"
+                >
+                  <SVGIcon icon="arrow" className="w-6 h-6 rotate-270" />
+                </button>
+                <div className="badge badge-info badge-lg p-2" aria-label={`Data for ${formatMonthYear(selectedMonth)}`}>
+                  {formatMonthYear(selectedMonth)}
+                </div>
+                <button
+                  className="btn btn-ghost"
+                  onClick={handleNextMonth}
+                  disabled={months.indexOf(selectedMonth) === 0}
+                  aria-label="Next Month"
+                >
+                  <SVGIcon icon="arrow" className="w-6 h-6 rotate-90" />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex-1">
-          <label className="label" htmlFor="bank-select">
-            <span className="label-text">Select Bank</span>
-          </label>
-          <select
-            id="bank-select"
-            className="select select-bordered w-full"
-            value={selectedBank}
-            onChange={handleBankSelect}
-            aria-label="Select Bank"
-            disabled={bankNames.length === 0}
-          >
-            {bankNames.map(bankName => (
-              <option key={bankName} value={bankName}>{bankName}</option>
-            ))}
-          </select>
-        </div>
-      </div>
+      )}
 
       {selectedBankData ? (
         <article className='grid gap-4'>
