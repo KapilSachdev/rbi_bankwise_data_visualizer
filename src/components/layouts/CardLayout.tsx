@@ -1,6 +1,6 @@
 
 import { createElement, FC } from "react";
-import type { ChartItem, LayoutProps } from "./types";
+import type { LayoutProps } from "./types";
 
 const CardLayout: FC<LayoutProps> = ({ charts }) => (
   <article className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
@@ -11,7 +11,7 @@ const CardLayout: FC<LayoutProps> = ({ charts }) => (
       return (
         <div
           key={index}
-          className="card bg-base-200/30 p-4 shadow-sm hover:border hover:border-base-300 hover:shadow-lg hover:scale-[1.005] focus:ring-2 focus:ring-primary"
+          className="card bg-base-200/50 p-4 shadow-sm border border-base-100 hover:border hover:border-base-300 hover:shadow-lg focus:ring-1 focus:ring-primary/50"
           tabIndex={0}
           aria-label={chartTitle}
         >
