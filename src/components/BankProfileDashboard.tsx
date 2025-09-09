@@ -1,86 +1,105 @@
-
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import type { BankData, BankProfileDashboardProps } from '../types/global.types';
+import { formatMonthYear, getPreviousMonth } from '../utils/time';
 import BankStats from '../visualization/bank_overview/BankStats';
 import BankTimeSeriesChart from '../visualization/bank_overview/BankTimeSeriesChart';
 import SVGIcon from './common/SVGIcon';
-import { getPreviousMonth, formatMonthYear } from '../utils/time';
+import Typeahead from './common/Typeahead';
+import Pills from './filters/Pills';
 
 const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ months, posBanksData, digitalBankingData }) => {
   const [selectedMonth, setSelectedMonth] = useState<string>('');
   const [selectedBank, setSelectedBank] = useState<string>('');
 
-  // Set default month on mount or months change
+  // Effect to set the initial month and bank selection on mount or data change.
   useEffect(() => {
     if (months.length > 0 && !selectedMonth) {
       setSelectedMonth(months[0]);
     }
-  }, [months, selectedMonth]);
 
-  // Compute previous month before using it
-  const prevMonth = useMemo(() => getPreviousMonth(selectedMonth, months), [selectedMonth, months]);
-  // Get banks for selected month
-  const banksForMonth = useMemo(() => posBanksData[selectedMonth] || [], [posBanksData, selectedMonth]);
-  // Extract NEFT, RTGS, Mobile, Internet arrays from digitalBankingData[selectedMonth] (if present)
-  const neftMonthObj = digitalBankingData[selectedMonth] || {};
-  const prevNeftMonthObj = prevMonth ? (digitalBankingData[prevMonth] || {}) : {};
-  const neftBanksForMonth = Array.isArray(neftMonthObj.NEFT) ? neftMonthObj.NEFT : [];
-  const rtgsBanksForMonth = Array.isArray(neftMonthObj.RTGS) ? neftMonthObj.RTGS : [];
-  const mobileBanksForMonth = Array.isArray(neftMonthObj.Mobile_Banking) ? neftMonthObj.Mobile_Banking : [];
-  const internetBanksForMonth = Array.isArray(neftMonthObj.Internet_Banking) ? neftMonthObj.Internet_Banking : [];
-  const prevNeftBanksForMonth = Array.isArray(prevNeftMonthObj.NEFT) ? prevNeftMonthObj.NEFT : [];
-  const prevRTGSBanksForMonth = Array.isArray(prevNeftMonthObj.RTGS) ? prevNeftMonthObj.RTGS : [];
-  const prevMobileBanksForMonth = Array.isArray(prevNeftMonthObj.Mobile_Banking) ? prevNeftMonthObj.Mobile_Banking : [];
-  const prevInternetBanksForMonth = Array.isArray(prevNeftMonthObj.Internet_Banking) ? prevNeftMonthObj.Internet_Banking : [];
+    const currentMonthBanks = posBanksData[selectedMonth] || [];
 
-  useEffect(() => {
-    if (banksForMonth.length > 0 && !banksForMonth.some(b => b.Bank_Name === selectedBank)) {
-      setSelectedBank(banksForMonth[0].Bank_Name);
-    } else if (banksForMonth.length === 0 && selectedBank) {
+    if (currentMonthBanks.length > 0) {
+      if (!selectedBank || !currentMonthBanks.some(b => b.Bank_Name === selectedBank)) {
+        setSelectedBank(currentMonthBanks[0].Bank_Name);
+      }
+    } else if (selectedBank) {
       setSelectedBank('');
     }
-  }, [banksForMonth, selectedBank]);
+  }, [months, selectedMonth, posBanksData]);
 
-  const bankNames = useMemo(() => banksForMonth.map(b => b.Bank_Name), [banksForMonth]);
-  const selectedBankData = useMemo(() => banksForMonth.find(b => b.Bank_Name === selectedBank) || null, [banksForMonth, selectedBank]);
+  const dashboardData = useMemo(() => {
+    const prevMonth = getPreviousMonth(selectedMonth, months);
+    const banksForMonth = posBanksData[selectedMonth] || [];
+    const selectedBankData = banksForMonth.find(b => b.Bank_Name === selectedBank) || null;
 
-  // Build time series data for selected bank across all months (PoS only)
-  const selectedBankTimeSeriesData = useMemo(() =>
-    // copy months before reversing to avoid mutating the prop passed from parent
-    [...months].reverse().map(month => {
-      const bankArr = posBanksData[month] || [];
-      return bankArr.find(b => b.Bank_Name === selectedBank) || null;
-    }).filter((b): b is BankData => Boolean(b)),
-    [months, posBanksData, selectedBank]
-  );
-  const selectedNeftBankData = useMemo(() => neftBanksForMonth.find(b => b.Bank_Name === selectedBank) || null, [neftBanksForMonth, selectedBank]);
-  const selectedRTGSBankData = useMemo(() => rtgsBanksForMonth.find(b => b.Bank_Name === selectedBank) || null, [rtgsBanksForMonth, selectedBank]);
-  const selectedMobileBankingData = useMemo(() => mobileBanksForMonth.find(b => b.Bank_Name === selectedBank) || null, [mobileBanksForMonth, selectedBank]);
-  const selectedInternetBankingData = useMemo(() => internetBanksForMonth.find(b => b.Bank_Name === selectedBank) || null, [internetBanksForMonth, selectedBank]);
+    const selectedBankTimeSeriesData = [...months].reverse()
+      .map(month => posBanksData[month]?.find(b => b.Bank_Name === selectedBank) || null)
+      .filter((b): b is BankData => Boolean(b));
 
-  // Previous month and previous bank data
-  const prevMonthBankData = useMemo(() => {
-    if (!prevMonth || !selectedBank) return null;
-    const prevBanks = posBanksData[prevMonth] || [];
-    return prevBanks.find(b => b.Bank_Name === selectedBank) || null;
-  }, [prevMonth, selectedBank, posBanksData]);
+    const prevMonthBankData = prevMonth ? (posBanksData[prevMonth]?.find(b => b.Bank_Name === selectedBank) || null) : null;
 
-  const prevMonthNeftBankData = useMemo(() => {
-    if (!prevMonth || !selectedBank) return null;
-    return prevNeftBanksForMonth.find(b => b.Bank_Name === selectedBank) || null;
-  }, [prevMonth, selectedBank, prevNeftBanksForMonth]);
-  const prevMonthRTGSBankData = useMemo(() => {
-    if (!prevMonth || !selectedBank) return null;
-    return prevRTGSBanksForMonth.find(b => b.Bank_Name === selectedBank) || null;
-  }, [prevMonth, selectedBank, prevRTGSBanksForMonth]);
-  const prevMonthMobileBankingData = useMemo(() => {
-    if (!prevMonth || !selectedBank) return null;
-    return prevMobileBanksForMonth.find(b => b.Bank_Name === selectedBank) || null;
-  }, [prevMonth, selectedBank, prevMobileBanksForMonth]);
-  const prevMonthInternetBankingData = useMemo(() => {
-    if (!prevMonth || !selectedBank) return null;
-    return prevInternetBanksForMonth.find(b => b.Bank_Name === selectedBank) || null;
-  }, [prevMonth, selectedBank, prevInternetBanksForMonth]);
+    const getDigitalBankingData = (month: string | null) => {
+      const data = month ? (digitalBankingData[month] || {}) : {};
+      return {
+        neft: Array.isArray(data.NEFT) ? data.NEFT.find(b => b.Bank_Name === selectedBank) || null : null,
+        rtgs: Array.isArray(data.RTGS) ? data.RTGS.find(b => b.Bank_Name === selectedBank) || null : null,
+        mobile: Array.isArray(data.Mobile_Banking) ? data.Mobile_Banking.find(b => b.Bank_Name === selectedBank) || null : null,
+        internet: Array.isArray(data.Internet_Banking) ? data.Internet_Banking.find(b => b.Bank_Name === selectedBank) || null : null,
+      };
+    };
+
+    const currentDigitalBankingData = getDigitalBankingData(selectedMonth);
+    const prevDigitalBankingData = getDigitalBankingData(prevMonth);
+
+    const bankNames = banksForMonth.map(b => b.Bank_Name);
+
+    return {
+      prevMonth,
+      banksForMonth,
+      bankNames,
+      selectedBankData,
+      selectedBankTimeSeriesData,
+      prevMonthBankData,
+      digitalBanking: {
+        neft: { current: currentDigitalBankingData.neft, prev: prevDigitalBankingData.neft },
+        rtgs: { current: currentDigitalBankingData.rtgs, prev: prevDigitalBankingData.rtgs },
+        mobile: { current: currentDigitalBankingData.mobile, prev: prevDigitalBankingData.mobile },
+        internet: { current: currentDigitalBankingData.internet, prev: prevDigitalBankingData.internet },
+      },
+    };
+  }, [selectedMonth, selectedBank, months, posBanksData, digitalBankingData]);
+
+  const {
+    prevMonth,
+    banksForMonth,
+    bankNames,
+    selectedBankData,
+    selectedBankTimeSeriesData,
+    prevMonthBankData,
+    digitalBanking,
+  } = dashboardData;
+
+  const options = useMemo(() =>
+    banksForMonth.map(bank => ({
+      label: bank.Bank_Name,
+      value: bank.Bank_Name,
+      shortName: bank.Bank_Short_Name
+    })), [banksForMonth]);
+
+  const selectedShortName = useMemo(() =>
+    options.find((bank: { value: string; shortName?: string }) => bank.value === selectedBank)?.shortName || '', [options, selectedBank]);
+
+  const handlePillSelect = useCallback((shortName: string) => {
+    const fullName = options.find((bank: { value: string; shortName?: string }) => bank.shortName === shortName)?.value || '';
+    if (fullName) setSelectedBank(fullName);
+  }, [options]);
+
+  const topBankShortNames = useMemo(() =>
+    options
+      .filter((bank: { shortName?: string }) => ['HDFC', 'ICICI', 'SBI', 'AXIS', 'KOTAK', 'IDFCFirst', 'INDUSIND'].includes(bank.shortName || ''))
+      .map((bank: { shortName?: string }) => bank.shortName)
+      .filter(Boolean) as string[], [options]);
 
   // Handlers
   const handlePrevMonth = useCallback(() => {
@@ -97,22 +116,33 @@ const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ months, posBanksD
     }
   }, [months, selectedMonth]);
 
-  // DaisyUI: select, card, alert, divider
+
   return (
     <div className="container mx-auto p-4 sm:p-8">
-      {/* Bank Hero Banner */}
       {selectedBankData && (
         <div className="card bg-base-100 shadow-xl border border-base-300 mb-8">
           <div className="card-body">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between">
-              <div className="flex flex-col">
-                <h2 className="card-title text-3xl font-extrabold mb-2">
-                  {selectedBankData.Bank_Name}
-                </h2>
+              <div className="flex flex-col gap-2">
+                <Typeahead
+                  options={options}
+                  selectedValue={selectedBank}
+                  onSelect={setSelectedBank}
+                  placeholder="Select Bank"
+                  triggerClassName="card-title text-4xl font-extrabold cursor-text"
+                  inputClassName="card-title text-4xl font-extrabold focus:outline-none"
+                />
                 <div className="flex gap-2">
-                  <div className="badge badge-lg p-2">{selectedBankData.Bank_Type}</div>
-                  <div className="badge badge-lg p-2">{selectedBankData.Bank_Short_Name}</div>
+                  <div className="badge badge-xl bg-base-300 p-2">{selectedBankData?.Bank_Type}</div>
+                  <div className="badge badge-xl bg-base-300 p-2">{selectedBankData?.Bank_Short_Name}</div>
                 </div>
+                {/* Quick access to top banks */}
+                <Pills
+                  bankTypes={topBankShortNames}
+                  selected={selectedShortName}
+                  onSelect={handlePillSelect}
+                  showAll={false}
+                />
               </div>
               <div className="flex items-center gap-2 mt-4 sm:mt-0">
                 <button
@@ -146,12 +176,7 @@ const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ months, posBanksD
             currentMonth={selectedMonth}
             selectedBankData={selectedBankData}
             prevMonthBankData={prevMonthBankData}
-            digitalBankingData={{
-              neft: { current: selectedNeftBankData, prev: prevMonthNeftBankData },
-              rtgs: { current: selectedRTGSBankData, prev: prevMonthRTGSBankData },
-              mobile: { current: selectedMobileBankingData, prev: prevMonthMobileBankingData },
-              internet: { current: selectedInternetBankingData, prev: prevMonthInternetBankingData },
-            }}
+            digitalBankingData={digitalBanking}
           />
           <BankTimeSeriesChart
             bankData={selectedBankTimeSeriesData}
