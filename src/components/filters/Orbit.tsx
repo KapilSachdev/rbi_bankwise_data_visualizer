@@ -76,23 +76,22 @@ const OrbitMenu: FC<OrbitMenuProps> = ({
 
   return (
     <div
-      className="relative inline-flex items-center justify-center select-none"
+      className="relative inline-flex items-center justify-center select-none w-14 h-14"
       tabIndex={0}
       aria-label="Orbit filter menu"
       onKeyDown={handleKeyDown}
       onMouseLeave={openOn === 'hover' ? handleClose : undefined}
-      style={{ width: 56, height: 56 }}
     >
       {/* Central planet */}
       <button
         ref={btnRef}
-        className={`btn btn-circle btn-secondary shadow-lg z-20 transition-transform duration-200 ${open ? 'scale-110 ring-4 ring-info/30' : ''}`}
+        className={`btn btn-circle btn-secondary shadow-lg z-40 transition-transform duration-200 ${open ? 'scale-110 ring-4 ring-info/30' : ''}`}
         aria-haspopup="true"
         aria-expanded={open}
         aria-label="Open orbit menu"
         onClick={openOn === 'click' ? handleToggle : undefined}
         onMouseEnter={openOn === 'hover' ? handleOpen : undefined}
-        style={{ boxShadow: open ? '0 0 16px 4px #38bdf8aa' : undefined, zIndex: 40 }}
+        style={{ boxShadow: open ? '0 0 16px 4px #38bdf8aa' : undefined }}
       >
         {centerIcon}
       </button>
@@ -108,7 +107,7 @@ const OrbitMenu: FC<OrbitMenuProps> = ({
               fill="none"
               stroke="#8884"
               strokeWidth="2"
-              style={{ filter: 'blur(0.5px)' }}
+              className="blur-[0.5px]"
             />
           </svg>
           {/* Moons */}

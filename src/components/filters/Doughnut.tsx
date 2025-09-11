@@ -75,7 +75,6 @@ const Doughnut: FC<DoughnutProps> = ({
         width={clampedSize}
         height={clampedSize}
         className="block focus:outline-none"
-        style={{}}
         aria-hidden="true"
       >
         {options.map((option, i) => (

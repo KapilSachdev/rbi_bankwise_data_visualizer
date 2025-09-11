@@ -120,7 +120,7 @@ const CreditCardTimeSeriesChart: FC<CreditCardTimeSeriesChartProps> = ({ allData
         </div>
       </div>
       <div className='grid gap-4'>
-        <div className="flex w-full justify-between gap-4">
+        <div className="flex w-full items-center justify-between gap-6 mb-2">
           <TopNInput
             value={topN}
             min={1}

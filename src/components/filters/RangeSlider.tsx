@@ -123,16 +123,14 @@ const RangeSlider: FC<RangeSliderProps> = ({
       {/* Slider */}
       <div
         ref={trackRef}
-        className={`relative h-2 rounded-selector cursor-pointer transition-colors ${disabled ? 'bg-base-300 cursor-not-allowed' : 'bg-base-300 hover:bg-base-content/20'
+        className={`relative h-2 rounded-selector cursor-pointer transition-colors touch-none ${disabled ? 'bg-base-300 cursor-not-allowed' : 'bg-base-300 hover:bg-base-content/20'
           }`}
         onClick={handleTrackClick}
-        style={{ touchAction: 'none' }}
       >
         {/* Active range */}
         <motion.div
           className="absolute h-full rounded-selector bg-primary"
-          initial={false}
-          animate={{
+          style={{
             left: `${startPos}%`,
             width: `${endPos - startPos}%`,
           }}
@@ -141,7 +139,7 @@ const RangeSlider: FC<RangeSliderProps> = ({
 
         {/* Start Thumb */}
         <motion.div
-          className={`absolute w-5 h-5 rounded-selector border-2 shadow-lg cursor-grab transition-all duration-200 ${disabled
+          className={`absolute w-5 h-5 rounded-selector border-2 shadow-lg cursor-grab transition-all duration-200 top-1/2 -translate-y-1/2 ${disabled
             ? 'bg-base-300 border-base-400 cursor-not-allowed'
             : dragging === 'start'
               ? 'bg-primary border-primary scale-110 shadow-xl'
@@ -149,9 +147,8 @@ const RangeSlider: FC<RangeSliderProps> = ({
             }`}
           style={{
             left: `calc(${startPos}% - 0.625rem)`,
-            top: '50%',
-            transform: 'translateY(-50%)',
           }}
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           onMouseDown={handleThumbDown('start')}
           onTouchStart={handleThumbDown('start')}
           role="slider"
@@ -168,7 +165,7 @@ const RangeSlider: FC<RangeSliderProps> = ({
 
         {/* End Thumb */}
         <motion.div
-          className={`absolute w-5 h-5 rounded-selector border-2 shadow-lg cursor-grab transition-all duration-200 ${disabled
+          className={`absolute w-5 h-5 rounded-selector border-2 shadow-lg cursor-grab transition-all duration-200 top-1/2 -translate-y-1/2 ${disabled
             ? 'bg-base-300 border-base-400 cursor-not-allowed'
             : dragging === 'end'
               ? 'bg-primary border-primary scale-110 shadow-xl'
@@ -176,9 +173,8 @@ const RangeSlider: FC<RangeSliderProps> = ({
             }`}
           style={{
             left: `calc(${endPos}% - 0.625rem)`,
-            top: '50%',
-            transform: 'translateY(-50%)',
           }}
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           onMouseDown={handleThumbDown('end')}
           onTouchStart={handleThumbDown('end')}
           role="slider"

@@ -20,8 +20,7 @@ const Pills: FC<PillsProps> = ({ bankTypes, selected, onSelect, showAll = true }
 
   return (
     <div
-      className="overflow-x-auto w-full scrollbar-none"
-      style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      className="overflow-x-auto w-full scrollbar-hide"
       role="tablist"
       aria-label="Bank type filters"
     >

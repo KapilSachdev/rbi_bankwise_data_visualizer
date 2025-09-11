@@ -58,23 +58,21 @@ const RadialMenu: FC<RadialMenuProps> = ({
 
   return (
     <div
-      className="relative inline-flex items-center justify-center select-none"
+      className="relative inline-flex items-center justify-center select-none w-14 h-14"
       tabIndex={0}
       aria-label="Radial filter menu"
       onKeyDown={handleKeyDown}
       onMouseLeave={openOn === 'hover' ? handleClose : undefined}
-      style={{ width: 56, height: 56 }}
     >
       {/* Center button */}
       <button
         ref={btnRef}
-        className={`btn btn-circle btn-primary shadow-lg z-20 transition-transform duration-200 ${open ? 'scale-110' : ''}`}
+        className={`btn btn-circle btn-primary shadow-lg z-30 transition-transform duration-200 ${open ? 'scale-110' : ''}`}
         aria-haspopup="true"
         aria-expanded={open}
         aria-label={centerLabel}
         onClick={openOn === 'click' ? handleToggle : undefined}
         onMouseEnter={openOn === 'hover' ? handleOpen : undefined}
-        style={{ zIndex: 30 }}
       >
         {centerLabel}
       </button>
