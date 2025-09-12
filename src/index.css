@@ -30,3 +30,7 @@ code,
 pre {
   font-family: var(--font-mono);
 }
+
+@utility scrollbar-none {
+  @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+}
