@@ -7,6 +7,8 @@ import { inspired } from './inspired';
 import { purplePassion } from './purple_passion';
 import { v5 } from './v5';
 import { azul } from './azul';
+import { beeInspired } from './bee_inspired';
+import { wonderland } from './wonderland';
 
 
 export const ECHARTS_THEMES = [
@@ -20,4 +22,6 @@ export const ECHARTS_THEMES = [
   { mode: 'light', name: 'inspired', themeOptions: inspired },
   { mode: 'light', name: 'v5', themeOptions: v5 },
   { mode: 'light', name: 'azul', themeOptions: azul },
+  { mode: 'light', name: 'beeinspired', themeOptions: beeInspired },
+  { mode: 'light', name: 'wonderland', themeOptions: wonderland },
 ];
