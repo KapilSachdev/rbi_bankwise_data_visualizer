@@ -1,6 +1,6 @@
 
 import { BarChart } from 'echarts/charts';
-import { GridComponent, LegendComponent, MarkLineComponent, ToolboxComponent, TooltipComponent, } from 'echarts/components';
+import { GridComponent, LegendComponent, MarkLineComponent, ToolboxComponent, TooltipComponent } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 import { FC, useMemo, useState } from 'react';
@@ -21,7 +21,6 @@ echarts.use([
   CanvasRenderer,
 ]);
 
-
 interface BankInfraBarChartProps {
   allData: Record<string, BankData[]>;
   months: string[];
@@ -39,29 +38,27 @@ const INFRA_METRICS = [
   { label: 'UPI QR Codes', value: 'UPI_QR_Codes' },
 ];
 
-
 const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartRef }) => {
-
   const [topN, setTopN] = useState(5);
   const [metric, setMetric] = useState(INFRA_METRICS[0].value);
-  // Always use the first month in months as selectedMonth, fallback to '' if empty
   const [selectedMonth, setSelectedMonth] = useState<string>(months[0] || '');
   const [selectedBankType, setSelectedBankType] = useState<string>('');
 
-  // Keep selectedMonth in sync with months[0] if months changes
+  // Sync selectedMonth with months[0]
   if (months[0] && selectedMonth !== months[0]) {
     setSelectedMonth(months[0]);
   }
 
-  // Get all unique bank types
-  const bankTypes = BANK_TYPES
+  const bankTypes = BANK_TYPES;
 
-  // Filtered data for chart
+  // Filtered data
   const data = useMemo(() => {
     if (!selectedMonth || !allData[selectedMonth]) return [];
-    let d = allData[selectedMonth] || [];
-    if (selectedBankType) d = d.filter(b => b.Bank_Type === selectedBankType);
-    return d;
+    let filtered = allData[selectedMonth] || [];
+    if (selectedBankType) {
+      filtered = filtered.filter(b => b.Bank_Type === selectedBankType);
+    }
+    return filtered;
   }, [allData, selectedMonth, selectedBankType]);
 
   const getMetricValue = (infra: BankData['Infrastructure'], metricPath: string): number => {
@@ -73,40 +70,31 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartR
       return 0;
     }
     switch (main) {
-      case 'PoS':
-        return infra.PoS;
-      case 'Micro_ATMs':
-        return infra.Micro_ATMs;
-      case 'Bharat_QR_Codes':
-        return infra.Bharat_QR_Codes;
-      case 'UPI_QR_Codes':
-        return infra.UPI_QR_Codes;
-      case 'Credit_Cards':
-        return infra.Credit_Cards;
-      case 'Debit_Cards':
-        return infra.Debit_Cards;
-      default:
-        return 0;
+      case 'PoS': return infra.PoS;
+      case 'Micro_ATMs': return infra.Micro_ATMs;
+      case 'Bharat_QR_Codes': return infra.Bharat_QR_Codes;
+      case 'UPI_QR_Codes': return infra.UPI_QR_Codes;
+      case 'Credit_Cards': return infra.Credit_Cards;
+      case 'Debit_Cards': return infra.Debit_Cards;
+      default: return 0;
     }
   };
 
+  // Sorted top N data
   const sortedData = useMemo(() => {
-    if (!data || data.length === 0) return [];
+    if (!data.length) return [];
     return [...data]
-      .sort((a, b) => {
-        const aVal = getMetricValue(a.Infrastructure, metric);
-        const bVal = getMetricValue(b.Infrastructure, metric);
-        return bVal - aVal;
-      })
+      .sort((a, b) => getMetricValue(b.Infrastructure, metric) - getMetricValue(a.Infrastructure, metric))
       .slice(0, topN);
   }, [data, topN, metric]);
 
+  // ECharts option
   const option = useMemo(() => ({
     backgroundColor: 'transparent',
     tooltip: {
       trigger: 'axis',
       axisPointer: { type: 'shadow' },
-      valueFormatter: (value: number) => value.toLocaleString('en-IN')
+      valueFormatter: (value: number) => value.toLocaleString('en-IN'),
     },
     xAxis: {
       type: 'category',
