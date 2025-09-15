@@ -229,7 +229,7 @@ const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
                     'overflow-visible',
                     'transition-all',
                     'duration-200',
-                    isSelected ? 'font-semibold' : 'font-light',
+                    isSelected ? 'font-bold' : 'font-light',
                   ].join(' ')
                 }
                 dy={side.textDy}
