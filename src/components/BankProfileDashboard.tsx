@@ -85,6 +85,12 @@ const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ months, posBanksD
       shortName: bank.Bank_Short_Name
     })), [banksForMonth]);
 
+  const monthOptions = useMemo(() =>
+    months.map(month => ({
+      label: formatMonthYear(month),
+      value: month
+    })), [months]);
+
   const selectedShortName = useMemo(() =>
     options.find((bank: { value: string; shortName?: string }) => bank.value === selectedBank)?.shortName || '', [options, selectedBank]);
 
@@ -144,23 +150,32 @@ const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ months, posBanksD
               </div>
               <div className="flex items-center gap-2 mt-4 sm:mt-0">
                 <button
-                  className="btn btn-ghost"
+                  className="btn btn-ghost btn-sm"
                   onClick={handlePrevMonth}
                   disabled={months.indexOf(selectedMonth) === months.length - 1}
                   aria-label="Previous Month"
+                  title="Previous Month"
                 >
-                  <SVGIcon icon="arrow" className="w-6 h-6 rotate-270" />
+                  <SVGIcon icon="arrow" className="w-5 h-5 rotate-270" />
                 </button>
-                <div className="badge badge-info badge-lg p-2" aria-label={`Data for ${formatMonthYear(selectedMonth)}`}>
-                  {formatMonthYear(selectedMonth)}
+                <div className="flex-1 min-w-0 w-full">
+                  <Typeahead
+                    options={monthOptions}
+                    selectedValue={selectedMonth}
+                    onSelect={setSelectedMonth}
+                    placeholder="Select Month"
+                    triggerClassName="badge badge-info badge-lg justify-center"
+                    inputClassName="focus:outline-none"
+                  />
                 </div>
                 <button
-                  className="btn btn-ghost"
+                  className="btn btn-ghost btn-sm"
                   onClick={handleNextMonth}
                   disabled={months.indexOf(selectedMonth) === 0}
                   aria-label="Next Month"
+                  title="Next Month"
                 >
-                  <SVGIcon icon="arrow" className="w-6 h-6 rotate-90" />
+                  <SVGIcon icon="arrow" className="w-5 h-5 rotate-90" />
                 </button>
               </div>
             </div>
