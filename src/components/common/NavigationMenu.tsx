@@ -26,7 +26,7 @@ const NavigationMenu: FC = () => {
 
   // Handler for menu navigation and closing dropdown
   const handleMenuClick = (path: string) => {
-    navigate(path);
+    void navigate(path);
     if (document.activeElement instanceof HTMLElement) {
       document.activeElement.blur();
     }

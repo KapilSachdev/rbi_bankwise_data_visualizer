@@ -65,7 +65,7 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartR
     const [main, sub] = metricPath.split('.');
     if (sub) {
       if (main === 'ATMs_CRMs' && (sub === 'On_site' || sub === 'Off_site')) {
-        return infra.ATMs_CRMs[sub as 'On_site' | 'Off_site'];
+        return infra.ATMs_CRMs[sub];
       }
       return 0;
     }

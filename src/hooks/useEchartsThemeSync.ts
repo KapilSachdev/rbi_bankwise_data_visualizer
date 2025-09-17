@@ -21,8 +21,8 @@ export function useEchartsThemeSync() {
   );
 
   useEffect(() => {
-    const handler = (e: CustomEvent) => {
-      if (e.detail?.theme) setEchartsTheme(e.detail.theme);
+    const handler = (e: CustomEvent<{ theme: string }>) => {
+      setEchartsTheme(e.detail.theme);
     };
     window.addEventListener('echarts-theme-change', handler as EventListener);
     // On mount, set from localStorage in case it changed externally

@@ -64,7 +64,7 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
             ? (debit?.at_PoS?.Volume || 0) + (debit?.Online_ecom?.Volume || 0)
             : (credit?.at_PoS?.Volume || 0) + (credit?.Online_ecom?.Volume || 0) + (debit?.at_PoS?.Volume || 0) + (debit?.Online_ecom?.Volume || 0);
         if (!bankMap.has(bank)) {
-          bankMap.set(bank, { name: bank, values: Array(filteredMonths.length).fill(0) });
+          bankMap.set(bank, { name: bank, values: new Array<number>(filteredMonths.length).fill(0) });
         }
         bankMap.get(bank)!.values[mi] = value;
       });

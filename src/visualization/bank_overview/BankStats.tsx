@@ -1,4 +1,4 @@
-import { FC, memo, useMemo } from 'react';
+import { FC, memo } from 'react';
 import SVGIcon from '../../components/common/SVGIcon';
 import type { BankData } from '../../types/global.types';
 import { formatCurrency } from '../../utils/currency';
@@ -191,7 +191,7 @@ const STAT_ITEMS_CONFIG = [
 ];
 
 // Main BankStats component
-const BankStats: FC<BankStatsProps> = ({ currentMonth, selectedBankData, prevMonthBankData, digitalBankingData }) => {
+const BankStats: FC<BankStatsProps> = ({ currentMonth: _currentMonth, selectedBankData, prevMonthBankData, digitalBankingData }) => {
   if (!selectedBankData) {
     return null;
   }
@@ -215,7 +215,7 @@ const BankStats: FC<BankStatsProps> = ({ currentMonth, selectedBankData, prevMon
           <div className="mb-8">
             <h3 className="font-bold text-lg mb-2">ATM / PoS / Card Infrastructure</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-2 rounded-selector">
-              {STAT_ITEMS_CONFIG.map((item, index) => (
+              {STAT_ITEMS_CONFIG.map((item, _index) => (
                 <StatItem
                   key={item.title}
                   title={item.title}

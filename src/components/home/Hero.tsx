@@ -1,9 +1,6 @@
 
 
 import React from 'react';
-import Circle from '../../components/animations/Circle';
-import Square from '../../components/animations/Square';
-import Triangle from '../../components/animations/Triangle';
 
 export const Hero: React.FC = () => {
   return (

@@ -71,9 +71,7 @@ const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ months, posBanksD
   }, [selectedMonth, selectedBank, months, posBanksData, digitalBankingData]);
 
   const {
-    prevMonth,
     banksForMonth,
-    bankNames,
     selectedBankData,
     selectedBankTimeSeriesData,
     prevMonthBankData,

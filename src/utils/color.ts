@@ -8,7 +8,7 @@ export function oklchToHex(oklchStr: string): string {
   const match = oklchStr.match(/oklch\(\s*([\d.]+)%\s+([\d.]+)\s+([\d.]+)\s*\)/i);
   if (!match) return "#ff9900"; // fallback
 
-  let [_, lStr, cStr, hStr] = match;
+  const [_, lStr, cStr, hStr] = match;
   // Parse values and normalize
   const L = parseFloat(lStr) / 100; // lightness (0..1)
   const chroma = parseFloat(cStr);
