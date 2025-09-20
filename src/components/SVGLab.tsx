@@ -2,14 +2,9 @@ import { useState } from 'react';
 import SVGIcon from './common/SVGIcon';
 
 const iconNames = [
-  'menu',
-  'chart',
-  'paint_roller',
-  'github',
-  'grid',
-  'layers',
-  'info',
-  'arrow',
+  'menu', 'chart', 'paint_roller', 'github',
+  'grid', 'layers', 'info', 'arrow',
+  'credit-card', 'nested_circle', 'smartphone', 'triangle',
 ];
 
 const SVGLab: React.FC = () => {
