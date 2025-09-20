@@ -87,10 +87,10 @@ export const getTargetDate = (arg) => {
     return { year, month };
   }
 
-  // Default to current month minus 2
+  // Default to current month minus 1 (previous month)
   const now = new Date();
   let year = now.getFullYear();
-  let month = now.getMonth() + 1 - 2; // getMonth() is 0-indexed, so +1 for actual month, then -2
+  let month = now.getMonth() + 1 - 1; // getMonth() is 0-indexed, so +1 for actual month, then -1
   if (month < 1) {
     month += 12;
     year -= 1;
