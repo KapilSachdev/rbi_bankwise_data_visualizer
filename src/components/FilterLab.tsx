@@ -7,6 +7,7 @@ import RadialMenu from './filters/Radial';
 import TriangleSwitch from './filters/TriangleSwitch';
 import OrbitMenu from './filters/Orbit';
 import Doughnut from './filters/Doughnut';
+import Typeahead from './common/Typeahead';
 import { BANK_TYPES } from '../constants/data';
 
 
@@ -32,10 +33,36 @@ const FilterLab: React.FC = () => {
   const doughnutOptions = ['Retail', 'Corporate', 'SME', 'Agri', 'Other'];
   const [doughnut, setDoughnut] = useState(doughnutOptions[0]);
 
+  // Typeahead
+  const typeaheadOptions = [
+    { label: 'State Bank of India', value: 'State Bank of India', shortName: 'SBI' },
+    { label: 'HDFC Bank', value: 'HDFC Bank', shortName: 'HDFC' },
+    { label: 'ICICI Bank', value: 'ICICI Bank', shortName: 'ICICI' },
+    { label: 'Axis Bank', value: 'Axis Bank', shortName: 'AXIS' },
+    { label: 'Kotak Mahindra Bank', value: 'Kotak Mahindra Bank', shortName: 'KOTAK' },
+    { label: 'IndusInd Bank', value: 'IndusInd Bank', shortName: 'INDUSIND' },
+    { label: 'IDFC First Bank', value: 'IDFC First Bank', shortName: 'IDFCFirst' },
+    { label: 'Bank of Baroda', value: 'Bank of Baroda', shortName: 'BOB' },
+  ];
+
+  const [typeahead, setTypeahead] = useState(typeaheadOptions[0].value);
+
   return (
     <section className="p-6">
       <h1 className="text-3xl font-bold mb-6">Filter Lab</h1>
       <div className="grid gap-8 grid-cols-2 md:grid-cols-4">
+        <div className="card bg-base-100 shadow border border-base-300">
+          <div className="card-body">
+            <h2 className="card-title">Typeahead Search</h2>
+            <Typeahead
+              options={typeaheadOptions}
+              selectedValue={typeahead}
+              onSelect={setTypeahead}
+              placeholder="Search banks..."
+            />
+            <div className="mt-2 text-xs opacity-70">Selected: {typeahead}</div>
+          </div>
+        </div>
         <div className="card bg-base-100 shadow border border-base-300">
           <div className="card-body">
             <h2 className="card-title">Pills</h2>

@@ -23,8 +23,8 @@ const Typeahead: FC<TypeaheadProps> = ({
   onSelect,
   placeholder = 'Select...',
   displayFormat = (option) => option.label,
-  triggerClassName = 'cursor-pointer',
-  inputClassName = 'focus:outline-none bg-transparent'
+  triggerClassName = '',
+  inputClassName = 'focus:outline-none'
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
