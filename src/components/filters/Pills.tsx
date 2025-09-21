@@ -27,7 +27,7 @@ const Pills: FC<PillsProps> = ({ bankTypes, selected, onSelect, showAll = true }
       <div className="gap-2 rounded-selector px-1 py-1 shadow flex-nowrap inline-flex min-w-max">
         {showAll && (
           <motion.button
-            className={`btn btn-xs rounded-selector px-4 font-medium transition-all ${!selected ? 'btn-primary btn-active' : 'btn-soft'
+            className={`btn btn-xs rounded-selector px-4 font-medium ${!selected ? 'btn-primary btn-active' : 'btn-soft'
               }`}
             aria-pressed={!selected}
             onClick={() => onSelect('')}
@@ -40,7 +40,7 @@ const Pills: FC<PillsProps> = ({ bankTypes, selected, onSelect, showAll = true }
         {bankTypes.map((type) => (
           <motion.button
             key={type}
-            className={`btn btn-xs rounded-selector px-4 font-medium transition-all ${selected === type ? 'btn-primary btn-active' : 'btn-soft'
+            className={`btn btn-xs rounded-selector px-4 font-medium ${selected === type ? 'btn-primary btn-active' : 'btn-soft'
               }`}
             aria-pressed={selected === type}
             onClick={() => onSelect(type)}
