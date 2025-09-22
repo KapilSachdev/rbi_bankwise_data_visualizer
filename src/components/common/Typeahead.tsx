@@ -113,11 +113,12 @@ const Typeahead: FC<TypeaheadProps> = ({
         </div>
       ) : (
         <h1
-          className={`${triggerClassName} p-2 w-full border border-transparent`}
+          className={`${triggerClassName} group p-2 w-full border border-transparent cursor-text`}
           onClick={() => setIsOpen(true)}
           aria-label="Select"
         >
-          {selectedOption ? displayFormat(selectedOption) : placeholder}
+          <span className="opacity-0 group-hover:opacity-100 group-hover:animate-blink">|</span>
+          <span className="group-hover:opacity-50">{selectedOption ? displayFormat(selectedOption) : placeholder}</span>
         </h1>
       )}
     </>

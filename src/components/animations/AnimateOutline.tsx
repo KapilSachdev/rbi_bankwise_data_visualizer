@@ -1,6 +1,5 @@
 
-import { useRef, useEffect, cloneElement } from 'react';
-import './animations.css';
+import { cloneElement, useEffect, useRef } from 'react';
 
 /**
  * AnimateOutline wraps a single SVG shape and animates its outline using CSS keyframes.
