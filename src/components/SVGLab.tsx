@@ -12,20 +12,20 @@ const SVGLab: React.FC = () => {
   const filteredIcons = iconNames.filter(name => name.toLowerCase().includes(search.toLowerCase()));
 
   return (
-    <section className="p-6">
-      <h1 className="text-3xl font-bold mb-6">SVG Lab</h1>
+    <section className="p-4 sm:p-8">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-8">SVG Lab</h1>
       <input
         type="text"
-        className="input input-bordered w-full mb-6"
+        className="input input-bordered w-full mb-4 sm:mb-8"
         placeholder="Search icons..."
         value={search}
         onChange={e => setSearch(e.target.value)}
         aria-label="Search icons"
       />
-      <div className="grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      <div className="grid gap-8 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
         {filteredIcons.map(name => (
-          <div key={name} className="flex flex-col items-center p-4 bg-base-100 rounded-selector border border-base-300 shadow hover:shadow-lg transition">
-            <SVGIcon icon={name} className="size-24 mb-2 text-primary" />
+          <div key={name} className="flex flex-col items-center p-2 sm:p-4 bg-base-100 rounded-selector border border-base-300 shadow hover:shadow-lg transition">
+            <SVGIcon icon={name} className="size-16 sm:size-20 md:size-24 mb-2 text-primary" />
             <span className="text-xs font-mono select-all break-all text-base-content/80">{name}</span>
           </div>
         ))}
