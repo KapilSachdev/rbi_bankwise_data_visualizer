@@ -117,8 +117,8 @@ const Typeahead: FC<TypeaheadProps> = ({
           onClick={() => setIsOpen(true)}
           aria-label="Select"
         >
-          <span className="opacity-0 group-hover:opacity-100 group-hover:animate-ping">|</span>
-          <span className="group-hover:opacity-70">{selectedOption ? displayFormat(selectedOption) : placeholder}</span>
+          <span className="opacity-0 group-hover:opacity-100 group-hover:animate-pulse">|</span>
+          <span className="group-hover:opacity-50">{selectedOption ? displayFormat(selectedOption) : placeholder}</span>
         </h1>
       )}
     </>
