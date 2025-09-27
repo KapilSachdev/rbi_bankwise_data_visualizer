@@ -101,7 +101,7 @@ const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ months, posBanksD
 
   const topBankShortNames = useMemo(() =>
     options
-      .filter((bank: { shortName?: string }) => ['HDFC', 'ICICI', 'SBI', 'AXIS', 'KOTAK', 'IDFCFirst', 'INDUSIND'].includes(bank.shortName || ''))
+      .filter((bank: { shortName?: string }) => ['HDFC', 'ICICI', 'SBI', 'AXIS', 'KOTAK', 'IDFCFirst', 'INDUSIND', 'HSBC', 'AMEX', 'AUSFB'].includes(bank.shortName || ''))
       .map((bank: { shortName?: string }) => bank.shortName)
       .filter(Boolean) as string[], [options]);
 
@@ -140,13 +140,15 @@ const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ months, posBanksD
                   <div className="badge badge-xl bg-base-300 p-2">{selectedBankData?.Bank_Type}</div>
                   <div className="badge badge-xl bg-base-300 p-2">{selectedBankData?.Bank_Short_Name}</div>
                 </div>
-                {/* Quick access to top banks */}
-                <Pills
-                  bankTypes={topBankShortNames}
-                  selected={selectedShortName}
-                  onSelect={handlePillSelect}
-                  showAll={false}
-                />
+                <div className="grid">
+                  {/* Quick access to top banks */}
+                  <Pills
+                    bankTypes={topBankShortNames}
+                    selected={selectedShortName}
+                    onSelect={handlePillSelect}
+                    showAll={false}
+                  />
+                </div>
               </div>
               <div className="flex items-center gap-2 mt-4 sm:mt-0">
                 <button
