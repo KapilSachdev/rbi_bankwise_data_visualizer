@@ -2,12 +2,10 @@ import { FC, memo, useCallback, useEffect, useState } from 'react';
 import { ECHARTS_THEMES, UI_THEMES } from '../../constants/themes';
 import { setEchartsThemeName } from '../../hooks/useEchartsThemeSync';
 import { oklchToHex } from '../../utils/color';
-import SVGIcon from './SVGIcon';
 import GithubLogo from '../icons/GithubLogo';
-import NavigationMenu from './NavigationMenu';
 import LayoutSwitcher from '../layouts/LayoutSwitcher';
-
-
+import NavigationMenu from './NavigationMenu';
+import SVGIcon from './SVGIcon';
 
 const THEME_KEY = 'theme';
 
@@ -23,7 +21,6 @@ const getSavedTheme = (): string | null => {
 interface ChartThemeButtonProps {
   uiTheme: string | null;
 }
-
 
 const ChartThemeButton: FC<ChartThemeButtonProps> = ({ uiTheme }) => {
   const [currentTheme, setCurrentTheme] = useState<string>(() => localStorage.getItem('echarts-theme') || ECHARTS_THEMES[0].name);
@@ -107,7 +104,7 @@ const FloatingDock: FC = () => {
 
 
   return (
-    <div className="fixed z-50 flex items-center gap-6 bg-base-100 p-4 w-full bottom-0 sm:w-auto sm:bg-transparent sm:bottom-4 sm:right-4 sm:flex-col sm:gap-2">
+    <div className="fixed z-50 flex gap-6 bg-base-100 p-4 w-full bottom-0 sm:w-auto sm:bg-transparent sm:bottom-4 sm:right-4 sm:flex-col sm:gap-2">
       {/* Github repository link */}
       <a
         href="https://www.github.com/kapilsachdev/rbi_bankwise_data_visualizer/"
@@ -132,10 +129,7 @@ const FloatingDock: FC = () => {
 
       <ChartThemeButton uiTheme={lastTheme} />
 
-      {/* Layout Switcher docked here */}
-      <div className="w-full flex flex-col items-center">
-        <LayoutSwitcher />
-      </div>
+      <LayoutSwitcher />
 
       <NavigationMenu />
     </div>
