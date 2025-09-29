@@ -104,7 +104,7 @@ const FloatingDock: FC = () => {
 
 
   return (
-    <div className="fixed z-50 flex gap-6 bg-base-100 p-4 w-full bottom-0 sm:w-auto sm:bg-transparent sm:bottom-4 sm:right-4 sm:flex-col sm:gap-2">
+    <div className="fixed z-50 flex justify-between gap-6 bg-base-100 p-4 w-full bottom-0 sm:w-auto sm:bg-transparent sm:bottom-4 sm:right-4 sm:flex-col sm:gap-2">
       {/* Github repository link */}
       <a
         href="https://www.github.com/kapilsachdev/rbi_bankwise_data_visualizer/"
