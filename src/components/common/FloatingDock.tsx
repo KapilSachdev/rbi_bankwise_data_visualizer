@@ -106,31 +106,22 @@ const FloatingDock: FC = () => {
   return (
     <div className="fixed z-50 flex justify-between gap-6 bg-base-100 p-4 w-full bottom-0 sm:w-auto sm:bg-transparent sm:bottom-4 sm:right-4 sm:flex-col sm:gap-2">
       {/* Github repository link */}
-      <a
-        href="https://www.github.com/kapilsachdev/rbi_bankwise_data_visualizer/"
-        target="_blank"
-        className="cursor-pointer text-primary sm:mb-10"
-        rel="noopener noreferrer"
-        aria-label="Project Home Page"
-      >
+      <a href="https://www.github.com/kapilsachdev/rbi_bankwise_data_visualizer/" target="_blank" className="cursor-pointer text-primary sm:mb-10" rel="noopener noreferrer" aria-label="Project Source Code" >
         <GithubLogo className="size-6 md:size-10" animationClassName="animated-outline" duration={3000} />
       </a>
 
       {/* Theme randomizer */}
-      <a
-        role="button"
-        className="cursor-pointer text-primary"
-        aria-label="Randomise Theme"
-        title={lastTheme ? `${lastTheme}` : 'Randomise'}
-        onClick={handleRandomTheme}
-      >
+      <a role="button" className="cursor-pointer text-primary" aria-label="Randomise Theme" title={lastTheme ? `${lastTheme}` : 'Randomise'} onClick={handleRandomTheme} >
         <SVGIcon icon="paint_roller" className="size-6 md:size-10" />
       </a>
 
+      {/* ECharts theme switcher */}
       <ChartThemeButton uiTheme={lastTheme} />
 
+      {/* Layout switcher */}
       <LayoutSwitcher />
 
+      {/* Navigation Menu */}
       <NavigationMenu />
     </div>
   );

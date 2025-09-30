@@ -1,5 +1,5 @@
-import { FC, useMemo, useRef } from 'react';
 import type { EChartsType } from 'echarts/core';
+import { FC, useMemo, useRef } from 'react';
 import EChartsContainer from '../../components/common/EChartsContainer';
 import type { BankData } from '../../types/global.types';
 
@@ -18,6 +18,7 @@ interface BankTimeSeriesChartProps {
   };
 }
 const BankTimeSeriesChart: FC<BankTimeSeriesChartProps> = ({ bankName, bankData, months, metrics }) => {
+  const ascMonths = useMemo(() => [...months].sort(), [months]);
   const chartInstanceRef = useRef<EChartsType | null>(null);
   const chartOption = useMemo(() => {
     const series = metrics.map((metric) => ({
@@ -35,7 +36,7 @@ const BankTimeSeriesChart: FC<BankTimeSeriesChartProps> = ({ bankName, bankData,
       grid: { left: 40, right: 20, top: 50, bottom: 40 },
       xAxis: {
         type: 'category',
-        data: months,
+        data: ascMonths,
         axisLabel: { rotate: 45, fontWeight: 500 }
       },
       yAxis: {
@@ -44,7 +45,7 @@ const BankTimeSeriesChart: FC<BankTimeSeriesChartProps> = ({ bankName, bankData,
       },
       series
     };
-  }, [bankData, metrics, months]);
+  }, [bankData, metrics, ascMonths]);
   return (
     <div className="card bg-base-100 shadow border-base-300 mb-8">
       <div className="card-body">

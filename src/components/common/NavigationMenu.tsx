@@ -11,8 +11,8 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   { label: 'SVG Lab', icon: 'paint_roller', path: '/svg_lab' },
   { label: 'Filter Lab', icon: 'filter', path: '/filter_lab' },
-  { label: 'Bank Profile', icon: 'bank', path: '/bank_profile' },
   { label: 'Credit Card', icon: 'credit_card', path: '/cards' },
+  { label: 'Bank Profile', icon: 'bank', path: '/bank_profile' },
   { label: 'Home', icon: 'home', path: '/' },
 ];
 
