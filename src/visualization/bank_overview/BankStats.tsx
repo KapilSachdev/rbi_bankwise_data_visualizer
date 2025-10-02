@@ -103,7 +103,7 @@ const MoMIndicator: FC<MoMIndicatorProps> = memo(({ currentValue, previousValue 
   const isNegative = absChange < 0;
   const isZero = absChange === 0;
 
-  const sign = isPositive ? '+' : '';
+  const sign = isPositive ? '+' : '-';
 
   const colorClass = isPositive
     ? 'bg-success/10 text-success border-success'
@@ -151,11 +151,9 @@ interface StatItemProps {
 }
 
 export const StatItem: FC<StatItemProps> = memo(({ title, value, currentValueForMoM, previousValueForMoM }) => (
-  <div className="stat place-items-center p-2 text-sm bg-transparent">
-    <div className="stat-title text-xs text-base-content/70">{title}</div>
-    <div className="stat-value text-lg font-semibold">
-      {value !== undefined && value !== null && value !== '' ? value : '-'}
-    </div>
+  <div className="stat place-items-center p-2 bg-transparent">
+    <div className="stat-title text-lg text-base-content">{title}</div>
+    <div className="stat-value text-lg">{formatCurrency(value) || '-'}</div>
     <div className="stat-desc flex items-center gap-2">
       <MoMIndicator currentValue={currentValueForMoM} previousValue={previousValueForMoM} />
     </div>
@@ -180,14 +178,14 @@ interface BankStatsProps {
 
 // Configuration for StatItems to reduce repetition
 const STAT_ITEMS_CONFIG = [
-  { title: "UPI QR Codes", valuePath: (data: BankData) => data.Infrastructure?.UPI_QR_Codes },
   { title: "Credit Cards", valuePath: (data: BankData) => data.Infrastructure?.Credit_Cards },
   { title: "Debit Cards", valuePath: (data: BankData) => data.Infrastructure?.Debit_Cards },
+  { title: "UPI QR Codes", valuePath: (data: BankData) => data.Infrastructure?.UPI_QR_Codes },
+  { title: "Bharat QR Codes", valuePath: (data: BankData) => data.Infrastructure?.Bharat_QR_Codes },
+  { title: "PoS Terminals", valuePath: (data: BankData) => data.Infrastructure?.PoS },
   { title: "On-site ATMs", valuePath: (data: BankData) => data.Infrastructure?.ATMs_CRMs?.On_site },
   { title: "Off-site ATMs", valuePath: (data: BankData) => data.Infrastructure?.ATMs_CRMs?.Off_site },
-  { title: "PoS Terminals", valuePath: (data: BankData) => data.Infrastructure?.PoS },
   { title: "Micro ATMs", valuePath: (data: BankData) => data.Infrastructure?.Micro_ATMs },
-  { title: "Bharat QR Codes", valuePath: (data: BankData) => data.Infrastructure?.Bharat_QR_Codes },
 ];
 
 // Main BankStats component

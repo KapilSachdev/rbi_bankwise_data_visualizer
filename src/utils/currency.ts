@@ -1,5 +1,5 @@
 // Convert numbers to indian currency format
-export function formatCurrency(value: number): string {
+export function formatCurrency(value: number | string | undefined): string {
   if (value === null || value === undefined) return '';
   const options: Intl.NumberFormatOptions = {
     style: 'currency',
@@ -7,5 +7,5 @@ export function formatCurrency(value: number): string {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   };
-  return new Intl.NumberFormat('en-IN', options).format(value);
+  return new Intl.NumberFormat('en-IN', options).format(value as number);
 }
