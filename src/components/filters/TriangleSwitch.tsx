@@ -148,7 +148,6 @@ const TriangleSwitch: React.FC<TriangleSwitchProps> = ({
           shapeRendering: 'geometricPrecision',
           textRendering: 'geometricPrecision'
         }}
-        aria-hidden="true"
       >
         {/* Static triangle outline */}
         <polygon

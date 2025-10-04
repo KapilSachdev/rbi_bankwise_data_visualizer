@@ -78,7 +78,7 @@ const FloatingDock: FC = () => {
   }, []);
 
 
-  const updateMetaTheme = (mode: string | 'light' | 'dark') => {
+  const updateMetaTheme = (mode: string) => {
     let primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim();
     if (primaryColor.startsWith('oklch')) {
       primaryColor = oklchToHex(primaryColor);

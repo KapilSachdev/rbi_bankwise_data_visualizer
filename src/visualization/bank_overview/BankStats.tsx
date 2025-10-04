@@ -12,24 +12,24 @@ export interface PosBankData extends BankData {
 }
 
 // Type guards for runtime type checking
-export function isPosBankData(data: any): data is PosBankData {
-  return data && typeof data === 'object' && 'Infrastructure' in data;
+export function isPosBankData(data: unknown): data is PosBankData {
+  return data !== null && typeof data === 'object' && 'Infrastructure' in data;
 }
 
-export function isNEFTBankData(data: any): data is NEFT {
-  return data && typeof data === 'object' && 'Received_Inward_Credits' in data && 'Total_Outward_Debits' in data;
+export function isNEFTBankData(data: unknown): data is NEFT {
+  return data !== null && typeof data === 'object' && 'Received_Inward_Credits' in data && 'Total_Outward_Debits' in data;
 }
 
-export function isRTGSBankData(data: any): data is RTGS {
-  return data && typeof data === 'object' && 'Outward_Transactions' in data && 'Inward_Transactions' in data;
+export function isRTGSBankData(data: unknown): data is RTGS {
+  return data !== null && typeof data === 'object' && 'Outward_Transactions' in data && 'Inward_Transactions' in data;
 }
 
-export function isMobileBankingData(data: any): data is MobileBanking {
-  return data && typeof data === 'object' && 'Volume' in data && 'Value' in data && 'Active_Customers' in data && !('Received_Inward_Credits' in data);
+export function isMobileBankingData(data: unknown): data is MobileBanking {
+  return data !== null && typeof data === 'object' && 'Volume' in data && 'Value' in data && 'Active_Customers' in data && !('Received_Inward_Credits' in data);
 }
 
-export function isInternetBankingData(data: any): data is InternetBanking {
-  return data && typeof data === 'object' && 'Volume' in data && 'Value' in data && 'Active_Customers' in data && !('Outward_Transactions' in data);
+export function isInternetBankingData(data: unknown): data is InternetBanking {
+  return data !== null && typeof data === 'object' && 'Volume' in data && 'Value' in data && 'Active_Customers' in data && !('Outward_Transactions' in data);
 }
 
 // Utility to safely calculate Month-over-Month (MoM)
