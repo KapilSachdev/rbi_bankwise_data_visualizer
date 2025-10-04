@@ -75,7 +75,7 @@ export interface BankData {
 }
 
 // NEFT Data
-export interface NeftData {
+export interface NEFT {
   Sr_No: number;
   Bank_Name: string;
   Bank_Short_Name: string;
@@ -91,7 +91,7 @@ export interface NeftData {
 }
 
 // RTGS Data
-export interface RtgsData {
+export interface RTGS {
   Sr_No: number;
   Bank_Name: string;
   Bank_Short_Name: string;
@@ -107,7 +107,7 @@ export interface RtgsData {
 }
 
 // Mobile Banking Data
-export interface MobileBankingData {
+export interface MobileBanking {
   Sr_No: number;
   Bank_Name: string;
   Bank_Short_Name: string;
@@ -118,7 +118,7 @@ export interface MobileBankingData {
 }
 
 // Internet Banking Data
-export interface InternetBankingData {
+export interface InternetBanking {
   Sr_No: number;
   Bank_Name: string;
   Bank_Short_Name: string;
@@ -130,10 +130,10 @@ export interface InternetBankingData {
 
 // Digital Banking Data Structure
 export interface DigitalBankingData {
-  NEFT?: NeftData[];
-  RTGS?: RtgsData[];
-  Mobile_Banking?: MobileBankingData[];
-  Internet_Banking?: InternetBankingData[];
+  NEFT?: NEFT[];
+  RTGS?: RTGS[];
+  Mobile_Banking?: MobileBanking[];
+  Internet_Banking?: InternetBanking[];
 }
 
 export interface MonthlyBankData {
@@ -183,7 +183,7 @@ export interface BankProfileDashboardProps {
     [month: string]: DigitalBankingData;
   };
   months: string[];
-  rtgsBanksData?: { [month: string]: RtgsData[] };
-  mobileBanksData?: { [month: string]: MobileBankingData[] };
-  internetBanksData?: { [month: string]: InternetBankingData[] };
+  rtgsBanksData?: { [month: string]: RTGS[] };
+  mobileBanksData?: { [month: string]: MobileBanking[] };
+  internetBanksData?: { [month: string]: InternetBanking[] };
 }
