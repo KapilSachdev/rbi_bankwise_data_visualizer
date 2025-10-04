@@ -1,7 +1,8 @@
 import { FC, memo } from 'react';
 import SVGIcon from '../../components/common/SVGIcon';
-import type { BankData } from '../../types/global.types';
-import { formatCurrency } from '../../utils/currency';
+import type { BankData, NEFT, RTGS, MobileBanking, InternetBanking } from '../../types/global.types';
+import { formatCurrency } from '../../utils/number';
+import { formatNumber } from '../../utils/number';
 
 // --- Type Guards and Data Structure Distinction ---
 // PoS data structure (ATM/PoS/Card)
@@ -10,66 +11,24 @@ export interface PosBankData extends BankData {
   Card_Payments_Transactions?: BankData['Card_Payments_Transactions'];
 }
 
-// NEFT data structure
-export interface NEFTBankData {
-  Sr_No: number;
-  Bank_Name: string;
-  Bank_Short_Name: string;
-  Bank_Type: string;
-  Received_Inward_Credits: { No: number; Amount: number };
-  Total_Outward_Debits: { No: number; Amount: number };
-}
-
-// RTGS data structure
-export interface RTGSBankData {
-  Sr_No: number;
-  Bank_Name: string;
-  Bank_Short_Name: string;
-  Bank_Type: string;
-  Outward_Transactions: { No: number; Amount: number };
-  Inward_Transactions: { No: number; Amount: number };
-}
-
-// Mobile Banking data structure
-export interface MobileBankingData {
-  Sr_No: number;
-  Bank_Name: string;
-  Bank_Short_Name: string;
-  Bank_Type: string;
-  Volume: number;
-  Value: number;
-  Active_Customers: number;
-}
-
-// Internet Banking data structure
-export interface InternetBankingData {
-  Sr_No: number;
-  Bank_Name: string;
-  Bank_Short_Name: string;
-  Bank_Type: string;
-  Volume: number;
-  Value: number;
-  Active_Customers: number;
-}
-
 // Type guards for runtime type checking
 export function isPosBankData(data: any): data is PosBankData {
   return data && typeof data === 'object' && 'Infrastructure' in data;
 }
 
-export function isNEFTBankData(data: any): data is NEFTBankData {
+export function isNEFTBankData(data: any): data is NEFT {
   return data && typeof data === 'object' && 'Received_Inward_Credits' in data && 'Total_Outward_Debits' in data;
 }
 
-export function isRTGSBankData(data: any): data is RTGSBankData {
+export function isRTGSBankData(data: any): data is RTGS {
   return data && typeof data === 'object' && 'Outward_Transactions' in data && 'Inward_Transactions' in data;
 }
 
-export function isMobileBankingData(data: any): data is MobileBankingData {
+export function isMobileBankingData(data: any): data is MobileBanking {
   return data && typeof data === 'object' && 'Volume' in data && 'Value' in data && 'Active_Customers' in data && !('Received_Inward_Credits' in data);
 }
 
-export function isInternetBankingData(data: any): data is InternetBankingData {
+export function isInternetBankingData(data: any): data is InternetBanking {
   return data && typeof data === 'object' && 'Volume' in data && 'Value' in data && 'Active_Customers' in data && !('Outward_Transactions' in data);
 }
 
@@ -153,7 +112,7 @@ interface StatItemProps {
 export const StatItem: FC<StatItemProps> = memo(({ title, value, currentValueForMoM, previousValueForMoM }) => (
   <div className="stat place-items-center p-2 bg-transparent">
     <div className="stat-title text-lg text-base-content">{title}</div>
-    <div className="stat-value text-lg">{formatCurrency(value) || '-'}</div>
+    <div className="stat-value text-lg tooltip" data-tip={formatNumber(value, false)}>{formatNumber(value) || '-'}</div>
     <div className="stat-desc flex items-center gap-2">
       <MoMIndicator currentValue={currentValueForMoM} previousValue={previousValueForMoM} />
     </div>
@@ -163,10 +122,10 @@ export const StatItem: FC<StatItemProps> = memo(({ title, value, currentValueFor
 StatItem.displayName = 'StatItem';
 
 interface DigitalBankingData {
-  neft?: { current: NEFTBankData | null, prev: NEFTBankData | null };
-  rtgs?: { current: RTGSBankData | null, prev: RTGSBankData | null };
-  mobile?: { current: MobileBankingData | null, prev: MobileBankingData | null };
-  internet?: { current: InternetBankingData | null, prev: InternetBankingData | null };
+  neft?: { current: NEFT | null, prev: NEFT | null };
+  rtgs?: { current: RTGS | null, prev: RTGS | null };
+  mobile?: { current: MobileBanking | null, prev: MobileBanking | null };
+  internet?: { current: InternetBanking | null, prev: InternetBanking | null };
 }
 
 interface BankStatsProps {
