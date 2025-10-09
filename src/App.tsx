@@ -1,16 +1,17 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import BankProfileDashboard from './components/BankProfileDashboard';
 import FloatingDock from './components/common/FloatingDock';
-import { DATA_FOLDER } from './constants/data';
 import CreditCardDashboard from './components/CreditCardDashboard';
 import Dashboard from './components/Dashboard';
-import FilterLab from './components/FilterLab';
-import SVGLab from './components/SVGLab';
-
-import BankProfileDashboard from './components/BankProfileDashboard';
+import { DATA_FOLDER } from './constants/data';
 
 import { LayoutContext } from './context/LayoutContext';
 import type { BankData } from './types/global.types';
+
+// Lazy load rarely used components
+const FilterLab = lazy(() => import('./components/FilterLab'));
+const SVGLab = lazy(() => import('./components/SVGLab'));
 
 
 interface DataFileMeta {
@@ -93,33 +94,35 @@ function App() {
       <main className="grid min-h-screen">
         {/* Persistent dock, theme, and global UI here */}
         <FloatingDock />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Dashboard
-                posBanksData={posBanksData}
-                months={months}
-              />
-            }
-          />
-          <Route
-            path="/cards"
-            element={<CreditCardDashboard posBanksData={posBanksData} months={months} />}
-          />
-          <Route path="/filter_lab" element={<FilterLab />} />
-          <Route path="/svg_lab" element={<SVGLab />} />
-          <Route
-            path="/bank_profile"
-            element={
-              <BankProfileDashboard
-                posBanksData={posBanksData}
-                digitalBankingData={digitalBankingData}
-                months={months}
-              />
-            }
-          />
-        </Routes>
+        <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading...</div>}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Dashboard
+                  posBanksData={posBanksData}
+                  months={months}
+                />
+              }
+            />
+            <Route
+              path="/cards"
+              element={<CreditCardDashboard posBanksData={posBanksData} months={months} />}
+            />
+            <Route path="/filter_lab" element={<FilterLab />} />
+            <Route path="/svg_lab" element={<SVGLab />} />
+            <Route
+              path="/bank_profile"
+              element={
+                <BankProfileDashboard
+                  posBanksData={posBanksData}
+                  digitalBankingData={digitalBankingData}
+                  months={months}
+                />
+              }
+            />
+          </Routes>
+        </Suspense>
       </main>
     </LayoutContext.Provider>
   );
