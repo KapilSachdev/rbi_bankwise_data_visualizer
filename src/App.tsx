@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router';
 import BankProfileDashboard from './components/BankProfileDashboard';
 import FloatingDock from './components/common/FloatingDock';
 import CreditCardDashboard from './components/CreditCardDashboard';
