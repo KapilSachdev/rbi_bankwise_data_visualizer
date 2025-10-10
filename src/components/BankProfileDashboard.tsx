@@ -1,5 +1,6 @@
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
-import type { BankData, BankProfileDashboardProps } from '../types/global.types';
+import type { BankData } from '../types/global.types';
+import { useAppData } from '../context/DataContext';
 import { formatMonthYear, getPreviousMonth } from '../utils/time';
 import BankStats from '../visualization/bank_overview/BankStats';
 import BankTimeSeriesChart from '../visualization/bank_overview/BankTimeSeriesChart';
@@ -7,7 +8,8 @@ import SVGIcon from './common/SVGIcon';
 import Typeahead from './common/Typeahead';
 import Pills from './filters/Pills';
 
-const BankProfileDashboard: FC<BankProfileDashboardProps> = ({ months, posBanksData, digitalBankingData }) => {
+const BankProfileDashboard: FC = () => {
+  const { months, posBanksData, digitalBankingData } = useAppData();
   const [selectedMonth, setSelectedMonth] = useState<string>('');
   const [selectedBank, setSelectedBank] = useState<string>('');
 

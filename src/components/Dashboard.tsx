@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { LayoutContext } from '../context/LayoutContext';
+import { useAppData } from '../context/DataContext';
 import { BankData } from '../types/global.types';
 import { formatMonthYear } from '../utils/time';
 import { BankTypeStackedAreaChart, InfraBarChart, TopMoversLineChart } from '../visualization/components';
@@ -7,12 +8,8 @@ import { TimeSeriesChart } from '../visualization/cards';
 import { AccordionLayout, CardLayout } from './layouts';
 import type { ChartItem } from './layouts/types';
 
-interface DashboardProps {
-  posBanksData: { [key: string]: BankData[] };
-  months: string[];
-}
-
-const Dashboard: React.FC<DashboardProps> = ({ posBanksData, months }) => {
+const Dashboard: React.FC = () => {
+  const { posBanksData, months } = useAppData();
   const { layout } = useContext(LayoutContext);
 
   const charts: ChartItem<any>[] = [

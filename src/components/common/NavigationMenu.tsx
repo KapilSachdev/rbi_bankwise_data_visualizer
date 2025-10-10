@@ -26,7 +26,8 @@ const NavigationMenu: FC = () => {
 
   // Handler for menu navigation and closing dropdown
   const handleMenuClick = (path: string) => {
-    void navigate(path);
+    // Explicitly ignore the returned promise to satisfy the linter
+    void navigate(path, { viewTransition: true });
     if (document.activeElement instanceof HTMLElement) {
       document.activeElement.blur();
     }
