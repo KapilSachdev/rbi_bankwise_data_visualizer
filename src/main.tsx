@@ -1,11 +1,12 @@
-import { StrictMode, lazy } from 'react';
+import { lazy, StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createHashRouter, RouterProvider } from 'react-router';
-import './index.css';
 import App from './App';
+import Loading from './components/common/Loading';
+import CreditCardDashboard from './components/CreditCardDashboard';
+import Dashboard from './components/Dashboard';
+import './index.css';
 
-const Dashboard = lazy(() => import('./components/Dashboard'));
-const CreditCardDashboard = lazy(() => import('./components/CreditCardDashboard'));
 const BankProfileDashboard = lazy(() => import('./components/BankProfileDashboard'));
 const FilterLab = lazy(() => import('./components/FilterLab'));
 const SVGLab = lazy(() => import('./components/SVGLab'));
@@ -26,6 +27,8 @@ const router = createHashRouter([
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Suspense fallback={<Loading />}>
+      <RouterProvider router={router} />
+    </Suspense>
   </StrictMode>
 );
