@@ -48,7 +48,7 @@ const FilterLab: React.FC = () => {
   const [typeahead, setTypeahead] = useState(typeaheadOptions[0].value);
 
   return (
-    <section className="p-6">
+    <section className="p-4 sm:p-8">
       <h1 className="text-3xl font-bold mb-6">Filter Lab</h1>
       <div className="grid gap-8 grid-cols-2 md:grid-cols-4">
         <div className="card bg-base-100 shadow border border-base-300">

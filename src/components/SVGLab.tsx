@@ -13,7 +13,7 @@ const SVGLab: React.FC = () => {
 
   return (
     <section className="p-4 sm:p-8">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-8">SVG Lab</h1>
+      <h1 className="text-3xl font-bold mb-6">SVG Lab</h1>
       <input
         type="text"
         className="input input-bordered w-full mb-4 sm:mb-8"
