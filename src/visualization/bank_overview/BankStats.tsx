@@ -1,8 +1,7 @@
 import { FC, memo } from 'react';
 import SVGIcon from '../../components/common/SVGIcon';
-import type { BankData, NEFT, RTGS, MobileBanking, InternetBanking } from '../../types/global.types';
-import { formatCurrency } from '../../utils/number';
-import { formatNumber } from '../../utils/number';
+import type { BankData, InternetBanking, MobileBanking, NEFT, RTGS } from '../../types/global.types';
+import { formatCurrency, formatNumber } from '../../utils/number';
 
 // --- Type Guards and Data Structure Distinction ---
 // PoS data structure (ATM/PoS/Card)
@@ -73,16 +72,16 @@ const MoMIndicator: FC<MoMIndicatorProps> = memo(({ currentValue, previousValue 
   const rotateClass = isPositive ? '' : isNegative ? 'rotate-180' : 'rotate-90';
 
   const ariaLabel = isPositive
-    ? `Increased by ${absChange.toLocaleString()} (${percent.toFixed(1)}%) from last month`
+    ? `Increased by ${formatNumber(absChange, false)} (${percent.toFixed(1)}%) from last month`
     : isNegative
-      ? `Decreased by ${Math.abs(absChange).toLocaleString()} (${Math.abs(percent).toFixed(1)}%) from last month`
+      ? `Decreased by ${formatNumber(Math.abs(absChange), false)} (${Math.abs(percent).toFixed(1)}%) from last month`
       : 'No change from last month';
 
   return (
     <span
-      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-selector border font-semibold text-xs shadow-sm ${colorClass} transition-all duration-200`}
+      className={`inline-flex items-center tooltip tooltip-bottom gap-1 px-2 py-0.5 rounded-selector border font-semibold text-xs shadow-sm ${colorClass} transition-all duration-200`}
       aria-label={ariaLabel}
-      title={ariaLabel}
+      data-tip={ariaLabel}
     >
       <span className="inline-flex items-center justify-center w-4 h-4 rounded-selector mr-1">
         <SVGIcon icon='triangle' className={`w-3 h-3 ${rotateClass}`} aria-hidden="true" />
@@ -91,7 +90,7 @@ const MoMIndicator: FC<MoMIndicatorProps> = memo(({ currentValue, previousValue 
         'No change'
       ) : (
         <>
-          {sign}{Math.abs(absChange).toLocaleString()}
+          {sign}{formatNumber(Math.abs(absChange))}
           <span className="text-sm opacity-70 ml-0.5">({sign}{Math.abs(percent).toFixed(1)}%)</span>
         </>
       )}
