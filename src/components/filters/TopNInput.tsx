@@ -74,7 +74,7 @@ const TopNInput: FC<TopNInputProps> = ({
           max={max}
           value={value}
           onChange={handleInputChange}
-          className="input input-xs input-ghost w-10 sm:w-12 text-base-content text-center appearance-none"
+          className="input input-xs input-ghost w-12 sm:w-14 text-base-content text-center appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-inner-spin-button]:m-0 [&]:[-moz-appearance:textfield]"
           aria-label={`Show top N ${label}`}
           title={`Current: ${value}. Min: ${min}, Max: ${max}`}
         />
