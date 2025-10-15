@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { useNavigate, useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
+import { closeDropdown } from '../../utils/dropdown';
 import SVGIcon from './SVGIcon';
 
 interface MenuItem {
@@ -28,9 +29,7 @@ const NavigationMenu: FC = () => {
   const handleMenuClick = (path: string) => {
     // Explicitly ignore the returned promise to satisfy the linter
     void navigate(path, { viewTransition: true });
-    if (document.activeElement instanceof HTMLElement) {
-      document.activeElement.blur();
-    }
+    closeDropdown();
   };
 
   return (
