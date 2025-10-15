@@ -80,4 +80,7 @@ export const beeInspired = {
       },
     },
   },
+  line: {
+    emphasis: { focus: 'series' },
+  },
 };

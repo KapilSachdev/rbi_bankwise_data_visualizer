@@ -92,6 +92,7 @@ export const infographic = {
       itemStyle: {
         borderWidth: 0,
       },
+      focus: 'series',
     },
     symbol: 'circle',
     symbolSize: 3.5,

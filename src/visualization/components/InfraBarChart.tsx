@@ -112,7 +112,6 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartR
         type: 'bar',
         name: INFRA_METRICS.find(m => m.value === metric)?.label || '',
         data: sortedData.map(item => getMetricValue(item.Infrastructure, metric)),
-        emphasis: { focus: 'series' },
       },
     ],
     toolbox: {

@@ -215,6 +215,9 @@ export const chalk = {
     itemStyle: {
       borderWidth: 4,
     },
+    emphasis: {
+      focus: 'series',
+    },
   },
   graph: {
     lineStyle: {

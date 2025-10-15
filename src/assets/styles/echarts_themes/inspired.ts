@@ -47,6 +47,9 @@ export const inspired = {
     itemStyle: { color: '#ff9900' },
     linkStyle: { color: '#cc0000' },
   },
+  line: {
+    emphasis: { focus: 'series' },
+  },
   gauge: {
     axisLine: {
       lineStyle: {

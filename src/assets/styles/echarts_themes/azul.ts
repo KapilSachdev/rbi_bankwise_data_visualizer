@@ -35,6 +35,9 @@ export const azul = {
     fillerColor: 'rgba(200,200,200,0.2)',
     handleColor: '#f2385a',
   },
+  line: {
+    emphasis: { focus: 'series' },
+  },
   timeline: {
     lineStyle: {
       color: '#f2385a',

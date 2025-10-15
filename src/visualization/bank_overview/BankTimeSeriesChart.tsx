@@ -27,7 +27,6 @@ const BankTimeSeriesChart: FC<BankTimeSeriesChartProps> = ({ bankName, bankData,
       smooth: true,
       showSymbol: false,
       data: bankData.map(d => d.Infrastructure?.[metric] ?? null),
-      emphasis: { focus: 'series' }
     }));
     return {
       backgroundColor: 'transparent',

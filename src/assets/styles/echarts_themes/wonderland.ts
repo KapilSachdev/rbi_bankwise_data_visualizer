@@ -78,6 +78,10 @@ export const wonderland = {
     linkStyle: { color: '#cccccc' },
   },
 
+  line: {
+    emphasis: { focus: 'series' },
+  },
+
   map: {
     itemStyle: { color: '#eeeeee' },
     areaStyle: { color: '#eeeeee' },

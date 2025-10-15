@@ -207,6 +207,9 @@ export const essos = {
     itemStyle: {
       borderWidth: 2,
     },
+    emphasis: {
+      focus: 'series',
+    },
   },
   graph: {
     lineStyle: {

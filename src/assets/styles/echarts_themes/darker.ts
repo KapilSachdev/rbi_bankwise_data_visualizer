@@ -218,6 +218,7 @@ export const darker = {
     itemStyle: {
       borderWidth: 1,
     },
+    emphasis: { focus: 'series' },
   },
   graph: {
     lineStyle: {

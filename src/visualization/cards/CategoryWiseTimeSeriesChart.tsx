@@ -185,10 +185,6 @@ const CategoryWiseTimeSeriesChart: FC<CategoryWiseTimeSeriesChartProps> = ({
       smooth: true,
       // Use array.find for data points to ensure correct month alignment
       data: filteredMonths.map((m) => bank.values.find((v) => v.month === m)?.value ?? 0),
-      // Add emphasis style on hover
-      emphasis: {
-        focus: 'series',
-      },
       // Optional: Add stack to see cumulative values if desired, otherwise remove
       // stack: 'Total',
     })),

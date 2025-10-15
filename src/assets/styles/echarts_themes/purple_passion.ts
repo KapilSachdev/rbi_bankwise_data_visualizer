@@ -200,6 +200,9 @@ export const purplePassion = {
     itemStyle: {
       borderWidth: 2,
     },
+    emphasis: {
+      focus: 'series',
+    },
   },
   graph: {
     lineStyle: {

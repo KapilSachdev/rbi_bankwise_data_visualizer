@@ -18,7 +18,12 @@ export const v5 = {
   },
   graph: { lineStyle: { color: '#aaa' }, select: { itemStyle: { borderColor: '#212121' } } },
   heatmap: { select: { itemStyle: { borderColor: '#212121' } } },
-  line: { symbolSize: 4 },
+  // Line series defaults
+  line: {
+    symbolSize: 4,
+    // Ensure emphasis focuses the whole series when hovering
+    emphasis: { focus: 'series' },
+  },
   pictorialBar: { select: { itemStyle: { borderColor: '#212121', borderWidth: 1 } } },
   pie: { radius: [0, '75%'], labelLine: { length2: 15 } },
   map: {
