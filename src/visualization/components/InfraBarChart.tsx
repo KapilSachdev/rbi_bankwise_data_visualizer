@@ -10,6 +10,7 @@ import TopNInput from '../../components/filters/TopNInput';
 import { BANK_TYPES } from '../../constants/data';
 import type { BankData } from '../../types/global.types';
 import { formatMonthYear } from '../../utils/time';
+import { closeDropdown } from '../../utils/dropdown';
 
 echarts.use([
   TooltipComponent,
@@ -147,7 +148,7 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartR
             <div className="dropdown mt-1">
               <button
                 popoverTarget="metric-dropdown"
-                className="btn btn-sm btn-outline w-full justify-between text-base-content"
+                className="btn btn-sm btn-outline w-full justify-between text-base-content min-w-40"
                 type="button"
                 aria-haspopup="listbox"
                 aria-expanded="false"
@@ -164,7 +165,10 @@ const BankInfraBarChart: FC<BankInfraBarChartProps> = ({ allData, months, chartR
                   <li key={opt.value}>
                     <button
                       className={`w-full text-left px-4 py-2 ${metric === opt.value ? 'bg-primary text-primary-content' : 'text-base-content'}`}
-                      onClick={() => setMetric(opt.value)}
+                      onClick={() => {
+                        setMetric(opt.value);
+                        closeDropdown();
+                      }}
                       role="option"
                       aria-selected={metric === opt.value}
                     >
