@@ -4,12 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indian Banking Data Chart Visualizer - RBI Statistics & Trends</title>
   <meta name="description"
-    content="A data visualizer for Indian banks using RBI data releases. It provides insights into the banking sector's performance and trends." />
-  <meta name="keywords" content="Indian banking, RBI data, data visualization, banking sector, financial trends" />
+    content="Explore Indian banking data with interactive chart visualizations. Get insights into RBI statistics, bank performance, and trends for SBI, HDFC, ICICI, and more." />
+  <meta name="keywords"
+    content="Indian banking data, RBI statistics, banking trends India, bank performance, financial data visualization, SBI, HDFC, ICICI, banking sector India" />
   <meta name="author" content="Kapil Sachdev" />
   <meta name="theme-color" content="#ff9900" />
-  <title>Indian banking data visualizer</title>
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://kapilsachdev.github.io/rbi_bankwise_data_visualizer/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <!-- Google Fonts: DM Sans, Fira Code (display=swap) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,12 +21,32 @@
     rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <!-- Open Graph / SEO -->
-  <meta property="og:title" content="Indian banking data visualizer" />
+  <meta property="og:title" content="Indian Banking Data Chart Visualizer Analysis" />
   <meta property="og:description"
-    content="A data visualizer for Indian banks using RBI data releases. It provides insights into the banking sector's performance and trends." />
+    content="Explore Indian banking data with interactive visualizations. Get insights into RBI statistics, bank performance, and trends." />
   <meta property="og:type" content="website" />
-  <!-- Replace with your site URL when deployed -->
-  <meta property="og:url" content="/" />
+  <meta property="og:url" content="https://kapilsachdev.github.io/rbi_bankwise_data_visualizer/" />
+  <meta property="og:image" content="/public/assets/icons/chart.png" />
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Indian Banking Data Chart Visualizer - RBI Statistics & Trends" />
+  <meta name="twitter:description"
+    content="Explore Indian banking data with interactive visualizations. Get insights into RBI statistics, bank performance, and trends." />
+  <meta name="twitter:image" content="/public/assets/icons/chart.png" />
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Indian Banking Data Chart Visualizer - RBI Statistics & Trends",
+      "url": "https://kapilsachdev.github.io/rbi_bankwise_data_visualizer/",
+      "description": "Explore and analyse Indian banking data with interactive visualizations. Get insights into bank performance and trends for all Indian banks.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "KapilSachdev"
+      }
+    }
+  </script>
   <meta name="color-scheme" content="light dark" />
   <style>
     .preloader {
@@ -74,14 +98,17 @@
 </head>
 
 <body class="bg-gradient-to-br from-base-200 via-base-100 to-base-300 min-h-screen">
-  <div id="root" class="container mx-auto">
-    <div id="preloader" class="preloader">
-      <div class="loader">
-        <div class="ball"></div>
-        <div class="line"></div>
+  <main>
+    <h1 class="sr-only">Indian Banking Data Visualizer – RBI Statistics & Trends</h1>
+    <div id="root" class="container mx-auto">
+      <div id="preloader" class="preloader">
+        <div class="loader">
+          <div class="ball"></div>
+          <div class="line"></div>
+        </div>
       </div>
     </div>
-  </div>
+  </main>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 
