@@ -113,9 +113,6 @@ const BankTypeStackedAreaChart: FC<BankTypeStackedAreaChartProps> = ({ allData, 
           tabIndex={0}
           onInit={instance => { if (chartRef) chartRef.current = instance; }}
         />
-        <div className="text-xs text-base-content/60 mt-2">
-          Card transactions volume by bank type over time.
-        </div>
       </div>
     </div>
   );
