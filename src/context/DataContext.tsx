@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
-import type { BankData } from '../types/global.types';
+import type { BankData, DigitalBankingData } from '../types/global.types';
 import { DATA_FOLDER } from '../constants/data';
 
 // Small typed fetch helper
@@ -29,7 +29,7 @@ interface ProcessedData {
 
 export interface AppDataContextValue {
   posBanksData: { [key: string]: BankData[] };
-  digitalBankingData: { [key: string]: Record<string, unknown> };
+  digitalBankingData: { [key: string]: DigitalBankingData };
   months: string[];
   isLoading: boolean;
   error: Error | null;
