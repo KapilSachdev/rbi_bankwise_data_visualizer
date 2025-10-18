@@ -85,7 +85,7 @@ const OrbitMenu: FC<OrbitMenuProps> = ({
       {/* Central planet */}
       <button
         ref={btnRef}
-        className={`btn btn-circle btn-secondary shadow-lg z-40 transition-transform duration-200 ${open ? 'scale-110 ring-4 ring-info/30' : ''}`}
+        className={`btn btn-circle btn-secondary shadow-lg z-30 transition-transform duration-200 ${open ? 'scale-110 ring-4 ring-info/30' : ''}`}
         aria-haspopup="true"
         aria-expanded={open}
         aria-label="Open orbit menu"
@@ -97,7 +97,7 @@ const OrbitMenu: FC<OrbitMenuProps> = ({
       </button>
       {/* Orbit ring and moons overlay */}
       {open && center && (
-        <div className="fixed inset-0 z-50 pointer-events-none">
+        <div className="fixed inset-0 z-40 pointer-events-none">
           {/* Orbit ring */}
           <svg style={{ position: 'absolute', left: center.x - radius, top: center.y - radius, pointerEvents: 'none', zIndex: 30 }} width={radius * 2} height={radius * 2}>
             <circle
