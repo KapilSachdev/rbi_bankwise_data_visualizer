@@ -51,10 +51,10 @@ const ChartThemeButton: FC<ChartThemeButtonProps> = ({ uiTheme }) => {
   return (
     <a
       role="button"
-      className="cursor-pointer text-primary"
+      className="cursor-pointer text-primary tooltip tooltip-primary tooltip-left"
       aria-label="Randomise Chart Theme"
       onClick={handleNextTheme}
-      title={`Chart Theme: ${currentTheme}`}
+      data-tip={`Chart Theme: ${currentTheme}`}
     >
       <SVGIcon icon="chart" className="size-6 md:size-10" />
     </a>
@@ -111,7 +111,7 @@ const FloatingDock: FC = () => {
       </a>
 
       {/* Theme randomizer */}
-      <a role="button" className="cursor-pointer text-primary" aria-label="Randomise Theme" title={lastTheme ? `${lastTheme}` : 'Randomise'} onClick={handleRandomTheme} >
+      <a role="button" className="cursor-pointer text-primary tooltip tooltip-primary tooltip-left" aria-label="Randomise Theme" data-tip={lastTheme ? `UI Theme: ${lastTheme}` : 'Randomise'} onClick={handleRandomTheme} >
         <SVGIcon icon="paint_roller" className="size-6 md:size-10" />
       </a>
 
