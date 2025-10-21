@@ -14,6 +14,7 @@ const menuItems: MenuItem[] = [
   { label: 'Filter Lab', icon: 'filter', path: '/filter_lab' },
   { label: 'Credit Card', icon: 'credit_card', path: '/cards' },
   { label: 'Bank Profile', icon: 'bank', path: '/bank_profile' },
+  { label: 'Dashboard', icon: 'dashboard', path: '/dashboard' },
   { label: 'Home', icon: 'home', path: '/' },
 ];
 

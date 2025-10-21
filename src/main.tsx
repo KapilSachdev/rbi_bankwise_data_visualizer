@@ -5,6 +5,7 @@ import App from './App';
 import Loading from './components/common/Loading';
 import CreditCardDashboard from './components/CreditCardDashboard';
 import Dashboard from './components/Dashboard';
+import Home from './components/Home';
 import './index.css';
 
 const BankProfileDashboard = lazy(() => import('./components/BankProfileDashboard'));
@@ -17,6 +18,7 @@ const router = createHashRouter([
     element: <App />, // root layout loads data and shows Outlet
     children: [
       { index: true, element: <Dashboard /> },
+      { path: 'dashboard', element: <Home /> },
       { path: 'cards', element: <CreditCardDashboard /> },
       { path: 'bank_profile', element: <BankProfileDashboard /> },
       { path: 'filter_lab', element: <FilterLab /> },
