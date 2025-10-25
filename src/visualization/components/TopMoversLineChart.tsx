@@ -105,7 +105,7 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
   return (
     <div className="flex flex-col gap-4 justify-between h-full">
       <div className="text-lg text-center font-medium">
-        Number of {selectedMetric.charAt(0).toUpperCase() + selectedMetric.slice(1)} Card Transactions of Top {topNState} Banks
+        {selectedMetric.charAt(0).toUpperCase() + selectedMetric.slice(1)} Card Transactions of Top {topNState} Banks
       </div>
       <div className="grid gap-2">
 

@@ -4,12 +4,13 @@ import { ECHARTS_THEMES } from '../assets/styles/echarts_themes';
 
 /**
  * Utility to set ECharts theme in localStorage and dispatch event.
- * Use this everywhere to keep theme sync logic DRY.
+ * This keeps theme sync logic DRY.
  */
 export function setEchartsThemeName(theme: string) {
   localStorage.setItem('echarts-theme', theme);
   window.dispatchEvent(new CustomEvent('echarts-theme-change', { detail: { theme } }));
 }
+
 /**
  * Hook for chart containers to listen for ECharts theme changes and update accordingly.
  * Returns the current ECharts theme name (from localStorage or default).
@@ -45,8 +46,7 @@ export function useRegisterEchartsThemes() {
 }
 
 /**
- * For ECharts 6+ (beta): Dynamically set chart theme without re-initializing.
- * Call this with the chart instance and new theme name on theme change event.
+ * Dynamically set chart theme without re-initializing.
  */
 export function setEchartsTheme(chartInstance: echarts.ECharts | null, themeName?: string) {
   if (!chartInstance || !themeName) return;
