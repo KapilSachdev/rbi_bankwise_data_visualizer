@@ -4,6 +4,7 @@ import * as echarts from 'echarts/core';
 import { FC, useMemo } from 'react';
 import { useAppData } from '../context/DataContext';
 import EChartsContainer from './common/EChartsContainer';
+import { formatCurrency } from '../utils/number';
 
 echarts.use([
   LineChart,
@@ -63,23 +64,21 @@ const Home: FC = () => {
   // Transaction Volume by Type: Pie chart
   const transactionVolumeOption = useMemo(() => {
     if (!months.length) return {};
-    const latestMonth = months[months.length - 1];
+    const latestMonth = months[0];
     const digital = digitalBankingData[latestMonth] || {};
-    const neft = (digital.NEFT || []).reduce((sum, item) => sum + item.Received_Inward_Credits.No, 0);
-    const rtgs = (digital.RTGS || []).reduce((sum, item) => sum + item.Outward_Transactions.No + item.Inward_Transactions.No, 0);
-    const mobile = (digital.Mobile_Banking || []).reduce((sum, item) => sum + item.Volume, 0);
-    const internet = (digital.Internet_Banking || []).reduce((sum, item) => sum + item.Volume, 0);
+    const neft = (digital.NEFT || []).reduce((sum, item) => sum + item.Received_Inward_Credits.Amount + item.Total_Outward_Debits.Amount, 0);
+    const rtgs = (digital.RTGS || []).reduce((sum, item) => sum + item.Outward_Transactions.Amount + item.Inward_Transactions.Amount, 0);
 
     return {
       backgroundColor: 'transparent',
-      tooltip: { trigger: 'item' },
       series: [{
         type: 'pie',
+        radius: ['40%', '70%'],
+        tooltip: { valueFormatter: (value: number) => formatCurrency(value) },
+        label: { show: true, formatter: '{b} ({d}%)' },
         data: [
           { name: 'NEFT', value: neft },
           { name: 'RTGS', value: rtgs },
-          { name: 'Mobile Banking', value: mobile },
-          { name: 'Internet Banking', value: internet },
         ],
       }],
     };
@@ -173,17 +172,17 @@ const Home: FC = () => {
   }, [posBanksData, months]);
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8">
+    <div className="p-4">
 
       {/* Hero Section */}
       <section className="mb-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 p-6 ">
-            <h2 className="text-2xl font-semibold   mb-4">Overall Performance Trend</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="lg:col-span-2 p-4 ">
+            <h2 className="text-2xl font-semibold mb-4">Overall Performance Trend</h2>
             <EChartsContainer option={performanceTrendOption} className="h-96" />
           </div>
-          <div className="p-6">
-            <h2 className="text-2xl font-semibold   mb-4">Key Metrics</h2>
+          <div className="p-4">
+            <h2 className="text-2xl font-semibold mb-4">Key Metrics</h2>
             <ul className="space-y-4">
               <li className="flex justify-between items-center">
                 <span className=" ">Total Transactions</span>
@@ -208,28 +207,28 @@ const Home: FC = () => {
 
       {/* Grid of smaller charts */}
       <section>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          <div className="p-6   rounded-lg shadow-lg">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div className="p-4">
             <h3 className="text-xl font-semibold   mb-4">Transaction Volume by Type</h3>
             <EChartsContainer option={transactionVolumeOption} className="h-64" />
           </div>
-          <div className="p-6   rounded-lg shadow-lg">
+          <div className="p-4">
             <h3 className="text-xl font-semibold   mb-4">Debit vs. Credit Card Usage</h3>
             <EChartsContainer option={cardUsageOption} className="h-64" />
           </div>
-          <div className="p-6   rounded-lg shadow-lg">
+          <div className="p-4">
             <h3 className="text-xl font-semibold   mb-4">NEFT vs. RTGS Transactions</h3>
             <EChartsContainer option={neftRtgsOption} className="h-64" />
           </div>
-          <div className="p-6   rounded-lg shadow-lg">
+          <div className="p-4">
             <h3 className="text-xl font-semibold   mb-4">Mobile vs. Internet Banking</h3>
             <EChartsContainer option={mobileInternetOption} className="h-64" />
           </div>
-          <div className="p-6   rounded-lg shadow-lg">
+          <div className="p-4">
             <h3 className="text-xl font-semibold   mb-4">Bank Type Market Share</h3>
             <EChartsContainer option={bankTypeShareOption} className="h-64" />
           </div>
-          <div className="p-6   rounded-lg shadow-lg">
+          <div className="p-4">
             <h3 className="text-xl font-semibold   mb-4">Top 5 Banks by Debit Cards</h3>
             <EChartsContainer option={topBanksOption} className="h-64" />
           </div>
