@@ -3,8 +3,8 @@ import { GridComponent, LegendComponent, TooltipComponent } from 'echarts/compon
 import * as echarts from 'echarts/core';
 import { FC, useMemo } from 'react';
 import { useAppData } from '../context/DataContext';
-import EChartsContainer from './common/EChartsContainer';
 import { formatCurrency } from '../utils/number';
+import EChartsContainer from './common/EChartsContainer';
 
 echarts.use([
   LineChart,
@@ -66,15 +66,19 @@ const Home: FC = () => {
     if (!months.length) return {};
     const latestMonth = months[0];
     const digital = digitalBankingData[latestMonth] || {};
-    const neft = (digital.NEFT || []).reduce((sum, item) => sum + item.Received_Inward_Credits.Amount + item.Total_Outward_Debits.Amount, 0);
-    const rtgs = (digital.RTGS || []).reduce((sum, item) => sum + item.Outward_Transactions.Amount + item.Inward_Transactions.Amount, 0);
+    // Amount is already in crore
+    const neft: number = (digital.NEFT || []).reduce((sum, item) => sum + item.Received_Inward_Credits.Amount + item.Total_Outward_Debits.Amount, 0) * 1e7;
+    const rtgs: number = (digital.RTGS || []).reduce((sum, item) => sum + item.Outward_Transactions.Amount + item.Inward_Transactions.Amount, 0) * 1e7;
 
     return {
       backgroundColor: 'transparent',
+      tooltip: {
+        trigger: 'item',
+        formatter: (params: any) => `${params.name}: ${formatCurrency(params.value)} (${params.percent}%)`
+      },
       series: [{
         type: 'pie',
         radius: ['40%', '70%'],
-        tooltip: { valueFormatter: (value: number) => formatCurrency(value) },
         label: { show: true, formatter: '{b} ({d}%)' },
         data: [
           { name: 'NEFT', value: neft },

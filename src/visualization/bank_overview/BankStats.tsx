@@ -72,9 +72,9 @@ const MoMIndicator: FC<MoMIndicatorProps> = memo(({ currentValue, previousValue 
   const rotateClass = isPositive ? '' : isNegative ? 'rotate-180' : 'rotate-90';
 
   const ariaLabel = isPositive
-    ? `Increased by ${formatNumber(absChange, false)} (${percent.toFixed(1)}%) from last month`
+    ? `Increased by ${formatNumber(absChange)} (${percent.toFixed(1)}%) from last month`
     : isNegative
-      ? `Decreased by ${formatNumber(Math.abs(absChange), false)} (${Math.abs(percent).toFixed(1)}%) from last month`
+      ? `Decreased by ${formatNumber(Math.abs(absChange))} (${Math.abs(percent).toFixed(1)}%) from last month`
       : 'No change from last month';
 
   return (
@@ -111,7 +111,7 @@ interface StatItemProps {
 export const StatItem: FC<StatItemProps> = memo(({ title, value, currentValueForMoM, previousValueForMoM }) => (
   <div className="stat place-items-center p-2 bg-transparent">
     <div className="stat-title text-lg text-base-content">{title}</div>
-    <div className="stat-value text-lg tooltip" data-tip={formatNumber(value, false)}>{formatNumber(value) || '-'}</div>
+    <div className="stat-value text-lg tooltip" data-tip={formatNumber(value)}>{formatNumber(value) || '-'}</div>
     <div className="stat-desc flex items-center gap-2">
       <MoMIndicator currentValue={currentValueForMoM} previousValue={previousValueForMoM} />
     </div>
