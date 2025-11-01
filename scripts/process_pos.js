@@ -128,7 +128,7 @@ fs.readdirSync(excelDir)
 
         const bankData = {};
         columnMapping.forEach(({ col, path, pre_2022_03_Col, pre_2020_05_Col }) => {
-          let value;
+          let value = typeof row[0] === 'number' ? row[col] : row[col + 1];
           if (pre_2020_05_Format) {
             if (typeof pre_2020_05_Col === 'undefined') value = 0;
             if (typeof row[1] === 'number') pre_2020_05_Col = pre_2020_05_Col + 1; // Adjust for Sr.No.-based index
@@ -136,8 +136,6 @@ fs.readdirSync(excelDir)
           } else if (pre_2022_03_Format) {
             if (typeof pre_2022_03_Col === 'undefined') value = 0;
             else value = row[pre_2022_03_Col];
-          } else {
-            value = row[col + 1];
           }
           // If value is undefined or null, set to 0 for numbers, '' for strings
           if (typeof value === 'undefined' || value === null) value = 0;
@@ -169,6 +167,11 @@ fs.readdirSync(excelDir)
         }
         // Assign robust Bank_Type using utility
         bankData.Bank_Type = getBankTypeByName(bankName);
+
+        // Check for required attributes
+        if (!bankData.Bank_Short_Name || !bankData.Bank_Type) {
+          throw new Error(`Invalid bank attributes ${bankName}: Bank_Short_Name ${bankData.Bank_Short_Name} or Bank_Type ${bankData.Bank_Type} are missing or invalid.`);
+        }
 
         jsonOutput.banks.push(bankData);
       }
