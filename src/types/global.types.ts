@@ -30,39 +30,25 @@ export interface TxnDetail {
 export interface CashWithdrawal {
   At_ATM: TxnDetail;
   At_PoS?: TxnDetail;
+  // Additional total field for aggregated data. Not part of original data but useful for calculations.
+  Total?: TxnDetail;
 }
 
-/**
- * Cash withdrawal details for credit card (ATM only)
- */
-export interface CreditCardCashWithdrawal {
-  At_ATM: TxnDetail;
-}
-
-/**
- * Cash withdrawal details for debit card (ATM and optional PoS)
- */
-export interface DebitCardCashWithdrawal {
-  At_ATM: TxnDetail;
-  At_PoS?: TxnDetail;
+export interface Card {
+  at_PoS: TxnDetail;
+  Online_ecom: TxnDetail;
+  Others: TxnDetail;
+  Cash_Withdrawal: CashWithdrawal;
+  // Additional total field for aggregated data. Not part of original data but useful for calculations.
+  Total?: TxnDetail;
 }
 
 /**
  * Card payment transactions for a bank
  */
 export interface CardPaymentsTransactions {
-  Credit_Card: {
-    at_PoS: TxnDetail;
-    Online_ecom: TxnDetail;
-    Others: TxnDetail;
-    Cash_Withdrawal: CreditCardCashWithdrawal;
-  };
-  Debit_Card: {
-    at_PoS: TxnDetail;
-    Online_ecom: TxnDetail;
-    Others: TxnDetail;
-    Cash_Withdrawal: DebitCardCashWithdrawal;
-  };
+  Credit_Card: Card;
+  Debit_Card: Card;
 }
 
 export interface BankData {

@@ -31,6 +31,7 @@ export interface AppDataContextValue {
   posBanksData: { [key: string]: BankData[] };
   digitalBankingData: { [key: string]: DigitalBankingData };
   months: string[];
+  latestMonth: string;
   isLoading: boolean;
   error: Error | null;
   reload: () => Promise<void>;
@@ -106,6 +107,7 @@ export const AppDataProvider: React.FC<{ children: React.ReactNode }> = ({ child
     posBanksData,
     digitalBankingData,
     months,
+    latestMonth: months[0] || '',
     isLoading,
     error,
     reload: load,
