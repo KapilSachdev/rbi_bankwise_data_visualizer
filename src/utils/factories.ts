@@ -1,4 +1,5 @@
-import { CardPaymentsTransactions, Card, TxnDetail, CashWithdrawal } from '../types/global.types';
+import { create } from 'domain';
+import { CardPaymentsTransactions, Card, TxnDetail, CashWithdrawal, MobileBanking, InternetBanking } from '../types/global.types';
 
 // Helper to create a default TxnDetail
 export function createTxnDetail(): TxnDetail {
@@ -26,5 +27,29 @@ export function createCardPaymentsTransactions(): CardPaymentsTransactions {
   return {
     Credit_Card: createCard(),
     Debit_Card: createCard(),
+  };
+}
+
+export function createMobileBanking(): MobileBanking {
+  return {
+    Sr_No: 0,
+    Bank_Name: '',
+    Bank_Short_Name: '',
+    Bank_Type: '',
+    Volume: 0,
+    Value: 0,
+    Active_Customers: 0,
+  };
+}
+
+export function createInternetBanking(): InternetBanking {
+  return {
+    Sr_No: 0,
+    Bank_Name: '',
+    Bank_Short_Name: '',
+    Bank_Type: '',
+    Volume: 0,
+    Value: 0,
+    Active_Customers: 0,
   };
 }

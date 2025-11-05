@@ -2,10 +2,10 @@ import { BarChart, LineChart, PieChart, SankeyChart, SunburstChart, TreemapChart
 import { GridComponent, LegendComponent, TooltipComponent } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { FC, useMemo } from 'react';
-import { CardPaymentsTransactions } from 'src/types/global.types';
+import { CardPaymentsTransactions, InternetBanking, MobileBanking } from 'src/types/global.types';
 import { useAppData } from '../context/DataContext';
-import { createCardPaymentsTransactions } from '../utils/factories';
-import { formatCurrency } from '../utils/number';
+import { createCardPaymentsTransactions, createInternetBanking, createMobileBanking } from '../utils/factories';
+import { formatCurrency, formatNumber } from '../utils/number';
 import EChartsContainer from './common/EChartsContainer';
 
 echarts.use([
@@ -25,7 +25,7 @@ const Home: FC = () => {
 
   // Transaction Volume by Type: Pie chart
   const transactionValues = useMemo(() => {
-    if (!months.length) return {};
+    if (!latestMonth) return {};
     const digital = digitalBankingData[latestMonth] || {};
     // Amount is already in crore
     const neft: number = (digital.NEFT || []).reduce((sum, item) => sum + item.Received_Inward_Credits.Amount + item.Total_Outward_Debits.Amount, 0) * 1e7;
@@ -46,11 +46,12 @@ const Home: FC = () => {
         ],
       }],
     };
-  }, [digitalBankingData, months]);
+  }, [digitalBankingData, latestMonth]);
 
   // Debit vs Credit Card Usage: Sankey chart
   const cardUsageOption = useMemo(() => {
-    if (!months.length) return {};
+    if (!latestMonth) return {};
+
     let cards: CardPaymentsTransactions = createCardPaymentsTransactions();
     posBanksData[latestMonth]?.forEach(bank => {
       cards.Credit_Card.at_PoS.Value += bank.Card_Payments_Transactions?.Credit_Card?.at_PoS?.Value || 0;
@@ -94,39 +95,77 @@ const Home: FC = () => {
         ],
       }],
     };
-  }, [posBanksData, months]);
+  }, [posBanksData, latestMonth]);
 
-  // NEFT vs RTGS: Bar chart
-  const neftRtgsOption = useMemo(() => {
-    if (!months.length) return {};
-    const digital = digitalBankingData[latestMonth] || {};
-    const neft = (digital.NEFT || []).reduce((sum, item) => sum + item.Received_Inward_Credits.No, 0);
-    const rtgs = (digital.RTGS || []).reduce((sum, item) => sum + item.Outward_Transactions.No + item.Inward_Transactions.No, 0);
-
-    return {
-      backgroundColor: 'transparent',
-      tooltip: { trigger: 'axis' },
-      xAxis: { type: 'category', data: ['NEFT', 'RTGS'] },
-      yAxis: { type: 'value' },
-      series: [{ type: 'bar', data: [neft, rtgs] }],
-    };
-  }, [digitalBankingData, months]);
-
-  // Mobile vs Internet Banking: Bar chart
+  // Mobile vs Internet Banking: Nested donut showing Value / Volume / Active Customers
   const mobileInternetOption = useMemo(() => {
-    if (!months.length) return {};
-    const digital = digitalBankingData[latestMonth] || {};
-    const mobile = (digital.Mobile_Banking || []).reduce((sum, item) => sum + item.Volume, 0);
-    const internet = (digital.Internet_Banking || []).reduce((sum, item) => sum + item.Volume, 0);
+    if (!latestMonth) return {};
+
+    let mobile: MobileBanking = createMobileBanking();
+    console.log(digitalBankingData[latestMonth]);
+    console.log(digitalBankingData);
+    digitalBankingData[latestMonth]?.Mobile_Banking?.forEach(item => {
+      mobile.Value += item.Value;
+      mobile.Volume += item.Volume;
+      mobile.Active_Customers += item.Active_Customers;
+    });
+
+    let internet: InternetBanking = createInternetBanking();
+    digitalBankingData[latestMonth]?.Internet_Banking?.forEach(item => {
+      internet.Value += item.Value;
+      internet.Volume += item.Volume;
+      internet.Active_Customers += item.Active_Customers;
+    });
+
+    const innerData = [
+      { name: 'Mobile Banking', value: mobile.Value },
+      { name: 'Internet Banking', value: internet.Value },
+    ];
+
+    const outerData = [
+      { name: 'Mobile — Value', value: mobile.Value, metric: 'Value', type: 'Mobile' },
+      { name: 'Internet — Value', value: internet.Value, metric: 'Value', type: 'Internet' },
+
+      { name: 'Mobile — Volume', value: mobile.Volume, metric: 'Volume', type: 'Mobile' },
+      { name: 'Internet — Volume', value: internet.Volume, metric: 'Volume', type: 'Internet' },
+
+      { name: 'Mobile — Active', value: mobile.Active_Customers, metric: 'Active_Customers', type: 'Mobile' },
+      { name: 'Internet — Active', value: internet.Active_Customers, metric: 'Active_Customers', type: 'Internet' },
+    ];
 
     return {
       backgroundColor: 'transparent',
-      tooltip: { trigger: 'axis' },
-      xAxis: { type: 'category', data: ['Mobile Banking', 'Internet Banking'] },
-      yAxis: { type: 'value' },
-      series: [{ type: 'bar', data: [mobile, internet] }],
+      tooltip: {
+        trigger: 'item',
+        formatter: (params: any) => {
+          const d = params.data as any;
+          if (d && d.metric) {
+            if (d.metric === 'Value') return `${d.type} — ${d.metric}: ${formatCurrency(d.value)} (${params.percent}%)`;
+            return `${d.type} — ${d.metric}: ${formatNumber(d.value)} (${params.percent}%)`;
+          }
+          // inner ring (type totals by Value)
+          return `${params.name}: (${params.percent}%)`;
+        }
+      },
+      series: [
+        {
+          name: 'Banking Type',
+          type: 'pie',
+          radius: ['0%', '42%'],
+          label: { position: 'inside', formatter: '{b}\n{d}%' },
+          emphasis: { scale: true },
+          data: innerData,
+        },
+        {
+          name: 'Metrics',
+          type: 'pie',
+          radius: ['55%', '75%'],
+          label: { formatter: '{b}: {c}', show: true },
+          data: outerData,
+        },
+      ],
     };
-  }, [digitalBankingData, months]);
+  }, [digitalBankingData, latestMonth]);
 
   // Bank Type Market Share: Pie chart
   const bankTypeShareOption = useMemo(() => {
@@ -175,10 +214,6 @@ const Home: FC = () => {
           <div className="p-4">
             <h3 className="text-xl font-semibold   mb-4">Debit vs. Credit Card Usage</h3>
             <EChartsContainer option={cardUsageOption} className="h-64" />
-          </div>
-          <div className="p-4">
-            <h3 className="text-xl font-semibold   mb-4">NEFT vs. RTGS Transactions</h3>
-            <EChartsContainer option={neftRtgsOption} className="h-64" />
           </div>
           <div className="p-4">
             <h3 className="text-xl font-semibold   mb-4">Mobile vs. Internet Banking</h3>
