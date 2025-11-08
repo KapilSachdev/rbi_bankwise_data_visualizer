@@ -11,8 +11,10 @@ const main = async () => {
   try {
     // Parse command-line argument: YYYY_MM
     const { year, month } = getTargetDate(process.argv[2]);
+    // Remove existing file and force re-download
+    const force = process.argv.some(arg => ['--force', '-f'].includes(arg));
 
-    await fetchRbiExcelData(NEFT_CONFIG, year, month);
+    await fetchRbiExcelData(NEFT_CONFIG, year, month, force);
     console.log('NEFT data fetching complete!');
   } catch (err) {
     console.error('Error fetching NEFT data:', err.message);

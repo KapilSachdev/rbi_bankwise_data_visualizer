@@ -15,7 +15,7 @@ import {
  * @returns {Promise<string>} A promise that resolves with the path to the downloaded Excel file.
  * @throws {Error} If any step of the fetching or downloading fails.
  */
-export const fetchRbiExcelData = async (config, targetYear, targetMonth) => {
+export const fetchRbiExcelData = async (config, targetYear, targetMonth, force = false) => {
   const {
     TYPE,
     BASE_URL,
@@ -38,6 +38,15 @@ export const fetchRbiExcelData = async (config, targetYear, targetMonth) => {
   const excelDir = path.resolve(getModuleDir(), `../data/excel/${OUTPUT_SUBDIR}`);
   ensureDir(excelDir);
   const xlsxPath = path.join(excelDir, `${fileBase}.xlsx`);
+
+  if (force && fs.existsSync(xlsxPath)) {
+    console.log(`[--force] Removing existing: ${xlsxPath}`);
+    try {
+      fs.unlinkSync(xlsxPath);
+    } catch (error) {
+      console.error(`Error removing file ${xlsxPath}:`, error);
+    }
+  }
 
   // Check if the file already exists to avoid re-downloading
   if (fs.existsSync(xlsxPath)) {
