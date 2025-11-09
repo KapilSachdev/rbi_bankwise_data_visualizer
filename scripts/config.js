@@ -10,7 +10,7 @@ const COMMON_CONSTANTS = {
   HTTP_FILE_HEADERS: {
     'Accept': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,application/octet-stream,*/*;q=0.8',
   },
-  MAX_FETCH_ATTEMPTS: 5, // Maximum retries for fetching XLSX link
+  MAX_FETCH_ATTEMPTS: 2, // Maximum retries for fetching XLSX link
   RETRY_DELAY_MS: 2000,  // Delay between retries in milliseconds
 };
 
