@@ -43,6 +43,18 @@ export const darker = {
       },
     },
   },
+  sankey: {
+    label: {
+      color: '#eee',
+    },
+    itemStyle: {
+      borderWidth: 1,
+      borderColor: '#aaa',
+    },
+    emphasis: {
+      focus: 'adjacency'
+    },
+  },
   visualMap: {
     inRange: {
       color: ['#bf444c', '#d88273', '#f6efa6'],

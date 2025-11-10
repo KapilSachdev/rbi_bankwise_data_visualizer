@@ -73,7 +73,7 @@ const Home: FC = () => {
       tooltip: {
         trigger: 'item',
       },
-      series: [{
+      series: {
         type: 'sankey',
         data: [
           { name: 'Debit Cards' },
@@ -93,7 +93,7 @@ const Home: FC = () => {
           { source: 'Ecom', target: 'Credit Cards', value: cards.Credit_Card.Online_ecom.Value },
           { source: 'Cash', target: 'Credit Cards', value: cards.Credit_Card.Cash_Withdrawal.Total!.Value },
         ],
-      }],
+      },
     };
   }, [posBanksData, latestMonth]);
 
@@ -102,8 +102,6 @@ const Home: FC = () => {
     if (!latestMonth) return {};
 
     let mobile: MobileBanking = createMobileBanking();
-    console.log(digitalBankingData[latestMonth]);
-    console.log(digitalBankingData);
     digitalBankingData[latestMonth]?.Mobile_Banking?.forEach(item => {
       mobile.Value += item.Value;
       mobile.Volume += item.Volume;
@@ -167,40 +165,6 @@ const Home: FC = () => {
     };
   }, [digitalBankingData, latestMonth]);
 
-  // Bank Type Market Share: Pie chart
-  const bankTypeShareOption = useMemo(() => {
-    if (!months.length) return {};
-    const banks = posBanksData[latestMonth] || [];
-    const types = banks.reduce((acc, bank) => {
-      acc[bank.Bank_Type] = (acc[bank.Bank_Type] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
-
-    return {
-      backgroundColor: 'transparent',
-      tooltip: { trigger: 'item' },
-      series: [{
-        type: 'pie',
-        data: Object.entries(types).map(([name, value]) => ({ name, value })),
-      }],
-    };
-  }, [posBanksData, months]);
-
-  // Top 5 Banks by Debit Cards: Bar chart
-  const topBanksOption = useMemo(() => {
-    if (!months.length) return {};
-    const banks = posBanksData[latestMonth] || [];
-    const sorted = banks.sort((a, b) => b.Infrastructure.Debit_Cards - a.Infrastructure.Debit_Cards).slice(0, 5);
-
-    return {
-      backgroundColor: 'transparent',
-      tooltip: { trigger: 'axis' },
-      xAxis: { type: 'category', data: sorted.map(b => b.Bank_Short_Name) },
-      yAxis: { type: 'value' },
-      series: [{ type: 'bar', data: sorted.map(b => b.Infrastructure.Debit_Cards) }],
-    };
-  }, [posBanksData, months]);
-
   return (
     <div className="p-4">
 
@@ -212,20 +176,12 @@ const Home: FC = () => {
             <EChartsContainer option={transactionValues} className="h-64" />
           </div>
           <div className="p-4">
-            <h3 className="text-xl font-semibold   mb-4">Debit vs. Credit Card Usage</h3>
-            <EChartsContainer option={cardUsageOption} className="h-64" />
-          </div>
-          <div className="p-4">
             <h3 className="text-xl font-semibold   mb-4">Mobile vs. Internet Banking</h3>
             <EChartsContainer option={mobileInternetOption} className="h-64" />
           </div>
           <div className="p-4">
-            <h3 className="text-xl font-semibold   mb-4">Bank Type Market Share</h3>
-            <EChartsContainer option={bankTypeShareOption} className="h-64" />
-          </div>
-          <div className="p-4">
-            <h3 className="text-xl font-semibold   mb-4">Top 5 Banks by Debit Cards</h3>
-            <EChartsContainer option={topBanksOption} className="h-64" />
+            <h3 className="text-xl font-semibold   mb-4">Debit vs. Credit Card Usage</h3>
+            <EChartsContainer option={cardUsageOption} className="h-64" />
           </div>
         </div>
       </section>
