@@ -9,7 +9,7 @@ import OrbitMenu from './filters/Orbit';
 import Doughnut from './filters/Doughnut';
 import Typeahead from './common/Typeahead';
 import { BANK_TYPES } from '../constants/data';
-
+import PeriodPresets from './filters/PeriodPresets';
 
 const FilterLab: React.FC = () => {
   // Local state for each filter demo
@@ -32,6 +32,8 @@ const FilterLab: React.FC = () => {
   // Doughnut
   const doughnutOptions = ['Retail', 'Corporate', 'SME', 'Agri', 'Other'];
   const [doughnut, setDoughnut] = useState(doughnutOptions[0]);
+  // PeriodPresets
+  const [periodPreset, setPeriodPreset] = useState('All');
 
   // Typeahead
   const typeaheadOptions = [
@@ -110,6 +112,13 @@ const FilterLab: React.FC = () => {
             <h2 className="card-title">Doughnut Menu</h2>
             <Doughnut options={doughnutOptions} selected={doughnut} onSelect={setDoughnut} />
             <div className="mt-2 text-xs opacity-70">Selected: {doughnut}</div>
+          </div>
+        </div>
+        <div className="card bg-base-100 shadow border border-base-300">
+          <div className="card-body">
+            <h2 className="card-title">Period Presets</h2>
+            <PeriodPresets selectedPreset={periodPreset} onPresetChange={setPeriodPreset} />
+            <div className="mt-2 text-xs opacity-70">Selected: {periodPreset}</div>
           </div>
         </div>
       </div>
