@@ -7,6 +7,8 @@ import { ECHARTS_THEMES } from '../assets/styles/echarts_themes';
  * This keeps theme sync logic DRY.
  */
 export function setEchartsThemeName(theme: string) {
+  if (!ECHARTS_THEMES.some(chartTheme => chartTheme.name === theme)) return;
+
   localStorage.setItem('echarts-theme', theme);
   window.dispatchEvent(new CustomEvent('echarts-theme-change', { detail: { theme } }));
 }

@@ -23,7 +23,9 @@ interface ChartThemeButtonProps {
 }
 
 const ChartThemeButton: FC<ChartThemeButtonProps> = ({ uiTheme }) => {
-  const [currentTheme, setCurrentTheme] = useState<string>(() => localStorage.getItem('echarts-theme') || ECHARTS_THEMES[0].name);
+  const [currentTheme, setCurrentTheme] = useState<string>(() => {
+    return ECHARTS_THEMES.find(theme => theme.name === localStorage.getItem('echarts-theme'))?.name || ECHARTS_THEMES[0].name;
+  });
 
   const handleNextTheme = useCallback(() => {
     const uiThemeMode = UI_THEMES.find((theme) => theme.name === uiTheme)?.mode;
@@ -71,6 +73,14 @@ const FloatingDock: FC = () => {
       setLastTheme(saved);
     } else {
       const current = document.documentElement.getAttribute('data-theme');
+      if (!UI_THEMES.some(theme => theme.name === current)) {
+        // Find system preference
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const defaultTheme = prefersDark ? 'dark' : 'light';
+        setTheme(defaultTheme);
+        setLastTheme(defaultTheme);
+        return;
+      }
       if (current && UI_THEMES.some(t => t.name === current)) {
         setLastTheme(current);
       }
