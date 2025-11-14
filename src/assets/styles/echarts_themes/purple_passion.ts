@@ -285,7 +285,11 @@ export const purplePassion = {
       },
     },
   },
-
+  sankey: {
+    label: {
+      color: '#eee',
+    },
+  },
   // Scatter chart
   scatter: {
     itemStyle: {
