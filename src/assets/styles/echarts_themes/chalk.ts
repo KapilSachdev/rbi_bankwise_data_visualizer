@@ -40,6 +40,12 @@ export const chalk = {
       },
     },
   },
+  sankey: {
+    label: {
+      color: '#fff',
+      fontWeight: 'bold',
+    },
+  },
   visualMap: {
     inRange: {
       color: ['#fc97af', '#87f7cf'],
