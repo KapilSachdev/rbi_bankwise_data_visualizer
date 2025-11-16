@@ -315,7 +315,7 @@ export const purplePassion = {
         color: ['rgba(155,139,186,0.1)', 'rgba(140,211,232,0.1)'],
       },
     },
-    name: {
+    axisName: {
       color: '#eee',
     },
   },
