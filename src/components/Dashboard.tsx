@@ -32,12 +32,10 @@ const Dashboard: React.FC = () => {
     },
   ];
   return (
-    <>
-      <article>
-        {layout === 'grid' && <CardLayout charts={charts} />}
-        {layout === 'accordion' && <AccordionLayout charts={charts} />}
-      </article>
-    </>
+    <section>
+      {layout === 'grid' && <CardLayout charts={charts} />}
+      {layout === 'accordion' && <AccordionLayout charts={charts} />}
+    </section>
   )
 };
 

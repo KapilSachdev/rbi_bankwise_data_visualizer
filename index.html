@@ -1,112 +1,115 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Indian Banking Data Chart Visualizer - RBI Statistics & Trends</title>
-  <meta name="description"
-    content="Explore Indian banking data with interactive chart visualizations. Get insights into RBI statistics, bank performance, and trends for SBI, HDFC, ICICI, and more." />
-  <meta name="keywords"
-    content="Indian banking data, RBI statistics, banking trends India, bank performance, financial data visualization, SBI, HDFC, ICICI, banking sector India" />
-  <meta name="author" content="Kapil Sachdev" />
-  <meta name="theme-color" content="#ff9900" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://kapilsachdev.github.io/rbi_bankwise_data_visualizer/" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <!-- Google Fonts: DM Sans, Fira Code (display=swap) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap"
-    rel="stylesheet" media="print" onload="this.media='all'">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <!-- Open Graph / SEO -->
-  <meta property="og:title" content="Indian Banking Data Chart Visualizer Analysis" />
-  <meta property="og:description"
-    content="Explore Indian banking data with interactive visualizations. Get insights into RBI statistics, bank performance, and trends." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://kapilsachdev.github.io/rbi_bankwise_data_visualizer/" />
-  <meta property="og:image" content="/public/assets/icons/chart.png" />
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Indian Banking Data Chart Visualizer - RBI Statistics & Trends" />
-  <meta name="twitter:description"
-    content="Explore Indian banking data with interactive visualizations. Get insights into RBI statistics, bank performance, and trends." />
-  <meta name="twitter:image" content="/public/assets/icons/chart.png" />
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Indian Banking Data Chart Visualizer - RBI Statistics & Trends",
-      "url": "https://kapilsachdev.github.io/rbi_bankwise_data_visualizer/",
-      "description": "Explore and analyse Indian banking data with interactive visualizations. Get insights into bank performance and trends for all Indian banks.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "KapilSachdev"
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Indian Banking Data Chart Visualizer - RBI Statistics & Trends
+    </title>
+    <meta name="description"
+      content="Explore Indian banking data with interactive chart visualizations. Get insights into RBI statistics, bank performance, and trends for SBI, HDFC, ICICI, and more." />
+    <meta name="keywords"
+      content="Indian banking data, RBI statistics, banking trends India, bank performance, financial data visualization, SBI, HDFC, ICICI, banking sector India" />
+    <meta name="author" content="Kapil Sachdev" />
+    <meta name="theme-color" content="#ff9900" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kapilsachdev.github.io/rbi_bankwise_data_visualizer/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Google Fonts: DM Sans, Fira Code (display=swap) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap"
+      rel="stylesheet" media="print" onload="this.media='all'" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Open Graph / SEO -->
+    <meta property="og:title" content="Indian Banking Data Chart Visualizer Analysis" />
+    <meta property="og:description"
+      content="Explore Indian banking data with interactive visualizations. Get insights into RBI statistics, bank performance, and trends." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kapilsachdev.github.io/rbi_bankwise_data_visualizer/" />
+    <meta property="og:image" content="/public/assets/icons/chart.png" />
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Indian Banking Data Chart Visualizer - RBI Statistics & Trends" />
+    <meta name="twitter:description"
+      content="Explore Indian banking data with interactive visualizations. Get insights into RBI statistics, bank performance, and trends." />
+    <meta name="twitter:image" content="/public/assets/icons/chart.png" />
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Indian Banking Data Chart Visualizer - RBI Statistics & Trends",
+        "url": "https://kapilsachdev.github.io/rbi_bankwise_data_visualizer/",
+        "description": "Explore and analyse Indian banking data with interactive visualizations. Get insights into bank performance and trends for all Indian banks.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "KapilSachdev"
+        }
       }
-    }
-  </script>
-  <meta name="color-scheme" content="light dark" />
-  <style>
-    .preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-
-    .loader {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .ball {
-      width: 16px;
-      height: 16px;
-      background: #ff9900;
-      border-radius: 50%;
-      animation: bounce 1s ease-in-out infinite;
-    }
-
-    .line {
-      width: 64px;
-      height: 4px;
-      background: #ff9900;
-      border-radius: 2px;
-    }
-
-    @keyframes bounce {
-
-      0%,
-      100% {
-        transform: translateY(0);
+    </script>
+    <meta name="color-scheme" content="light dark" />
+    <style>
+      .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
       }
 
-      50% {
-        transform: translateY(-30px);
+      .loader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
       }
-    }
-  </style>
-</head>
 
-<body class="bg-gradient-to-br from-base-200 via-base-100 to-base-300 min-h-screen">
-  <div id="root" class="container mx-auto">
-    <div id="preloader" class="preloader">
-      <div class="loader">
-        <div class="ball"></div>
-        <div class="line"></div>
+      .ball {
+        width: 16px;
+        height: 16px;
+        background: #ff9900;
+        border-radius: 50%;
+        animation: bounce 1s ease-in-out infinite;
+      }
+
+      .line {
+        width: 64px;
+        height: 4px;
+        background: #ff9900;
+        border-radius: 2px;
+      }
+
+      @keyframes bounce {
+
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-30px);
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-gradient-to-br from-base-200 via-base-100 to-base-300 min-h-screen">
+    <div id="root" class="container mx-auto">
+      <div id="preloader" class="preloader">
+        <div class="loader">
+          <div class="ball"></div>
+          <div class="line"></div>
+        </div>
       </div>
     </div>
-  </div>
-  <script type="module" src="/src/main.tsx"></script>
-</body>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 
 </html>
