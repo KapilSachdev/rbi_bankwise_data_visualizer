@@ -97,7 +97,7 @@ const Home: FC = () => {
     };
   }, [posBanksData, latestMonth]);
 
-  // Mobile vs Internet Banking: Nested donut showing Value / Volume / Active Customers
+  // Mobile vs Internet Banking: Grouped Bar Chart (Percentages)
   const mobileInternetOption = useMemo(() => {
     if (!latestMonth) return {};
 
@@ -115,51 +115,56 @@ const Home: FC = () => {
       internet.Active_Customers += item.Active_Customers;
     });
 
-    const innerData = [
-      { name: 'Mobile Banking', value: mobile.Value },
-      { name: 'Internet Banking', value: internet.Value },
-    ];
+    // Metrics for x-axis
+    const metrics = ['Value', 'Volume', 'Active Customers'];
+    const percentDigitalValues = Object.entries(mobile).reduce((acc, [key, val]) => {
+      const internetVal = (internet as any)[key] || 0;
+      const total = (val + internetVal) || 1;
 
-    const outerData = [
-      { name: 'Mobile — Value', value: mobile.Value, metric: 'Value', type: 'Mobile' },
-      { name: 'Internet — Value', value: internet.Value, metric: 'Value', type: 'Internet' },
-
-      { name: 'Mobile — Volume', value: mobile.Volume, metric: 'Volume', type: 'Mobile' },
-      { name: 'Internet — Volume', value: internet.Volume, metric: 'Volume', type: 'Internet' },
-
-      { name: 'Mobile — Active', value: mobile.Active_Customers, metric: 'Active_Customers', type: 'Mobile' },
-      { name: 'Internet — Active', value: internet.Active_Customers, metric: 'Active_Customers', type: 'Internet' },
-    ];
+      const mobilePercent: number = Math.round(((val / total) * 100));
+      (acc.mobile as any)[key] = mobilePercent;
+      (acc.internet as any)[key] = 100 - mobilePercent;
+      return acc;
+    }, { mobile: createMobileBanking(), internet: createInternetBanking() });
 
     return {
       backgroundColor: 'transparent',
       tooltip: {
-        trigger: 'item',
+        trigger: 'axis',
+        axisPointer: { type: 'shadow' },
         formatter: (params: any) => {
-          const d = params.data as any;
-          if (d && d.metric) {
-            if (d.metric === 'Value') return `${d.type} — ${d.metric}: ${formatCurrency(d.value)} (${params.percent}%)`;
-            return `${d.type} — ${d.metric}: ${formatNumber(d.value)} (${params.percent}%)`;
-          }
-          // inner ring (type totals by Value)
-          return `${params.name}: (${params.percent}%)`;
-        }
+          let tooltip = `<b>${params[0].name}</b><br/>`;
+          params.forEach((p: any) => {
+            tooltip += `${p.marker} ${p.seriesName}: ${p.value}%<br/>`;
+          });
+          return tooltip;
+        },
       },
+      legend: {
+        data: ['Mobile Banking', 'Internet Banking'],
+      },
+      xAxis: [
+        {
+          type: 'category',
+          data: metrics,
+          axisLabel: { interval: 0 },
+        },
+      ],
+      yAxis: [
+        {
+          type: 'value',
+        },
+      ],
       series: [
         {
-          name: 'Banking Type',
-          type: 'pie',
-          radius: ['0%', '42%'],
-          label: { position: 'inside', formatter: '{b}\n{d}%' },
-          emphasis: { scale: true },
-          data: innerData,
+          name: 'Mobile Banking',
+          type: 'bar',
+          data: [percentDigitalValues.mobile.Value, percentDigitalValues.mobile.Volume, percentDigitalValues.mobile.Active_Customers],
         },
         {
-          name: 'Metrics',
-          type: 'pie',
-          radius: ['55%', '75%'],
-          label: { formatter: '{b}: {c}', show: true },
-          data: outerData,
+          name: 'Internet Banking',
+          type: 'bar',
+          data: [percentDigitalValues.internet.Value, percentDigitalValues.internet.Volume, percentDigitalValues.internet.Active_Customers],
         },
       ],
     };
