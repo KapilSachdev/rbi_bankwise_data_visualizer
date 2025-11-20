@@ -171,26 +171,20 @@ const Home: FC = () => {
   }, [digitalBankingData, latestMonth]);
 
   return (
-    <div className="p-4">
-
-      {/* Grid of smaller charts */}
-      <section>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-          <div className="p-4">
-            <h3 className="text-xl font-semibold   mb-4">Transaction Values by Type</h3>
-            <EChartsContainer option={transactionValues} className="h-64" />
-          </div>
-          <div className="p-4">
-            <h3 className="text-xl font-semibold   mb-4">Mobile vs. Internet Banking</h3>
-            <EChartsContainer option={mobileInternetOption} className="h-64" />
-          </div>
-          <div className="p-4">
-            <h3 className="text-xl font-semibold   mb-4">Debit vs. Credit Card Usage</h3>
-            <EChartsContainer option={cardUsageOption} className="h-64" />
-          </div>
-        </div>
-      </section>
-    </div>
+    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 py-4">
+      <div className="">
+        <h3 className="text-xl font-semibold   mb-4">Transaction Values by Type</h3>
+        <EChartsContainer option={transactionValues} className="h-48" />
+      </div>
+      <div className="">
+        <h3 className="text-xl font-semibold   mb-4">Mobile vs. Internet Banking</h3>
+        <EChartsContainer option={mobileInternetOption} className="h-48" />
+      </div>
+      <div className="">
+        <h3 className="text-xl font-semibold   mb-4">Debit vs. Credit Card Usage</h3>
+        <EChartsContainer option={cardUsageOption} className="h-48" />
+      </div>
+    </section>
   );
 };
 
