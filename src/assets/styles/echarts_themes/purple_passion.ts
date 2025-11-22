@@ -259,17 +259,6 @@ export const purplePassion = {
       borderColor: 'rgba(138,124,168,0.37)',
     },
   },
-
-  // Bar chart
-  bar: {
-    itemStyle: {
-      borderRadius: 2,
-      color: '#9b8bba',
-    },
-    barWidth: '60%',
-    barMinHeight: 0,
-  },
-
   // Pie chart
   pie: {
     itemStyle: {
