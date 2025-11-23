@@ -140,21 +140,13 @@ const Home: FC = () => {
           return tooltip;
         },
       },
-      legend: {
-        data: ['Mobile Banking', 'Internet Banking'],
+      legend: { data: ['Mobile Banking', 'Internet Banking'] },
+      xAxis: {
+        type: 'category',
+        data: metrics,
+        axisLabel: { interval: 0 },
       },
-      xAxis: [
-        {
-          type: 'category',
-          data: metrics,
-          axisLabel: { interval: 0 },
-        },
-      ],
-      yAxis: [
-        {
-          type: 'value',
-        },
-      ],
+      yAxis: { type: 'value' },
       series: [
         {
           name: 'Mobile Banking',
@@ -173,16 +165,16 @@ const Home: FC = () => {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 py-4">
       <div className="">
-        <h3 className="text-xl font-semibold   mb-4">Transaction Values by Type</h3>
-        <EChartsContainer option={transactionValues} className="h-48" />
+        <h3 className="text-xl font-semibold">Transaction Values by Type</h3>
+        <EChartsContainer className="h-64" option={transactionValues} />
       </div>
       <div className="">
-        <h3 className="text-xl font-semibold   mb-4">Mobile vs. Internet Banking</h3>
-        <EChartsContainer option={mobileInternetOption} className="h-48" />
+        <h3 className="text-xl font-semibold">Mobile vs. Internet Banking</h3>
+        <EChartsContainer className="h-64" option={mobileInternetOption} />
       </div>
       <div className="">
-        <h3 className="text-xl font-semibold   mb-4">Debit vs. Credit Card Usage</h3>
-        <EChartsContainer option={cardUsageOption} className="h-48" />
+        <h3 className="text-xl font-semibold">Debit vs. Credit Card Usage</h3>
+        <EChartsContainer className="h-64" option={cardUsageOption} />
       </div>
     </section>
   );
