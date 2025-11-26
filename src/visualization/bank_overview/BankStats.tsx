@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
 import SVGIcon from '../../components/common/SVGIcon';
 import type { BankData, InternetBanking, MobileBanking, NEFT, RTGS } from '../../types/global.types';
-import { formatCurrency, formatNumber } from '../../utils/number';
+import { formatNumber } from '../../utils/number';
 
 // --- Type Guards and Data Structure Distinction ---
 // PoS data structure (ATM/PoS/Card)
@@ -195,25 +195,25 @@ const BankStats: FC<BankStatsProps> = ({ currentMonth: _currentMonth, selectedBa
                 <div className="flex flex-col gap-2 flex-1">
                   <StatItem
                     title="Inward Credits (No.)"
-                    value={neft.current.Received_Inward_Credits.No.toLocaleString()}
+                    value={neft.current.Received_Inward_Credits.No}
                     currentValueForMoM={neft.current.Received_Inward_Credits.No}
                     previousValueForMoM={neft.prev?.Received_Inward_Credits.No}
                   />
                   <StatItem
                     title="Inward Credits (Amount)"
-                    value={formatCurrency(neft.current.Received_Inward_Credits.Amount)}
+                    value={neft.current.Received_Inward_Credits.Amount}
                     currentValueForMoM={neft.current.Received_Inward_Credits.Amount}
                     previousValueForMoM={neft.prev?.Received_Inward_Credits.Amount}
                   />
                   <StatItem
                     title="Outward Debits (No.)"
-                    value={neft.current.Total_Outward_Debits.No.toLocaleString()}
+                    value={neft.current.Total_Outward_Debits.No}
                     currentValueForMoM={neft.current.Total_Outward_Debits.No}
                     previousValueForMoM={neft.prev?.Total_Outward_Debits.No}
                   />
                   <StatItem
                     title="Outward Debits (Amount)"
-                    value={formatCurrency(neft.current.Total_Outward_Debits.Amount)}
+                    value={neft.current.Total_Outward_Debits.Amount}
                     currentValueForMoM={neft.current.Total_Outward_Debits.Amount}
                     previousValueForMoM={neft.prev?.Total_Outward_Debits.Amount}
                   />
@@ -229,25 +229,25 @@ const BankStats: FC<BankStatsProps> = ({ currentMonth: _currentMonth, selectedBa
                 <div className="flex flex-col gap-2 flex-1">
                   <StatItem
                     title="Outward Txns (No.)"
-                    value={rtgs.current.Outward_Transactions.No.toLocaleString()}
+                    value={rtgs.current.Outward_Transactions.No}
                     currentValueForMoM={rtgs.current.Outward_Transactions.No}
                     previousValueForMoM={rtgs.prev?.Outward_Transactions.No}
                   />
                   <StatItem
                     title="Outward Txns (Amount)"
-                    value={formatCurrency(rtgs.current.Outward_Transactions.Amount)}
+                    value={rtgs.current.Outward_Transactions.Amount}
                     currentValueForMoM={rtgs.current.Outward_Transactions.Amount}
                     previousValueForMoM={rtgs.prev?.Outward_Transactions.Amount}
                   />
                   <StatItem
                     title="Inward Txns (No.)"
-                    value={rtgs.current.Inward_Transactions.No.toLocaleString()}
+                    value={rtgs.current.Inward_Transactions.No}
                     currentValueForMoM={rtgs.current.Inward_Transactions.No}
                     previousValueForMoM={rtgs.prev?.Inward_Transactions.No}
                   />
                   <StatItem
                     title="Inward Txns (Amount)"
-                    value={formatCurrency(rtgs.current.Inward_Transactions.Amount)}
+                    value={rtgs.current.Inward_Transactions.Amount}
                     currentValueForMoM={rtgs.current.Inward_Transactions.Amount}
                     previousValueForMoM={rtgs.prev?.Inward_Transactions.Amount}
                   />
@@ -263,19 +263,19 @@ const BankStats: FC<BankStatsProps> = ({ currentMonth: _currentMonth, selectedBa
                 <div className="flex flex-col gap-2 flex-1">
                   <StatItem
                     title="Volume"
-                    value={mobile.current.Volume.toLocaleString()}
+                    value={mobile.current.Volume}
                     currentValueForMoM={mobile.current.Volume}
                     previousValueForMoM={mobile.prev?.Volume}
                   />
                   <StatItem
                     title="Value"
-                    value={formatCurrency(mobile.current.Value)}
+                    value={mobile.current.Value}
                     currentValueForMoM={mobile.current.Value}
                     previousValueForMoM={mobile.prev?.Value}
                   />
                   <StatItem
                     title="Active Customers"
-                    value={mobile.current.Active_Customers.toLocaleString()}
+                    value={mobile.current.Active_Customers}
                     currentValueForMoM={mobile.current.Active_Customers}
                     previousValueForMoM={mobile.prev?.Active_Customers}
                   />
@@ -291,19 +291,19 @@ const BankStats: FC<BankStatsProps> = ({ currentMonth: _currentMonth, selectedBa
                 <div className="flex flex-col gap-2 flex-1">
                   <StatItem
                     title="Volume"
-                    value={internet.current.Volume.toLocaleString()}
+                    value={internet.current.Volume}
                     currentValueForMoM={internet.current.Volume}
                     previousValueForMoM={internet.prev?.Volume}
                   />
                   <StatItem
                     title="Value"
-                    value={formatCurrency(internet.current.Value)}
+                    value={internet.current.Value}
                     currentValueForMoM={internet.current.Value}
                     previousValueForMoM={internet.prev?.Value}
                   />
                   <StatItem
                     title="Active Customers"
-                    value={internet.current.Active_Customers.toLocaleString()}
+                    value={internet.current.Active_Customers}
                     currentValueForMoM={internet.current.Active_Customers}
                     previousValueForMoM={internet.prev?.Active_Customers}
                   />
