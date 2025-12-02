@@ -6,6 +6,7 @@ import { CardPaymentsTransactions, InternetBanking, MobileBanking } from 'src/ty
 import { useAppData } from '../context/DataContext';
 import { createCardPaymentsTransactions, createInternetBanking, createMobileBanking } from '../utils/factories';
 import { formatCurrency, formatNumber } from '../utils/number';
+import { formatMonthYear } from '../utils/time';
 import EChartsContainer from './common/EChartsContainer';
 
 echarts.use([
@@ -162,21 +163,66 @@ const Home: FC = () => {
     };
   }, [digitalBankingData, latestMonth]);
 
+  // Top 5 banks by credit card transactions value - Bar Chart (Latest Month)
+  const top5CreditCardOption = useMemo(() => {
+    if (!latestMonth) return {};
+
+    const totalCreditCards = posBanksData[latestMonth]?.reduce((sum, bank) => sum + bank.Infrastructure.Credit_Cards, 0) || 0;
+    const top5Banks = posBanksData[latestMonth]?.sort((a, b) => b.Infrastructure.Credit_Cards - a.Infrastructure.Credit_Cards).slice(0, 5) || [];
+
+    return {
+      backgroundColor: 'transparent',
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { type: 'shadow' },
+        formatter: (params: any) => {
+          const p = params[0];
+          console.log(params);
+          console.log(p);
+          return `${p.marker} ${p.name}: ${formatNumber(p.value)} (${Math.round((p.value / totalCreditCards) * 100)}%)`;
+        },
+      },
+      xAxis: {
+        type: 'category',
+        data: top5Banks.map(item => item.Bank_Short_Name),
+        axisLabel: { interval: 0, rotate: 30 },
+      },
+      yAxis: {
+        type: 'value',
+        axisLabel: { formatter: (value: number) => formatNumber(value) },
+      },
+      series: [
+        {
+          name: 'Credit Cards',
+          type: 'bar',
+          data: top5Banks.map(item => item.Infrastructure.Credit_Cards),
+        },
+      ],
+    };
+  }, [posBanksData, latestMonth]);
+
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 py-4">
-      <div className="">
-        <h3 className="text-xl font-semibold">Transaction Values by Type</h3>
-        <EChartsContainer className="h-64" option={transactionValues} />
-      </div>
-      <div className="">
-        <h3 className="text-xl font-semibold">Mobile vs. Internet Banking</h3>
-        <EChartsContainer className="h-64" option={mobileInternetOption} />
-      </div>
-      <div className="">
-        <h3 className="text-xl font-semibold">Debit vs. Credit Card Usage</h3>
-        <EChartsContainer className="h-64" option={cardUsageOption} />
-      </div>
-    </section>
+    <article className="p-4">
+      <h1>{formatMonthYear(latestMonth)}</h1>
+      <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 py-4">
+        <div>
+          <h3 className="text-xl font-semibold">Credit Card Market Share</h3>
+          <EChartsContainer className="h-64" option={top5CreditCardOption} />
+        </div>
+        <div className="">
+          <h3 className="text-xl font-semibold">Transaction Values by Type</h3>
+          <EChartsContainer className="h-64" option={transactionValues} />
+        </div>
+        <div className="">
+          <h3 className="text-xl font-semibold">Mobile vs. Internet Banking</h3>
+          <EChartsContainer className="h-64" option={mobileInternetOption} />
+        </div>
+        <div className="">
+          <h3 className="text-xl font-semibold">Debit vs. Credit Card Usage</h3>
+          <EChartsContainer className="h-64" option={cardUsageOption} />
+        </div>
+      </section>
+    </article>
   );
 };
 
