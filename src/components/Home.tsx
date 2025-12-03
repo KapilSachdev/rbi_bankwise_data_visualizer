@@ -177,8 +177,6 @@ const Home: FC = () => {
         axisPointer: { type: 'shadow' },
         formatter: (params: any) => {
           const p = params[0];
-          console.log(params);
-          console.log(p);
           return `${p.marker} ${p.name}: ${formatNumber(p.value)} (${Math.round((p.value / totalCreditCards) * 100)}%)`;
         },
       },
@@ -196,6 +194,15 @@ const Home: FC = () => {
           name: 'Credit Cards',
           type: 'bar',
           data: top5Banks.map(item => item.Infrastructure.Credit_Cards),
+          label: {
+            show: true,
+            position: 'outside',
+            formatter: (params: any) => {
+              const value = params.value;
+              const percent = totalCreditCards ? Math.round((value / totalCreditCards) * 100) : 0;
+              return `${percent}%`;
+            }
+          },
         },
       ],
     };
