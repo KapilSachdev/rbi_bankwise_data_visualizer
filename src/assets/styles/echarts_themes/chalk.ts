@@ -27,6 +27,9 @@ export const chalk = {
       color: '#eee',
     },
   },
+  label: {
+    color: '#eee',
+  },
   pie: {
     label: {
       color: '#fff',
