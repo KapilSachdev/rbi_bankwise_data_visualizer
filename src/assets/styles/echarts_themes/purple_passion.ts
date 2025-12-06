@@ -12,6 +12,9 @@ export const purplePassion = {
   textStyle: {
     color: '#eee', // Lighter text for dark mode
   },
+  label: {
+    color: '#eee',
+  },
   title: {
     textStyle: {
       color: '#fff',

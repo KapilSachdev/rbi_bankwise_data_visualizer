@@ -14,6 +14,9 @@ export const chalk = {
   textStyle: {
     color: '#eee',
   },
+  label: {
+    color: '#eee',
+  },
   title: {
     textStyle: {
       color: '#ffffff',
@@ -26,9 +29,6 @@ export const chalk = {
     textStyle: {
       color: '#eee',
     },
-  },
-  label: {
-    color: '#eee',
   },
   pie: {
     label: {
