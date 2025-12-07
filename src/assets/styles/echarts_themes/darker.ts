@@ -17,6 +17,9 @@ export const darker = {
   textStyle: {
     color: '#eee',
   },
+  label: {
+    color: '#eee',
+  },
   title: {
     textStyle: {
       color: '#eeeeee',
