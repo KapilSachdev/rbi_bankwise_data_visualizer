@@ -35,9 +35,15 @@ const BankProfileDashboard: FC = () => {
     const banksForMonth = posBanksData[selectedMonth] || [];
     const selectedBankData = banksForMonth.find(b => b.Bank_Name === selectedBank) || null;
 
-    const selectedBankTimeSeriesData = [...months].reverse()
-      .map(month => posBanksData[month]?.find(b => b.Bank_Name === selectedBank) || null)
-      .filter((b): b is BankData => Boolean(b));
+    // Build a time-ordered list (oldest -> newest) of months where the selected
+    // bank has data so the chart's x-axis aligns with the series data.
+    const ascendingMonths = [...months].slice().reverse();
+    const selectedBankTimeSeriesPairs = ascendingMonths
+      .map(month => ({ month, data: posBanksData[month]?.find(b => b.Bank_Name === selectedBank) || null }))
+      .filter((p): p is { month: string; data: BankData } => Boolean(p.data));
+
+    const selectedBankTimeSeriesMonths = selectedBankTimeSeriesPairs.map(p => p.month);
+    const selectedBankTimeSeriesData = selectedBankTimeSeriesPairs.map(p => p.data);
 
     const prevMonthBankData = prevMonth ? (posBanksData[prevMonth]?.find(b => b.Bank_Name === selectedBank) || null) : null;
 
@@ -62,6 +68,7 @@ const BankProfileDashboard: FC = () => {
       bankNames,
       selectedBankData,
       selectedBankTimeSeriesData,
+      selectedBankTimeSeriesMonths,
       prevMonthBankData,
       digitalBanking: {
         neft: { current: currentDigitalBankingData.neft, prev: prevDigitalBankingData.neft },
@@ -76,6 +83,7 @@ const BankProfileDashboard: FC = () => {
     banksForMonth,
     selectedBankData,
     selectedBankTimeSeriesData,
+    selectedBankTimeSeriesMonths,
     prevMonthBankData,
     digitalBanking,
   } = dashboardData;
@@ -196,7 +204,7 @@ const BankProfileDashboard: FC = () => {
           />
           <BankTimeSeriesChart
             bankData={selectedBankTimeSeriesData}
-            months={months}
+            months={selectedBankTimeSeriesMonths}
             metrics={["ATMs_CRMs", "PoS", "Credit_Cards", "Debit_Cards"]}
             bankName={selectedBank}
             digitalBankingData={digitalBankingData}
