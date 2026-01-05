@@ -3,11 +3,11 @@ import { GridComponent, LegendComponent, TooltipComponent } from 'echarts/compon
 import * as echarts from 'echarts/core';
 import { FC, useMemo } from 'react';
 import { CardPaymentsTransactions, InternetBanking, MobileBanking } from 'src/types/global.types';
-import { useAppData } from '../context/DataContext';
-import { createCardPaymentsTransactions, createInternetBanking, createMobileBanking } from '../utils/factories';
-import { formatCurrency, formatNumber } from '../utils/number';
-import { formatMonthYear } from '../utils/time';
-import EChartsContainer from './common/EChartsContainer';
+import { useAppData } from '../../context/DataContext';
+import { createCardPaymentsTransactions, createInternetBanking, createMobileBanking } from '../../utils/factories';
+import { formatCurrency, formatNumber } from '../../utils/number';
+import { formatMonthYear } from '../../utils/time';
+import EChartsContainer from '../common/EChartsContainer';
 
 echarts.use([
   LineChart,

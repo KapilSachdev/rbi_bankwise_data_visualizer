@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import { useAppData } from '../context/DataContext';
-import { LayoutContext } from '../context/LayoutContext';
-import { formatMonthYear } from '../utils/time';
-import { TimeSeriesChart } from '../visualization/cards';
-import { BankTypeStackedAreaChart, InfraBarChart, TopMoversLineChart } from '../visualization/components';
-import { AccordionLayout, CardLayout } from './layouts';
-import type { ChartItem } from './layouts/types';
+import { useAppData } from '../../context/DataContext';
+import { LayoutContext } from '../../context/LayoutContext';
+import { formatMonthYear } from '../../utils/time';
+import { TimeSeriesChart } from '../../visualization/cards';
+import { BankTypeStackedAreaChart, InfraBarChart, TopMoversLineChart } from '../../visualization/components';
+import { AccordionLayout, CardLayout } from '../layouts';
+import type { ChartItem } from '../layouts/types';
 
 const Dashboard: React.FC = () => {
   const { posBanksData, months } = useAppData();
