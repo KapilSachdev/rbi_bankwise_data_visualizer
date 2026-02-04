@@ -88,7 +88,9 @@ const processInternetSheet = (sheet) =>
   });
 
 const main = () => {
-  const { year, month } = getTargetDate(process.argv[2]);
+  const yearMonthArg = process.argv.find(arg => arg.startsWith('--month='));
+  const yearMonth = yearMonthArg ? yearMonthArg.split('=')[1] : undefined;
+  const { year, month } = getTargetDate(yearMonth);
   const paddedMonth = String(month).padStart(2, '0');
   const fileBase = `bankwise_neft_stats_${year}_${paddedMonth}`;
   const excelDir = path.resolve(getModuleDir(), '../data/excel/neft');
