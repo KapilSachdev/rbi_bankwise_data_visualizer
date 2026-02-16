@@ -9,8 +9,9 @@ import { getTargetDate } from './utils.js';
  */
 const main = async () => {
   try {
-    // Parse command-line argument: YYYY_MM
-    const { year, month } = getTargetDate(process.argv[2]);
+    // Parse command-line argument: --month=YYYY_MM
+    const monthArg = process.argv.find(arg => arg.startsWith('--month='));
+    const { year, month } = getTargetDate(monthArg);
     // Remove existing file and force re-download
     const force = process.argv.some(arg => ['--force', '-f'].includes(arg));
 
