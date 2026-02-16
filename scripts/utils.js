@@ -82,8 +82,10 @@ export const ensureDir = (dir) => {
  * @returns {{year: number, month: number}} An object containing the target year and month.
  */
 export const getTargetDate = (arg) => {
-  if (arg && /^\d{4}_\d{2}$/.test(arg)) {
-    const [year, month] = arg.split('_').map(Number);
+  // arg can be in the format 'YYYY_MM' or '--month=YYYY_MM'
+  const match = arg && arg.match(/(?:--month=)?(\d{4}_\d{2})/);
+  if (match) {
+    const [year, month] = match[1].split('_').map(Number);
     return { year, month };
   }
 
