@@ -6,10 +6,9 @@ import { FC, useEffect, useMemo, useState } from 'react';
 import EChartsContainer from '../../components/common/EChartsContainer';
 import TriangleSwitch from '../../components/filters/TriangleSwitch';
 import Pills from '../../components/filters/Pills';
-import RangeSlider from '../../components/filters/RangeSlider';
+import PeriodPresets from '../../components/filters/PeriodPresets';
 import TopNInput from '../../components/filters/TopNInput';
 import { BANK_TYPES } from '../../constants/data';
-import { useYearRangeData } from '../../hooks/useYearRangeData';
 import type { BankData } from '../../types/global.types';
 
 echarts.use([
@@ -35,17 +34,30 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
   const [topNState, setTopNState] = useState<number>(topN);
   const [selectedBankType, setSelectedBankType] = useState<string>('');
 
-  const { years, defaultYearRange } = useYearRangeData(months);
-  const [yearRange, setYearRange] = useState<[number, number]>(defaultYearRange);
-  useEffect(() => setYearRange(defaultYearRange), [defaultYearRange]);
+  // UI preset for quick period selection (1M/3M/6M/1Y/5Y/10Y/All)
+  const [selectedPreset, setSelectedPreset] = useState<string>('1Y');
 
-  // Filter months by year range
+  // month-based ranges (['YYYY-MM','YYYY-MM']) so presets like 1M/3M/6M/1Y/5Y/10Y/All are precise
   const sortedMonths = useMemo(() => [...months].sort(), [months]);
+  const defaultMonthRange = useMemo(() => {
+    if (sortedMonths.length === 0) return ['', ''] as [string, string];
+    const lastIdx = sortedMonths.length - 1;
+    const startIdx = Math.max(0, lastIdx - 11); // last 12 months by default (1Y)
+    return [sortedMonths[startIdx], sortedMonths[lastIdx]] as [string, string];
+  }, [sortedMonths]);
+
+  const [monthRange, setMonthRange] = useState<[string, string]>(defaultMonthRange);
+  useEffect(() => setMonthRange(defaultMonthRange), [defaultMonthRange]);
+
+  const handlePresetSelect = (preset: string) => setSelectedPreset(preset);
+  const handlePresetRangeChange = (range: [string, string]) => setMonthRange(range);
+
+  // Filter months by monthRange (inclusive)
   const filteredMonths = useMemo(() =>
     sortedMonths.filter(m => {
-      const y = Number(m.slice(0, 4));
-      return y >= yearRange[0] && y <= yearRange[1];
-    }), [sortedMonths, yearRange]);
+      if (!monthRange[0] || !monthRange[1]) return true;
+      return m >= monthRange[0] && m <= monthRange[1];
+    }), [sortedMonths, monthRange]);
 
   const bankSeries = useMemo(() => {
     const bankMap = new Map<string, { name: string; values: number[] }>();
@@ -111,7 +123,12 @@ const TopMoversLineChart: FC<TopMoversLineChartProps> = ({ allData, months, metr
 
         <div className="flex w-full items-center justify-between gap-6 mb-2">
           <TopNInput value={topNState} min={1} max={bankSeries.length} onChange={setTopNState} label="banks" />
-          <RangeSlider min={years[0]} max={years[years.length - 1]} value={yearRange} onChange={setYearRange} step={1} />
+          <PeriodPresets
+            months={months}
+            selectedPreset={selectedPreset}
+            onRangeChange={handlePresetRangeChange}
+            onPresetChange={handlePresetSelect}
+          />
           <TriangleSwitch
             options={['Total', 'Credit', 'Debit']}
             selected={selectedMetric === 'total' ? 'Total' : selectedMetric === 'credit' ? 'Credit' : 'Debit'}
