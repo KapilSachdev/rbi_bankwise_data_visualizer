@@ -1,0 +1,1 @@
+import{n as e,s as t,t as n}from"./jsx-runtime-C7M7YA1l.js";var r=t(e(),1),i=n(),a=(0,r.memo)(({icon:e,className:t=`size-8`,...n})=>(0,i.jsx)(`svg`,{role:`img`,className:t,...n,children:(0,i.jsx)(`use`,{href:`assets/icons.svg#${e}`})}));export{a as t};
