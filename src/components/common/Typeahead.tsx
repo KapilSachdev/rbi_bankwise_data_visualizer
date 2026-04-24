@@ -79,7 +79,7 @@ const Typeahead: FC<TypeaheadProps> = ({
       {isOpen ? (
         <div>
           <div className="fixed inset-0 bg-base-100/80 backdrop-blur-xs z-40" />
-          <div ref={containerRef} className="relative z-[100]">
+          <div ref={containerRef} className="relative z-100">
             <div className="relative w-full">
               <input
                 ref={inputRef}

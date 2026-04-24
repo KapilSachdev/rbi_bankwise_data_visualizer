@@ -29,7 +29,7 @@ const DataFilter: FC<DataFilterProps> = ({
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
       {filters.month && months.length > 0 && onMonthChange && (
-        <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem]">
+        <div className="flex flex-col text-xs font-medium text-base-content min-w-32">
           <span>Month</span>
           <div className="dropdown mt-1">
             <button
@@ -64,7 +64,7 @@ const DataFilter: FC<DataFilterProps> = ({
         </div>
       )}
       {filters.bankType && bankTypes.length > 0 && onBankTypeChange && (
-        <div className="flex flex-col text-xs font-medium text-base-content min-w-[8rem]">
+        <div className="flex flex-col text-xs font-medium text-base-content min-w-32">
           <span>Bank Type</span>
           <div className="dropdown mt-1">
             <button
