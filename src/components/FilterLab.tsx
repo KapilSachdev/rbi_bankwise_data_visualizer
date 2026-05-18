@@ -34,6 +34,11 @@ const FilterLab: React.FC = () => {
   const [doughnut, setDoughnut] = useState(doughnutOptions[0]);
   // PeriodPresets
   const [periodPreset, setPeriodPreset] = useState('All');
+  const periodMonths = ['2024-07', '2024-08', '2024-09', '2024-10', '2024-11', '2024-12', '2025-01'];
+  const [periodRange, setPeriodRange] = useState<[string, string]>([
+    periodMonths[0],
+    periodMonths[periodMonths.length - 1],
+  ]);
 
   // Typeahead
   const typeaheadOptions = [
@@ -117,8 +122,14 @@ const FilterLab: React.FC = () => {
         <div className="card bg-base-100 shadow border border-base-300">
           <div className="card-body">
             <h2 className="card-title">Period Presets</h2>
-            <PeriodPresets selectedPreset={periodPreset} onPresetChange={setPeriodPreset} />
+            <PeriodPresets
+              months={periodMonths}
+              selectedPreset={periodPreset}
+              onRangeChange={setPeriodRange}
+              onPresetChange={setPeriodPreset}
+            />
             <div className="mt-2 text-xs opacity-70">Selected: {periodPreset}</div>
+            <div className="mt-1 text-xs opacity-70">Range: {periodRange[0]} - {periodRange[1]}</div>
           </div>
         </div>
       </div>
