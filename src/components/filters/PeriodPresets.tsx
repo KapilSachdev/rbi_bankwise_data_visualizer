@@ -50,3 +50,6 @@ const PeriodPresets: FC<PeriodPresetsProps> = ({ months, selectedPreset, onRange
 };
 
 export default PeriodPresets;
+
+// Re-export hook so consumers can import logic from the filter module
+export { usePeriodRange } from '../../hooks/usePeriodRange';
