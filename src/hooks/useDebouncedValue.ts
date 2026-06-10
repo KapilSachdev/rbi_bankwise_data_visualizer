@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /**
  * Returns a debounced value that only updates after the given delay.
@@ -7,7 +7,7 @@ import { useEffect, useState, useRef } from 'react';
  */
 export function useDebouncedValue<T>(value: T, delay: number = 1000): T {
   const [debounced, setDebounced] = useState<T>(value);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     // Clear the previous timeout

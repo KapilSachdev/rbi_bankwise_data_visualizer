@@ -2,7 +2,7 @@ import { BarChart, LineChart, PieChart, SankeyChart, SunburstChart, TreemapChart
 import { GridComponent, LegendComponent, TooltipComponent } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { FC, useMemo } from 'react';
-import { CardPaymentsTransactions, InternetBanking, MobileBanking } from 'src/types/global.types';
+import { CardPaymentsTransactions, InternetBanking, MobileBanking } from '../../types/global.types';
 import { useAppData } from '../../context/DataContext';
 import { createCardPaymentsTransactions, createInternetBanking, createMobileBanking } from '../../utils/factories';
 import { formatCurrency, formatNumber } from '../../utils/number';

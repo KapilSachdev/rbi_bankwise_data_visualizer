@@ -1,5 +1,4 @@
-import { create } from 'domain';
-import { CardPaymentsTransactions, Card, TxnDetail, CashWithdrawal, MobileBanking, InternetBanking } from '../types/global.types';
+import { Card, CardPaymentsTransactions, CashWithdrawal, InternetBanking, MobileBanking, TxnDetail } from '../types/global.types';
 
 // Helper to create a default TxnDetail
 export function createTxnDetail(): TxnDetail {
