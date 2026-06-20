@@ -163,58 +163,66 @@ const Home: FC = () => {
     };
   }, [digitalBankingData, latestMonth]);
 
-  // Top 5 banks by credit card transactions value - Bar Chart (Latest Month)
-  const top5CreditCardOption = useMemo(() => {
-    if (!latestMonth) return {};
+  const useTop5CardOption = (cardType: 'Credit_Cards' | 'Debit_Cards') => {
+    return useMemo(() => {
+      if (!latestMonth) return {};
 
-    const totalCreditCards = posBanksData[latestMonth]?.reduce((sum, bank) => sum + bank.Infrastructure.Credit_Cards, 0) || 0;
-    const top5Banks = posBanksData[latestMonth]?.sort((a, b) => b.Infrastructure.Credit_Cards - a.Infrastructure.Credit_Cards).slice(0, 5) || [];
+      const totalCards = posBanksData[latestMonth]?.reduce((sum, bank) => sum + bank.Infrastructure[cardType], 0) || 0;
+      const top5Banks = posBanksData[latestMonth]?.sort((a, b) => b.Infrastructure[cardType] - a.Infrastructure[cardType]).slice(0, 5) || [];
 
-    return {
-      backgroundColor: 'transparent',
-      tooltip: {
-        trigger: 'axis',
-        axisPointer: { type: 'shadow' },
-        formatter: (params: any) => {
-          const p = params[0];
-          return `${p.marker} ${p.name}: ${formatNumber(p.value)} (${Math.round((p.value / totalCreditCards) * 100)}%)`;
-        },
-      },
-      xAxis: {
-        type: 'category',
-        data: top5Banks.map(item => item.Bank_Short_Name),
-        axisLabel: { interval: 0, rotate: 30 },
-      },
-      yAxis: {
-        type: 'value',
-        axisLabel: { formatter: (value: number) => formatNumber(value) },
-      },
-      series: [
-        {
-          name: 'Credit Cards',
-          type: 'bar',
-          data: top5Banks.map(item => item.Infrastructure.Credit_Cards),
-          label: {
-            show: true,
-            position: 'outside',
-            formatter: (params: any) => {
-              const value = params.value;
-              const percent = totalCreditCards ? Math.round((value / totalCreditCards) * 100) : 0;
-              return `${percent}%`;
-            }
+      return {
+        backgroundColor: 'transparent',
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: { type: 'shadow' },
+          formatter: (params: any) => {
+            const p = params[0];
+            return `${p.marker} ${p.name}: ${formatNumber(p.value)} (${Math.round((p.value / totalCards) * 100)}%)`;
           },
         },
-      ],
-    };
-  }, [posBanksData, latestMonth]);
+        xAxis: {
+          type: 'category',
+          data: top5Banks.map(item => item.Bank_Short_Name),
+          axisLabel: { interval: 0, rotate: 30 },
+        },
+        yAxis: {
+          type: 'value',
+          axisLabel: { formatter: (value: number) => formatNumber(value) },
+        },
+        series: [
+          {
+            name: cardType === 'Credit_Cards' ? 'Credit Cards' : 'Debit Cards',
+            type: 'bar',
+            data: top5Banks.map(item => item.Infrastructure[cardType]),
+            label: {
+              show: true,
+              position: 'outside',
+              formatter: (params: any) => {
+                const value = params.value;
+                const percent = totalCards ? Math.round((value / totalCards) * 100) : 0;
+                return `${percent}%`;
+              }
+            },
+          },
+        ],
+      };
+    }, [posBanksData, latestMonth, cardType]);
+  };
+
+  const top5CreditCardOption = useTop5CardOption('Credit_Cards');
+  const top5DebitCardOption = useTop5CardOption('Debit_Cards');
 
   return (
     <article className="p-4">
       <h1>{formatMonthYear(latestMonth)}</h1>
-      <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 py-4">
+      <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 py-4">
         <div>
           <h3 className="text-xl font-semibold">Credit Card Market Share</h3>
           <EChartsContainer className="h-64" option={top5CreditCardOption} />
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold">Debit Card Market Share</h3>
+          <EChartsContainer className="h-64" option={top5DebitCardOption} />
         </div>
         <div className="">
           <h3 className="text-xl font-semibold">Transaction Values by Type</h3>
