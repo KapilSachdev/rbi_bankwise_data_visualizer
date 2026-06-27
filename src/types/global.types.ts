@@ -173,3 +173,18 @@ export interface BankProfileDashboardProps {
   mobileBanksData?: { [month: string]: MobileBanking[] };
   internetBanksData?: { [month: string]: InternetBanking[] };
 }
+
+export interface BankTimeSeriesChartProps {
+  bankData: BankData[];
+  months: string[];
+  bankName: string;
+  metrics?: Array<keyof BankData['Infrastructure']>;
+  digitalBankingData?: {
+    [month: string]: {
+      NEFT?: unknown[];
+      RTGS?: unknown[];
+      Mobile_Banking?: unknown[];
+      Internet_Banking?: unknown[];
+    };
+  };
+}

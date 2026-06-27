@@ -4,6 +4,7 @@ import { useAppData } from '../../context/DataContext';
 import { formatMonthYear, getPreviousMonth } from '../../utils/time';
 import BankStats from '../../visualization/bank_overview/BankStats';
 import BankTimeSeriesChart from '../../visualization/bank_overview/BankTimeSeriesChart';
+import DigitalizationIndexChart from '../../visualization/bank_overview/DigitalizationIndexChart';
 import SVGIcon from '../common/SVGIcon';
 import Typeahead from '../common/Typeahead';
 import Pills from '../filters/Pills';
@@ -196,18 +197,25 @@ const BankProfileDashboard: FC = () => {
 
       {selectedBankData ? (
         <article className='grid gap-4'>
+          <section className="flex">
+            <BankTimeSeriesChart
+              bankData={selectedBankTimeSeriesData}
+              months={selectedBankTimeSeriesMonths}
+              metrics={["ATMs_CRMs", "PoS", "Credit_Cards", "Debit_Cards"]}
+              bankName={selectedBank}
+              digitalBankingData={digitalBankingData}
+            />
+            <DigitalizationIndexChart
+              bankData={selectedBankTimeSeriesData}
+              months={selectedBankTimeSeriesMonths}
+              bankName={selectedBank}
+            />
+          </section>
           <BankStats
             currentMonth={selectedMonth}
             selectedBankData={selectedBankData}
             prevMonthBankData={prevMonthBankData}
             digitalBankingData={digitalBanking}
-          />
-          <BankTimeSeriesChart
-            bankData={selectedBankTimeSeriesData}
-            months={selectedBankTimeSeriesMonths}
-            metrics={["ATMs_CRMs", "PoS", "Credit_Cards", "Debit_Cards"]}
-            bankName={selectedBank}
-            digitalBankingData={digitalBankingData}
           />
         </article>
       ) : (

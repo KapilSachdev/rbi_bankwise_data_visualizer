@@ -1,23 +1,9 @@
 import type { EChartsType } from 'echarts/core';
 import { FC, useMemo, useRef } from 'react';
 import EChartsContainer from '../../components/common/EChartsContainer';
-import type { BankData } from '../../types/global.types';
+import type { BankData, BankTimeSeriesChartProps } from '../../types/global.types';
 import PeriodPresets, { usePeriodRange } from '../../components/filters/PeriodPresets';
 
-interface BankTimeSeriesChartProps {
-  bankData: BankData[];
-  months: string[];
-  metrics: Array<keyof BankData['Infrastructure']>;
-  bankName: string;
-  digitalBankingData?: {
-    [month: string]: {
-      NEFT?: unknown[];
-      RTGS?: unknown[];
-      Mobile_Banking?: unknown[];
-      Internet_Banking?: unknown[];
-    };
-  };
-}
 const BankTimeSeriesChart: FC<BankTimeSeriesChartProps> = ({ bankName, bankData, months, metrics }) => {
   const chartInstanceRef = useRef<EChartsType | null>(null);
   const {
@@ -26,7 +12,7 @@ const BankTimeSeriesChart: FC<BankTimeSeriesChartProps> = ({ bankName, bankData,
     monthRange,
     setMonthRange,
     filteredMonths,
-  } = usePeriodRange(months, '1Y');
+  } = usePeriodRange(months, '5Y');
 
   const handlePresetRangeChange = (range: [string, string]) => setMonthRange(range);
   const handlePresetSelect = (preset: string) => setSelectedPreset(preset);
@@ -41,7 +27,7 @@ const BankTimeSeriesChart: FC<BankTimeSeriesChartProps> = ({ bankName, bankData,
   }, [months, bankData, filteredMonths]);
 
   const chartOption = useMemo(() => {
-    const series = metrics.map((metric) => ({
+    const series = metrics?.map((metric) => ({
       name: metric.replace(/_/g, ' '),
       type: 'line',
       smooth: true,
@@ -66,10 +52,10 @@ const BankTimeSeriesChart: FC<BankTimeSeriesChartProps> = ({ bankName, bankData,
     };
   }, [filteredBankData, metrics, filteredMonths]);
   return (
-    <div className="card bg-base-100 shadow border-base-300 mb-8">
+    <div className="flex-1 card bg-base-100 shadow border-base-300 mb-8">
       <div className="card-body">
-        <div className="flex items-center justify-between mb-2">
-          <h3 className="card-title text-xl font-bold">{bankName} - Monthly Trends</h3>
+        <div className="flex flex-col gap-4 items-center justify-between mb-2">
+          <h3 className="card-title text-xl font-bold">Monthly Trends</h3>
           <PeriodPresets
             months={months}
             selectedPreset={selectedPreset}
@@ -80,7 +66,7 @@ const BankTimeSeriesChart: FC<BankTimeSeriesChartProps> = ({ bankName, bankData,
         <EChartsContainer
           option={chartOption}
           className='w-full h-[400px]'
-          aria-label={`${bankName} - Monthly trends for ${metrics.map(m => m.replace(/_/g, ' ')).join(', ')}`}
+          aria-label={`${bankName} - Monthly trends for ${metrics?.map(m => m.replace(/_/g, ' ')).join(', ')}`}
           role='img'
           tabIndex={0}
           onInit={instance => { chartInstanceRef.current = instance; }}
