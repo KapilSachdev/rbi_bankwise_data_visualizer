@@ -121,7 +121,7 @@ const FloatingDock: FC = () => {
       <div className="hidden sm:block w-0 overflow-visible pointer-events-none" aria-hidden={false}>
         <div className="pointer-events-auto"  >
           <span className="tooltip tooltip-primary tooltip-left" data-tip="Currently I don't do much, but soon!">
-            <Mascot name="Diggie" size={40} className="shadow-xl" />
+            <Mascot name="Diggie" size={40} className="" />
           </span>
         </div>
       </div>
